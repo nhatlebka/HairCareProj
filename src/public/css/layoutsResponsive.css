@@ -1,0 +1,41 @@
+/* On mobile and tablet */
+@media (max-width: 1023px) {
+}
+
+/* On tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+    /* HEADER */
+    .container {
+        width: 94%;
+    }
+    .nav-item a {
+        padding: 20px 20px;
+        font-size: 16px;
+    }
+
+    .nav-item-child a {
+        font-size: 14px;
+    }
+}
+
+/* On mobile */
+@media (max-width: 767px) {
+    .header-navbar {
+        display: none;
+    }
+
+    .mobile-menu-icon {
+        display: block;
+    }
+
+    .top-phone {
+        display: none;
+    }
+
+    .header-padding {
+        padding-top: 127px;
+    }
+    .header-main-scroll {
+        display: block;
+    }
+}
