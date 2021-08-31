@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Booking Services</title>
+        <%- include('../layouts/head') %>
+            <!-- Thư viện và CSS Import ở dưới -->
+
+    <body>
+        <%- include('../layouts/header') %>
+
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <h1>Booking an appointment</h1>
+                        <form>
+                            <fieldset class="border p-3 mt-3">
+                                <legend class="w-auto">Contact info</legend>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <label for="firstname">First Name:</label>
+                                        <input type="text" class="form-control" id="firstname" required>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <label for="lastname">Last Name:</label>
+                                        <input type="text" class="form-control" id="lastname" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="email">Email:</label>
+                                        <input type="email" class="form-control" id="email" placeholder="@" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="phonenumber">Phone number:</label>
+                                        <input type="number" class="form-control" id="phonenumber">
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="border p-3 mt-3">
+                                <legend class="w-auto">Taking sevices & Time</legend>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputSevice">Sevices</label>
+                                        <select id="inputSevice" class="form-control">
+                                            <option selected>Choose...</option>
+                                            <option>...</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputDate">Date</label>
+                                        <input type="date" class="form-control" id="inputDate">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputTime">Time</label>
+                                        <input type="time" class="form-control" id="inputTime">
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div class="form-group mt-3 text-center">
+                                <button type="submit" class="btn btn-primary">Booking</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <h1>Your apointment</h1>
+                        <fieldset class="border p-3 mt-3" style="height: 465px;overflow: auto;">
+                            <legend class="w-auto">Timeline</legend>
+                            <form class="row mb-2">
+                                <div class="col-md-12 input-group">
+                                    <input type="number" class="form-control" placeholder="Your phone number" required>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-success" type="submit">Show</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="row p-3">
+                                <div class="col-12 bg-success text-white p-3">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <h5>Date: dd/mm/yyy</h5>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h5>Time: HH:mm</h5>
+                                        </div>
+                                    </div>
+                                    <h5>Sevice:</h5>
+                                </div>
+                            </div>
+                            <div class="row p-3">
+                                <div class="col-12 bg-success text-white p-3">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <h5>Date: dd/mm/yyy</h5>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h5>Time: HH:mm</h5>
+                                        </div>
+                                    </div>
+                                    <h5>Sevice:</h5>
+                                </div>
+                            </div>
+                            <div class="row p-3">
+                                <div class="col-12 bg-success text-white p-3">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <h5>Date: dd/mm/yyy</h5>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h5>Time: HH:mm</h5>
+                                        </div>
+                                    </div>
+                                    <h5>Sevice:</h5>
+                                </div>
+                            </div>
+                            <div class="row p-3">
+                                <div class="col-12 bg-success text-white p-3">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <h5>Date: dd/mm/yyy</h5>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h5>Time: HH:mm</h5>
+                                        </div>
+                                    </div>
+                                    <h5>Sevice:</h5>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+
+
+            <%- include('../layouts/footer') %>
+
+    </body>
+
+</html>
