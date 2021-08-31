@@ -1,29 +1,30 @@
+//booking router
 const express = require('express');
-const bookingRouter = express.Router();
-const bookingSchema = require('../model/booking');
+const router = express.Router();
+const Booking = require('../models/Booking');
 
-bookingRouter.post('/database', async (req, res) => {
-	try {
-		let booking = new bookingSchema({
-			firstname: req.body.firstname,
-			lastname: req.body.lastname,
-			email: req.body.email,
-			phone: req.body.phone,
-			sevice: req.body.sevice,
-			date: req.body.date,
-			time: req.body.time,
-		});
-		await booking.save();
-		res.send('Dat lich thanh cong')
-	} catch (error) {
-		console.log(error);
-	}
+
+router.post('/store', function (req, res, next) {
+	// res.json(req.body)
+	const formData = req.body;
+	const booking = new Booking(formData);
+	booking
+		.save()
+		.then(() => res.redirect('/booking'))
+		.catch((error) => {});
 });
-// bookingRouter.get('/database', (req, res) => {
-// 	bookingSchema
-// });
-bookingRouter.get('/', (req, res) => {
+router.get('/searchByPhone', function (req, res, next) {
+	Booking.find({ phone: req.query.phone })
+		.then((bookings) => res.json(bookings))
+		.catch(next);
+});
+router.get('/database', function (req, res, next) {
+	Booking.find({})
+		.then((bookings) => res.json(bookings))
+		.catch(next);
+});
+router.get('/', function (req, res, next) {
 	res.render('booking/booking');
 });
 
-module.exports = bookingRouter;
+module.exports = router;
