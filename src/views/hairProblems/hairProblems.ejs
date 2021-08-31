@@ -1,55 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Title</title>
-        <!-- Required meta tags -->
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
-
-        <!-- Bootstrap CSS -->
-        <link
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-            crossorigin="anonymous"
-        />
-    </head>
+        <title>Hair Problem</title>
+        <%- include('../layouts/head') %>
+        <!-- Thư viện và CSS Import ở dưới -->
+        <link rel="stylesheet" href="/css/hairProblems.css">
+        <link rel="stylesheet" href="/css/hairProblemsResponsive.css">
     <body>
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1 class="display-3">HAIR PROBLEMS</h1>
-                <p class="lead">Jumbo helper text</p>
-                <hr class="my-2" />
-                <p>More info</p>
-                <p class="lead">
-                    <a
-                        class="btn btn-primary btn-lg"
-                        href="Jumbo action link"
-                        role="button"
-                        >Jumbo action name</a
-                    >
-                </p>
+        <%- include('../layouts/header') %>
+
+        <div class="main-content" >
+            <div class="breadcrumb d-flex justify-content-center align-items-center" style="background-image: url(/images/breadcrumb_bg_img.jpg)">
+                <h1 class="breadcrumb-text">Hair Problems</h1>
+                <p class="breadcrumb-text"><a href="">Home</a>&nbsp; / &nbsp;Hair Problems</p>
             </div>
         </div>
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script
-            src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"
-        ></script>
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"
-        ></script>
-        <script
-            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"
-        ></script>
+
+        <div class="main-wrap">
+            <div class="row">
+                <div class="main-left col-lg-3 col-md-3 col-sm-12">
+                    <div class="recent-articles">
+                        <div class="main-left-heading">Recent Articles</div>
+                        <ul class="recent-articles-list">
+                            <li class="recent-articles-item">
+                                <div class="recent-articles-item-img"><a href=""><img src="/images/blog11.jpg" alt="" width="100%" /></a></div>
+                                <div class="recent-articles-item-info">
+                                    <a href="">Make a bold look with your hair style!</a>
+                                    <p>Jan 31 , 2018</p>
+                                </div>
+                            </li>
+                            <li class="recent-articles-item">
+                                <div class="recent-articles-item-img"><a href=""><img src="/images/blog11.jpg" alt="" width="100%" /></a></div>
+                                <div class="recent-articles-item-info">
+                                    <a href="">Make a bold look with your hair style!</a>
+                                    <p>Jan 31 , 2018</p>
+                                </div>
+                            </li>
+                            <li class="recent-articles-item">
+                                <div class="recent-articles-item-img"><a href=""><img src="/images/blog11.jpg" alt="" width="100%" /></a></div>
+                                <div class="recent-articles-item-info">
+                                    <a href="">Make a bold look with your hair style!</a>
+                                    <p>Jan 31 , 2018</p>
+                                </div>
+                            </li>
+                            <li class="recent-articles-item">
+                                <div class="recent-articles-item-img"><a href=""><img src="/images/blog11.jpg" alt="" width="100%" /></a></div>
+                                <div class="recent-articles-item-info">
+                                    <a href="">Make a bold look with your hair style!</a>
+                                    <p>Jan 31 , 2018</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="category">
+                        <div class="main-left-heading">Categories</div>
+                        <ul class="categoty-list">
+                            <li class="category-item">
+                                <i class="fas fa-circle"></i>
+                                <a href="">Coloring</a>
+                            </li>
+                            <li class="category-item">
+                                <i class="fas fa-circle"></i>
+                                <a href="">Coloring</a>
+                            </li>
+                            <li class="category-item">
+                                <i class="fas fa-circle"></i>
+                                <a href="">Coloring</a>
+                            </li>
+                            <li class="category-item">
+                                <i class="fas fa-circle"></i>
+                                <a href="">Coloring</a>
+                            </li>
+                            <li class="category-item">
+                                <i class="fas fa-circle"></i>
+                                <a href="">Coloring</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="main-right col-lg-9 col-md-9 col-sm-12">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <div class="post-info text-center">
+                                <div class="post-info-img"><a href=""><img src="/images/blog11.jpg" alt="" width="100%"></a></div>
+                                <div class="post-sub-title">
+                                    <p class="post-date">31 / Jan</p>
+                                    <p class="comments-count">4 Comments</p>
+                                    <p class="author"><i class="fas fa-user"></i> Hair Care Admin</p>
+                                </div>
+                                <a href="" class="post-heading">Make a bold look with your hair style!</a>
+                                <p class="post-des">Ruis curabitur ligula sapien, tincidun tre uiut, euismod vitae, posuere imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere vulputate ar...</p>
+                                <p class="post-type"><i class="fas fa-tags"></i><a href=""> Straight</a></p>
+                                <div class="post-read-more">
+                                    <a href="">Read More&nbsp;<i class="fas fa-angle-double-right read-more-icon"></i>
+                                    <div class="post-read-more-before"></div>
+                                    <div class="post-read-more-after"></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <div class="post-info text-center">
+                                <div class="post-info-img"><a href=""><img src="/images/blog11.jpg" alt="" width="100%"></a></div>
+                                <div class="post-sub-title">
+                                    <p class="post-date">31 / Jan</p>
+                                    <p class="comments-count">4 Comments</p>
+                                    <p class="author"><i class="fas fa-user"></i> Hair Care Admin</p>
+                                </div>
+                                <a href="" class="post-heading">Make a bold look with your hair style!</a>
+                                <p class="post-des">Ruis curabitur ligula sapien, tincidun tre uiut, euismod vitae, posuere imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere vulputate ar...</p>
+                                <p class="post-type"><i class="fas fa-tags"></i><a href=""> Straight</a></p>
+                                <div class="post-read-more">
+                                    <a href="">Read More&nbsp;<i class="fas fa-angle-double-right read-more-icon"></i>
+                                    <div class="post-read-more-before"></div>
+                                    <div class="post-read-more-after"></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <div class="post-info text-center">
+                                <div class="post-info-img"><a href=""><img src="/images/blog11.jpg" alt="" width="100%"></a></div>
+                                <div class="post-sub-title">
+                                    <p class="post-date">31 / Jan</p>
+                                    <p class="comments-count">4 Comments</p>
+                                    <p class="author"><i class="fas fa-user"></i> Hair Care Admin</p>
+                                </div>
+                                <a href="" class="post-heading">Make a bold look with your hair style!</a>
+                                <p class="post-des">Ruis curabitur ligula sapien, tincidun tre uiut, euismod vitae, posuere imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere vulputate ar...</p>
+                                <p class="post-type"><i class="fas fa-tags"></i><a href=""> Straight</a></p>
+                                <div class="post-read-more">
+                                    <a href="">Read More&nbsp;<i class="fas fa-angle-double-right read-more-icon"></i>
+                                    <div class="post-read-more-before"></div>
+                                    <div class="post-read-more-after"></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <div class="post-info text-center">
+                                <div class="post-info-img"><a href=""><img src="/images/blog11.jpg" alt="" width="100%"></a></div>
+                                <div class="post-sub-title">
+                                    <p class="post-date">31 / Jan</p>
+                                    <p class="comments-count">4 Comments</p>
+                                    <p class="author"><i class="fas fa-user"></i> Hair Care Admin</p>
+                                </div>
+                                <a href="" class="post-heading">Make a bold look with your hair style!</a>
+                                <p class="post-des">Ruis curabitur ligula sapien, tincidun tre uiut, euismod vitae, posuere imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere vulputate ar...</p>
+                                <p class="post-type"><i class="fas fa-tags"></i><a href=""> Straight</a></p>
+                                <div class="post-read-more">
+                                    <a href="">Read More&nbsp;<i class="fas fa-angle-double-right read-more-icon"></i>
+                                    <div class="post-read-more-before"></div>
+                                    <div class="post-read-more-after"></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <%- include('../layouts/footer') %>
+
     </body>
 </html>

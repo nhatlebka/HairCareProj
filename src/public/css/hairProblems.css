@@ -1,0 +1,259 @@
+.breadcrumb {
+    height: 200px;
+    flex-direction: column;
+    position: relative;
+}
+
+.breadcrumb::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    background-image: linear-gradient(transparent, #fff);
+}
+
+.breadcrumb-text {
+    position: relative;
+    z-index: 1;
+    font-weight: 300;
+}
+
+.breadcrumb-text a {
+    color: #000;
+    text-decoration: none;
+}
+
+.breadcrumb-text a:hover {
+    color: #d39e3c;
+}
+
+.main-wrap {
+    width: 92%;
+    margin: 30px auto;
+}
+
+.main-left-heading {
+    background: #000;
+    padding: 11px 20px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.recent-articles {
+    margin-top: 20px;
+}
+
+.recent-articles-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.recent-articles-item {
+    display: flex;
+    padding: 16px 0;
+    align-items: center;
+    border-bottom: 1px dashed #ccc;
+}
+
+.recent-articles-item:last-child {
+    border-bottom: none;
+}
+
+.recent-articles-item-img {
+    width: 35%;
+    margin-right: 16px;
+}
+
+.recent-articles-item-img a {
+    display: block;
+    text-decoration: none;
+    width: 100%;
+}
+
+.recent-articles-item-info a {
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.recent-articles-item-info a:hover {
+    color: #d39e3c;
+}
+
+.recent-articles-item-info p {
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-weight: 300;
+}
+
+.category {
+    margin-top: 40px;
+}
+
+.categoty-list {
+    list-style: none;
+}
+
+.category-item {
+    padding: 11px 20px;
+    border-bottom: 1px dashed #ccc;
+}
+
+.category-item:last-child {
+    border-bottom: none;
+}
+
+.category-item i {
+    font-size: 10px;
+    color: #d39e3c;
+    margin-right: 11px;
+}
+
+.category-item a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.category-item a:hover {
+    color: #d39e3c;
+}
+
+.main-right {
+    padding-left: 50px;
+}
+
+.post-info {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding-bottom: 30px;
+}
+
+.post-sub-title {
+    margin-top: 30px;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+
+.post-sub-title p {
+    padding: 1px 10px;
+    border-right: 1px solid #eee;
+    font-weight: 300;
+    margin-bottom: 0;
+}
+
+.post-sub-title p i {
+    font-size: 11px;
+}
+
+.post-sub-title p:last-child {
+    border-right: none;
+}
+
+.post-info .post-heading {
+    color: #000;
+    padding: 0 30px;
+    font-size: 30px;
+    font-weight: 300;
+    display: block;
+    margin: 18px;
+    text-decoration: none;
+}
+
+.post-info .post-heading:hover,
+.post-type a:hover {
+    color: #d39e3c;
+}
+
+.post-des {
+    font-weight: 300;
+    margin-top: 16px;
+    padding: 0 30px;
+}
+
+.post-type {
+    margin-top: 30px;
+}
+
+.post-type i {
+    font-size: 11px;
+    margin-right: 10px;
+}
+
+.post-type a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 300;
+}
+
+.post-read-more a {
+    margin: 30px auto;
+    display: block;
+    padding: 11px;
+    max-width: 150px;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 300;
+    transition: all ease-in-out 0.5s;
+    position: relative;
+}
+
+.post-read-more-after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+    transform-origin: left bottom;
+    transition: all ease-in-out 0.5s;
+    transform: scale(0);
+}
+
+.post-read-more-before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-right: 1px solid #000;
+    border-top: 1px solid #000;
+    transform-origin: right top;
+    transition: all ease-in-out 0.5s;
+    transform: scale(0);
+}
+
+.post-read-more a:hover .post-read-more-after {
+    transform: scale(1);
+}
+
+.post-read-more a:hover .post-read-more-before {
+    transform: scale(1);
+}
+
+.read-more-icon {
+    font-size: 11px;
+    margin-left: 6px;
+    transform: translateX(0);
+    transition: transform 0.5s;
+}
+
+.post-read-more a:hover {
+    color: #000;
+    background-color: #fff;
+}
+
+.post-read-more a:hover .read-more-icon {
+    transform: translateX(6px);
+}

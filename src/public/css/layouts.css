@@ -209,6 +209,7 @@ html {
     opacity: 0;
     transition: all ease-in-out 0.5s;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
 }
 
 .menu-mobile h3 {
@@ -279,7 +280,7 @@ html {
     padding: 10px 30px;
     color: #000;
     width: 100%;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px dashed #ccc;
 }
 
 .header-mobile-over-play {
@@ -300,6 +301,7 @@ html {
     right: 0;
     transform: translateY(-100%);
     transition: all ease-in-out 0.2s;
+    z-index: 1;
 }
 
 .header-main-scroll {
@@ -311,6 +313,7 @@ html {
     transform: translateY(-100%);
     display: none;
     transition: all ease-in-out 0.2s;
+    z-index: 1;
 }
 
 /* FOOTER */
