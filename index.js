@@ -9,7 +9,9 @@ const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-
+//dev
+const morgan = require('morgan');
+app.use(morgan('dev')); // log tất cả request ra console log
 //Ghi đè phương thức (override method)
 app.use(methodOverride('_method'));
 
