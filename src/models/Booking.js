@@ -9,11 +9,11 @@ const Booking = new Schema(
 		email: String,
 		phone: String,
 		service: String,
-		date: { type: [Date], index: true },
+		date: Date,
 	},
 	{
 		timestamps: true,
 	}
 );
-Booking.index({ date: 1, type: -1 });
+
 module.exports = mongoose.model('Booking', Booking);
