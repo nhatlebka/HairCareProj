@@ -64,6 +64,9 @@
     margin-top: 26px;
     padding: 0 30px;
 }
+.post-read-more{
+    padding-bottom: 30px;
+}
 .post-read-more a {
     margin: 30px auto;
     display: block;
@@ -101,4 +104,32 @@
     transform-origin: right top;
     transition: all ease-in-out 0.5s;
     transform: scale(0);
+}
+.post-read-more a:hover .post-read-more-after {
+    transform: scale(1);
+}
+
+.post-read-more a:hover .post-read-more-before {
+    transform: scale(1);
+}
+.post-read-more a:hover {
+    color: #000;
+    background-color: #fff;
+}
+
+.post-read-more a:hover .read-more-icon {
+    transform: translateX(6px);
+}
+
+.combo-heading{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.combo{
+    margin-bottom: 30px;
+}
+.combo-img img{
+    display: block;
+    margin-left:auto;
+    margin-right:auto
 }
