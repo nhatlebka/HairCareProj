@@ -23,6 +23,9 @@ router.get('/database', function (req, res, next) {
 		.then((bookings) => res.json(bookings))
 		.catch(next);
 });
+router.get('/staff', function (req, res, next) {
+	res.render('booking/staff');
+});
 router.get('/', function (req, res, next) {
 	res.render('booking/booking');
 });
