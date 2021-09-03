@@ -1,20 +1,183 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Hair Service</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body>
-     <h1>Hair services</h1>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+<head>
+    <title>Hair Services</title>
+    <%- include('../layouts/head') %>
+        <!-- Thư viện và CSS Import ở dưới -->
+        <link rel="stylesheet" href="/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="/css/layoutsResponsive.css">
+        <link rel="stylesheet" href="/css/hairServices.css">
+
+<body>
+    <%- include('../layouts/header') %>
+
+        <div class="main-content">
+            <div class="breadcrumb d-flex justify-content-center align-items-center"
+                style="background-image: url(/images/breadcrumb_bg_img.jpg)">
+                <h1 class="breadcrumb-text">Hair Services</h1>
+                <p class="breadcrumb-text"><a href="">Home</a>&nbsp; / &nbsp;Hair Services</p>
+            </div>
+        </div>
+
+        <!-- Main Content-->
+
+        <!-- Main services -->
+        <div class="container">
+            <div class="main col-lg-12 col-md-12 col-sm-12">
+                <div class="main-heading text-center">
+                    <h3 style="color:#121212;font-size: 50px;"> What we offer at Hair Care</h3>
+                    <h4 style="color:#d3ad69"> Trichologists and Hair Care Specialists</h4>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="post text-center">
+                            <div class="post-title breadcrumb-text">
+                                <h3 style="color:#000000;">Hair fall Treatment</h3>
+                            </div>
+                            <div class="post-img">
+                                <img src="/images/service1.jpg" alt="" width="60%">
+                            </div>
+                            <p class="post-des">Ruis curabitur ligula sapien, tincidun tre uiut, euismod vitae, posuere
+                                imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis
+                                vitae tortor. Donec posuere vulputate ar...</p>
+                            <div class="post-read-more">
+                                <a href="">Read More&nbsp;<i class="fas fa-angle-double-right read-more-icon"></i>
+                                    <div class="post-read-more-before"></div>
+                                    <div class="post-read-more-after"></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="post text-center">
+                            <div class="post-title">
+                                <h3 style="color:#000000;">Hair fall Treatment</h3>
+                            </div>
+                            <div class="post-img">
+                                <img src="/images/service1.jpg" alt="" width="60%">
+                            </div>
+                            <p class="post-des">Ruis curabitur ligula sapien, tincidun tre uiut, euismod vitae, posuere
+                                imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis
+                                vitae tortor. Donec posuere vulputate ar...</p>
+                            <div class="post-read-more">
+                                <a href="">Read More&nbsp;<i class="fas fa-angle-double-right read-more-icon"></i>
+                                    <div class="post-read-more-before"></div>
+                                    <div class="post-read-more-after"></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="post text-center">
+                            <div class="post-title">
+                                <h3 style="color:#000000;">Hair fall Treatment</h3>
+                            </div>
+                            <div class="post-img">
+                                <img src="/images/service1.jpg" alt="" width="60%">
+                            </div>
+                            <p class="post-des">Ruis curabitur ligula sapien, tincidun tre uiut, euismod vitae, posuere
+                                imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis
+                                vitae tortor. Donec posuere vulputate ar...</p>
+                            <div class="post-read-more">
+                                <a href="">Read More&nbsp;<i class="fas fa-angle-double-right read-more-icon"></i>
+                                    <div class="post-read-more-before"></div>
+                                    <div class="post-read-more-after"></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Combo services Sales -->
+        <div class="container">
+            <div class="combo-heading text-center">
+                <h1>Combo sales</h1>
+            </div>
+            <div class="main-combo">
+                <div class="combo col-lg-12 col-md-12 col-sm-12">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <div class="combo-title text-center">
+                                <h3>Title</h3>
+                            </div>
+                            <p class="combo-des">Ruis curabitur ligula sapien, tincidun tre uiut, euismod vitae, posuere
+                                imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis
+                                vitae tortor. Donec posuere vulputate ar...</p>
+                                <div class="post-read-more text-center">
+                                    <a href="">Read More&nbsp;<i class="fas fa-angle-double-right read-more-icon"></i>
+                                        <div class="post-read-more-before"></div>
+                                        <div class="post-read-more-after"></div>
+                                    </a>
+                                </div>
+                        </div>
+                        <div class="col-lg-2 col-md-12 col-sm-12"></div>
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="combo-img">
+                                <img src="/images/service1.jpg" alt="" width="70%">
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <hr>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="combo-img">
+                                <img src="/images/service1.jpg" alt="" width="70%">
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-12 col-sm-12"></div>
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <div class="combo-title text-center">
+                                <h3>Title</h3>
+                            </div>
+                            <p class="combo-des">Ruis curabitur ligula sapien, tincidun tre uiut, euismod vitae, posuere
+                                imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis
+                                vitae tortor. Donec posuere vulputate ar...</p>
+                                <div class="post-read-more text-center">
+                                    <a href="">Read More&nbsp;<i class="fas fa-angle-double-right read-more-icon"></i>
+                                        <div class="post-read-more-before"></div>
+                                        <div class="post-read-more-after"></div>
+                                    </a>
+                                </div>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <%- include('../layouts/footer') %>
+            <script src="/js/owl.carousel.min.js"></script>
+            <script>
+                $('.owl-carousel').owlCarousel({
+                    loop: true,
+                    margin: 10,
+                    nav: true,
+                    autoplay: true,
+                    autoplayTimeout: 4000,
+                    autoplayHoverPause: true,
+                    navText: ['<div class="carousel-nav-text"><i class="fal fa-chevron-left"></i></div>', '<div class="carousel-nav-text"><i class="fal fa-chevron-right"></i></div>'],
+                    responsive: {
+                        0: {
+                            items: 1
+                        }
+                    }
+                })
+            </script>
+</body>
+
 </html>
