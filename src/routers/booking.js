@@ -3,7 +3,6 @@ const express = require('express');
 const router = express.Router();
 const Booking = require('../models/Booking');
 
-
 router.post('/store', function (req, res, next) {
 	// res.json(req.body)
 	const formData = req.body;
@@ -20,6 +19,9 @@ router.get('/searchByPhone', function (req, res, next) {
 });
 router.get('/database', function (req, res, next) {
 	Booking.find({})
+		.sort({
+			date: 'asc',
+		})
 		.then((bookings) => res.json(bookings))
 		.catch(next);
 });
