@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Booking Services</title>
+        <%- include('../layouts/head') %>
+            <!-- Thư viện và CSS Import ở dưới -->
+    </head>
+
+    <body>
+        <%- include('../layouts/header') %>
+
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <h1>Booking an appointment</h1>
+                        <form action="/booking/store" method="post">
+                            <fieldset class="border p-3 mt-3">
+                                <legend class="w-auto">Contact info</legend>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <label for="firstname">First Name:</label>
+                                        <input type="text" class="form-control" id="firstname" name="firstname"
+                                            required>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <label for="lastname">Last Name:</label>
+                                        <input type="text" class="form-control" id="lastname" name="lastname" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12">
+                                        <label for="email">Email:</label>
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="@"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12">
+                                        <label for="phonenumber">Phone number:</label>
+                                        <input type="number" class="form-control" name="phone" id="phonenumber">
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="border p-3 mt-3">
+                                <legend class="w-auto">Taking sevices & Time</legend>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6 col-sm-12">
+                                        <label for="inputSevice">Sevices</label>
+                                        <select id="inputSevice" name="service" class="form-control" required>
+                                            <option value="" disabled hidden selected>Choose...</option>
+                                            <option value="Head washing">Head washing</option>
+                                            <option value="Hair steaming">Hair steaming</option>
+                                            <option value="Hair straightener">Hair straightener</option>
+                                            <option value="Scalp Care">Scalp Care</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-12">
+                                        <label for="inputDate">Date</label>
+                                        <input type="datetime-local" class="form-control" name="date" id="inputDate" required>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div class="row justify-content-center">
+                                <div class="form-group mt-3">
+                                    <button type="submit" class="btn btn-primary">Booking</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <h1>Your apointment</h1>
+                        <fieldset class="border p-3 mt-3" style="height: 465px;overflow: auto;">
+                            <legend class="w-auto">Booking list</legend>
+                            <form id="time-line" action="/booking/searchByPhone" method="GET" class="row mb-2">
+                                <div class="col-md-12 input-group">
+                                    <input type="number" name="phone" id="phone-number" class="form-control"
+                                        placeholder="Your phone number" required>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-success" type="submit"
+                                            onclick="searchEnter()">Show</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div id="list-booking">
+                                <div class="row p-3">
+                                    <div class="col-12 bg-danger text-white p-3">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <h5>Date: dd/mm/yyy</h5>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <h5>Time: HH:mm</h5>
+                                            </div>
+                                        </div>
+                                        <h5>Sevice:</h5>
+                                    </div>
+                                </div>
+                                <div class="row p-3">
+                                    <div class="col-12 bg-warning text-white p-3">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <h5>Date: dd/mm/yyy</h5>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <h5>Time: HH:mm</h5>
+                                            </div>
+                                        </div>
+                                        <h5>Sevice:</h5>
+                                    </div>
+                                </div>
+                                <div class="row p-3">
+                                    <div class="col-12 bg-success text-white p-3">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <h5>Date: dd/mm/yyy</h5>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <h5>Time: HH:mm</h5>
+                                            </div>
+                                        </div>
+                                        <h5>Sevice:</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+
+
+            <%- include('../layouts/footer') %>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+                    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+                    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+                <script type="text/javascript">
+                    $("#time-line").submit(function (e) {
+                        e.preventDefault();
+                    });
+                    function getDB() {
+                        $.ajax({
+                            url: '/booking/database',
+                            method: "GET",
+                            success: function (rs) {
+                                for (var key in rs) {
+                                    var item = `
+                                        <div class="row p-3">
+                                            <div class="col-12 bg-success text-white p-3">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <h5>${moment(`${rs[key].date}`).format("ddd DD/MM/YYYY")}</h5>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <h5>${moment(`${rs[key].date}`).format("HH:mm")}</h5>
+                                                    </div>
+                                                </div>
+                                                <h5>Sevice: ${rs[key].service}</h5>
+                                            </div>
+                                        </div>
+                                    `;
+                                    $('#list-booking').append(item);
+                                }
+                            }
+                        });
+                    };
+                    getDB();
+                    function searchEnter() {
+                        var phone = $("#phone-number").val();
+                        if (phone == null || phone == "") {
+                            return;
+                        } else {
+                            searchByPhone();
+                        }
+                    };
+                    function searchByPhone() {
+                        $.ajax({
+                            url: '/booking/searchByPhone',
+                            method: "GET",
+                            data: {
+                                phone: $("#phone-number").val()
+                            },
+                            success: function (rs) {
+                                $('#list-booking').html("");
+                                for (var key in rs) {
+                                    var item = `
+                                        <div class="row p-3">
+                                            <div class="col-12 bg-success text-white p-3">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <h5>${moment(`${rs[key].date}`).format("ddd DD/MM/YYYY")}</h5>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <h5>${moment(`${rs[key].date}`).format("HH:mm")}</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <h5>${rs[key].firstname} ${rs[key].lastname}</h5>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <h5>Sevice: ${rs[key].service}</h5>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    `;
+                                    $('#list-booking').append(item);
+                                }
+                            }
+                        });
+                    };
+                </script>
+    </body>
+
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Booking Services</title>
+        <%- include('../layouts/head') %>
+            <!-- Thư viện và CSS Import ở dưới -->
+    </head>
+
+    <body>
+        <%- include('../layouts/header') %>
+
+            <div class="container mt-3">
+                <h1>Customer booking lists</h1>
+                <ul class="nav nav-tabs nav-justified">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#list-all" style="color: black;">All
+                            appointment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#list-today" style="color: black;">Today
+                            appointment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#list-pending" style="color: black;">Pending
+                            appointment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#list-complete" style="color: black;">Complete
+                            appointment</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content" style="height: 700px;overflow: auto;">
+                    <div id="list-all" class="tab-pane active"><br>
+                        <h3>All booking from customer</h3>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Full name</th>
+                                    <th>Email</th>
+                                    <th>Phone number</th>
+                                    <th>Service</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                </tr>
+                            </thead>
+                            <tbody id="list-all-appointment">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="list-today" class="tab-pane fade"><br>
+                        <h3>Today appointment from customer</h3>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Full name</th>
+                                    <th>Email</th>
+                                    <th>Phone number</th>
+                                    <th>Service</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                </tr>
+                            </thead>
+                            <tbody id="list-today-appointment">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="list-pending" class="tab-pane fade"><br>
+                        <h3>Pending appointment from customer</h3>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Full name</th>
+                                    <th>Email</th>
+                                    <th>Phone number</th>
+                                    <th>Service</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                </tr>
+                            </thead>
+                            <tbody id="list-pending-appointment">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="list-complete" class="tab-pane fade"><br>
+                        <h3>Complete appointment from customer</h3>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Full name</th>
+                                    <th>Email</th>
+                                    <th>Phone number</th>
+                                    <th>Service</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                </tr>
+                            </thead>
+                            <tbody id="list-complete-appointment">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <%- include('../layouts/footer') %>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+                    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+                    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+                <script type="text/javascript">
+                    function getDB() {
+                        $.ajax({
+                            url: '/booking/database',
+                            method: "GET",
+                            success: function (rs) {
+                                var db = rs;
+                                for (var key in rs) {
+                                    var rsdate = new Date(rs[key].date)
+                                    var today = new Date()
+
+                                    var item = `
+                                            <tr>
+                                                <td>${rs[key].firstname} ${rs[key].lastname}</td>
+                                                <td>${rs[key].email}</td>
+                                                <td>${rs[key].phone}</td>
+                                                <td>${rs[key].service}</td>
+                                                <td>${moment(`${rs[key].date}`).format("ddd DD/MM/YYYY")}</td>
+                                                <td>${moment(`${rs[key].date}`).format("HH:mm")}</td>
+                                            </tr>
+                                    `;
+                                    $('#list-all-appointment').append(item);
+
+                                    if (rsdate.toDateString() == today.toDateString()) {
+                                        $('#list-today-appointment').append(item);
+                                    }
+                                    if (rsdate > today) {
+                                        $('#list-pending-appointment').append(item)
+                                    }
+                                    if (rsdate < today) {
+                                        $('#list-complete-appointment').append(item)
+                                    }
+                                }
+                            }
+                        });
+                    };
+                    getDB();
+                </script>
+    </body>
+
+</html>
