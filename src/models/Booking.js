@@ -4,16 +4,17 @@ const Schema = mongoose.Schema;
 
 const Booking = new Schema(
 	{
-		firstname: String,
-		lastname: String,
-		email: String,
-		phone: String,
-		service: String,
-		date: { type: [Date], index: true },
+		customer_fullname: String,
+		customer_phone: String,
+		customer_email: String,
+		customer_address: String,
+		service_id:{type: Schema.Types.ObjectId, ref: 'ServicesList'},
+		staff_id:{type: Schema.Types.ObjectId, ref: 'StaffList'},
+		datetime: Date,
 	},
 	{
 		timestamps: true,
 	}
 );
-Booking.index({ date: 1, type: -1 });
+
 module.exports = mongoose.model('Booking', Booking);

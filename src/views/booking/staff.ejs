@@ -119,10 +119,11 @@
                             url: '/booking/database',
                             method: "GET",
                             success: function (rs) {
+                                var db = rs;
                                 for (var key in rs) {
                                     var rsdate = new Date(rs[key].date)
                                     var today = new Date()
-                                    
+
                                     var item = `
                                             <tr>
                                                 <td>${rs[key].firstname} ${rs[key].lastname}</td>
@@ -137,6 +138,12 @@
 
                                     if (rsdate.toDateString() == today.toDateString()) {
                                         $('#list-today-appointment').append(item);
+                                    }
+                                    if (rsdate > today) {
+                                        $('#list-pending-appointment').append(item)
+                                    }
+                                    if (rsdate < today) {
+                                        $('#list-complete-appointment').append(item)
                                     }
                                 }
                             }
