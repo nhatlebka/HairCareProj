@@ -162,7 +162,10 @@
     padding: 0 30px;
     font-size: 30px;
     font-weight: 300;
-    display: block;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
     margin: 18px;
     text-decoration: none;
 }
@@ -176,6 +179,11 @@
     font-weight: 300;
     margin-top: 16px;
     padding: 0 30px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    text-overflow: ellipsis;
 }
 
 .post-type {

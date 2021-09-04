@@ -12,7 +12,7 @@
         <%- include('../layouts/header') %>
 
         <div class="main-content" >
-            <div class="breadcrumb d-flex justify-content-center align-items-center" style="background-image: url(/images/breadcrumb_bg_img.jpg)">
+            <div class="breadcrumb d-flex justify-content-center align-items-center" style="background-image: url(https://res.cloudinary.com/lenn/image/upload/v1630582851/hairCare/breadcrumb_bg_img_dbicnq.jpg)">
                 <h1 class="breadcrumb-text">Hair Problems</h1>
                 <p class="breadcrumb-text"><a href="">Home</a>&nbsp; / &nbsp;Hair Problems</p>
             </div>
@@ -23,7 +23,9 @@
                 <div class="main-left col-lg-3 col-md-3 col-sm-12">
                     <div class="recent-articles">
                         <div class="main-left-heading">Recent Articles</div>
+
                         <ul class="recent-articles-list">
+
                             <li class="recent-articles-item">
                                 <div class="recent-articles-item-img"><a href=""><img src="/images/blog11.jpg" alt="" width="100%" /></a></div>
                                 <div class="recent-articles-item-info">
@@ -60,23 +62,27 @@
                         <ul class="categoty-list">
                             <li class="category-item">
                                 <i class="fas fa-circle"></i>
-                                <a href="">Dull, lifeless hair</a>
+                                <a href="/hair-problems?type=Hair growth">Hair growth</a>
                             </li>
                             <li class="category-item">
                                 <i class="fas fa-circle"></i>
-                                <a href="">Frizzy hair</a>
+                                <a href="/hair-problems?type=Frizzy hair">Frizzy hair</a>
                             </li>
                             <li class="category-item">
                                 <i class="fas fa-circle"></i>
-                                <a href="">Hair loss</a>
+                                <a href="/hair-problems?type=Hair loss">Hair loss</a>
                             </li>
                             <li class="category-item">
                                 <i class="fas fa-circle"></i>
-                                <a href="">Split ends</a>
+                                <a href="/hair-problems?type=Split ends">Split ends</a>
                             </li>
                             <li class="category-item">
                                 <i class="fas fa-circle"></i>
-                                <a href="">Dandruff</a>
+                                <a href="/hair-problems?type=Dandruff">Dandruff</a>
+                            </li>
+                            <li class="category-item">
+                                <i class="fas fa-circle"></i>
+                                <a href="/hair-problems?type=Dull, lifeless hair">Dull, lifeless hair</a>
                             </li>
                         </ul>
                     </div>
@@ -127,125 +133,32 @@
                 
                 <div class="main-right col-lg-9 col-md-9 col-sm-12">
                     <div class="row">
-                        <div class="col-lg-6 col-md-12 col-sm-12">
-                            <div class="post-info text-center">
-                                <div class="post-info-img"><a href=""><img src="/images/blog11.jpg" alt="" width="100%"></a></div>
-                                <div class="post-sub-title">
-                                    <p class="post-date">31 / Jan</p>
-                                    <p class="comments-count">4 Comments</p>
-                                    <p class="author"><i class="fas fa-user"></i> Hair Care Admin</p>
-                                </div>
-                                <a href="" class="post-heading">Make a bold look with your hair style!</a>
-                                <p class="post-des">Ruis curabitur ligula sapien, tincidun tre uiut, euismod vitae, posuere imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere vulputate ar...</p>
-                                <p class="post-type"><i class="fas fa-tags"></i><a href=""> Straight</a></p>
-                                <div class="post-read-more">
-                                    <a href="">Read More&nbsp;<i class="fas fa-angle-double-right read-more-icon"></i>
-                                    <div class="post-read-more-before"></div>
-                                    <div class="post-read-more-after"></div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
 
+                        <% posts.forEach(post => { %>
                         <div class="col-lg-6 col-md-12 col-sm-12">
                             <div class="post-info text-center">
-                                <div class="post-info-img"><a href=""><img src="/images/blog11.jpg" alt="" width="100%"></a></div>
+                                <div class="post-info-img"><a href="/hair-problems/<%= post.slug %>"><img src="<%= post.image %>" alt="" width="100%"></a></div>
                                 <div class="post-sub-title">
-                                    <p class="post-date">31 / Jan</p>
+                                    <p class="post-date"><%= moment(post.date).format('ll') %></p>
                                     <p class="comments-count">4 Comments</p>
                                     <p class="author"><i class="fas fa-user"></i> Hair Care Admin</p>
                                 </div>
-                                <a href="" class="post-heading">Make a bold look with your hair style!</a>
-                                <p class="post-des">Ruis curabitur ligula sapien, tincidun tre uiut, euismod vitae, posuere imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere vulputate ar...</p>
-                                <p class="post-type"><i class="fas fa-tags"></i><a href=""> Straight</a></p>
+                                <a href="/hair-problems/<%= post.slug %>" class="post-heading"><%= post.title %></a>
+                                <p class="post-des"><%= post.description %></p>
+                                <p class="post-type"><i class="fas fa-tags"></i>
+                                    <% post.type.forEach(type => { %>
+                                    <a href="/hair-problems?type=<%= type  %>"> <%= type  %>&nbsp;&nbsp;&nbsp;</a> <% }) %>
+                                </p>
                                 <div class="post-read-more">
-                                    <a href="">Read More&nbsp;<i class="fas fa-angle-double-right read-more-icon"></i>
+                                    <a href="/hair-problems/<%= post.slug %>">Read More&nbsp;<i class="fas fa-angle-double-right read-more-icon"></i>
                                     <div class="post-read-more-before"></div>
                                     <div class="post-read-more-after"></div>
                                     </a>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-lg-6 col-md-12 col-sm-12">
-                            <div class="post-info text-center">
-                                <div class="post-info-img"><a href=""><img src="/images/blog11.jpg" alt="" width="100%"></a></div>
-                                <div class="post-sub-title">
-                                    <p class="post-date">31 / Jan</p>
-                                    <p class="comments-count">4 Comments</p>
-                                    <p class="author"><i class="fas fa-user"></i> Hair Care Admin</p>
-                                </div>
-                                <a href="" class="post-heading">Make a bold look with your hair style!</a>
-                                <p class="post-des">Ruis curabitur ligula sapien, tincidun tre uiut, euismod vitae, posuere imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere vulputate ar...</p>
-                                <p class="post-type"><i class="fas fa-tags"></i><a href=""> Straight</a></p>
-                                <div class="post-read-more">
-                                    <a href="">Read More&nbsp;<i class="fas fa-angle-double-right read-more-icon"></i>
-                                    <div class="post-read-more-before"></div>
-                                    <div class="post-read-more-after"></div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-md-12 col-sm-12">
-                            <div class="post-info text-center">
-                                <div class="post-info-img"><a href=""><img src="/images/blog11.jpg" alt="" width="100%"></a></div>
-                                <div class="post-sub-title">
-                                    <p class="post-date">31 / Jan</p>
-                                    <p class="comments-count">4 Comments</p>
-                                    <p class="author"><i class="fas fa-user"></i> Hair Care Admin</p>
-                                </div>
-                                <a href="" class="post-heading">Make a bold look with your hair style!</a>
-                                <p class="post-des">Ruis curabitur ligula sapien, tincidun tre uiut, euismod vitae, posuere imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere vulputate ar...</p>
-                                <p class="post-type"><i class="fas fa-tags"></i><a href=""> Straight</a></p>
-                                <div class="post-read-more">
-                                    <a href="">Read More&nbsp;<i class="fas fa-angle-double-right read-more-icon"></i>
-                                    <div class="post-read-more-before"></div>
-                                    <div class="post-read-more-after"></div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-md-12 col-sm-12">
-                            <div class="post-info text-center">
-                                <div class="post-info-img"><a href=""><img src="/images/blog11.jpg" alt="" width="100%"></a></div>
-                                <div class="post-sub-title">
-                                    <p class="post-date">31 / Jan</p>
-                                    <p class="comments-count">4 Comments</p>
-                                    <p class="author"><i class="fas fa-user"></i> Hair Care Admin</p>
-                                </div>
-                                <a href="" class="post-heading">Make a bold look with your hair style!</a>
-                                <p class="post-des">Ruis curabitur ligula sapien, tincidun tre uiut, euismod vitae, posuere imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere vulputate ar...</p>
-                                <p class="post-type"><i class="fas fa-tags"></i><a href=""> Straight</a></p>
-                                <div class="post-read-more">
-                                    <a href="">Read More&nbsp;<i class="fas fa-angle-double-right read-more-icon"></i>
-                                    <div class="post-read-more-before"></div>
-                                    <div class="post-read-more-after"></div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-md-12 col-sm-12">
-                            <div class="post-info text-center">
-                                <div class="post-info-img"><a href=""><img src="/images/blog11.jpg" alt="" width="100%"></a></div>
-                                <div class="post-sub-title">
-                                    <p class="post-date">31 / Jan</p>
-                                    <p class="comments-count">4 Comments</p>
-                                    <p class="author"><i class="fas fa-user"></i> Hair Care Admin</p>
-                                </div>
-                                <a href="" class="post-heading">Make a bold look with your hair style!</a>
-                                <p class="post-des">Ruis curabitur ligula sapien, tincidun tre uiut, euismod vitae, posuere imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere vulputate ar...</p>
-                                <p class="post-type"><i class="fas fa-tags"></i><a href=""> Straight</a></p>
-                                <div class="post-read-more">
-                                    <a href="">Read More&nbsp;<i class="fas fa-angle-double-right read-more-icon"></i>
-                                    <div class="post-read-more-before"></div>
-                                    <div class="post-read-more-after"></div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <% }) %>
+                        
                     </div>
                 </div>
             </div>
@@ -267,6 +180,31 @@
                         items:1
                     }
                 }
+            })
+        </script>
+        <script>
+            var recentArticles = $('.recent-articles-list');
+            recentArticles.html('');
+            $.ajax({
+                url: '/hair-problems/post-list-sortbydate',
+                method: 'GET',
+                success: function(rs) {
+                    let count = 0
+                    for (let i=0; i<4; i++){
+                        if(rs[i]) {
+                            recentArticles.append(`
+                                <li class="recent-articles-item">
+                                    <div class="recent-articles-item-img"><a href=""><img src="${rs[i].image}" alt="" width="100%" /></a></div>
+                                    <div class="recent-articles-item-info">
+                                        <a href="">Make a bold look with your hair style!</a>
+                                        <p>Jan 31 , 2018</p>
+                                    </div>
+                                </li>
+                            `)
+                        }
+                    }
+                    }
+                
             })
         </script>
     </body>
