@@ -103,3 +103,29 @@
        
     </body>
 </html>
+
+
+<% posts.forEach(post => { %>
+    <div class="col-lg-6 col-md-12 col-sm-12">
+        <div class="post-info text-center">
+            <div class="post-info-img"><a href="/hair-problems/<%= post.slug %>"><img src="<%= post.image %>" alt="" width="100%"></a></div>
+            <div class="post-sub-title">
+                <p class="post-date"><%= moment(post.date).format('ll') %></p>
+                <p class="comments-count">4 Comments</p>
+                <p class="author"><i class="fas fa-user"></i> Hair Care Admin</p>
+            </div>
+            <a href="/hair-problems/<%= post.slug %>" class="post-heading"><%= post.title %></a>
+            <p class="post-des"><%= post.description %></p>
+            <p class="post-type"><i class="fas fa-tags"></i>
+                <% post.type.forEach(type => { %>
+                <a href="/hair-problems?type=<%= type  %>"> <%= type  %>&nbsp;&nbsp;&nbsp;</a> <% }) %>
+            </p>
+            <div class="post-read-more">
+                <a href="/hair-problems/<%= post.slug %>">Read More&nbsp;<i class="fas fa-angle-double-right read-more-icon"></i>
+                <div class="post-read-more-before"></div>
+                <div class="post-read-more-after"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <% }) %> 

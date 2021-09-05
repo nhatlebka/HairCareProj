@@ -17,17 +17,5 @@ function connect() {
         .then(() => console.log('Database connected!'))
         .catch(err => console.log(err));
 }
-// const userSchema = new mongoose.Schema(
-//     {
-//         acc: String,
-//         pass: String,
-//         email: String,
-//         image: String,
-//         cloudinary_id: String,
-//     },
-//     {timestamps: true}
-// );
-
-// userSchema.plugin(mongooseDelete, {overrideMethods: 'all', deleteAt: true});
 
 module.exports = {connect};
