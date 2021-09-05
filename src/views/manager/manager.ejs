@@ -6,28 +6,22 @@
         <%- include('../layouts/head') %>
             <!-- Thư viện và CSS Import ở dưới -->
             <style>
-                * {
-                    box-sizing: border-box;
-                }
-
-                body {
-                    background-color: #f1f1f1;
-                }
-
-                #regForm {
-                    background-color: #ffffff;
-                    margin: 100px auto;
+                #customerForm {
+                    /* background-color: #ffffff;
+                    margin: 100px auto; */
                     font-family: "Open Sans";
-                    padding: 40px;
+                    /* padding: 40px;
                     width: 70%;
-                    min-width: 300px;
+                    min-width: 300px; */
+                    min-height: 500px;
+                    z-index: 0;
                 }
 
-                h1 {
+                #customerForm h1 {
                     text-align: center;
                 }
 
-                input {
+                #customerForm input {
                     padding: 10px;
                     width: 100%;
                     font-size: 17px;
@@ -36,16 +30,17 @@
                 }
 
                 /* Mark input boxes that gets an error on validation: */
-                input.invalid {
+                #customerForm select.invalid,
+                #customerForm input.invalid {
                     background-color: #ffdddd;
                 }
 
                 /* Hide all steps by default: */
-                .tab {
+                #customerForm .tab {
                     display: none;
                 }
 
-                button {
+                #customerForm button {
                     background-color: #04AA6D;
                     color: #ffffff;
                     border: none;
@@ -55,28 +50,28 @@
                     cursor: pointer;
                 }
 
-                button:hover {
+                #customerForm button:hover {
                     opacity: 0.8;
                 }
 
-                #prevBtn {
+                #customerForm #prevBtn {
                     background-color: #bbbbbb;
                 }
 
                 /* Make circles that indicate the steps of the form: */
                 /* .step { */
-                    /* height: 15px;
+                /* height: 15px;
                     width: 15px;
                     margin: 0 2px; */
-                    /* background-color: #bbbbbb; */
-                    /* border: none; */
-                    /* border-radius: 50%; */
-                    /* display: inline-block; */
-                    /* opacity: 0.5; */
+                /* background-color: #bbbbbb; */
+                /* border: none; */
+                /* border-radius: 50%; */
+                /* display: inline-block; */
+                /* opacity: 0.5; */
                 /* } */
 
                 /* .step.active { */
-                    /* opacity: 1; */
+                /* opacity: 1; */
                 /* } */
 
                 /* Mark the steps that are finished and valid: */
@@ -93,7 +88,7 @@
 
                 #progress li {
                     list-style-type: none;
-                    float: left;
+                    /* float: left; */
                     width: 25%;
                     position: relative;
                     text-align: center;
@@ -105,26 +100,24 @@
                     counter-increment: step;
                     width: 30px;
                     height: 30px;
-                    line-height: 30px;
+                    line-height: 25px;
                     border: 2px solid #ccc;
                     display: block;
                     text-align: center;
                     margin: 0 auto 10px auto;
                     border-radius: 50%;
-                    background-color: #ffffff;
-
-                    /* z-index: 1; */
+                    background-color: #fff;
                 }
 
                 #progress li::after {
                     content: '';
+                    width: 100%;
+                    height: 2px;
+                    background-color: #ccc;
                     position: absolute;
-                    width: 85%;
-                    height: 3px;
-                    background-color: #bbbbbb;
                     top: 15px;
-                    left: -43%;
-                    /* z-index: -1; */
+                    left: -50%;
+                    z-index: -1;
                 }
 
                 #progress li:first-child::after {
@@ -172,47 +165,209 @@
                     <div class="modal-dialog modal-dialog-centered modal-xl">
                         <div class="modal-content">
                             <!-- Modal body -->
-                            <div class="modal-body">
-                                <form id="regForm" action="">
+                            <div class="row modal-body">
+                                <div class="col-md-12" id="customerForm">
+                                    <div class="row justify-content-center">
+                                        <h1>Booking Your Appointment:</h1>
+                                    </div>
                                     <!-- Circles which indicates the steps of the form: -->
-                                    <ul id="progress">
+                                    <ul class="row" id="progress">
                                         <li class="step">Step 1</li>
                                         <li class="step">Step 2</li>
                                         <li class="step">Step 3</li>
-                                        <li class="step">Step 4</li>
+                                        <li class="step">Finish</li>
                                     </ul>
-                                    <h1>Register:</h1>
-                                    <!-- One "tab" for each step in the form: -->
-                                    <div class="tab">Name:
-                                        <p><input placeholder="First name..." oninput="this.className = ''"
-                                                name="fname"></p>
-                                        <p><input placeholder="Last name..." oninput="this.className = ''" name="lname">
-                                        </p>
-                                    </div>
-                                    <div class="tab">Contact Info:
-                                        <p><input placeholder="E-mail..." oninput="this.className = ''" name="email">
-                                        </p>
-                                        <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
-                                    </div>
-                                    <div class="tab">Birthday:
-                                        <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
-                                        <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
-                                        <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
-                                    </div>
-                                    <div class="tab">Login Info:
-                                        <p><input placeholder="Username..." oninput="this.className = ''" name="uname">
-                                        </p>
-                                        <p><input placeholder="Password..." oninput="this.className = ''" name="pword"
-                                                type="password">
-                                        </p>
-                                    </div>
-                                    <div style="overflow:auto;">
-                                        <div style="float:right;">
-                                            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                                            <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-12 col-sm-12 ">
+                                            <!-- One "tab" for each step in the form: -->
+                                            <div class="tab">
+                                                <fieldset class="border p-3">
+                                                    <legend class="w-auto">Contact info</legend>
+                                                    <div class="row">
+                                                        <div class="col-md-12 col-sm-12">
+                                                            <label for="customer-fullname">Full Name:</label>
+                                                            <input type="text" class="form-control"
+                                                                id="customer-fullname" name="customer-fullname"
+                                                                onchange="autofill()" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12 col-sm-12">
+                                                            <label for="customer-phone">Phone number:</label>
+                                                            <input type="tel" class="form-control" name="customer-phone"
+                                                                id="customer-phone" onchange="autofill()" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12 col-sm-12">
+                                                            <label for="customer-email">Email:</label>
+                                                            <input type="email" class="form-control" id="customer-email"
+                                                                name="customer-email" placeholder="@"
+                                                                onchange="autofill()" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12 col-sm-12">
+                                                            <label for="customer-address">Address:</label>
+                                                            <input type="text" class="form-control"
+                                                                id="customer-address" name="customer-address"
+                                                                onchange="autofill()" required>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                            <div class="tab">
+                                                <fieldset class="border p-3">
+                                                    <legend class="w-auto">Taking sevices</legend>
+                                                    <div class="row">
+                                                        <div class="form-group col-md-12 col-sm-12">
+                                                            <label for="service-id">Sevices</label>
+                                                            <select id="service-id" name="service-id"
+                                                                class="form-control" onchange="serviceIntro()" required>
+                                                                <option value="" disabled hidden selected>Services...
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12 col-sm-12">
+                                                            <fieldset class="border p-3">
+                                                                <legend class="w-auto">Introduce Service</legend>
+                                                                <p id="service_introduce"></p>
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                            <div class="tab">
+                                                <fieldset class="border p-3">
+                                                    <legend class="w-auto">Choose Staff</legend>
+                                                    <div class="row">
+                                                        <div class="form-group col-md-12 col-sm-12">
+                                                            <label for="staff-id">Staff</label>
+                                                            <select id="staff-id" name="staff-id" class="form-control"
+                                                                onchange="staffIntro()" required>
+                                                                <option value="" disabled hidden selected>Staffs...
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12 col-sm-12">
+                                                            <fieldset class="border p-3">
+                                                                <legend class="w-auto">Introduce Staff</legend>
+                                                                <p class="text-center" id="staff_stars"></p>
+                                                                <p class="text-center" id="staff_introduce"></p>
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                            <div class="tab">
+                                                <fieldset class="border p-3">
+                                                    <legend class="w-auto">Date & Time</legend>
+                                                    <div class="form-row mt-3">
+                                                        <label for="dateField"
+                                                            class="col-md-4 col-form-label">Date:</label>
+                                                        <input id="dateField" type="date" class="col-md-8 form-control">
+                                                    </div>
+                                                    <div class="form-row mt-3">
+                                                        <label for="timeField"
+                                                            class="col-md-4 col-form-label">Time:</label>
+                                                        <input id="timeField" type="time" class="col-md-8 form-control"
+                                                            onchange="setDateTime()">
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                            <div style="overflow:auto;">
+                                                <div style="float:right;">
+                                                    <button type="button" id="prevBtn"
+                                                        onclick="nextPrev(-1)">Previous</button>
+                                                    <button type="button" id="nextBtn"
+                                                        onclick="nextPrev(1)">Next</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 col-sm-12 ">
+                                            <form id="bookingForm" action="/manager/booking" method="POST">
+                                                <fieldset disabled class="border p-3">
+                                                    <legend class="w-auto">Your appointment info</legend>
+                                                    <div class="row">
+                                                        <label for="customer_fullname"
+                                                            class="col-md-4 col-form-label">Your
+                                                            name:</label>
+                                                        <input type="text" id="customer_fullname"
+                                                            class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                            name="customer_fullname" style="border: none;" value="">
+                                                    </div>
+                                                    <div class="row">
+                                                        <label for="customer_phone"
+                                                            class="col-md-4 col-form-label">Phone
+                                                            number:</label>
+                                                        <input type="text" id="customer_phone"
+                                                            class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                            name="customer_phone" style="border: none;" value="">
+                                                    </div>
+                                                    <div class="row">
+                                                        <label for="customer_email"
+                                                            class="col-md-4 col-form-label">Email:</label>
+                                                        <input type="text" id="customer_email"
+                                                            class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                            name="customer_email" style="border: none;" value="">
+                                                    </div>
+                                                    <div class="row">
+                                                        <label for="customer_address"
+                                                            class="col-md-4 col-form-label">Address:</label>
+                                                        <input type="text" id="customer_address"
+                                                            class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                            name="customer_address" style="border: none;" value="">
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12 col-sm-12">
+                                                            <fieldset disabled class="border p-3">
+                                                                <legend class="w-auto"></legend>
+                                                                <div class="row">
+                                                                    <label for="service_id"
+                                                                        class="col-md-4 col-form-label">Service:</label>
+                                                                    <select id="service_id"
+                                                                        class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                                        name="service_id" style="border: none;">
+                                                                    </select>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label for="staff_id"
+                                                                        class="col-md-4 col-form-label">Staff:</label>
+                                                                    <select id="staff_id"
+                                                                        class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                                        name="staff_id" style="border: none;">
+                                                                    </select>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <p class="col-md-4">Date:</p>
+                                                                    <p class="col-md-8" id="dateView"></p>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <p class="col-md-4">Time:</p>
+                                                                    <p class="col-md-8" id="timeView"></p>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label for="datetime"
+                                                                        class="col-md-4 col-form-label">Date &
+                                                                        Time</label>
+                                                                    <input id="datetime" type="text"
+                                                                        class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                                        name="datetime" style="border: none;">
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                                <button type="submit" class="btn btn-primary"
+                                                    onclick="bookingForm()">Submit</button>
+                                            </form>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -221,83 +376,208 @@
             </div>
 
             <%- include('../layouts/footer') %>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
-                    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
-                    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
                 <script type="text/javascript">
-                    var currentTab = 0; // Current tab is set to be the first tab (0)
-                    showTab(currentTab); // Display the current tab
+                    $('.modal').submit(function (e) {
+                        e.preventDefault();
+                    });
+                    // $('.modal').on('submit', function (event) {
+                    // 	event.preventDefault();
+                    // });
+                    function bookingForm() {
+                        var data = {
+                            customer_fullname: $('#customer_fullname').val(),
+                            customer_phone: $('#customer_phone').val(),
+                            customer_email: $('#customer_email').val(),
+                            customer_address: $('#customer_address').val(),
+                            service_id: $('#service_id').val(),
+                            staff_id: $('#staff_id').val(),
+                            datetime: $('#datetime').val(),
+                        };
+                        $.ajax({
+                            url: '/manager/booking',
+                            method: 'POST',
+                            data: data,
+                            success: function (rs) {
+                                alert(rs);
+                                window.location = '/manager/demo';
+                            },
+                        });
+                        // document.getElementById('bookingForm').submit(data);
+                    }
+                    function autofill() {
+                        document.getElementById('customer_fullname').value =
+                            document.getElementById('customer-fullname').value;
+                        document.getElementById('customer_phone').value =
+                            document.getElementById('customer-phone').value;
+                        document.getElementById('customer_email').value =
+                            document.getElementById('customer-email').value;
+                        document.getElementById('customer_address').value =
+                            document.getElementById('customer-address').value;
+                    }
+
+                    var currentTab = 0;
+                    showTab(currentTab);
 
                     function showTab(n) {
-                        // This function will display the specified tab of the form...
-                        var x = document.getElementsByClassName("tab");
-                        x[n].style.display = "block";
-                        //... and fix the Previous/Next buttons:
+                        var x = document.getElementsByClassName('tab');
+                        x[n].style.display = 'block';
                         if (n == 0) {
-                            document.getElementById("prevBtn").style.display = "none";
+                            document.getElementById('prevBtn').style.display = 'none';
                         } else {
-                            document.getElementById("prevBtn").style.display = "inline";
+                            document.getElementById('prevBtn').style.display = 'inline';
                         }
-                        if (n == (x.length - 1)) {
-                            document.getElementById("nextBtn").innerHTML = "Submit";
+                        if (n == x.length - 1) {
+                            document.getElementById('nextBtn').innerHTML = 'Submit';
                         } else {
-                            document.getElementById("nextBtn").innerHTML = "Next";
+                            document.getElementById('nextBtn').innerHTML = 'Next';
                         }
-                        //... and run a function that will display the correct step indicator:
-                        fixStepIndicator(n)
+                        fixStepIndicator(n);
                     }
 
                     function nextPrev(n) {
-                        // This function will figure out which tab to display
-                        var x = document.getElementsByClassName("tab");
-                        // Exit the function if any field in the current tab is invalid:
+                        var x = document.getElementsByClassName('tab');
                         if (n == 1 && !validateForm()) return false;
-                        // Hide the current tab:
-                        x[currentTab].style.display = "none";
-                        // Increase or decrease the current tab by 1:
+                        x[currentTab].style.display = 'none';
                         currentTab = currentTab + n;
-                        // if you have reached the end of the form...
                         if (currentTab >= x.length) {
-                            // ... the form gets submitted:
-                            document.getElementById("regForm").submit();
+                            document.getElementById('bookingForm').submit();
                             return false;
                         }
-                        // Otherwise, display the correct tab:
                         showTab(currentTab);
                     }
 
                     function validateForm() {
-                        // This function deals with validation of the form fields
-                        var x, y, i, valid = true;
-                        x = document.getElementsByClassName("tab");
-                        y = x[currentTab].getElementsByTagName("input");
-                        // A loop that checks every input field in the current tab:
-                        for (i = 0; i < y.length; i++) {
-                            // If a field is empty...
-                            if (y[i].value == "") {
-                                // add an "invalid" class to the field:
-                                y[i].className += " invalid";
-                                // and set the current valid status to false
-                                valid = false;
+                        var x,
+                            y,
+                            i,
+                            z,
+                            valid = true;
+                        x = document.getElementsByClassName('tab');
+                        y = x[currentTab].getElementsByTagName('input');
+                        z = x[currentTab].getElementsByTagName('select');
+                        if (y.length > 0) {
+                            for (i = 0; i < y.length; i++) {
+                                if (y[i].value == '') {
+                                    y[i].className += ' invalid';
+                                    valid = false;
+                                }
                             }
                         }
-                        // If the valid status is true, mark the step as finished and valid:
-                        if (valid) {
-                            document.getElementsByClassName("step")[currentTab].className += " finish";
+                        if (z.length > 0) {
+                            for (i = 0; i < z.length; i++) {
+                                if (z[i].value == '') {
+                                    z[i].className += ' invalid';
+                                    valid = false;
+                                }
+                            }
                         }
-                        return valid; // return the valid status
+                        if (valid) {
+                            document.getElementsByClassName('step')[currentTab].className += ' finish';
+                        }
+                        return valid;
                     }
 
                     function fixStepIndicator(n) {
-                        // This function removes the "active" class of all steps...
-                        var i, x = document.getElementsByClassName("step");
+                        var i,
+                            x = document.getElementsByClassName('step');
                         for (i = 0; i < x.length; i++) {
-                            x[i].className = x[i].className.replace(" active", "");
+                            x[i].className = x[i].className.replace(' active', '');
                         }
-                        //... and adds the "active" class on the current step:
-                        x[n].className += " active";
+                        x[n].className += ' active';
                     }
+                    function getService() {
+                        $.ajax({
+                            url: '/manager/get-service',
+                            method: 'GET',
+                            success: function (rs) {
+                                for (var key in rs) {
+                                    var option = `
+                <option value="${rs[key]._id}">${rs[key].service_name}</option>
+                `;
+                                    $('#service-id').append(option);
+                                }
+                            },
+                        });
+                    }
+                    function getStaff() {
+                        $.ajax({
+                            url: '/manager/get-staff',
+                            method: 'GET',
+                            success: function (rs) {
+                                for (var key in rs) {
+                                    var option = `
+                <option value="${rs[key]._id}">${rs[key].staff_fullname}</option>
+                `;
+                                    $('#staff-id').append(option);
+                                }
+                            },
+                        });
+                    }
+                    getService();
+                    getStaff();
+                    function serviceIntro() {
+                        $.ajax({
+                            url: '/manager/get-service',
+                            method: 'GET',
+                            success: function (rs) {
+                                $('#service_introduce').html('');
+                                var service_id = $('#service-id').val();
+                                for (var key in rs) {
+                                    var rs_id = rs[key]._id;
+                                    if (service_id == rs_id) {
+                                        var info = rs[key].service_introduce;
+                                        $('#service_introduce').append(info);
+                                        var assign = `
+                    <option value="${rs[key]._id}" selected>${rs[key].service_name}</option>
+                    `;
+                                        $('#service_id').append(assign);
+                                    } else {
+                                        continue;
+                                    }
+                                }
+                            },
+                        });
+                    }
+                    function staffIntro() {
+                        $.ajax({
+                            url: '/manager/get-staff',
+                            method: 'GET',
+                            success: function (rs) {
+                                $('#staff_stars').html('');
+                                $('#staff_introduce').html('');
+                                var staff_id = $('#staff-id').val();
+                                for (var key in rs) {
+                                    var rs_id = rs[key]._id;
+                                    if (staff_id == rs_id) {
+                                        var stars = `
+                    Service quality: <br> <b>${rs[key].staff_stars}</b> <br> <i class="fas fa-star"></i>
+                    `;
+                                        var info = rs[key].staff_introduce;
+                                        $('#staff_stars').append(stars);
+                                        $('#staff_introduce').append(info);
+                                        var assign = `
+                    <option value="${rs[key]._id}" selected>${rs[key].staff_fullname}</option>
+                    `;
+                                        $('#staff_id').append(assign);
+                                    } else {
+                                        continue;
+                                    }
+                                }
+                            },
+                        });
+                    }
+                    function setDateTime() {
+                        var mydate, mytime, mystring;
+                        mydate = $('#dateField').val();
+                        mytime = $('#timeField').val();
+                        mystring = `${mydate}T${mytime}`;
+                        document.getElementById('dateView').innerHTML = `<b>${moment(
+                            `${mydate}`
+                        ).format('ddd DD/MM/YYYY')}</b>`;
+                        document.getElementById('timeView').innerHTML = `<b>${mytime}</b>`;
+                        document.getElementById('datetime').value = mystring;
+                    }
+
                 </script>
     </body>
 
