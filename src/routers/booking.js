@@ -1,35 +1,31 @@
-//booking router
 const express = require('express');
 const router = express.Router();
 const Booking = require('../models/Booking');
+const Service = require('../models/Service');
+const Staff = require('../models/Staff');
 
-router.post('/store', function (req, res, next) {
+
+router.get('/get-service', function (req, res, next) {
+	Service.find({})
+		.then((services) => res.json(services))
+		.catch(next);
+});
+router.get('/get-staff', function (req, res, next) {
+    Staff.find({})
+		.then((staffs) => res.json(staffs))
+		.catch(next);
+});
+router.post('/', function (req, res, next) {
 	// res.json(req.body)
 	const formData = req.body;
 	const booking = new Booking(formData);
 	booking
 		.save()
-		.then(() => res.redirect('/booking'))
+		.then(() => res.json(booking))
 		.catch((error) => {});
 });
-router.get('/searchByPhone', function (req, res, next) {
-	Booking.find({ phone: req.query.phone })
-		.then((bookings) => res.json(bookings))
-		.catch(next);
-});
-router.get('/database', function (req, res, next) {
-	Booking.find({})
-		.sort({
-			date: 'asc',
-		})
-		.then((bookings) => res.json(bookings))
-		.catch(next);
-});
-router.get('/staff', function (req, res, next) {
-	res.render('booking/staff');
-});
-router.get('/', function (req, res, next) {
-	res.render('booking/booking');
+router.get('/', (req, res) => {
+    res.render('booking/booking');
 });
 
 module.exports = router;

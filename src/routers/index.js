@@ -1,5 +1,6 @@
 const sitesRouter = require('./sites');
 const bookingRouter = require('./booking');
+const manager = require('./manager');
 const HairRouter = require('./hair');
 const hairProblems = require('./hairProblems');
 const hairService = require('./hairService');
@@ -10,6 +11,7 @@ function routers(app) {
 	app.use('/hair-problems', hairProblems);
 	app.use('/hair', HairRouter);
 	app.use('/booking', bookingRouter);
+	app.use('/manager', manager);
 	app.use('/', sitesRouter);
 }
 
