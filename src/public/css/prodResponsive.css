@@ -1,0 +1,23 @@
+/* On low PC */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .main-right {
+        padding-left: 22px;
+    }
+}
+
+/* On tablet */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .main-right {
+        padding-left: 22px;
+    }
+}
+
+/* On mobile */
+@media (max-width: 767.98px) {
+    .main-right {
+        padding-left: 15px;
+    }
+}
+.menu-mobile{
+    z-index: 100;
+}
