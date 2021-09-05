@@ -159,7 +159,7 @@
 .owl-next div {
     padding: 6px 14px;
     font-size: 20px;
-    border-radius: none;
+    border-radius: 0;
     transition: all 0.4s;
     color: #fff;
     background-color: #000;
