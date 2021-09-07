@@ -26,41 +26,8 @@
                 <div class="main-left col-lg-3 col-md-5 col-sm-12">
                     <div class="recent-articles">
                         <div class="main-left-heading">Recent Articles</div>
-
                         <ul class="recent-articles-list">
 
-                            <li class="recent-articles-item">
-                                <div class="recent-articles-item-img"><a href=""><img src="/images/blog11.jpg" alt=""
-                                            width="100%" /></a></div>
-                                <div class="recent-articles-item-info">
-                                    <a href="">Make a bold look with your hair style!</a>
-                                    <p>Jan 31 , 2018</p>
-                                </div>
-                            </li>
-                            <li class="recent-articles-item">
-                                <div class="recent-articles-item-img"><a href=""><img src="/images/blog11.jpg" alt=""
-                                            width="100%" /></a></div>
-                                <div class="recent-articles-item-info">
-                                    <a href="">Make a bold look with your hair style!</a>
-                                    <p>Jan 31 , 2018</p>
-                                </div>
-                            </li>
-                            <li class="recent-articles-item">
-                                <div class="recent-articles-item-img"><a href=""><img src="/images/blog11.jpg" alt=""
-                                            width="100%" /></a></div>
-                                <div class="recent-articles-item-info">
-                                    <a href="">Make a bold look with your hair style!</a>
-                                    <p>Jan 31 , 2018</p>
-                                </div>
-                            </li>
-                            <li class="recent-articles-item">
-                                <div class="recent-articles-item-img"><a href=""><img src="/images/blog11.jpg" alt=""
-                                            width="100%" /></a></div>
-                                <div class="recent-articles-item-info">
-                                    <a href="">Make a bold look with your hair style!</a>
-                                    <p>Jan 31 , 2018</p>
-                                </div>
-                            </li>
                         </ul>
                     </div>
 
@@ -100,6 +67,7 @@
                         <div class="owl-carousel owl-theme related-stories-list">
 
                         </div>
+                        
                     </div>
                 </div>
 
@@ -128,6 +96,7 @@
             <script src="/js/owl.carousel.min.js"></script>
 
             <script>
+
                 var recentArticles = $('.recent-articles-list');
                 var relatedStories = $('.related-stories-list');
                 var postList = $('.post-list')
@@ -138,12 +107,12 @@
                 var pageNext = $('.page-next')
                 var currentPage = 1
 
-                console.log(type);
                 recentArticles.html('');
                 relatedStories.html('');
                 postList.html('');
                 listPageNumber.html('');
 
+                //Render recent articles
                 $.ajax({
                     url: '/hair-problems/post-list-sortbydate',
                     method: 'GET',
@@ -170,6 +139,7 @@
 
                 })
 
+                //Render related stories
                 $.ajax({
                     url: '/hair-problems/post-list-sortbydate',
                     method: 'GET',
@@ -208,6 +178,7 @@
                     }
                 })
 
+                // FC renderPostList
                 function renderPostList(rs) {
                     var postListHtml = ''
                     for (let i = 0; i < rs.posts.length; i++) {
@@ -247,6 +218,7 @@
                     return postListHtml
                 }
 
+                //Render post list
                 $.ajax({
                     url: '/hair-problems/post-list',
                     method: 'GET',
