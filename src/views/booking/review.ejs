@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Booking Services</title>
+        <%- include('../layouts/head') %>
+            <!-- Thư viện và CSS Import ở dưới -->
+            <style>
+                .rating-container {
+                    position: relative;
+                    background: #111;
+                    border: 1px solid #444;
+                    border-radius: 5px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                }
+
+                .rating-container .comment {
+                    display: none;
+                }
+
+                .rating-container .text {
+                    font-size: 24px;
+                    color: #666;
+                    font-weight: 500;
+                    line-height: 100px;
+                }
+
+                .rating-container .edit {
+                    position: absolute;
+                    right: 10px;
+                    top: 5px;
+                    font-size: 16px;
+                    color: #666;
+                    font-weight: 500;
+                    cursor: pointer;
+                }
+
+                .rating-container .edit:hover {
+                    text-decoration: underline;
+                }
+
+                .rating-container .star-widget input {
+                    display: none;
+                }
+
+                .star-widget label {
+                    font-size: 30px;
+                    color: #444;
+                    padding: 10px;
+                    float: right;
+                    transition: all 0.2s ease;
+                }
+
+                input:not(:checked)~label:hover,
+                input:not(:checked)~label:hover~label {
+                    color: #fd4;
+                }
+
+                input:checked~label {
+                    color: #fd4;
+                }
+
+                input#rate-5:checked~label {
+                    color: #fe7;
+                    text-shadow: 0 0 20px #952;
+                }
+
+                #rate-1:checked~.star-text #star-say:before {
+                    content: "I just hate it ";
+                }
+
+                #rate-2:checked~.star-text #star-say:before {
+                    content: "I don't like it ";
+                }
+
+                #rate-3:checked~.star-text #star-say:before {
+                    content: "It is awesome ";
+                }
+
+                #rate-4:checked~.star-text #star-say:before {
+                    content: "I just like it ";
+                }
+
+                #rate-5:checked~.star-text #star-say:before {
+                    content: "I just love it ";
+                }
+
+                .rating-container .star-text {
+                    display: none;
+                }
+
+                input:checked~.star-text {
+                    display: block;
+                }
+
+                .star-text #star-say {
+                    display: flow-root;
+                    width: 100%;
+                    font-size: 20px;
+                    color: #fe7;
+                    font-weight: 500;
+                    margin: 5px 0 20px 0;
+                    text-align: center;
+                    transition: all 0.2s ease;
+                }
+
+                .star-text .textarea {
+                    height: 100px;
+                    width: 100%;
+                    overflow: hidden;
+                }
+
+                .star-text .textarea textarea {
+                    height: 100%;
+                    width: 100%;
+                    outline: none;
+                    color: #eee;
+                    border: 1px solid #333;
+                    background: #222;
+                    padding: 10px;
+                    font-size: 17px;
+                    resize: none;
+                }
+
+                .textarea textarea:focus {
+                    border-color: #444;
+                }
+
+                .star-text .btn {
+                    height: 45px;
+                    width: 100%;
+                    margin: 15px 0;
+                }
+
+                .star-text .btn button {
+                    height: 100%;
+                    width: 100%;
+                    border: 1px solid #444;
+                    outline: none;
+                    background: #222;
+                    color: #999;
+                    font-size: 17px;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+
+                .star-text .btn button:hover {
+                    background: #1b1b1b;
+                }
+            </style>
+    </head>
+
+    <body>
+        <%- include('../layouts/header') %>
+
+            <div class="container mt-5">
+                <form class="needs-validation" novalidate>
+                    <div class="row mb-3">
+                        <label for="customer-phone" class="col-lg-6 col-md-7 col-sm-12">
+                            <h2>Search your appointments:</h2>
+                        </label>
+                        <div class="input-group col-lg-6 col-md-7 col-sm-12">
+                            <input type="text" id="customer-phone" name="customer_phone" class="form-control"
+                                placeholder="Insert your phone number" required>
+                            <div class="invalid-tooltip">Please enter your phone to search.</div>
+                            <button class="btn btn-success input-group-append form-control col-3 text-center"
+                                type="submit" onclick="findByPhone()"
+                                style="display: inline-block !important;">Search</button>
+                        </div>
+                    </div>
+                </form>
+                <ul class="nav nav-tabs nav-justified">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#list-all" style="color: black;">All
+                            appointment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#list-today" style="color: black;">Today
+                            appointment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#list-pending" style="color: black;">Pending
+                            appointment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#list-complete" style="color: black;">Complete
+                            appointment</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content" style="height: 700px;overflow: auto;">
+                    <div id="list-all" class="tab-pane active"><br>
+                        <h3>All booking from customer</h3>
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Full name</th>
+                                    <th>Phone number</th>
+                                    <th>Service</th>
+                                    <th>Staff</th>
+                                    <th>More</th>
+                                </tr>
+                            </thead>
+                            <tbody id="list-all-appointment">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="list-today" class="tab-pane fade"><br>
+                        <h3>Today appointment from customer</h3>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Full name</th>
+                                    <th>Phone number</th>
+                                    <th>Service</th>
+                                    <th>Staff</th>
+                                    <th>More</th>
+                                </tr>
+                            </thead>
+                            <tbody id="list-today-appointment">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="list-pending" class="tab-pane fade"><br>
+                        <h3>Pending appointment from customer</h3>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Full name</th>
+                                    <th>Phone number</th>
+                                    <th>Service</th>
+                                    <th>Staff</th>
+                                    <th>More</th>
+                                </tr>
+                            </thead>
+                            <tbody id="list-pending-appointment">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="list-complete" class="tab-pane fade"><br>
+                        <h3>Complete appointment from customer</h3>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Full name</th>
+                                    <th>Phone number</th>
+                                    <th>Service</th>
+                                    <th>Staff</th>
+                                    <th>More</th>
+                                </tr>
+                            </thead>
+                            <tbody id="list-complete-appointment">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Modal -->
+            <div class="modal fade" id="reviewModal">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <form class="needs-validation" novalidate>
+                                <fieldset id="bookingForm" disabled class="border p-3">
+                                    <legend class="w-auto text-center">Your appointment detail</legend>
+                                    <div class="row">
+                                        <label for="customer_fullname" class="col-md-4 col-form-label">Your
+                                            name:</label>
+                                        <input type="text" id="customer_fullname"
+                                            class="col-md-8 form-control font-weight-bold bg-transparent"
+                                            name="customer_fullname" style="border: none;" value="" required>
+                                        <div class="invalid-feedback text-right">Please enter your name.</div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <label for="customer_phone" class="col-md-4 col-form-label">Phone
+                                            number:</label>
+                                        <input type="text" id="customer_phone"
+                                            class="col-md-8 form-control font-weight-bold bg-transparent"
+                                            name="customer_phone" style="border: none;" value="" required>
+                                        <div class="invalid-feedback text-right">Please enter your phone.</div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <label for="customer_email" class="col-md-4 col-form-label">Email:</label>
+                                        <input type="text" id="customer_email"
+                                            class="col-md-8 form-control font-weight-bold bg-transparent"
+                                            name="customer_email" style="border: none;" value="" required>
+                                        <div class="invalid-feedback text-right">Please enter your email.</div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <label for="customer_address" class="col-md-4 col-form-label">Address:</label>
+                                        <input type="text" id="customer_address"
+                                            class="col-md-8 form-control font-weight-bold bg-transparent"
+                                            name="customer_address" style="border: none;" value="" required>
+                                        <div class="invalid-feedback text-right">Please enter your address.</div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-12 col-sm-12">
+                                            <fieldset class="border p-3">
+                                                <legend class="w-auto"></legend>
+                                                <div class="row">
+                                                    <label for="service_id"
+                                                        class="col-md-4 col-form-label">Service:</label>
+                                                    <select id="service_id"
+                                                        class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                        name="service_id" style="border: none;" required>
+                                                    </select>
+                                                    <div class="invalid-feedback text-right">Please choose service.
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-3">
+                                                    <label for="staff_id" class="col-md-4 col-form-label">Staff:</label>
+                                                    <select id="staff_id"
+                                                        class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                        name="staff_id" style="border: none;" required>
+                                                    </select>
+                                                    <div class="invalid-feedback text-right">Please choos staff.
+                                                    </div>
+                                                </div>
+                                                <div id="datetime-view" class="row mt-3">
+                                                    <p class="col-md-4">Date & Time:</p>
+                                                    <p class="col-md-8" id="datetimeView"></p>
+                                                </div>
+                                                <div id="date-time" class="row mt-3">
+                                                    <label for="datetime" class="col-md-4 col-form-label">Date &
+                                                        Time</label>
+                                                    <input id="datetime" type="datetime-local"
+                                                        class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                        name="datetime" required>
+                                                    <div class="invalid-feedback text-right">Please select date & time.
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-3" style="display: none;">
+                                                    <label for="_id" class="col-md-4 col-form-label">_id:</label>
+                                                    <input id="_id" type="text"
+                                                        class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                        name="_id" value="" required>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <div class="row mt-3 justify-content-around">
+                                    <button id="edit-btn" type="button" class="col-2 btn btn-primary"
+                                        onclick="editable()">Edit</button>
+                                    <button id="update-btn" type="submit" class="col-2 btn btn-success"
+                                        onclick="update()">Update</button>
+                                    <button id="delete-btn" type="button" class="col-2 btn btn-danger"
+                                        data-toggle="modal" data-target="#confirmDelete">Delete</button>
+                                </div>
+                            </form>
+                            <div class="row mt-3 justify-content-center">
+                                <div id="ratingForm" class="col-md-12 col-sm-12">
+                                    <fieldset disabled class="border p-3">
+                                        <legend class="w-auto text-center">Rating your appointment</legend>
+                                        <div class="rating-container">
+                                            <div class="comment">
+                                                <div class="text">Thanks for rating us!</div>
+                                                <div class="edit">EDIT</div>
+                                            </div>
+                                            <form class="star-widget">
+                                                <input type="radio" name="rate" id="rate-5" value="5">
+                                                <label for="rate-5" class="far fa-star"></label>
+                                                <input type="radio" name="rate" id="rate-4" value="4">
+                                                <label for="rate-4" class="far fa-star"></label>
+                                                <input type="radio" name="rate" id="rate-3" value="3">
+                                                <label for="rate-3" class="far fa-star"></label>
+                                                <input type="radio" name="rate" id="rate-2" value="2">
+                                                <label for="rate-2" class="far fa-star"></label>
+                                                <input type="radio" name="rate" id="rate-1" value="1">
+                                                <label for="rate-1" class="far fa-star"></label>
+                                                <div class="star-text">
+                                                    <div id="star-say"></div>
+                                                    <div class="textarea">
+                                                        <textarea cols="30"
+                                                            placeholder="Describe your experience.."></textarea>
+                                                    </div>
+                                                    <div class="btn">
+                                                        <button id="rate-btn" type="submit">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="confirmDelete" data-keyboard="false" tabindex="-1"
+                aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="confirmDeleteLabel">Confirm to delete!</h5>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to cancel your appointment?
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-danger" onclick="deleteAppointment()">YES</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%- include('../layouts/footer') %>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+                    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+                    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+                <script type="text/javascript">
+                    $('form').submit(function (e) {
+                        e.preventDefault();
+                    });
+                    const rateBtn = document.querySelector("#rate-btn");
+                    const comment = document.querySelector(".comment");
+                    const widget = document.querySelector(".star-widget");
+                    const editBtn = document.querySelector(".edit");
+                    rateBtn.onclick = () => {
+                        widget.style.display = "none";
+                        comment.style.display = "block";
+                        editBtn.onclick = () => {
+                            widget.style.display = "block";
+                            comment.style.display = "none";
+                        }
+                        return false;
+                    }
+                    function deleteAppointment() {
+                        $.ajax({
+                            type: "DELETE",
+                            url: "/booking/delete",
+                            data: {
+                                _id: $("#_id").val()
+                            },
+                            success: function (rs) {
+                                alert(rs)
+                                window.location = '/booking/review'
+                            }
+                        });
+                    }
+                    function findByPhone() {
+                        $.ajax({
+                            url: '/booking/find-by-phone',
+                            method: "GET",
+                            data: {
+                                customer_phone: $('#customer-phone').val()
+                            },
+                            success: function (rs) {
+                                $('#list-all-appointment').html("");
+                                $('#list-today-appointment').html("");
+                                $('#list-pending-appointment').html("")
+                                $('#list-complete-appointment').html("")
+                                for (var key in rs) {
+                                    var rsdate = new Date(rs[key].datetime)
+                                    var today = new Date()
+                                    var item = `
+                                            <tr>
+                                                <td>${moment(`${rs[key].datetime}`).format("ddd DD/MM/YYYY")}</td>
+                                                <td>${moment(`${rs[key].datetime}`).format("HH:mm")}</td>
+                                                <td>${rs[key].customer_fullname}</td>
+                                                <td>${rs[key].customer_phone}</td>
+                                                <td>${rs[key].Service.service_name}</td>
+                                                <td>${rs[key].Staff.staff_fullname}</td>
+                                                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reviewModal" value="${rs[key]._id}" onclick="viewDetail(this.value)">Detail</button></td>
+                                            </tr>
+                                    `;
+                                    $('#list-all-appointment').append(item);
+
+                                    if (rsdate.toDateString() == today.toDateString()) {
+                                        $('#list-today-appointment').append(item);
+                                    }
+                                    if (rsdate > today) {
+                                        $('#list-pending-appointment').append(item)
+                                    }
+                                    if (rsdate < today) {
+                                        $('#list-complete-appointment').append(item)
+                                    }
+                                }
+                            }
+                        });
+                    };
+                    function viewDetail(value) {
+                        $.ajax({
+                            type: "GET",
+                            url: "/booking/find-by-id",
+                            data: {
+                                _id: value
+                            },
+                            success: function (rs) {
+                                console.log(rs);
+                                $('#customer_fullname').html("")
+                                $('#customer_phone').html("")
+                                $('#customer_email').html("")
+                                $('#customer_address').html("")
+                                $('#service_id').html("")
+                                $('#staff_id').html("")
+                                $('#datetimeView').html("")
+                                $('#datetime').html("")
+                                document.getElementById('customer_fullname').value = rs[0].customer_fullname
+                                document.getElementById('customer_phone').value = rs[0].customer_phone
+                                document.getElementById('customer_email').value = rs[0].customer_email
+                                document.getElementById('customer_address').value = rs[0].customer_address
+                                document.getElementById('service_id').innerHTML = `<option value="" selected>${rs[0].Service.service_name}</option>`
+                                document.getElementById('staff_id').innerHTML = `<option value="" selected>${rs[0].Staff.staff_fullname}</option>`
+                                document.getElementById('datetimeView').innerHTML = `<b>${moment(`${rs[0].datetime}`).format('ddd DD/MM/YYYY - HH:mm')}</b>`;
+                                document.getElementById('datetime').value = rs[0].datetime
+                                document.getElementById('_id').value = rs[0]._id
+                                viewOnly(rs[0].datetime);
+                            }
+                        });
+                    }
+                    function viewOnly(data) {
+                        $('input, select').css({
+                            "border": "none"
+                        })
+                        $('#datetime-view').show()
+                        $('#date-time').hide()
+                        var dating = new Date(data)
+                        var now = new Date()
+                        if (dating <= now) {
+                            $('#ratingForm').show()
+                            $('#ratingForm fieldset').prop('disabled', false)
+                            $('#edit-btn').hide()
+                            $('#update-btn').hide()
+                            $('#delete-btn').hide()
+                        } else {
+                            $('#ratingForm').hide()
+                            $('#ratingForm fieldset').prop('disabled', true)
+                            $('#edit-btn').show()
+                            $('#delete-btn').show()
+                            $('#update-btn').hide()
+                        }
+                        $('#bookingForm').prop('disabled', true)
+                    }
+                    function editable() {
+                        $('#bookingForm').prop('disabled', false)
+                        $('input, select').css({
+                            "border": "1px solid #ced4da"
+                        })
+                        $('#datetime-view').hide()
+                        $('#date-time').show()
+                        $('#update-btn').show()
+                        $('#delete-btn').hide()
+                        $('#edit-btn').hide()
+                        $('#service_id').html(`<option disabled hidden selected value="">Choose service</option>`)
+                        $('#staff_id').html(`<option disabled hidden selected value="">Choose staff</option>`)
+                        getService()
+                        getStaff()
+                    }
+                    function getService() {
+                        $.ajax({
+                            url: '/booking/get-service',
+                            method: 'GET',
+                            success: function (rs) {
+                                for (var key in rs) {
+                                    var option = `
+                <option value="${rs[key]._id}">${rs[key].service_name}</option>
+                `;
+                                    $('#service_id').append(option);
+                                }
+                            },
+                        });
+                    }
+                    function getStaff() {
+                        $.ajax({
+                            url: '/booking/get-staff',
+                            method: 'GET',
+                            success: function (rs) {
+                                for (var key in rs) {
+                                    var option = `
+                <option value="${rs[key]._id}">${rs[key].staff_fullname}</option>
+                `;
+                                    $('#staff_id').append(option);
+                                }
+                            },
+                        });
+                    }
+                    function update() {
+                        var data = {
+                            customer_fullname: $('#customer_fullname').val(),
+                            customer_phone: $('#customer_phone').val(),
+                            customer_email: $('#customer_email').val(),
+                            customer_address: $('#customer_address').val(),
+                            service_id: $('#service_id').val(),
+                            staff_id: $('#staff_id').val(),
+                            datetime: $('#datetime').val(),
+                            _id: $('#_id').val(),
+                        };
+                        $.ajax({
+                            type: "PUT",
+                            url: "/booking/update",
+                            data: data,
+                            success: function (rs) {
+                                alert(rs);
+                                window.location = '/booking/review'
+                            }
+                        });
+                    }
+                    // Disable form submissions if there are invalid fields
+                    (function () {
+                        'use strict';
+                        window.addEventListener('load', function () {
+                            // Get the forms we want to add validation styles to
+                            var forms = document.getElementsByClassName('needs-validation');
+                            // Loop over them and prevent submission
+                            var validation = Array.prototype.filter.call(forms, function (form) {
+                                form.addEventListener('submit', function (event) {
+                                    if (form.checkValidity() === false) {
+                                        event.preventDefault();
+                                        event.stopPropagation();
+                                    }
+                                    form.classList.add('was-validated');
+                                }, false);
+                            });
+                        }, false);
+                    })();
+                </script>
+    </body>
+
+</html>

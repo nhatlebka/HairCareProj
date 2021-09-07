@@ -6,149 +6,154 @@
         <%- include('../layouts/head') %>
             <!-- Thư viện và CSS Import ở dưới -->
             <style>
-                #customerForm {
-                    /* background-color: #ffffff;
-                    margin: 100px auto; */
-                    font-family: "Open Sans";
-                    /* padding: 40px;
-                    width: 70%;
-                    min-width: 300px; */
-                    min-height: 500px;
-                    z-index: 0;
+                @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+
+                .rating-container {
+                    position: relative;
+                    width: 400px;
+                    background: #111;
+                    padding: 20px 30px;
+                    border: 1px solid #444;
+                    border-radius: 5px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
                 }
 
-                #customerForm h1 {
-                    text-align: center;
-                }
-
-                #customerForm input {
-                    padding: 10px;
-                    width: 100%;
-                    font-size: 17px;
-                    font-family: "Open Sans";
-                    border: 1px solid #aaaaaa;
-                }
-
-                /* Mark input boxes that gets an error on validation: */
-                #customerForm select.invalid,
-                #customerForm input.invalid {
-                    background-color: #ffdddd;
-                }
-
-                /* Hide all steps by default: */
-                #customerForm .tab {
+                .rating-container .comment {
                     display: none;
                 }
 
-                #customerForm button {
-                    background-color: #04AA6D;
-                    color: #ffffff;
-                    border: none;
-                    padding: 10px 20px;
-                    font-size: 17px;
-                    font-family: "Open Sans";
+                .rating-container .text {
+                    font-size: 25px;
+                    color: #666;
+                    font-weight: 500;
+                }
+
+                .rating-container .edit {
+                    position: absolute;
+                    right: 10px;
+                    top: 5px;
+                    font-size: 16px;
+                    color: #666;
+                    font-weight: 500;
                     cursor: pointer;
                 }
 
-                #customerForm button:hover {
-                    opacity: 0.8;
+                .rating-container .edit:hover {
+                    text-decoration: underline;
                 }
 
-                #customerForm #prevBtn {
-                    background-color: #bbbbbb;
+                .rating-container .star-widget input {
+                    display: none;
                 }
 
-                /* Make circles that indicate the steps of the form: */
-                /* .step { */
-                /* height: 15px;
-                    width: 15px;
-                    margin: 0 2px; */
-                /* background-color: #bbbbbb; */
-                /* border: none; */
-                /* border-radius: 50%; */
-                /* display: inline-block; */
-                /* opacity: 0.5; */
-                /* } */
-
-                /* .step.active { */
-                /* opacity: 1; */
-                /* } */
-
-                /* Mark the steps that are finished and valid: */
-                .step.finish {
-                    /* background-color: #04AA6D; */
-                    color: green;
+                .star-widget label {
+                    font-size: 40px;
+                    color: #444;
+                    padding: 10px;
+                    float: right;
+                    transition: all 0.2s ease;
                 }
 
-                #progress {
-                    counter-reset: step;
-                    /* display: flex;
-                    justify-content: space-between; */
+                input:not(:checked)~label:hover,
+                input:not(:checked)~label:hover~label {
+                    color: #fd4;
                 }
 
-                #progress li {
-                    list-style-type: none;
-                    /* float: left; */
-                    width: 25%;
-                    position: relative;
-                    text-align: center;
-                    font-size: 20px;
+                input:checked~label {
+                    color: #fd4;
                 }
 
-                #progress li::before {
-                    content: counter(step);
-                    counter-increment: step;
-                    width: 30px;
-                    height: 30px;
-                    line-height: 25px;
-                    border: 2px solid #ccc;
+                input#rate-5:checked~label {
+                    color: #fe7;
+                    text-shadow: 0 0 20px #952;
+                }
+
+                #rate-1:checked~.star-text #star-say:before {
+                    content: "I just hate it ";
+                }
+
+                #rate-2:checked~.star-text #star-say:before {
+                    content: "I don't like it ";
+                }
+
+                #rate-3:checked~.star-text #star-say:before {
+                    content: "It is awesome ";
+                }
+
+                #rate-4:checked~.star-text #star-say:before {
+                    content: "I just like it ";
+                }
+
+                #rate-5:checked~.star-text #star-say:before {
+                    content: "I just love it ";
+                }
+
+                .rating-container .star-text {
+                    display: none;
+                }
+
+                input:checked~.star-text {
                     display: block;
-                    text-align: center;
-                    margin: 0 auto 10px auto;
-                    border-radius: 50%;
-                    background-color: #fff;
                 }
 
-                #progress li::after {
-                    content: '';
+                .star-text #star-say {
                     width: 100%;
-                    height: 2px;
-                    background-color: #ccc;
-                    position: absolute;
-                    top: 15px;
-                    left: -50%;
-                    z-index: -1;
+                    font-size: 25px;
+                    color: #fe7;
+                    font-weight: 500;
+                    margin: 5px 0 20px 0;
+                    text-align: center;
+                    transition: all 0.2s ease;
                 }
 
-                #progress li:first-child::after {
-                    content: none;
+                .star-text .textarea {
+                    height: 100px;
+                    width: 100%;
+                    overflow: hidden;
                 }
 
-                #progress li.active {
-                    color: green;
+                .star-text .textarea textarea {
+                    height: 100%;
+                    width: 100%;
+                    outline: none;
+                    color: #eee;
+                    border: 1px solid #333;
+                    background: #222;
+                    padding: 10px;
+                    font-size: 17px;
+                    resize: none;
                 }
 
-                #progress li.active::before {
-                    border-color: green;
-                    transition: all linear 0.5s;
+                .textarea textarea:focus {
+                    border-color: #444;
                 }
 
-                #progress li.active::after {
-                    background-color: green;
-                    transition: all linear 0.5s;
+                .star-text .btn {
+                    height: 45px;
+                    width: 100%;
+                    margin: 15px 0;
                 }
 
-                #progress li.finish::before {
-                    border-color: green;
-                    color: white;
-                    background-color: green;
-                    font-family: "Font Awesome 5 Pro";
-                    content: "\f00c";
-                    transition: all linear 0.5s;
+                .star-text .btn button {
+                    height: 100%;
+                    width: 100%;
+                    border: 1px solid #444;
+                    outline: none;
+                    background: #222;
+                    color: #999;
+                    font-size: 17px;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
                 }
 
-                #progress li.finish::after {
-                    background-color: green;
+                .star-text .btn button:hover {
+                    background: #1b1b1b;
                 }
             </style>
     </head>
@@ -158,426 +163,61 @@
 
 
             <div class="container">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Click</button>
-
-                <!-- The Modal -->
-                <div class="modal fade" id="myModal">
-                    <div class="modal-dialog modal-dialog-centered modal-xl">
-                        <div class="modal-content">
-                            <!-- Modal body -->
-                            <div class="row modal-body">
-                                <div class="col-md-12" id="customerForm">
-                                    <div class="row justify-content-center">
-                                        <h1>Booking Your Appointment:</h1>
-                                    </div>
-                                    <!-- Circles which indicates the steps of the form: -->
-                                    <ul class="row" id="progress">
-                                        <li class="step">Step 1</li>
-                                        <li class="step">Step 2</li>
-                                        <li class="step">Step 3</li>
-                                        <li class="step">Finish</li>
-                                    </ul>
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-12 col-sm-12 ">
-                                            <!-- One "tab" for each step in the form: -->
-                                            <div class="tab">
-                                                <fieldset class="border p-3">
-                                                    <legend class="w-auto">Contact info</legend>
-                                                    <div class="row">
-                                                        <div class="col-md-12 col-sm-12">
-                                                            <label for="customer-fullname">Full Name:</label>
-                                                            <input type="text" class="form-control"
-                                                                id="customer-fullname" name="customer-fullname"
-                                                                onchange="autofill()" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12 col-sm-12">
-                                                            <label for="customer-phone">Phone number:</label>
-                                                            <input type="tel" class="form-control" name="customer-phone"
-                                                                id="customer-phone" onchange="autofill()" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12 col-sm-12">
-                                                            <label for="customer-email">Email:</label>
-                                                            <input type="email" class="form-control" id="customer-email"
-                                                                name="customer-email" placeholder="@"
-                                                                onchange="autofill()" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12 col-sm-12">
-                                                            <label for="customer-address">Address:</label>
-                                                            <input type="text" class="form-control"
-                                                                id="customer-address" name="customer-address"
-                                                                onchange="autofill()" required>
-                                                        </div>
-                                                    </div>
-                                                </fieldset>
-                                            </div>
-                                            <div class="tab">
-                                                <fieldset class="border p-3">
-                                                    <legend class="w-auto">Taking sevices</legend>
-                                                    <div class="row">
-                                                        <div class="form-group col-md-12 col-sm-12">
-                                                            <label for="service-id">Sevices</label>
-                                                            <select id="service-id" name="service-id"
-                                                                class="form-control" onchange="serviceIntro()" required>
-                                                                <option value="" disabled hidden selected>Services...
-                                                                </option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12 col-sm-12">
-                                                            <fieldset class="border p-3">
-                                                                <legend class="w-auto">Introduce Service</legend>
-                                                                <p id="service_introduce"></p>
-                                                            </fieldset>
-                                                        </div>
-                                                    </div>
-                                                </fieldset>
-                                            </div>
-                                            <div class="tab">
-                                                <fieldset class="border p-3">
-                                                    <legend class="w-auto">Choose Staff</legend>
-                                                    <div class="row">
-                                                        <div class="form-group col-md-12 col-sm-12">
-                                                            <label for="staff-id">Staff</label>
-                                                            <select id="staff-id" name="staff-id" class="form-control"
-                                                                onchange="staffIntro()" required>
-                                                                <option value="" disabled hidden selected>Staffs...
-                                                                </option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12 col-sm-12">
-                                                            <fieldset class="border p-3">
-                                                                <legend class="w-auto">Introduce Staff</legend>
-                                                                <p class="text-center" id="staff_stars"></p>
-                                                                <p class="text-center" id="staff_introduce"></p>
-                                                            </fieldset>
-                                                        </div>
-                                                    </div>
-                                                </fieldset>
-                                            </div>
-                                            <div class="tab">
-                                                <fieldset class="border p-3">
-                                                    <legend class="w-auto">Date & Time</legend>
-                                                    <div class="form-row mt-3">
-                                                        <label for="dateField"
-                                                            class="col-md-4 col-form-label">Date:</label>
-                                                        <input id="dateField" type="date" class="col-md-8 form-control">
-                                                    </div>
-                                                    <div class="form-row mt-3">
-                                                        <label for="timeField"
-                                                            class="col-md-4 col-form-label">Time:</label>
-                                                        <input id="timeField" type="time" class="col-md-8 form-control"
-                                                            onchange="setDateTime()">
-                                                    </div>
-                                                </fieldset>
-                                            </div>
-                                            <div style="overflow:auto;">
-                                                <div style="float:right;">
-                                                    <button type="button" id="prevBtn"
-                                                        onclick="nextPrev(-1)">Previous</button>
-                                                    <button type="button" id="nextBtn"
-                                                        onclick="nextPrev(1)">Next</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-12 col-sm-12 ">
-                                            <form id="bookingForm" action="/manager/booking" method="POST">
-                                                <fieldset disabled class="border p-3">
-                                                    <legend class="w-auto">Your appointment info</legend>
-                                                    <div class="row">
-                                                        <label for="customer_fullname"
-                                                            class="col-md-4 col-form-label">Your
-                                                            name:</label>
-                                                        <input type="text" id="customer_fullname"
-                                                            class="col-md-8 form-control font-weight-bold bg-transparent"
-                                                            name="customer_fullname" style="border: none;" value="">
-                                                    </div>
-                                                    <div class="row">
-                                                        <label for="customer_phone"
-                                                            class="col-md-4 col-form-label">Phone
-                                                            number:</label>
-                                                        <input type="text" id="customer_phone"
-                                                            class="col-md-8 form-control font-weight-bold bg-transparent"
-                                                            name="customer_phone" style="border: none;" value="">
-                                                    </div>
-                                                    <div class="row">
-                                                        <label for="customer_email"
-                                                            class="col-md-4 col-form-label">Email:</label>
-                                                        <input type="text" id="customer_email"
-                                                            class="col-md-8 form-control font-weight-bold bg-transparent"
-                                                            name="customer_email" style="border: none;" value="">
-                                                    </div>
-                                                    <div class="row">
-                                                        <label for="customer_address"
-                                                            class="col-md-4 col-form-label">Address:</label>
-                                                        <input type="text" id="customer_address"
-                                                            class="col-md-8 form-control font-weight-bold bg-transparent"
-                                                            name="customer_address" style="border: none;" value="">
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12 col-sm-12">
-                                                            <fieldset disabled class="border p-3">
-                                                                <legend class="w-auto"></legend>
-                                                                <div class="row">
-                                                                    <label for="service_id"
-                                                                        class="col-md-4 col-form-label">Service:</label>
-                                                                    <select id="service_id"
-                                                                        class="col-md-8 form-control font-weight-bold bg-transparent"
-                                                                        name="service_id" style="border: none;">
-                                                                    </select>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <label for="staff_id"
-                                                                        class="col-md-4 col-form-label">Staff:</label>
-                                                                    <select id="staff_id"
-                                                                        class="col-md-8 form-control font-weight-bold bg-transparent"
-                                                                        name="staff_id" style="border: none;">
-                                                                    </select>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <p class="col-md-4">Date:</p>
-                                                                    <p class="col-md-8" id="dateView"></p>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <p class="col-md-4">Time:</p>
-                                                                    <p class="col-md-8" id="timeView"></p>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <label for="datetime"
-                                                                        class="col-md-4 col-form-label">Date &
-                                                                        Time</label>
-                                                                    <input id="datetime" type="text"
-                                                                        class="col-md-8 form-control font-weight-bold bg-transparent"
-                                                                        name="datetime" style="border: none;">
-                                                                </div>
-                                                            </fieldset>
-                                                        </div>
-                                                    </div>
-                                                </fieldset>
-                                                <button type="submit" class="btn btn-primary"
-                                                    onclick="bookingForm()">Submit</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="rating-container">
+                    <div class="comment">
+                        <div class="text">Thanks for rating us!</div>
+                        <div class="edit">EDIT</div>
+                    </div>
+                    <form class="star-widget">
+                        <input type="radio" name="rate" id="rate-5" value="5">
+                        <label for="rate-5" class="far fa-star"></label>
+                        <input type="radio" name="rate" id="rate-4" value="4">
+                        <label for="rate-4" class="far fa-star"></label>
+                        <input type="radio" name="rate" id="rate-3" value="3">
+                        <label for="rate-3" class="far fa-star"></label>
+                        <input type="radio" name="rate" id="rate-2" value="2">
+                        <label for="rate-2" class="far fa-star"></label>
+                        <input type="radio" name="rate" id="rate-1" value="1">
+                        <label for="rate-1" class="far fa-star"></label>
+                        <div class="star-text">
+                            <div id="star-say"></div>
+                            <div class="textarea">
+                                <textarea cols="30" placeholder="Describe your experience.."></textarea>
+                            </div>
+                            <div class="btn">
+                                <button type="submit">Submit</button>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
-
             </div>
 
             <%- include('../layouts/footer') %>
                 <script type="text/javascript">
-                    $('.modal').submit(function (e) {
-                        e.preventDefault();
-                    });
-                    // $('.modal').on('submit', function (event) {
-                    // 	event.preventDefault();
-                    // });
-                    function bookingForm() {
-                        var data = {
-                            customer_fullname: $('#customer_fullname').val(),
-                            customer_phone: $('#customer_phone').val(),
-                            customer_email: $('#customer_email').val(),
-                            customer_address: $('#customer_address').val(),
-                            service_id: $('#service_id').val(),
-                            staff_id: $('#staff_id').val(),
-                            datetime: $('#datetime').val(),
-                        };
-                        $.ajax({
-                            url: '/manager/booking',
-                            method: 'POST',
-                            data: data,
-                            success: function (rs) {
-                                alert(rs);
-                                window.location = '/manager/demo';
-                            },
-                        });
-                        // document.getElementById('bookingForm').submit(data);
-                    }
-                    function autofill() {
-                        document.getElementById('customer_fullname').value =
-                            document.getElementById('customer-fullname').value;
-                        document.getElementById('customer_phone').value =
-                            document.getElementById('customer-phone').value;
-                        document.getElementById('customer_email').value =
-                            document.getElementById('customer-email').value;
-                        document.getElementById('customer_address').value =
-                            document.getElementById('customer-address').value;
-                    }
-
-                    var currentTab = 0;
-                    showTab(currentTab);
-
-                    function showTab(n) {
-                        var x = document.getElementsByClassName('tab');
-                        x[n].style.display = 'block';
-                        if (n == 0) {
-                            document.getElementById('prevBtn').style.display = 'none';
-                        } else {
-                            document.getElementById('prevBtn').style.display = 'inline';
-                        }
-                        if (n == x.length - 1) {
-                            document.getElementById('nextBtn').innerHTML = 'Submit';
-                        } else {
-                            document.getElementById('nextBtn').innerHTML = 'Next';
-                        }
-                        fixStepIndicator(n);
-                    }
-
-                    function nextPrev(n) {
-                        var x = document.getElementsByClassName('tab');
-                        if (n == 1 && !validateForm()) return false;
-                        x[currentTab].style.display = 'none';
-                        currentTab = currentTab + n;
-                        if (currentTab >= x.length) {
-                            document.getElementById('bookingForm').submit();
-                            return false;
-                        }
-                        showTab(currentTab);
-                    }
-
-                    function validateForm() {
-                        var x,
-                            y,
-                            i,
-                            z,
-                            valid = true;
-                        x = document.getElementsByClassName('tab');
-                        y = x[currentTab].getElementsByTagName('input');
-                        z = x[currentTab].getElementsByTagName('select');
-                        if (y.length > 0) {
-                            for (i = 0; i < y.length; i++) {
-                                if (y[i].value == '') {
-                                    y[i].className += ' invalid';
-                                    valid = false;
-                                }
+                    var ratingValue = 0;
+                    function postToController() {
+                        // console.log(document.getElementsByName('rate').length);
+                        for (i = 0; i < document.getElementsByName('rate').length; i++) {
+                            if (document.getElementsByName('rate')[i].checked == true) {
+                                var ratingValue = document.getElementsByName('rate')[i].value;
+                                break;
                             }
                         }
-                        if (z.length > 0) {
-                            for (i = 0; i < z.length; i++) {
-                                if (z[i].value == '') {
-                                    z[i].className += ' invalid';
-                                    valid = false;
-                                }
-                            }
+                    }
+                    console.log(ratingValue)
+                    const btn = document.querySelector("button");
+                    const comment = document.querySelector(".comment");
+                    const widget = document.querySelector(".star-widget");
+                    const editBtn = document.querySelector(".edit");
+                    btn.onclick = () => {
+                        widget.style.display = "none";
+                        comment.style.display = "block";
+                        editBtn.onclick = () => {
+                            widget.style.display = "block";
+                            comment.style.display = "none";
                         }
-                        if (valid) {
-                            document.getElementsByClassName('step')[currentTab].className += ' finish';
-                        }
-                        return valid;
+                        return false;
                     }
-
-                    function fixStepIndicator(n) {
-                        var i,
-                            x = document.getElementsByClassName('step');
-                        for (i = 0; i < x.length; i++) {
-                            x[i].className = x[i].className.replace(' active', '');
-                        }
-                        x[n].className += ' active';
-                    }
-                    function getService() {
-                        $.ajax({
-                            url: '/manager/get-service',
-                            method: 'GET',
-                            success: function (rs) {
-                                for (var key in rs) {
-                                    var option = `
-                <option value="${rs[key]._id}">${rs[key].service_name}</option>
-                `;
-                                    $('#service-id').append(option);
-                                }
-                            },
-                        });
-                    }
-                    function getStaff() {
-                        $.ajax({
-                            url: '/manager/get-staff',
-                            method: 'GET',
-                            success: function (rs) {
-                                for (var key in rs) {
-                                    var option = `
-                <option value="${rs[key]._id}">${rs[key].staff_fullname}</option>
-                `;
-                                    $('#staff-id').append(option);
-                                }
-                            },
-                        });
-                    }
-                    getService();
-                    getStaff();
-                    function serviceIntro() {
-                        $.ajax({
-                            url: '/manager/get-service',
-                            method: 'GET',
-                            success: function (rs) {
-                                $('#service_introduce').html('');
-                                var service_id = $('#service-id').val();
-                                for (var key in rs) {
-                                    var rs_id = rs[key]._id;
-                                    if (service_id == rs_id) {
-                                        var info = rs[key].service_introduce;
-                                        $('#service_introduce').append(info);
-                                        var assign = `
-                    <option value="${rs[key]._id}" selected>${rs[key].service_name}</option>
-                    `;
-                                        $('#service_id').append(assign);
-                                    } else {
-                                        continue;
-                                    }
-                                }
-                            },
-                        });
-                    }
-                    function staffIntro() {
-                        $.ajax({
-                            url: '/manager/get-staff',
-                            method: 'GET',
-                            success: function (rs) {
-                                $('#staff_stars').html('');
-                                $('#staff_introduce').html('');
-                                var staff_id = $('#staff-id').val();
-                                for (var key in rs) {
-                                    var rs_id = rs[key]._id;
-                                    if (staff_id == rs_id) {
-                                        var stars = `
-                    Service quality: <br> <b>${rs[key].staff_stars}</b> <br> <i class="fas fa-star"></i>
-                    `;
-                                        var info = rs[key].staff_introduce;
-                                        $('#staff_stars').append(stars);
-                                        $('#staff_introduce').append(info);
-                                        var assign = `
-                    <option value="${rs[key]._id}" selected>${rs[key].staff_fullname}</option>
-                    `;
-                                        $('#staff_id').append(assign);
-                                    } else {
-                                        continue;
-                                    }
-                                }
-                            },
-                        });
-                    }
-                    function setDateTime() {
-                        var mydate, mytime, mystring;
-                        mydate = $('#dateField').val();
-                        mytime = $('#timeField').val();
-                        mystring = `${mydate}T${mytime}`;
-                        document.getElementById('dateView').innerHTML = `<b>${moment(
-                            `${mydate}`
-                        ).format('ddd DD/MM/YYYY')}</b>`;
-                        document.getElementById('timeView').innerHTML = `<b>${mytime}</b>`;
-                        document.getElementById('datetime').value = mystring;
-                    }
-
                 </script>
     </body>
 
