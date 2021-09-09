@@ -45,6 +45,10 @@ router.post('/booking', function (req, res, next) {
 router.get('/demo', (req, res) => {
     res.render('manager/demo');
 });
+router.get('/:slug', (req, res, next) => {
+    res.render('manager/manager');
+});
+
 router.get('/', (req, res) => {
     res.render('manager/manager');
 });
