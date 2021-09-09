@@ -1,0 +1,421 @@
+/* On low PC */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    /* Slider top */
+    .slide-sale {
+        top: 10%;
+    }
+    .slide-sale h2 {
+        font-size: 50px;
+    }
+    .slide-sale h1 {
+        font-size: 110px;
+        height: 110px;
+    }
+    .slide-sale h1 .sale-off {
+        font-size: 70px;
+    }
+
+    .slide-sale a {
+        margin-top: 20px;
+        font-size: 18px;
+        width: 120px;
+        padding: 8px;
+    }
+
+    /* About us */
+    .about-us-hair-care {
+        padding: 100px;
+    }
+    .about-us-heading {
+        font-size: 50px;
+    }
+
+    .hair-care-des {
+        font-size: 26px;
+        margin-top: 20px;
+    }
+    .hair-care-content {
+        margin-top: 20px;
+    }
+
+    .about-us-person-use {
+        padding: 80px 100px;
+    }
+
+    .persion-count {
+        margin-top: 30px;
+        font-size: 60px;
+    }
+
+    .about-title {
+        margin-top: 50px;
+        font-size: 30px;
+    }
+
+    /* Hair problems */
+    .post-date {
+        font-size: 20px;
+    }
+    .post-sub-title {
+        margin-top: 6px;
+    }
+
+    .hair-problems-post .post-heading {
+        margin-top: 16px;
+    }
+
+    /* Contact */
+    .user-mess {
+        padding: 40px 100px 100px;
+    }
+    .contact-info {
+        padding: 70px;
+    }
+    .contact-title {
+        font-size: 20px;
+    }
+
+    .contact-note {
+        font-size: 16px;
+    }
+
+    /* Services */
+
+    .services-des {
+        margin: 30px auto;
+        font-size: 24px;
+    }
+    .services-sub {
+        margin: 30px auto;
+        font-size: 18px;
+    }
+    .services-info .services-btn {
+        margin: 20px auto;
+    }
+}
+
+/* On tablet */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    /* Slider top */
+    .slide-sale {
+        top: 10%;
+    }
+    .slide-sale h2 {
+        font-size: 40px;
+    }
+    .slide-sale h1 {
+        font-size: 100px;
+        height: 100px;
+    }
+    .slide-sale h1 .sale-off {
+        font-size: 60px;
+    }
+
+    .slide-sale a {
+        margin-top: 20px;
+        font-size: 16px;
+        width: 100px;
+        padding: 6px;
+    }
+    /* About us */
+    .about-us-hair-care {
+        padding: 80px;
+    }
+    .about-us-heading {
+        font-size: 40px;
+    }
+
+    .hair-care-des {
+        font-size: 22px;
+        margin-top: 20px;
+    }
+    .hair-care-content {
+        margin-top: 20px;
+    }
+
+    .about-us-person-use {
+        padding: 40px;
+    }
+
+    .persion-count {
+        margin-top: 20px;
+        font-size: 50px;
+    }
+
+    .about-title {
+        margin-top: 30px;
+        font-size: 26px;
+    }
+
+    /* Hair problems */
+    .hair-problems-post:first-child {
+        margin-top: 30px;
+    }
+
+    /* Contact */
+    .user-mess {
+        padding: 80px 120px 120px;
+    }
+    .contact-info {
+        padding: 100px;
+    }
+    /* Services */
+    .services-des {
+        margin: 30px auto;
+        font-size: 24px;
+    }
+    .services-sub {
+        margin: 30px auto;
+        font-size: 18px;
+    }
+    .services-info .services-btn {
+        margin: 20px auto;
+    }
+}
+
+/* On mobile */
+@media (max-width: 767.98px) and (min-width: 576px) {
+    .slider-overplay {
+        display: block;
+    }
+    /* Slider top */
+    .slide-sale {
+        top: 20%;
+    }
+    .slide-sale h2 {
+        font-size: 35px;
+    }
+    .slide-sale h1 {
+        font-size: 90px;
+        height: 90px;
+    }
+    .slide-sale h1 .sale-off {
+        font-size: 55px;
+    }
+
+    .slide-sale a {
+        margin-top: 20px;
+        font-size: 16px;
+        width: 100px;
+        padding: 6px;
+    }
+
+    .slide-sale-one,
+    .slide-sale-two {
+        left: 20%;
+    }
+    /* About us */
+    .about-us-hair-care {
+        padding: 80px;
+    }
+    .about-us-heading {
+        font-size: 40px;
+    }
+
+    .hair-care-des {
+        font-size: 22px;
+        margin-top: 20px;
+    }
+    .hair-care-content {
+        margin-top: 20px;
+    }
+
+    .about-us-person-use {
+        padding: 80px;
+    }
+
+    .about-type {
+        width: 250px;
+    }
+
+    .persion-count {
+        margin-top: 20px;
+        font-size: 50px;
+    }
+
+    .about-title {
+        margin-top: 30px;
+        font-size: 26px;
+    }
+    /* Hair problems */
+    .hair-problems-post:first-child {
+        margin-top: 30px;
+    }
+
+    /* Customer */
+    .customer-info .slick-slide img {
+        width: 40px;
+    }
+
+    .customer-info .slick-slide.slick-current img {
+        width: 120px;
+    }
+
+    .customer-info .customer-info-prev,
+    .customer-info .customer-info-next {
+        font-size: 30px;
+        top: 14%;
+    }
+
+    /* Contact */
+    .user-mess {
+        padding: 60px 40px 80px;
+    }
+    .contact-info {
+        padding: 60px 30px;
+    }
+
+    .contact-title {
+        font-size: 20px;
+    }
+
+    .contact-note {
+        font-size: 16px;
+    }
+    .contact-heading {
+        font-size: 45px;
+    }
+}
+
+/* On smail mobile */
+@media (max-width: 575.98px) {
+    .slider-overplay {
+        display: block;
+    }
+    /* Slider top */
+    .slide-sale {
+        top: 20%;
+    }
+    .slide-sale h2 {
+        font-size: 35px;
+    }
+    .slide-sale h1 {
+        font-size: 90px;
+        height: 90px;
+    }
+    .slide-sale h1 .sale-off {
+        font-size: 55px;
+    }
+
+    .slide-sale a {
+        margin-top: 20px;
+        font-size: 16px;
+        width: 100px;
+        padding: 6px;
+    }
+
+    .slide-sale-one,
+    .slide-sale-two {
+        left: 20%;
+    }
+    /* About us */
+    .about-us-hair-care {
+        padding: 80px;
+    }
+    .about-us-heading {
+        font-size: 40px;
+    }
+
+    .hair-care-des {
+        font-size: 22px;
+        margin-top: 20px;
+    }
+    .hair-care-content {
+        margin-top: 20px;
+    }
+
+    .about-us-person-use {
+        padding: 80px;
+    }
+
+    .about-type {
+        width: 250px;
+    }
+
+    .persion-count {
+        margin-top: 20px;
+        font-size: 50px;
+    }
+
+    .about-title {
+        margin-top: 30px;
+        font-size: 26px;
+    }
+    /* Hair problems */
+    .hair-problems-post:first-child {
+        margin-top: 30px;
+    }
+
+    /* Customer */
+    .customer-info .slick-slide img {
+        width: 40px;
+    }
+
+    .customer-info .slick-slide.slick-current img {
+        width: 120px;
+    }
+
+    .customer-info .customer-info-prev,
+    .customer-info .customer-info-next {
+        font-size: 30px;
+        top: 14%;
+    }
+
+    /* Contact */
+    .user-mess {
+        padding: 60px 40px 80px;
+    }
+    .contact-info {
+        padding: 60px 30px;
+    }
+
+    .contact-title {
+        font-size: 20px;
+    }
+
+    .contact-note {
+        font-size: 16px;
+    }
+    .contact-heading {
+        font-size: 45px;
+    }
+
+    /* Booking */
+    .booking {
+        padding: 50px 0;
+    }
+
+    .booking-main {
+        width: 370px;
+        height: 370px;
+    }
+    .booking-content {
+        width: 350px;
+        height: 350px;
+    }
+
+    .booking-logo img {
+        width: 60px;
+    }
+
+    .booking-title {
+        margin-top: 16px;
+        font-size: 34px;
+        margin-bottom: 0;
+    }
+
+    .booking-order {
+        margin-top: 0;
+        font-size: 24px;
+    }
+    .booking-des {
+        font-size: 12px;
+        line-height: 120%;
+    }
+
+    .booking-content .booking-btn {
+        padding: 6px 0;
+        width: 110px;
+        font-size: 14px;
+    }
+}

@@ -4,42 +4,563 @@
         <title>Home</title>
         <%- include('../layouts/head') %>
         <!-- Thư viện và CSS Import ở dưới -->
+        <link rel="stylesheet" href="/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+        <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      />
+        <link rel="stylesheet" href="/css/home.css">
+        <link rel="stylesheet" href="/css/homeResponsive.css">
     <body>
         <%- include('../layouts/header') %>
 
-        <div class="jumbotron jumbotron-fluid text-center">   
-            <div class="container">
-                <h1 class="display-3">Đây là trang home</h1>
-                <p class="lead">Jumbo helper text</p>
-                <hr class="my-2" />
-                <p>More info</p>
-                <p class="lead">
-                    <a
-                        class="btn btn-primary btn-lg"
-                        href="Jumbo action link"
-                        role="button"
-                        >Jumbo action name</a
-                    >
-                </p>
-                <a href="/news">Đây là trang new</a>
-            </div>
-        </div>
-        <div class="container">
-            <img src="/images/111.jpg" alt="" width="100%" />
-        </div>
+        <!-- Main content -->
+        <main class="main-content">
 
-        <form action="/home/search" method="POST">
-            <div class="form-group">
-              <label for=""></label>
-              <input type="text"
-                class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
-              <small id="helpId" class="form-text text-muted">Help text</small>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+            <!-- Slider - top -->
+            <section class="slide-top">
+                <div class="owl-carousel owl-theme owl-one">
+                    <div class="item">
+                        <div class="slider-img"><img src="/images/slider1.jpg" alt=""></div>
+                        <div class="slider-overplay"></div>
+                        <div class="slide-sale slide-sale-one">
+                            <h2>Get the best for</h2>
+                            <h1>40<span class="sale-off">% OFF</span>    </h1>
+                            <h2>On New Services</h2>
+                            <a href="" class="slide-btn">Shop now
+                                <div class="btn-before btn-slide"></div>
+                                <div class="btn-after btn-slide"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="slider-img"><img src="/images/slider2.jpg" alt=""></div>
+                        <div class="slider-overplay"></div>
+                        <div class="slide-sale slide-sale-two">
+                        <h2>Get the best for</h2>
+                        <h1>40<span class="sale-off">% OFF</span>    </h1>
+                        <h2>On New Services</h2>
+                        <a href=""  class="slide-btn">Shop now
+                            <div class="btn-before btn-slide"></div>
+                                <div class="btn-after btn-slide"></div>
+                        </a>
+                    </div>
+                    
+                    </div>
+                    <div class="item">
+                        <div class="slider-img"><img src="/images/slider3.jpg" alt=""></div> 
+                        <div class="slider-overplay"></div>
+                    </div>
+                </div>
+            </section>
+            <!-- End slider top -->
 
+            <!-- About us -->
+            <section class="about-us">
+                <div class="row" style="margin: 0;">
+                    <div class="col-lg-6 col-md-6 col-sm-12 about-us-hair-care animate__slideInLeft animate__animated wow">
+                        <h1 class="about-us-heading">HAIR CARE...</h1>
+                        <p class="hair-care-des">Healthy hair that looks attractive can make you feel confident and super attractive. Shiny and Strong hair makes you the cynosure of all eyes.</p>
+                        <p class="hair-care-content">Taking a few basic hair care steps go a long way in maintaining your hair. Otherwise, hair fall, unhealthy hair, and lackluster hair is the end result that can well be avoided. Remember, your hair is an index of your personality which can make or mar your looks.</p>
+                        <a href="" class="about-us-btn">More about us
+                            <div class="btn-before btn-about"></div>
+                            <div class="btn-after btn-about"></div>
+                        </a>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 about-us-person-use animate__slideInRight animate__animated wow">
+                        <div class="about-us-logo"><img src="/images/logo-use.png" alt=""></div>
+                        <h1 class="persion-count">$85 billion</h1>
+                        <p class="about-type">SHAMPOO, HAIR COLOR, CONDITIONER <br> & HAIR OILARE THE HAIR STYLING PRODUCTS</p>
+                        <p class="about-title">The hair care industry growing by a compound growth rate of 14%</p>
+                        <p class="about-end">Global Industry Analysis</p>
+                    </div>
+                </div>
+
+            </section>
+            <!-- End about us -->
+
+            <!-- Products -->
+            <section class="products" style="background-image: url(/images/hair1-problems-img.jpg); background-repeat: no-repeat; background-size: cover">
+                <div class="main-title animate__pulse animate__animated wow">
+                    <h1 class="main-heading ">Hair Products</h1>
+                    <h3 class="main-des">Our Solutions tailor made for with each individual to<br>
+                    understand specific needs</h3>
+                </div>
+                <div class="container">
+                    <div class="row products-collection animate__fadeInUp animate__animated wow"  data-wow-delay="0.2s">
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="collection-item">
+                                <a href="" class="collection-img"><img src="/images/img1.jpg" alt=""></a>
+                                <div class="collection-number">1</div>
+                                <h4 class="collection-name">Shampoos</h4>
+                                <p class="collection-des">Phasellus et semper sapien. Sed pulvinar a dolor imperdiet iaculis. Fusce interdum arcu volutpat, mattis urna eu, placerat elit. Proin posuere ut ipsum ac ullamcorper</p>
+                                <a href="" class="collection-btn">View more
+                                    <div class="btn-before"></div>
+                                    <div class="btn-after"></div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="collection-item">
+                                <a href="" class="collection-img"><img src="/images/img1.jpg" alt=""></a>
+                                <div class="collection-number">1</div>
+                                <h4 class="collection-name">Shampoos</h4>
+                                <p class="collection-des">Phasellus et semper sapien. Sed pulvinar a dolor imperdiet iaculis. Fusce interdum arcu volutpat, mattis urna eu, placerat elit. Proin posuere ut ipsum ac ullamcorper</p>
+                                <a href="" class="collection-btn">View more
+                                    <div class="btn-before"></div>
+                                    <div class="btn-after"></div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="collection-item">
+                                <a href="" class="collection-img"><img src="/images/img1.jpg" alt=""></a>
+                                <div class="collection-number">1</div>
+                                <h4 class="collection-name">Shampoos</h4>
+                                <p class="collection-des">Phasellus et semper sapien. Sed pulvinar a dolor imperdiet iaculis. Fusce interdum arcu volutpat, mattis urna eu, placerat elit. Proin posuere ut ipsum ac ullamcorper</p>
+                                <a href="" class="collection-btn">
+                                    View more
+                                    <div class="btn-before"></div>
+                                    <div class="btn-after"></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-title animate__bounce animate__animated wow">
+                    <h1 class="main-heading featured ">Featured Products</h1>
+                    <h3 class="main-des">Assert your feminity with confidence using Triss Hair care Products</h3>
+                </div>
+                <div class="container">
+                    <div class="row featured-products animate__fadeInUp animate__animated wow"  data-wow-delay="0.2s">
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="featured-item">
+                                <a href="" class="featured-img"><img src="/images/product13.jpg" alt=""></a>
+                                <a href="" class="featured-name">Blonde Human Hair Long</a>
+                                <div class="featured-line"></div>
+                                <div class="featured-info">
+                                    <div class="featured-left">
+                                        <div class="products-price">$300.00</div>
+                                        <div class="products-rate"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                    </div>
+                                    <a class="featured-right">
+                                        View more 
+                                        <div class="btn-before"></div>
+                                        <div class="btn-after"></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="featured-item">
+                                <a href="" class="featured-img"><img src="/images/product13.jpg" alt=""></a>
+                                <a href="" class="featured-name">Blonde Human Hair Long</a>
+                                <div class="featured-line"></div>
+                                <div class="featured-info">
+                                    <div class="featured-left">
+                                        <div class="products-price">$300.00</div>
+                                        <div class="products-rate"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                    </div>
+                                    <a class="featured-right">
+                                        View more 
+                                        <div class="btn-before"></div>
+                                        <div class="btn-after"></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="featured-item">
+                                <a href="" class="featured-img"><img src="/images/product13.jpg" alt=""></a>
+                                <a href="" class="featured-name">Blonde Human Hair Long</a>
+                                <div class="featured-line"></div>
+                                <div class="featured-info">
+                                    <div class="featured-left">
+                                        <div class="products-price">$300.00</div>
+                                        <div class="products-rate"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                    </div>
+                                    <a class="featured-right">
+                                        View more 
+                                        <div class="btn-before"></div>
+                                        <div class="btn-after"></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="featured-item">
+                                <a href="" class="featured-img"><img src="/images/product13.jpg" alt=""></a>
+                                <a href="" class="featured-name">Blonde Human Hair Long</a>
+                                <div class="featured-line"></div>
+                                <div class="featured-info">
+                                    <div class="featured-left">
+                                        <div class="products-price">$300.00</div>
+                                        <div class="products-rate"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                    </div>
+                                    <a class="featured-right">
+                                        View more 
+                                        <div class="btn-before"></div>
+                                        <div class="btn-after"></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End products -->
+
+            <!-- Services -->
+            <section class="services">
+                <div class="row" style="margin:0">
+                    <div class="col-lg-6 col-md-6 col-sm-12 services-info animate__slideInLeft animate__animated wow">
+                        <h1 class="services-title">Services</h1>
+                        <p class="services-des">We are a research-oriented organization. Our goal is to provide every individual with special needs the services that fulfills his yearning.</p>
+                        <p class="services-sub">We are a research-oriented organization. Our goal is to provide every individual with special needs the product that fulfills his yearning.</p>
+                        <a href="" class="services-btn">
+                            More about us
+                            <div class="btn-before"></div>
+                            <div class="btn-after"></div>
+                        </a>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12  list-services animate__slideInRight animate__animated wow">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 services-item">
+                                <a href="" class="services-link">
+                                    <div class="flip-card">
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front services-img">
+                                                <img src="/images/img2_large.jpg"  >
+                                            </div>
+                                            <div class="flip-card-back">
+                                                <h1 class="services-name">Shampoo & Conditioners</h1> 
+                                                <p class="services-price">$ 150/-</p> 
+                                                <p class="services-time">3 Months</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  services-item">
+                                <a href="" class="services-link">
+                                    <div class="flip-card">
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front services-img">
+                                                <img src="/images/img2_large.jpg"  >
+                                            </div>
+                                            <div class="flip-card-back">
+                                                <h1 class="services-name">Shampoo & Conditioners</h1> 
+                                                <p class="services-price">$ 150/-</p> 
+                                                <p class="services-time">3 Months</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  services-item">
+                                <a href="" class="services-link">
+                                    <div class="flip-card">
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front services-img">
+                                                <img src="/images/img2_large.jpg"  >
+                                            </div>
+                                            <div class="flip-card-back">
+                                                <h1 class="services-name">Shampoo & Conditioners</h1> 
+                                                <p class="services-price">$ 150/-</p> 
+                                                <p class="services-time">3 Months</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 services-item">
+                                <a href="" class="services-link">
+                                    <div class="flip-card">
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front services-img">
+                                                <img src="/images/img2_large.jpg"  >
+                                            </div>
+                                            <div class="flip-card-back">
+                                                <h1 class="services-name">Shampoo & Conditioners</h1> 
+                                                <p class="services-price">$ 150/-</p> 
+                                                <p class="services-time">3 Months</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End services -->
+
+            <!-- Booking -->
+            <section class="booking" style="background-image: url(/images/img8.jpg); background-repeat: no-repeat; background-size: cover; background-position: top; background-attachment: fixed;">
+                <div class="booking-main">
+                    <div class="booking-content">
+                        <div class="booking-logo"><img src="/images/Triss-4_small.png" alt=""></div>
+                        <h1 class="booking-title">Booking</h1>
+                        
+                        <p class="booking-order">Make your love<br></p>
+                        <p class="booking-des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. In perspiciatis sit explicabo cupiditate maxime rerum.</p>
+                        <a href="/booking" class="booking-btn">
+                            Booking Now
+                            <div class="btn-before"></div>
+                            <div class="btn-after"></div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <!-- End booking -->
+
+            <!-- Hair problems -->
+            <section class="hair-problems" style="background-image: url(/images/hair-problems-img.jpg); background-repeat: no-repeat; background-size: cover;">
+                <div class="main-title animate__heartBeat animate__animated wow">
+                    <h1 class="main-heading">Hair Problems</h1>
+                    <h3 class="main-des">News & Update</h3>
+                </div>
+                <div class="container mt-5 animate__zoomIn animate__animated wow ">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-12 col-sm-12">
+                            <div class="hair-problems-img"><a href=""><img src="/images/blog1.jpg" alt="" width="100%"></a></div>
+                            <div class="hair-problems-content">
+                                <div class="post-date">31 / Jan</div>
+                                <div class="post-sub-title">4 Comments | <i class="fas fa-user"></i>hair-care admin</div>
+                                <a href="" class="post-heading">Make a bold look with your hair style!</a>
+                                <p class="post-des">Ruis curabitur ligula sapien, tincidun tre uiut, euismod vitae, posuere imperdiet, leo. Maecenas ...</p>
+                                <a href="" class="post-btn">Read more
+                                    <div class="btn-before btn-post"></div>
+                                    <div class="btn-after btn-post"></div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="hair-problems-post">
+                                    <div class="post-date">31 / Jan</div>
+                                    <div class="post-sub-title">4 Comments | <i class="fas fa-user"></i>hair-care admin</div>
+                                    <a href="" class="post-heading">Make a bold look with your hair style!</a>
+                                    <p class="post-des">Ruis curabitur ligula sapien, tincidun tre uiut, euismod vitae, posuere imperdiet, leo. Maecenas ...</p>
+                                    <a href="" class="post-btn">Read more
+                                        <div class="btn-before btn-post"></div>
+                                        <div class="btn-after btn-post"></div>
+                                    </a>
+                            </div>
+                            <div class="hair-problems-post">
+                                    <div class="post-date">31 / Jan</div>
+                                    <div class="post-sub-title">4 Comments | <i class="fas fa-user"></i> hair-care admin</div>
+                                    <a href="" class="post-heading">Make a bold look with your hair style!</a>
+                                    <p class="post-des">Ruis curabitur ligula sapien, tincidun tre uiut, euismod vitae, posuere imperdiet, leo. Maecenas ...</p>
+                                    <a href="" class="post-btn">Read more
+                                        <div class="btn-before btn-post"></div>
+                                        <div class="btn-after btn-post"></div>
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End Hair problems -->
+
+            <!-- Gallery -->
+            <section class="gallery">
+                <h1 class="main-heading">Gallery</h1>
+                <h3 class="main-des">Make a difference in the life of an individual...</h3>
+                <div class="container gallery-main">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-12 gallery-item">
+                            <a href="" class="gallery-img">
+                                <img src="/images/img21.jpg" alt="">
+                                <div class="gallery-img-content">
+                                    <h2>Get the best</h2>
+                                    <h2>for you</h2>
+                                </div>
+                            </a>
+                            <a href="" class="gallery-link">Long Wavy Hair</a>
+                            <p class="gallery-des">The ultimate classic hair which has won the hearts of many.</p>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 gallery-item">
+                            <a href="" class="gallery-img">
+                                <img src="/images/img21.jpg" alt="">
+                                <div class="gallery-img-content">
+                                    <h2>Get the best</h2>
+                                    <h2>for you</h2>
+                                </div>
+                            </a>
+                            <a href="" class="gallery-link">Long Wavy Hair</a>
+                            <p class="gallery-des">The ultimate classic hair which has won the hearts of many.</p>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 gallery-item">
+                            <a href="" class="gallery-img">
+                                <img src="/images/img21.jpg" alt="">
+                                <div class="gallery-img-content">
+                                    <h2>Get the best</h2>
+                                    <h2>for you</h2>
+                                </div>
+                            </a>
+                            <a href="" class="gallery-link">Long Wavy Hair</a>
+                            <p class="gallery-des">The ultimate classic hair which has won the hearts of many.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End gallery -->
+
+            <!-- Thus Spoke our Customers -->
+            <section class="customers" style="background-image: url(/images/img10.jpg);background-repeat:no-repeat;background-size:cover">
+                <h1 class="main-heading">Thus Spoke our Customers</h1>
+                <h3 class="main-des">Client Testimonials</h3>
+                <div class="container">
+                    <div class="customer-mess">
+                        <div>Here are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</div>
+                        <div>Here are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</div>
+                        <div>Here are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</div>
+                        <div>Here are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</div>
+                        <div>Here are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</div>
+                        <div>Here are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</div>
+                    </div>
+                    <div class="customer-info">
+                        <div>
+                            <div class="img"><img src="/images/medium1.jpg" alt="" width="100%"></div>
+                            <div class="text"><p class="customer-info-name">Philip Mathew  </p><p class="customer-info-job"> SEO Analyst</p></div>
+                        </div>
+                        <div>
+                            <div class="img"><img src="/images/medium2.jpg" alt="" width="100%"></div>
+                            <div class="text"><p class="customer-info-name">Philip Mathew  </p><p class="customer-info-job"> SEO Analyst</p></div>
+                        </div>
+                        <div>
+                            <div class="img"><img src="/images/medium3.jpg" alt="" width="100%"></div>
+                            <div class="text"><p class="customer-info-name">Philip Mathew  </p><p class="customer-info-job"> SEO Analyst</p></div>
+                        </div>
+                        <div>
+                            <div class="img"><img src="/images/medium4.jpg" alt="" width="100%"></div>
+                            <div class="text"><p class="customer-info-name">Philip Mathew  </p><p class="customer-info-job"> SEO Analyst</p></div>
+                        </div>
+                        <div>
+                            <div class="img"><img src="/images/medium5.jpg" alt="" width="100%"></div>
+                            <div class="text"><p class="customer-info-name">Philip Mathew  </p><p class="customer-info-job"> SEO Analyst</p></div>
+                        </div>
+                        <div>
+                            <div class="img"><img src="/images/medium6.jpg" alt="" width="100%"></div>
+                            <div class="text"><p class="customer-info-name">Philip Mathew  </p><p class="customer-info-job"> SEO Analyst</p></div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <!-- End thus Spoke our Customers -->
+
+            <!-- Contact -->
+            <section class="contact">
+                <div class="row" style="margin: 0;">
+                    <div class="user-mess col-lg-6 col-md-12 col-sm-12 ">
+                        <form action="">
+                            <input type="text" class="name" name="name" placeholder="Name" required>
+                            <input type="email" class="email" name="email" placeholder="Email" required>
+                            <input type="text" class="subject" name="subject" placeholder="Subject" required>
+                            <textarea name="mess" id="" cols="30" rows="6" placeholder="Message" class="mess" required></textarea>
+                            <button class="btn-form-submit" type="submit">
+                                Send
+                                <div class="btn-before btn-submit"></div>
+                                <div class="btn-after btn-submit"></div>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="contact-info col-lg-6 col-md-12 col-sm-12 animate__fadeInRight animate__animated wow">
+                        <h1 class="contact-heading">Get In Touch <br>
+                            With Us</h1>
+                        <p class="contact-des">Many ways to reach us:</p>
+                        <div class="contact-list">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <p class="contact-title"><i class="fab fa-instagram"></i>@FindYourDress</p>
+                                    <p class="contact-note">Follow us on instagram</p>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <p class="contact-title"><i class="fas fa-map-marker-alt"></i>123 New York, NY 60606</p>
+                                    <p class="contact-note">Try on our dresses in showroom</p>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <p class="contact-title"><i class="fas fa-phone-alt"></i>1800 1234 5678</p>
+                                    <p class="contact-note">Contact us by telephone</p>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <p class="contact-title"><i class="far fa-envelope"></i>yourdress@example .com</p>
+                                    <p class="contact-note">Write us a message</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End contact -->
+
+
+        </main>
+        <!-- End main content -->
 
         <%- include('../layouts/footer') %>
-       
+        <script src="/js/owl.carousel.min.js"></script>
+        <script src="/js/home.js"></script>
+        <script>
+            $('.owl-one').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                autoplay: true,
+                autoplayTimeout: 6000,
+                autoplayHoverPause: true,
+                navText: ['<div class="carousel-nav-text"><i class="far fa-chevron-left"></i></div>', '<div class="carousel-nav-text"><i class="far fa-chevron-right"></i></i></div>'],
+                responsive: {
+                    0: {
+                        items: 1
+                    }
+                }
+            })
+        </script>
+        <script src="/vendor/slick.min.js"></script>
+
+        <script>
+            $('.customer-mess').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+                asNavFor: '.customer-info'
+            });
+            $('.customer-info').slick({
+                slidesToShow:5 ,
+                slidesToScroll: 1,
+                asNavFor: '.customer-mess',
+                focusOnSelect: true,
+                centerMode: true,
+                centerPadding: '60px',
+                responsive: [
+                                {
+                                    breakpoint: 1240,
+                                    settings: {
+                                        centerMode: true,
+                                        centerPadding: '30px',
+                                        slidesToShow: 3
+                                    }
+                                },
+                                {
+                                    breakpoint: 768,
+                                    settings: {
+                                    centerMode: true,
+                                    centerPadding: '10px',
+                                    slidesToShow: 3
+                                    }
+                                }
+                            ],
+                prevArrow: '<div class="customer-info-prev"><i class="fas fa-chevron-left"></i></div>',
+                nextArrow: '<div class="customer-info-next"><i class="fas fa-chevron-right"></i></div>'
+            });    
+        </script>
+
+        <script src="vendor/wow.min.js"></script>
+        <script>
+              new WOW().init();
+        </script>
     </body>
 </html>

@@ -6,7 +6,7 @@
 }
 
 html {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
@@ -79,7 +79,7 @@ html {
 }
 
 .header-user-list::before {
-    content: '';
+    content: "";
     width: 30px;
     height: 10px;
     position: absolute;
@@ -143,7 +143,7 @@ html {
 .nav-item a {
     display: block;
     text-decoration: none;
-    padding: 20px 30px;
+    padding: 30px 30px;
     line-height: 100%;
     color: #fff;
     font-size: 18px;
@@ -329,7 +329,7 @@ html {
 }
 
 .footer-main::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     height: 100%;
