@@ -1,224 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+    <%- include('../layouts/manageHead') %>
 
-    <head>
-        <title>Booking Services</title>
-        <%- include('../layouts/head') %>
-            <!-- Thư viện và CSS Import ở dưới -->
-            <style>
-                @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+        <body>
+            <!-- Footer -->
+            <%- include('../layouts/manageSidebar') %>
 
-
-                .rating-container {
-                    position: relative;
-                    width: 400px;
-                    background: #111;
-                    padding: 20px 30px;
-                    border: 1px solid #444;
-                    border-radius: 5px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    flex-direction: column;
-                }
-
-                .rating-container .comment {
-                    display: none;
-                }
-
-                .rating-container .text {
-                    font-size: 25px;
-                    color: #666;
-                    font-weight: 500;
-                }
-
-                .rating-container .edit {
-                    position: absolute;
-                    right: 10px;
-                    top: 5px;
-                    font-size: 16px;
-                    color: #666;
-                    font-weight: 500;
-                    cursor: pointer;
-                }
-
-                .rating-container .edit:hover {
-                    text-decoration: underline;
-                }
-
-                .rating-container .star-widget input {
-                    display: none;
-                }
-
-                .star-widget label {
-                    font-size: 40px;
-                    color: #444;
-                    padding: 10px;
-                    float: right;
-                    transition: all 0.2s ease;
-                }
-
-                input:not(:checked)~label:hover,
-                input:not(:checked)~label:hover~label {
-                    color: #fd4;
-                }
-
-                input:checked~label {
-                    color: #fd4;
-                }
-
-                input#rate-5:checked~label {
-                    color: #fe7;
-                    text-shadow: 0 0 20px #952;
-                }
-
-                #rate-1:checked~.star-text #star-say:before {
-                    content: "I just hate it ";
-                }
-
-                #rate-2:checked~.star-text #star-say:before {
-                    content: "I don't like it ";
-                }
-
-                #rate-3:checked~.star-text #star-say:before {
-                    content: "It is awesome ";
-                }
-
-                #rate-4:checked~.star-text #star-say:before {
-                    content: "I just like it ";
-                }
-
-                #rate-5:checked~.star-text #star-say:before {
-                    content: "I just love it ";
-                }
-
-                .rating-container .star-text {
-                    display: none;
-                }
-
-                input:checked~.star-text {
-                    display: block;
-                }
-
-                .star-text #star-say {
-                    width: 100%;
-                    font-size: 25px;
-                    color: #fe7;
-                    font-weight: 500;
-                    margin: 5px 0 20px 0;
-                    text-align: center;
-                    transition: all 0.2s ease;
-                }
-
-                .star-text .textarea {
-                    height: 100px;
-                    width: 100%;
-                    overflow: hidden;
-                }
-
-                .star-text .textarea textarea {
-                    height: 100%;
-                    width: 100%;
-                    outline: none;
-                    color: #eee;
-                    border: 1px solid #333;
-                    background: #222;
-                    padding: 10px;
-                    font-size: 17px;
-                    resize: none;
-                }
-
-                .textarea textarea:focus {
-                    border-color: #444;
-                }
-
-                .star-text .btn {
-                    height: 45px;
-                    width: 100%;
-                    margin: 15px 0;
-                }
-
-                .star-text .btn button {
-                    height: 100%;
-                    width: 100%;
-                    border: 1px solid #444;
-                    outline: none;
-                    background: #222;
-                    color: #999;
-                    font-size: 17px;
-                    font-weight: 500;
-                    text-transform: uppercase;
-                    cursor: pointer;
-                    transition: all 0.3s ease;
-                }
-
-                .star-text .btn button:hover {
-                    background: #1b1b1b;
-                }
-            </style>
-    </head>
-
-    <body>
-        <%- include('../layouts/header') %>
-
-
-            <div class="container">
-                <div class="rating-container">
-                    <div class="comment">
-                        <div class="text">Thanks for rating us!</div>
-                        <div class="edit">EDIT</div>
+                <!-- !PAGE CONTENT! -->
+                <div class="w3-main" style="margin-left:300px;">
+                    <!-- Top container -->
+                    <div class="w3-bar w3-top w3-light-grey w3-large w3-hide-large" style="z-index:4">
+                        <button class="w3-bar-item w3-button w3-hide-large w3-hover-none" onclick="w3_open();"><i
+                                class="fa fa-bars"></i>  Menu</button>
+                        <span class="w3-bar-item w3-right"><strong>Manager Page</strong></span>
                     </div>
-                    <form class="star-widget">
-                        <input type="radio" name="rate" id="rate-5" value="5">
-                        <label for="rate-5" class="far fa-star"></label>
-                        <input type="radio" name="rate" id="rate-4" value="4">
-                        <label for="rate-4" class="far fa-star"></label>
-                        <input type="radio" name="rate" id="rate-3" value="3">
-                        <label for="rate-3" class="far fa-star"></label>
-                        <input type="radio" name="rate" id="rate-2" value="2">
-                        <label for="rate-2" class="far fa-star"></label>
-                        <input type="radio" name="rate" id="rate-1" value="1">
-                        <label for="rate-1" class="far fa-star"></label>
-                        <div class="star-text">
-                            <div id="star-say"></div>
-                            <div class="textarea">
-                                <textarea cols="30" placeholder="Describe your experience.."></textarea>
-                            </div>
-                            <div class="btn">
-                                <button type="submit">Submit</button>
+
+                    <!-- Header -->
+                    <header class="w3-container" style="padding-top:22px">
+                        <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
+                    </header>
+
+                    <div class="w3-row-padding w3-margin-bottom">
+                        <div class="w3-quarter">
+                            <div class="w3-container w3-red w3-padding-16">
+                                <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
+                                <div class="w3-right">
+                                    <h3>52</h3>
+                                </div>
+                                <div class="w3-clear"></div>
+                                <h4>Messages</h4>
                             </div>
                         </div>
-                    </form>
-                </div>
-            </div>
+                        <div class="w3-quarter">
+                            <div class="w3-container w3-blue w3-padding-16">
+                                <div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
+                                <div class="w3-right">
+                                    <h3>99</h3>
+                                </div>
+                                <div class="w3-clear"></div>
+                                <h4>Views</h4>
+                            </div>
+                        </div>
+                        <div class="w3-quarter">
+                            <div class="w3-container w3-teal w3-padding-16">
+                                <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
+                                <div class="w3-right">
+                                    <h3>23</h3>
+                                </div>
+                                <div class="w3-clear"></div>
+                                <h4>Shares</h4>
+                            </div>
+                        </div>
+                        <div class="w3-quarter">
+                            <div class="w3-container w3-orange w3-text-white w3-padding-16">
+                                <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
+                                <div class="w3-right">
+                                    <h3>50</h3>
+                                </div>
+                                <div class="w3-clear"></div>
+                                <h4>Users</h4>
+                            </div>
+                        </div>
+                    </div>
 
-            <%- include('../layouts/footer') %>
-                <script type="text/javascript">
-                    var ratingValue = 0;
-                    function postToController() {
-                        // console.log(document.getElementsByName('rate').length);
-                        for (i = 0; i < document.getElementsByName('rate').length; i++) {
-                            if (document.getElementsByName('rate')[i].checked == true) {
-                                var ratingValue = document.getElementsByName('rate')[i].value;
-                                break;
-                            }
-                        }
-                    }
-                    console.log(ratingValue)
-                    const btn = document.querySelector("button");
-                    const comment = document.querySelector(".comment");
-                    const widget = document.querySelector(".star-widget");
-                    const editBtn = document.querySelector(".edit");
-                    btn.onclick = () => {
-                        widget.style.display = "none";
-                        comment.style.display = "block";
-                        editBtn.onclick = () => {
-                            widget.style.display = "block";
-                            comment.style.display = "none";
-                        }
-                        return false;
-                    }
-                </script>
-    </body>
+                    <div class="w3-panel">
+                        <div class="w3-row-padding" style="margin:0 -16px">
+                            <div class="w3-third">
+                                <h5>Regions</h5>
+                                <img src="https://www.w3schools.com/w3images/region.jpg" style="width:100%"
+                                    alt="Google Regional Map">
+                            </div>
+                            <div class="w3-twothird">
+                                <h5>Feeds</h5>
+                                <table class="w3-table w3-striped w3-white">
+                                    <tr>
+                                        <td><i class="fa fa-user w3-text-blue w3-large"></i></td>
+                                        <td>New record, over 90 views.</td>
+                                        <td><i>10 mins</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-bell w3-text-red w3-large"></i></td>
+                                        <td>Database error.</td>
+                                        <td><i>15 mins</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-users w3-text-yellow w3-large"></i></td>
+                                        <td>New record, over 40 users.</td>
+                                        <td><i>17 mins</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-comment w3-text-red w3-large"></i></td>
+                                        <td>New comments.</td>
+                                        <td><i>25 mins</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-bookmark w3-text-blue w3-large"></i></td>
+                                        <td>Check transactions.</td>
+                                        <td><i>28 mins</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-laptop w3-text-red w3-large"></i></td>
+                                        <td>CPU overload.</td>
+                                        <td><i>35 mins</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-share-alt w3-text-green w3-large"></i></td>
+                                        <td>New shares.</td>
+                                        <td><i>39 mins</i></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="w3-container">
+                        <h5>General Stats</h5>
+                        <p>New Visitors</p>
+                        <div class="w3-grey">
+                            <div class="w3-container w3-center w3-padding w3-green" style="width:25%">+25%</div>
+                        </div>
+
+                        <p>New Users</p>
+                        <div class="w3-grey">
+                            <div class="w3-container w3-center w3-padding w3-orange" style="width:50%">50%</div>
+                        </div>
+
+                        <p>Bounce Rate</p>
+                        <div class="w3-grey">
+                            <div class="w3-container w3-center w3-padding w3-red" style="width:75%">75%</div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+
+                <!-- Footer -->
+                <%- include('../layouts/manageFooter') %>
+
+        </body>
 
 </html>

@@ -77,7 +77,7 @@ router.get('/find-by-id', function (req, res, next) {
 router.put('/update', function (req, res, next) {
 	// res.json(req.body)
 	Booking.updateOne({ _id: req.body._id }, req.body)
-		.then(() => res.send('Your appointment has been updated'))
+		.then((res) => res.json(res))
 		.catch((error) => {});
 });
 router.delete('/delete', function (req, res, next) {
