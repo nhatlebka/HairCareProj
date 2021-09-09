@@ -4,7 +4,6 @@ const routers = require('./src/routers/index');
 const path = require('path');
 const methodOverride = require('method-override');
 const db = require('./src/models');
-var mongoose = require('mongoose');
 
 const PORT = process.env.port || 3000;
 const app = express();

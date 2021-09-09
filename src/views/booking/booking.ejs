@@ -5,212 +5,566 @@
         <title>Booking Services</title>
         <%- include('../layouts/head') %>
             <!-- Thư viện và CSS Import ở dưới -->
+            <style>
+                #customerForm {
+                    /* background-color: #ffffff;
+                    margin: 100px auto; */
+                    font-family: "Open Sans";
+                    /* padding: 40px;
+                    width: 70%;
+                    min-width: 300px; */
+                    min-height: 500px;
+                    z-index: 0;
+                }
+
+                #customerForm h1 {
+                    text-align: center;
+                }
+
+                #customerForm input {
+                    padding: 10px;
+                    width: 100%;
+                    font-size: 17px;
+                    font-family: "Open Sans";
+                    border: 1px solid #aaaaaa;
+                }
+
+                /* Mark input boxes that gets an error on validation: */
+                #customerForm select.invalid,
+                #customerForm input.invalid {
+                    background-color: #ffdddd;
+                }
+
+                /* Hide all steps by default: */
+                #customerForm .tab {
+                    display: none;
+                }
+
+
+                /* Make circles that indicate the steps of the form: */
+                /* .step { */
+                /* height: 15px;
+                    width: 15px;
+                    margin: 0 2px; */
+                /* background-color: #bbbbbb; */
+                /* border: none; */
+                /* border-radius: 50%; */
+                /* display: inline-block; */
+                /* opacity: 0.5; */
+                /* } */
+
+                /* .step.active { */
+                /* opacity: 1; */
+                /* } */
+
+                /* Mark the steps that are finished and valid: */
+                .step.finish {
+                    /* background-color: #04AA6D; */
+                    color: green;
+                }
+
+                #progress {
+                    counter-reset: step;
+                    /* display: flex;
+                    justify-content: space-between; */
+                }
+
+                #progress li {
+                    list-style-type: none;
+                    /* float: left; */
+                    width: 25%;
+                    position: relative;
+                    text-align: center;
+                    font-size: 20px;
+                }
+
+                #progress li::before {
+                    content: counter(step);
+                    counter-increment: step;
+                    width: 30px;
+                    height: 30px;
+                    line-height: 25px;
+                    border: 2px solid #ccc;
+                    display: block;
+                    text-align: center;
+                    margin: 0 auto 10px auto;
+                    border-radius: 50%;
+                    background-color: #fff;
+                }
+
+                #progress li::after {
+                    content: '';
+                    width: 100%;
+                    height: 2px;
+                    background-color: #ccc;
+                    position: absolute;
+                    top: 15px;
+                    left: -50%;
+                    z-index: -1;
+                }
+
+                #progress li:first-child::after {
+                    content: none;
+                }
+
+                #progress li.active {
+                    color: green;
+                }
+
+                #progress li.active::before {
+                    border-color: green;
+                    transition: all linear 0.5s;
+                }
+
+                #progress li.active::after {
+                    background-color: green;
+                    transition: all linear 0.5s;
+                }
+
+                #progress li.finish::before {
+                    border-color: green;
+                    color: white;
+                    background-color: green;
+                    font-family: "Font Awesome 5 Pro";
+                    content: "\f00c";
+                    transition: all linear 0.5s;
+                }
+
+                #progress li.finish::after {
+                    background-color: green;
+                }
+            </style>
     </head>
 
     <body>
         <%- include('../layouts/header') %>
 
-            <div class="container mt-5">
+
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-6 col-sm-12">
-                        <h1>Booking an appointment</h1>
-                        <form action="/booking/store" method="post">
-                            <fieldset class="border p-3 mt-3">
-                                <legend class="w-auto">Contact info</legend>
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-12">
-                                        <label for="firstname">First Name:</label>
-                                        <input type="text" class="form-control" id="firstname" name="firstname"
-                                            required>
-                                    </div>
-                                    <div class="col-md-6 col-sm-12">
-                                        <label for="lastname">Last Name:</label>
-                                        <input type="text" class="form-control" id="lastname" name="lastname" required>
-                                    </div>
+                    <div class="col-md-12" id="customerForm">
+                        <div class="row justify-content-center">
+                            <h1>Booking Your Appointment:</h1>
+                        </div>
+                        <!-- Circles which indicates the steps of the form: -->
+                        <ul class="row" id="progress">
+                            <li class="step">Step 1</li>
+                            <li class="step">Step 2</li>
+                            <li class="step">Step 3</li>
+                            <li class="step">Finish</li>
+                        </ul>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 ">
+                                <!-- One "tab" for each step in the form: -->
+                                <div class="tab">
+                                    <fieldset class="border p-3" style="min-height: 500px;overflow: auto;">
+                                        <legend class="w-auto text-center">Contact info</legend>
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12">
+                                                <label for="customer-fullname">Full Name:</label>
+                                                <input type="text" class="form-control" id="customer-fullname"
+                                                    name="customer-fullname" onchange="autofill()" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12">
+                                                <label for="customer-phone">Phone number:</label>
+                                                <input type="tel" class="form-control" name="customer-phone"
+                                                    id="customer-phone" onchange="autofill()" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12">
+                                                <label for="customer-email">Email:</label>
+                                                <input type="email" class="form-control" id="customer-email"
+                                                    name="customer-email" placeholder="@" onchange="autofill()"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12">
+                                                <label for="customer-address">Address:</label>
+                                                <input type="text" class="form-control" id="customer-address"
+                                                    name="customer-address" onchange="autofill()" required>
+                                            </div>
+                                        </div>
+                                    </fieldset>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12">
-                                        <label for="email">Email:</label>
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="@"
-                                            required>
-                                    </div>
+                                <div class="tab">
+                                    <fieldset class="border p-3" style="min-height: 500px;overflow: auto;">
+                                        <legend class="w-auto text-center">Taking sevices</legend>
+                                        <div class="row">
+                                            <div class="form-group col-md-12 col-sm-12">
+                                                <label for="service-id">Sevices</label>
+                                                <select id="service-id" name="service-id" class="form-control"
+                                                    onchange="serviceIntro()" required>
+                                                    <option value="" disabled hidden selected>Services...
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12">
+                                                <fieldset class="border p-3">
+                                                    <legend class="w-auto">Introduce Service</legend>
+                                                    <p id="service_introduce"></p>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </fieldset>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12">
-                                        <label for="phonenumber">Phone number:</label>
-                                        <input type="number" class="form-control" name="phone" id="phonenumber">
-                                    </div>
+                                <div class="tab">
+                                    <fieldset class="border p-3" style="min-height: 500px;overflow: auto;">
+                                        <legend class="w-auto text-center">Choose Staff</legend>
+                                        <div class="row">
+                                            <div class="form-group col-md-12 col-sm-12">
+                                                <label for="staff-id">Staff</label>
+                                                <select id="staff-id" name="staff-id" class="form-control"
+                                                    onchange="staffIntro()" required>
+                                                    <option value="" disabled hidden selected>Staffs...
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12">
+                                                <fieldset class="border p-3">
+                                                    <legend class="w-auto">Introduce Staff</legend>
+                                                    <p class="text-center" id="staff_stars"></p>
+                                                    <p class="text-center" id="staff_introduce"></p>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </fieldset>
                                 </div>
-                            </fieldset>
-                            <fieldset class="border p-3 mt-3">
-                                <legend class="w-auto">Taking sevices & Time</legend>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6 col-sm-12">
-                                        <label for="inputSevice">Sevices</label>
-                                        <select id="inputSevice" name="service" class="form-control" required>
-                                            <option value="" disabled hidden selected>Choose...</option>
-                                            <option value="Head washing">Head washing</option>
-                                            <option value="Hair steaming">Hair steaming</option>
-                                            <option value="Hair straightener">Hair straightener</option>
-                                            <option value="Scalp Care">Scalp Care</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-6 col-sm-12">
-                                        <label for="inputDate">Date</label>
-                                        <input type="datetime-local" class="form-control" name="date" id="inputDate" required>
-                                    </div>
+                                <div class="tab">
+                                    <fieldset class="border p-3" style="min-height: 500px;overflow: auto;">
+                                        <legend class="w-auto text-center">Date & Time</legend>
+                                        <div class="form-row mt-3">
+                                            <label for="dateField" class="col-md-4 col-form-label">Date:</label>
+                                            <input id="dateField" type="date" class="col-md-8 form-control">
+                                        </div>
+                                        <div class="form-row mt-3">
+                                            <label for="timeField" class="col-md-4 col-form-label">Time:</label>
+                                            <input id="timeField" type="time" class="col-md-8 form-control"
+                                                onchange="setDateTime();showSubmitBtn()">
+                                        </div>
+                                    </fieldset>
                                 </div>
-                            </fieldset>
-                            <div class="row justify-content-center">
-                                <div class="form-group mt-3">
-                                    <button type="submit" class="btn btn-primary">Booking</button>
+                                <div class="tab">
+                                    <fieldset class="border p-3 text-center" style="min-height: 500px;overflow: auto;">
+                                        <legend class="w-auto">Final step</legend>
+                                        <br>
+                                        <h1 class="text-success"><b>OK!</b></h1>
+                                        <br>
+                                        <h3>Please confirm your entered information</h3>
+                                        <br>
+                                        <h1>&</h1>
+                                        <br>
+                                        <h1 class="text-warning"><b>SUBMIT</b></h1>
+                                    </fieldset>
+                                </div>
+                                <div class="row m-3" style="position: relative;">
+                                    <a type="button" id="prevBtn"
+                                        class="col-md-6 col-sm-6 col-6 btn btn-info text-white" onclick="nextPrev(-1)"
+                                        style="    position: absolute;
+                                        top: -55px;
+                                        left: 0px;">Previous</a>
+                                    <a type="button" id="nextBtn"
+                                        class="col-md-6 col-sm-6 col-6 btn btn-success text-white" onclick="nextPrev(1)"
+                                        style="position: absolute;
+                                        right: 0;
+                                        top: -55px;">Next</a>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                    <div class="col-md-6 col-sm-12">
-                        <h1>Your apointment</h1>
-                        <fieldset class="border p-3 mt-3" style="height: 465px;overflow: auto;">
-                            <legend class="w-auto">Booking list</legend>
-                            <form id="time-line" action="/booking/searchByPhone" method="GET" class="row mb-2">
-                                <div class="col-md-12 input-group">
-                                    <input type="number" name="phone" id="phone-number" class="form-control"
-                                        placeholder="Your phone number" required>
-                                    <div class="input-group-append">
-                                        <button class="btn btn-success" type="submit"
-                                            onclick="searchEnter()">Show</button>
-                                    </div>
-                                </div>
-                            </form>
-                            <div id="list-booking">
-                                <div class="row p-3">
-                                    <div class="col-12 bg-danger text-white p-3">
+                            <div class="col-lg-6 col-md-12 col-sm-12 ">
+                                <form id="bookingForm">
+                                    <fieldset disabled class="border p-3" style="min-height: 500px;">
+                                        <legend class="w-auto text-center">Your appointment info</legend>
                                         <div class="row">
-                                            <div class="col-sm-6">
-                                                <h5>Date: dd/mm/yyy</h5>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <h5>Time: HH:mm</h5>
+                                            <label for="customer_fullname" class="col-md-4 col-form-label">Your
+                                                name:</label>
+                                            <input type="text" id="customer_fullname"
+                                                class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                name="customer_fullname" style="border: none;" value="" required>
+                                        </div>
+                                        <div class="row">
+                                            <label for="customer_phone" class="col-md-4 col-form-label">Phone
+                                                number:</label>
+                                            <input type="text" id="customer_phone"
+                                                class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                name="customer_phone" style="border: none;" value="" required>
+                                        </div>
+                                        <div class="row">
+                                            <label for="customer_email" class="col-md-4 col-form-label">Email:</label>
+                                            <input type="text" id="customer_email"
+                                                class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                name="customer_email" style="border: none;" value="" required>
+                                        </div>
+                                        <div class="row">
+                                            <label for="customer_address"
+                                                class="col-md-4 col-form-label">Address:</label>
+                                            <input type="text" id="customer_address"
+                                                class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                name="customer_address" style="border: none;" value="" required>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12">
+                                                <fieldset disabled class="border p-3" aria-required="true">
+                                                    <legend class="w-auto"></legend>
+                                                    <div class="row">
+                                                        <label for="service_id"
+                                                            class="col-md-4 col-form-label">Service:</label>
+                                                        <select id="service_id"
+                                                            class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                            name="service_id" style="border: none;" required>
+                                                        </select>
+                                                    </div>
+                                                    <div class="row">
+                                                        <label for="staff_id"
+                                                            class="col-md-4 col-form-label">Staff:</label>
+                                                        <select id="staff_id"
+                                                            class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                            name="staff_id" style="border: none;" required>
+                                                        </select>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p class="col-md-4">Date:</p>
+                                                        <p class="col-md-8" id="dateView"></p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p class="col-md-4">Time:</p>
+                                                        <p class="col-md-8" id="timeView"></p>
+                                                    </div>
+                                                    <div class="row" style="display: none;">
+                                                        <label for="datetime" class="col-md-4 col-form-label">Date &
+                                                            Time</label>
+                                                        <input id="datetime" type="text"
+                                                            class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                            name="datetime" style="border: none;" required>
+                                                    </div>
+                                                </fieldset>
                                             </div>
                                         </div>
-                                        <h5>Sevice:</h5>
+                                    </fieldset>
+                                    <div class="row m-3" style="position: relative;">
+                                        <button type="submit" id="submitBtn"
+                                            class="col-md-12 col-sm-12 col-12 btn btn-warning font-weight-bold" onclick="bookingForm()"
+                                            style="display: none;position: absolute;
+                                            top: -55px;
+                                            left: 0px;">Submit</button>
                                     </div>
-                                </div>
-                                <div class="row p-3">
-                                    <div class="col-12 bg-warning text-white p-3">
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <h5>Date: dd/mm/yyy</h5>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <h5>Time: HH:mm</h5>
-                                            </div>
-                                        </div>
-                                        <h5>Sevice:</h5>
-                                    </div>
-                                </div>
-                                <div class="row p-3">
-                                    <div class="col-12 bg-success text-white p-3">
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <h5>Date: dd/mm/yyy</h5>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <h5>Time: HH:mm</h5>
-                                            </div>
-                                        </div>
-                                        <h5>Sevice:</h5>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
-                        </fieldset>
+                        </div>
                     </div>
                 </div>
             </div>
 
-
             <%- include('../layouts/footer') %>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
-                    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
-                    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
                 <script type="text/javascript">
-                    $("#time-line").submit(function (e) {
+                    $('form').submit(function (e) {
                         e.preventDefault();
                     });
-                    function getDB() {
+                    function bookingForm() {
+                        var data = {
+                            customer_fullname: $('#customer_fullname').val(),
+                            customer_phone: $('#customer_phone').val(),
+                            customer_email: $('#customer_email').val(),
+                            customer_address: $('#customer_address').val(),
+                            service_id: $('#service_id').val(),
+                            staff_id: $('#staff_id').val(),
+                            datetime: $('#datetime').val(),
+                        };
                         $.ajax({
-                            url: '/booking/database',
-                            method: "GET",
+                            url: '/booking',
+                            method: 'POST',
+                            data: data,
                             success: function (rs) {
-                                for (var key in rs) {
-                                    var item = `
-                                        <div class="row p-3">
-                                            <div class="col-12 bg-success text-white p-3">
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <h5>${moment(`${rs[key].date}`).format("ddd DD/MM/YYYY")}</h5>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <h5>${moment(`${rs[key].date}`).format("HH:mm")}</h5>
-                                                    </div>
-                                                </div>
-                                                <h5>Sevice: ${rs[key].service}</h5>
-                                            </div>
-                                        </div>
-                                    `;
-                                    $('#list-booking').append(item);
-                                }
-                            }
-                        });
-                    };
-                    getDB();
-                    function searchEnter() {
-                        var phone = $("#phone-number").val();
-                        if (phone == null || phone == "") {
-                            return;
-                        } else {
-                            searchByPhone();
-                        }
-                    };
-                    function searchByPhone() {
-                        $.ajax({
-                            url: '/booking/searchByPhone',
-                            method: "GET",
-                            data: {
-                                phone: $("#phone-number").val()
+                                window.location = '/thankyou';
                             },
-                            success: function (rs) {
-                                $('#list-booking').html("");
-                                for (var key in rs) {
-                                    var item = `
-                                        <div class="row p-3">
-                                            <div class="col-12 bg-success text-white p-3">
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <h5>${moment(`${rs[key].date}`).format("ddd DD/MM/YYYY")}</h5>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <h5>${moment(`${rs[key].date}`).format("HH:mm")}</h5>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <h5>${rs[key].firstname} ${rs[key].lastname}</h5>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <h5>Sevice: ${rs[key].service}</h5>
-                                                    </div>
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                    `;
-                                    $('#list-booking').append(item);
+                        });
+                        // document.getElementById('bookingForm').submit(data);
+                    }
+                    function autofill() {
+                        document.getElementById('customer_fullname').value =
+                            document.getElementById('customer-fullname').value;
+                        document.getElementById('customer_phone').value =
+                            document.getElementById('customer-phone').value;
+                        document.getElementById('customer_email').value =
+                            document.getElementById('customer-email').value;
+                        document.getElementById('customer_address').value =
+                            document.getElementById('customer-address').value;
+                    }
+
+                    var currentTab = 0;
+                    showTab(currentTab);
+                    function showSubmitBtn() {
+                        document.getElementById('submitBtn').style.display = 'inline-block';
+                    }
+                    function showTab(n) {
+                        var x = document.getElementsByClassName('tab');
+                        x[n].style.display = 'block';
+                        if (n == 0) {
+                            document.getElementById('prevBtn').style.display = 'none';
+                        } else {
+                            document.getElementById('prevBtn').style.display = 'inline-block';
+                        }
+                        if (n == x.length - 1) {
+                            document.getElementById('nextBtn').innerHTML = 'Next';
+                            $('a#nextBtn').attr("href", "#bookingForm");
+                        } else {
+                            document.getElementById('nextBtn').innerHTML = 'Next';
+                        }
+                        fixStepIndicator(n);
+                    }
+                    function fixStepIndicator(n) {
+                        var i,
+                            x = document.getElementsByClassName('step');
+                        for (i = 0; i < x.length; i++) {
+                            x[i].className = x[i].className.replace(' active', '');
+                        }
+                        if (n < 4) {
+                            x[n].className += ' active';
+                        } else return;
+                    }
+
+                    function nextPrev(n) {
+                        var x = document.getElementsByClassName('tab');
+                        if (n == 1 && !validateForm()) return false;
+                        x[currentTab].style.display = 'none';
+                        currentTab = currentTab + n;
+                        // if (currentTab >= x.length) {
+                        //     document.getElementById('bookingForm').submit();
+                        //     return false;
+                        // }
+                        showTab(currentTab);
+                    }
+
+                    function validateForm() {
+                        var x,
+                            y,
+                            i,
+                            z,
+                            valid = true;
+                        x = document.getElementsByClassName('tab');
+                        y = x[currentTab].getElementsByTagName('input');
+                        z = x[currentTab].getElementsByTagName('select');
+                        if (y.length > 0) {
+                            for (i = 0; i < y.length; i++) {
+                                if (y[i].value == '') {
+                                    y[i].className += ' invalid';
+                                    valid = false;
                                 }
                             }
+                        }
+                        if (z.length > 0) {
+                            for (i = 0; i < z.length; i++) {
+                                if (z[i].value == '') {
+                                    z[i].className += ' invalid';
+                                    valid = false;
+                                }
+                            }
+                        }
+                        if (valid) {
+                            document.getElementsByClassName('step')[currentTab].className += ' finish';
+                        }
+                        return valid;
+                    }
+
+                    function getService() {
+                        $.ajax({
+                            url: '/booking/get-service',
+                            method: 'GET',
+                            success: function (rs) {
+                                for (var key in rs) {
+                                    var option = `
+                <option value="${rs[key]._id}">${rs[key].service_name}</option>
+                `;
+                                    $('#service-id').append(option);
+                                }
+                            },
                         });
-                    };
+                    }
+                    function getStaff() {
+                        $.ajax({
+                            url: '/booking/get-staff',
+                            method: 'GET',
+                            success: function (rs) {
+                                for (var key in rs) {
+                                    var option = `
+                <option value="${rs[key]._id}">${rs[key].staff_fullname}</option>
+                `;
+                                    $('#staff-id').append(option);
+                                }
+                            },
+                        });
+                    }
+                    getService();
+                    getStaff();
+                    function serviceIntro() {
+                        $.ajax({
+                            url: '/booking/get-service',
+                            method: 'GET',
+                            success: function (rs) {
+                                $('#service_introduce').html('');
+                                var service_id = $('#service-id').val();
+                                for (var key in rs) {
+                                    var rs_id = rs[key]._id;
+                                    if (service_id == rs_id) {
+                                        var info = rs[key].service_introduce;
+                                        $('#service_introduce').append(info);
+                                        var assign = `
+                    <option value="${rs[key]._id}" selected>${rs[key].service_name}</option>
+                    `;
+                                        $('#service_id').append(assign);
+                                    } else {
+                                        continue;
+                                    }
+                                }
+                            },
+                        });
+                    }
+                    function staffIntro() {
+                        $.ajax({
+                            url: '/booking/get-staff',
+                            method: 'GET',
+                            success: function (rs) {
+                                $('#staff_stars').html('');
+                                $('#staff_introduce').html('');
+                                var staff_id = $('#staff-id').val();
+                                for (var key in rs) {
+                                    var rs_id = rs[key]._id;
+                                    if (staff_id == rs_id) {
+                                        var stars = `
+                    Service quality: <br> <b>${rs[key].staff_stars}</b> <br> <i class="fas fa-star"></i>
+                    `;
+                                        var info = rs[key].staff_introduce;
+                                        $('#staff_stars').append(stars);
+                                        $('#staff_introduce').append(info);
+                                        var assign = `
+                    <option value="${rs[key]._id}" selected>${rs[key].staff_fullname}</option>
+                    `;
+                                        $('#staff_id').append(assign);
+                                    } else {
+                                        continue;
+                                    }
+                                }
+                            },
+                        });
+                    }
+                    function setDateTime() {
+                        var mydate, mytime, mystring;
+                        mydate = $('#dateField').val();
+                        mytime = $('#timeField').val();
+                        mystring = `${mydate}T${mytime}`;
+                        document.getElementById('dateView').innerHTML = `<b>${moment(
+                            `${mydate}`
+                        ).format('dddd DD/MM/YYYY')}</b>`;
+                        document.getElementById('timeView').innerHTML = `<b>${mytime}</b>`;
+                        document.getElementById('datetime').value = mystring;
+                    }
+
                 </script>
     </body>
 

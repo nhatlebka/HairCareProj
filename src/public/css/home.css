@@ -1,3 +1,965 @@
-.display-3 {
-    color: red;
+/* Slider top */
+.slider-top .item {
+    position: relative;
+}
+
+.owl-one .owl-dots {
+    display: none;
+}
+
+.owl-nav .owl-prev,
+.owl-nav .owl-next {
+    outline: none !important;
+    border: none !important;
+}
+
+.owl-prev div,
+.owl-next div {
+    padding: 6px 14px;
+    font-size: 20px;
+    font-size: 40px;
+    color: #fff;
+    position: absolute;
+    top: 40%;
+}
+
+.owl-prev div {
+    left: 8%;
+}
+
+.owl-next div {
+    right: 8%;
+}
+
+.slide-sale {
+    position: absolute;
+    font-family: Josefin Sans;
+    top: 18%;
+}
+
+.slide-sale h2 {
+    margin-top: 8px;
+    margin-bottom: 0;
+    font-size: 60px;
+    font-weight: 300;
+    line-height: 100%;
+}
+
+.slide-sale h1 {
+    margin: 0;
+    font-size: 130px;
+    font-weight: 300;
+    height: 130px;
+}
+
+.slide-sale h1 .sale-off {
+    font-size: 80px;
+}
+
+.slide-sale a {
+    margin-top: 30px;
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: 300;
+    width: 140px;
+    text-align: center;
+    background-color: #000;
+    position: relative;
+    transition: all 0.5s;
+}
+
+.btn-before,
+.btn-after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transition: all 0.5s;
+    transform: scale(0);
+}
+
+.btn-before {
+    transform-origin: left bottom;
+    border-bottom: 1px solid #000;
+    border-left: 1px solid #000;
+}
+
+.btn-after {
+    transform-origin: right top;
+    border-right: 1px solid #000;
+    border-top: 1px solid #000;
+}
+
+.slide-sale a:hover {
+    background-color: transparent;
+    color: #000;
+}
+
+.slide-btn:hover .btn-slide {
+    transform: scale(1);
+}
+
+.slide-sale-one {
+    left: 15%;
+}
+
+.slide-sale-two {
+    left: 60%;
+}
+
+.slider-overplay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: none;
+}
+/* End slide top */
+
+/* About us */
+.about-us {
+    margin-top: -34px;
+}
+.about-us-hair-care {
+    padding: 140px 150px;
+    text-align: center;
+    background-color: #000;
+}
+
+.about-us-heading {
+    color: #fff;
+    font-size: 60px;
+    font-weight: 300;
+}
+
+.hair-care-des {
+    margin-top: 30px;
+    color: #d1a95e;
+    font-family: Josefin Sans;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 150%;
+}
+
+.hair-care-content {
+    margin-top: 30px;
+    color: #fff;
+}
+
+.about-us-hair-care .about-us-btn {
+    margin: 50px auto;
+    position: relative;
+    display: block;
+    text-decoration: none;
+    padding: 12px 20px;
+    color: #fff;
+    background-color: #d1a95e;
+    width: 180px;
+    transition: all 0.5s;
+}
+
+.about-us-btn .btn-before {
+    border-bottom: 2px solid #d1a95e;
+    border-left: 2px solid #d1a95e;
+}
+
+.about-us-btn .btn-after {
+    border-top: 2px solid #d1a95e;
+    border-right: 2px solid #d1a95e;
+}
+
+.about-us-hair-care .about-us-btn:hover {
+    background-color: transparent;
+}
+
+.about-us-btn:hover .btn-about {
+    transform: scale(1);
+}
+
+.about-us-person-use {
+    padding: 100px 150px;
+    text-align: center;
+    background-image: linear-gradient(#fff, #ddd);
+}
+
+.persion-count {
+    margin-top: 40px;
+    color: #d1a95e;
+    font-size: 70px;
+    font-weight: 300;
+}
+
+.about-type {
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+.about-title {
+    margin-top: 80px;
+    font-family: Josefin Sans;
+    font-size: 34px;
+    font-weight: 300;
+}
+
+.about-end {
+    font-weight: 300;
+    color: #d1a95e;
+}
+
+/* End about us */
+
+/* Products */
+.products {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.products-collection,
+.featured-products {
+    margin-top: 50px;
+}
+
+.collection-item,
+.featured-item {
+    margin-top: 20px;
+    padding-bottom: 24px;
+    background-color: #fff;
+}
+
+.collection-item .collection-img {
+    text-decoration: none;
+    display: block;
+}
+
+.collection-item .collection-img img {
+    width: 100%;
+}
+
+.collection-number {
+    margin: 30px auto 0;
+    width: 50px;
+    height: 50px;
+    background-color: #d1a95e;
+    color: #fff;
+    border-radius: 50%;
+    line-height: 50px;
+}
+
+.collection-name {
+    margin-top: 20px;
+    font-size: 30px;
+    font-family: Josefin Sans;
+    font-weight: 300;
+}
+
+.collection-des {
+    width: 80%;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+.collection-item .collection-btn {
+    margin: 20px auto;
+    display: block;
+    position: relative;
+    text-decoration: none;
+    font-weight: 300;
+    color: #fff;
+    background-color: #d1a95e;
+    padding: 10px;
+    width: 130px;
+    transition: all 0.5s;
+}
+
+.collection-btn .btn-before {
+    border-bottom: 1px solid #d1a95e;
+    border-left: 1px solid #d1a95e;
+}
+
+.collection-btn .btn-after {
+    border-top: 1px solid #d1a95e;
+    border-right: 1px solid #d1a95e;
+}
+
+.collection-item .collection-btn:hover {
+    background-color: transparent;
+    color: #000;
+}
+
+.collection-btn:hover .btn-before,
+.collection-btn:hover .btn-after {
+    transform: scale(1);
+}
+
+.featured {
+    margin-top: 100px;
+}
+
+.featured-item .featured-img {
+    text-decoration: none;
+}
+
+.featured-item .featured-img img {
+    width: 100%;
+}
+
+.featured-item .featured-name {
+    text-decoration: none;
+    font-family: Josefin Sans;
+    display: block;
+    font-size: 20px;
+    width: 90%;
+    margin: 14px auto;
+    color: #000;
+    line-height: 120%;
+}
+
+.featured-item .featured-name:hover {
+    color: #d1a95e;
+}
+
+.featured-line {
+    width: 80%;
+    margin: 0 auto;
+    border-bottom: 1px solid #aaa;
+}
+
+.featured-info {
+    width: 80%;
+    margin: 16px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.products-rate {
+    font-size: 12px;
+}
+
+.featured-info .featured-right {
+    display: block;
+    position: relative;
+    text-decoration: none;
+    font-weight: 300;
+    font-size: 12px;
+    color: #fff;
+    background-color: #d1a95e;
+    padding: 8px 0;
+    width: 90px;
+    transition: all 0.5s;
+}
+
+.featured-right .btn-before {
+    border-bottom: 1px solid #d1a95e;
+    border-left: 1px solid #d1a95e;
+}
+
+.featured-right .btn-after {
+    border-top: 1px solid #d1a95e;
+    border-right: 1px solid #d1a95e;
+}
+
+.featured-right:hover {
+    background-color: transparent;
+    color: #000;
+}
+
+.featured-right:hover .btn-before,
+.featured-right:hover .btn-after {
+    transform: scale(1);
+}
+
+/* End products */
+
+/* Services */
+.services {
+    padding: 60px 0;
+    background: linear-gradient(to top right, #000, #222);
+    text-align: center;
+    color: #fff;
+}
+
+.services-title {
+    margin-top: 100px;
+    font-size: 60px;
+    font-family: Josefin Sans;
+    font-weight: 300;
+}
+
+.services-des {
+    margin: 50px auto;
+    width: 70%;
+    font-family: Josefin Sans;
+    font-size: 30px;
+    font-weight: 300;
+    color: #d1a95e;
+    line-height: 150%;
+}
+
+.services-sub {
+    margin: 50px auto;
+    width: 70%;
+    font-family: Josefin Sans;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.services-info .services-btn {
+    margin: 40px auto;
+    display: block;
+    position: relative;
+    text-decoration: none;
+    font-weight: 300;
+    color: #fff;
+    background-color: #d1a95e;
+    padding: 12px 0;
+    width: 150px;
+    transition: all 0.5s;
+}
+
+.services-btn .btn-before {
+    border-bottom: 1px solid #d1a95e;
+    border-left: 1px solid #d1a95e;
+}
+
+.services-btn .btn-after {
+    border-top: 1px solid #d1a95e;
+    border-right: 1px solid #d1a95e;
+}
+
+.services-btn:hover {
+    background-color: transparent;
+    color: #d1a95e;
+}
+
+.services-btn:hover .btn-before,
+.services-btn:hover .btn-after {
+    transform: scale(1);
+}
+
+.list-services {
+    padding: 40px;
+}
+
+.services-item {
+    margin-top: 30px;
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 295px;
+    perspective: 1000px;
+}
+.services-img {
+    overflow: hidden;
+}
+
+.services-img img {
+    width: auto;
+    height: auto;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    background-color: #bbb;
+    color: black;
+}
+
+.flip-card-back {
+    background: linear-gradient(to top right, #000, #333);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.services-name,
+.services-price {
+    font-size: 26px;
+    font-family: Josefin Sans;
+    font-weight: 300;
+}
+
+.services-price {
+    color: #d1a95e;
+    margin-top: 20px;
+}
+
+.services-time {
+    font-size: 18px;
+    font-weight: 300;
+}
+/* End sevices */
+
+/* Booking */
+
+.booking {
+    padding: 100px 0;
+}
+
+.booking-main {
+    margin: 0 auto;
+    width: 580px;
+    height: 580px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.booking-content {
+    width: 540px;
+    height: 540px;
+    border-radius: 50%;
+    border: 1px dashed #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 50px;
+    text-align: center;
+}
+
+.booking-title {
+    margin-top: 30px;
+    font-size: 60px;
+    font-family: Josefin Sans;
+    font-weight: 300;
+}
+
+.booking-order {
+    margin-top: 10px;
+    font-size: 30px;
+    font-family: Josefin Sans;
+    font-weight: 300;
+}
+
+.booking-content .booking-btn {
+    margin: 20px auto;
+    position: relative;
+    display: block;
+    max-width: 140px;
+    background-color: #000;
+    padding: 10px 20px;
+    color: #fff;
+    transition: all 0.5s;
+    text-decoration: none;
+}
+
+.booking-btn:hover {
+    color: #000;
+    background-color: transparent;
+}
+
+.booking-btn:hover .btn-before,
+.booking-btn:hover .btn-after {
+    transform: scale(1);
+}
+/* End booking */
+
+/* Hair problems */
+.hair-problems {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.main-heading {
+    font-size: 60px;
+    font-weight: 300;
+    font-family: Josefin Sans;
+    line-height: 60px;
+}
+
+.main-des {
+    margin-top: 0;
+    font-weight: 300;
+    font-family: Josefin Sans;
+    font-size: 30px;
+}
+
+.hair-problems-content {
+    background-color: #fff;
+    padding: 40px 60px;
+}
+
+.post-date {
+    font-size: 30px;
+    font-weight: 300;
+    color: #d1a95e;
+    font-family: Josefin Sans;
+}
+
+.post-sub-title {
+    margin-top: 10px;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.post-sub-title i {
+    font-size: 12px;
+    position: relative;
+    top: -2px;
+    margin-right: 4px;
+}
+
+.hair-problems-content .post-heading,
+.hair-problems-post .post-heading {
+    margin-top: 20px;
+    display: block;
+    text-decoration: none;
+    font-size: 34px;
+    font-weight: 300;
+    font-family: Josefin Sans;
+    color: #000;
+    line-height: 120%;
+}
+
+.hair-problems-post .post-heading {
+    font-size: 30px;
+}
+
+.hair-problems-content .post-heading:hover,
+.hair-problems-post .post-heading:hover {
+    color: #d1a95e;
+}
+
+.post-des {
+    margin-top: 12px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    text-overflow: ellipsis;
+}
+
+.hair-problems-post .post-btn,
+.hair-problems-content .post-btn {
+    margin: 20px auto;
+    position: relative;
+    display: block;
+    max-width: 140px;
+    background-color: #000;
+    padding: 10px 20px;
+    color: #fff;
+    transition: all 0.5s;
+    text-decoration: none;
+}
+
+.hair-problems-post .post-btn:hover,
+.hair-problems-content .post-btn:hover {
+    color: #000;
+    background-color: transparent;
+}
+
+.hair-problems-post .post-btn:hover .btn-post,
+.hair-problems-content .post-btn:hover .btn-post {
+    transform: scale(1);
+}
+
+.hair-problems-post {
+    background-color: #fff;
+    height: calc(50% - 15px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.hair-problems-post:last-child {
+    margin-top: 30px;
+}
+/* End hair problems*/
+
+/* Gallery */
+.gallery {
+    padding: 100px 0;
+    text-align: center;
+}
+.gallery-main {
+    margin-top: 60px;
+}
+
+.gallery-main .gallery-img {
+    display: block;
+    position: relative;
+    text-decoration: none;
+    width: 100%;
+    border-radius: 50%;
+    border: 8px solid #000;
+    overflow: hidden;
+    transition: all 0.5s;
+}
+
+.gallery-main .gallery-img img {
+    width: 100%;
+}
+
+.gallery-img-content {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    width: calc(100% + 16px);
+    height: calc(100% + 16px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.6);
+    transform: scale(0);
+    transition: all 0.5s;
+}
+
+.gallery-img-content h2 {
+    color: #fff;
+    font-family: Josefin Sans;
+    font-weight: 300;
+}
+
+.gallery-img-content h2:last-child {
+    color: #d1a95e;
+    font-size: 46px;
+}
+
+.gallery-main .gallery-img:hover .gallery-img-content {
+    transform: scale(1);
+}
+
+.gallery-main .gallery-img:hover {
+    border-color: transparent;
+}
+
+.gallery-item .gallery-link {
+    margin-top: 30px;
+    display: block;
+    text-decoration: none;
+    font-size: 34px;
+    font-family: Josefin Sans;
+    font-weight: 300;
+    color: #000;
+}
+
+.gallery-item .gallery-link:hover {
+    color: #d1a95e;
+}
+
+.gallery-des {
+    margin-top: 14px;
+}
+/* End gallery */
+
+/* Customers */
+.customers {
+    color: #fff;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.customer-mess {
+    margin-top: 50px;
+}
+
+.customer-info {
+    margin-top: 80px;
+    position: relative;
+}
+
+.customer-info .slick-slide {
+    text-align: center;
+}
+
+.customer-info .slick-slide img {
+    margin: 0 auto;
+    width: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    opacity: 0.7;
+    transition: all 0.5s;
+}
+
+.customer-info .slick-slide .text {
+    margin-top: 30px;
+    display: none;
+}
+
+.customer-info .slick-slide .text .customer-info-name {
+    font-family: Josefin Sans;
+    font-size: 24px;
+    font-weight: 300;
+}
+
+.customer-info .slick-slide .text .customer-info-job {
+    color: #d1a95e;
+    font-weight: 300;
+}
+
+.customer-info .slick-slide {
+    position: relative;
+    top: 40px;
+}
+
+.customer-info .slick-slide.slick-current img {
+    width: 182px;
+    opacity: 1;
+}
+
+.customer-info .slick-slide.slick-current {
+    top: 0px;
+}
+
+.customer-info .slick-slide.slick-current .text {
+    display: block;
+}
+
+.customer-info .customer-info-prev,
+.customer-info .customer-info-next {
+    position: absolute;
+    top: 22%;
+    font-size: 40px;
+    color: #fff;
+    z-index: 1;
+}
+
+.customer-info .customer-info-next {
+    right: 0;
+}
+/* End customers */
+
+/* Contact */
+.user-mess {
+    background-color: #000;
+    padding: 90px 180px 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-mess input,
+.user-mess textarea {
+    background-color: transparent;
+    width: 100%;
+    margin-top: 30px;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #555;
+    color: #fff;
+}
+
+.user-mess input:focus,
+.user-mess textarea:focus {
+    outline: none;
+    border-bottom: 2px solid #ccc;
+}
+
+::placeholder {
+    color: #ccc;
+}
+
+.user-mess button {
+    display: block;
+    position: relative;
+    margin-top: 30px;
+    width: 100%;
+    text-align: center;
+    border: none;
+    outline: none;
+    background-color: #d1a95e;
+    color: #fff;
+    padding: 10px;
+    transition: all 0.5s;
+}
+
+.btn-before.btn-submit {
+    border-bottom: 2px solid #d1a95e;
+    border-left: 2px solid #d1a95e;
+}
+
+.btn-after.btn-submit {
+    border-top: 2px solid #d1a95e;
+    border-right: 2px solid #d1a95e;
+}
+
+.user-mess button:hover {
+    background-color: transparent;
+}
+
+.user-mess button:hover .btn-submit {
+    transform: scale(1);
+}
+
+.contact-info {
+    padding: 120px;
+    text-align: center;
+}
+
+.contact-heading {
+    margin-top: 40px;
+    font-size: 60px;
+    font-family: Josefin Sans;
+    font-weight: 300;
+}
+
+.contact-des {
+    margin-top: 20px;
+    font-size: 30px;
+    font-family: Josefin Sans;
+    font-weight: 300;
+}
+
+.contact-list {
+    margin-top: 10px;
+}
+
+.contact-list div div {
+    margin-top: 30px;
+}
+
+.contact-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.contact-title i {
+    margin-right: 10px;
+    color: #d1a95e;
+}
+
+.contact-note {
+    font-size: 18px;
+    font-weight: 300;
 }

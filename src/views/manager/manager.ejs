@@ -1,304 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+    <%- include('../layouts/manageHead') %>
 
-    <head>
-        <title>Booking Services</title>
-        <%- include('../layouts/head') %>
-            <!-- Thư viện và CSS Import ở dưới -->
-            <style>
-                * {
-                    box-sizing: border-box;
-                }
+        <body>
+            <!-- Footer -->
+            <%- include('../layouts/manageSidebar') %>
 
-                body {
-                    background-color: #f1f1f1;
-                }
+                <!-- !PAGE CONTENT! -->
+                <div class="w3-main" style="margin-left:300px;">
+                    <!-- Top container -->
+                    <div class="w3-bar w3-top w3-light-grey w3-large w3-hide-large" style="z-index:4">
+                        <button class="w3-bar-item w3-button w3-hide-large w3-hover-none" onclick="w3_open();"><i
+                                class="fa fa-bars"></i>  Menu</button>
+                        <span class="w3-bar-item w3-right"><strong>Manager Page</strong></span>
+                    </div>
 
-                #regForm {
-                    background-color: #ffffff;
-                    margin: 100px auto;
-                    font-family: "Open Sans";
-                    padding: 40px;
-                    width: 70%;
-                    min-width: 300px;
-                }
+                    <!-- Header -->
+                    <header class="w3-container" style="padding-top:22px">
+                        <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
+                    </header>
 
-                h1 {
-                    text-align: center;
-                }
-
-                input {
-                    padding: 10px;
-                    width: 100%;
-                    font-size: 17px;
-                    font-family: "Open Sans";
-                    border: 1px solid #aaaaaa;
-                }
-
-                /* Mark input boxes that gets an error on validation: */
-                input.invalid {
-                    background-color: #ffdddd;
-                }
-
-                /* Hide all steps by default: */
-                .tab {
-                    display: none;
-                }
-
-                button {
-                    background-color: #04AA6D;
-                    color: #ffffff;
-                    border: none;
-                    padding: 10px 20px;
-                    font-size: 17px;
-                    font-family: "Open Sans";
-                    cursor: pointer;
-                }
-
-                button:hover {
-                    opacity: 0.8;
-                }
-
-                #prevBtn {
-                    background-color: #bbbbbb;
-                }
-
-                /* Make circles that indicate the steps of the form: */
-                /* .step { */
-                    /* height: 15px;
-                    width: 15px;
-                    margin: 0 2px; */
-                    /* background-color: #bbbbbb; */
-                    /* border: none; */
-                    /* border-radius: 50%; */
-                    /* display: inline-block; */
-                    /* opacity: 0.5; */
-                /* } */
-
-                /* .step.active { */
-                    /* opacity: 1; */
-                /* } */
-
-                /* Mark the steps that are finished and valid: */
-                .step.finish {
-                    /* background-color: #04AA6D; */
-                    color: green;
-                }
-
-                #progress {
-                    counter-reset: step;
-                    /* display: flex;
-                    justify-content: space-between; */
-                }
-
-                #progress li {
-                    list-style-type: none;
-                    float: left;
-                    width: 25%;
-                    position: relative;
-                    text-align: center;
-                    font-size: 20px;
-                }
-
-                #progress li::before {
-                    content: counter(step);
-                    counter-increment: step;
-                    width: 30px;
-                    height: 30px;
-                    line-height: 30px;
-                    border: 2px solid #ccc;
-                    display: block;
-                    text-align: center;
-                    margin: 0 auto 10px auto;
-                    border-radius: 50%;
-                    background-color: #ffffff;
-
-                    /* z-index: 1; */
-                }
-
-                #progress li::after {
-                    content: '';
-                    position: absolute;
-                    width: 85%;
-                    height: 3px;
-                    background-color: #bbbbbb;
-                    top: 15px;
-                    left: -43%;
-                    /* z-index: -1; */
-                }
-
-                #progress li:first-child::after {
-                    content: none;
-                }
-
-                #progress li.active {
-                    color: green;
-                }
-
-                #progress li.active::before {
-                    border-color: green;
-                    transition: all linear 0.5s;
-                }
-
-                #progress li.active::after {
-                    background-color: green;
-                    transition: all linear 0.5s;
-                }
-
-                #progress li.finish::before {
-                    border-color: green;
-                    color: white;
-                    background-color: green;
-                    font-family: "Font Awesome 5 Pro";
-                    content: "\f00c";
-                    transition: all linear 0.5s;
-                }
-
-                #progress li.finish::after {
-                    background-color: green;
-                }
-            </style>
-    </head>
-
-    <body>
-        <%- include('../layouts/header') %>
-
-
-            <div class="container">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Click</button>
-
-                <!-- The Modal -->
-                <div class="modal fade" id="myModal">
-                    <div class="modal-dialog modal-dialog-centered modal-xl">
-                        <div class="modal-content">
-                            <!-- Modal body -->
-                            <div class="modal-body">
-                                <form id="regForm" action="">
-                                    <!-- Circles which indicates the steps of the form: -->
-                                    <ul id="progress">
-                                        <li class="step">Step 1</li>
-                                        <li class="step">Step 2</li>
-                                        <li class="step">Step 3</li>
-                                        <li class="step">Step 4</li>
-                                    </ul>
-                                    <h1>Register:</h1>
-                                    <!-- One "tab" for each step in the form: -->
-                                    <div class="tab">Name:
-                                        <p><input placeholder="First name..." oninput="this.className = ''"
-                                                name="fname"></p>
-                                        <p><input placeholder="Last name..." oninput="this.className = ''" name="lname">
-                                        </p>
-                                    </div>
-                                    <div class="tab">Contact Info:
-                                        <p><input placeholder="E-mail..." oninput="this.className = ''" name="email">
-                                        </p>
-                                        <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
-                                    </div>
-                                    <div class="tab">Birthday:
-                                        <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
-                                        <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
-                                        <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
-                                    </div>
-                                    <div class="tab">Login Info:
-                                        <p><input placeholder="Username..." oninput="this.className = ''" name="uname">
-                                        </p>
-                                        <p><input placeholder="Password..." oninput="this.className = ''" name="pword"
-                                                type="password">
-                                        </p>
-                                    </div>
-                                    <div style="overflow:auto;">
-                                        <div style="float:right;">
-                                            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                                            <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-                                        </div>
-                                    </div>
-                                </form>
+                    <div class="w3-row-padding w3-margin-bottom">
+                        <div class="w3-quarter">
+                            <div class="w3-container w3-red w3-padding-16">
+                                <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
+                                <div class="w3-right">
+                                    <h3>52</h3>
+                                </div>
+                                <div class="w3-clear"></div>
+                                <h4>Messages</h4>
+                            </div>
+                        </div>
+                        <div class="w3-quarter">
+                            <div class="w3-container w3-blue w3-padding-16">
+                                <div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
+                                <div class="w3-right">
+                                    <h3>99</h3>
+                                </div>
+                                <div class="w3-clear"></div>
+                                <h4>Views</h4>
+                            </div>
+                        </div>
+                        <div class="w3-quarter">
+                            <div class="w3-container w3-teal w3-padding-16">
+                                <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
+                                <div class="w3-right">
+                                    <h3>23</h3>
+                                </div>
+                                <div class="w3-clear"></div>
+                                <h4>Shares</h4>
+                            </div>
+                        </div>
+                        <div class="w3-quarter">
+                            <div class="w3-container w3-orange w3-text-white w3-padding-16">
+                                <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
+                                <div class="w3-right">
+                                    <h3>50</h3>
+                                </div>
+                                <div class="w3-clear"></div>
+                                <h4>Users</h4>
                             </div>
                         </div>
                     </div>
+
+                    <div class="w3-panel">
+                        <div class="w3-row-padding" style="margin:0 -16px">
+                            <div class="w3-third">
+                                <h5>Regions</h5>
+                                <img src="https://www.w3schools.com/w3images/region.jpg" style="width:100%"
+                                    alt="Google Regional Map">
+                            </div>
+                            <div class="w3-twothird">
+                                <h5>Feeds</h5>
+                                <table class="w3-table w3-striped w3-white">
+                                    <tr>
+                                        <td><i class="fa fa-user w3-text-blue w3-large"></i></td>
+                                        <td>New record, over 90 views.</td>
+                                        <td><i>10 mins</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-bell w3-text-red w3-large"></i></td>
+                                        <td>Database error.</td>
+                                        <td><i>15 mins</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-users w3-text-yellow w3-large"></i></td>
+                                        <td>New record, over 40 users.</td>
+                                        <td><i>17 mins</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-comment w3-text-red w3-large"></i></td>
+                                        <td>New comments.</td>
+                                        <td><i>25 mins</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-bookmark w3-text-blue w3-large"></i></td>
+                                        <td>Check transactions.</td>
+                                        <td><i>28 mins</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-laptop w3-text-red w3-large"></i></td>
+                                        <td>CPU overload.</td>
+                                        <td><i>35 mins</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-share-alt w3-text-green w3-large"></i></td>
+                                        <td>New shares.</td>
+                                        <td><i>39 mins</i></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="w3-container">
+                        <h5>General Stats</h5>
+                        <p>New Visitors</p>
+                        <div class="w3-grey">
+                            <div class="w3-container w3-center w3-padding w3-green" style="width:25%">+25%</div>
+                        </div>
+
+                        <p>New Users</p>
+                        <div class="w3-grey">
+                            <div class="w3-container w3-center w3-padding w3-orange" style="width:50%">50%</div>
+                        </div>
+
+                        <p>Bounce Rate</p>
+                        <div class="w3-grey">
+                            <div class="w3-container w3-center w3-padding w3-red" style="width:75%">75%</div>
+                        </div>
+                    </div>
                 </div>
+                <hr>
 
-            </div>
 
-            <%- include('../layouts/footer') %>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
-                    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
-                    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                <!-- Footer -->
+                <%- include('../layouts/manageFooter') %>
 
-                <script type="text/javascript">
-                    var currentTab = 0; // Current tab is set to be the first tab (0)
-                    showTab(currentTab); // Display the current tab
-
-                    function showTab(n) {
-                        // This function will display the specified tab of the form...
-                        var x = document.getElementsByClassName("tab");
-                        x[n].style.display = "block";
-                        //... and fix the Previous/Next buttons:
-                        if (n == 0) {
-                            document.getElementById("prevBtn").style.display = "none";
-                        } else {
-                            document.getElementById("prevBtn").style.display = "inline";
-                        }
-                        if (n == (x.length - 1)) {
-                            document.getElementById("nextBtn").innerHTML = "Submit";
-                        } else {
-                            document.getElementById("nextBtn").innerHTML = "Next";
-                        }
-                        //... and run a function that will display the correct step indicator:
-                        fixStepIndicator(n)
-                    }
-
-                    function nextPrev(n) {
-                        // This function will figure out which tab to display
-                        var x = document.getElementsByClassName("tab");
-                        // Exit the function if any field in the current tab is invalid:
-                        if (n == 1 && !validateForm()) return false;
-                        // Hide the current tab:
-                        x[currentTab].style.display = "none";
-                        // Increase or decrease the current tab by 1:
-                        currentTab = currentTab + n;
-                        // if you have reached the end of the form...
-                        if (currentTab >= x.length) {
-                            // ... the form gets submitted:
-                            document.getElementById("regForm").submit();
-                            return false;
-                        }
-                        // Otherwise, display the correct tab:
-                        showTab(currentTab);
-                    }
-
-                    function validateForm() {
-                        // This function deals with validation of the form fields
-                        var x, y, i, valid = true;
-                        x = document.getElementsByClassName("tab");
-                        y = x[currentTab].getElementsByTagName("input");
-                        // A loop that checks every input field in the current tab:
-                        for (i = 0; i < y.length; i++) {
-                            // If a field is empty...
-                            if (y[i].value == "") {
-                                // add an "invalid" class to the field:
-                                y[i].className += " invalid";
-                                // and set the current valid status to false
-                                valid = false;
-                            }
-                        }
-                        // If the valid status is true, mark the step as finished and valid:
-                        if (valid) {
-                            document.getElementsByClassName("step")[currentTab].className += " finish";
-                        }
-                        return valid; // return the valid status
-                    }
-
-                    function fixStepIndicator(n) {
-                        // This function removes the "active" class of all steps...
-                        var i, x = document.getElementsByClassName("step");
-                        for (i = 0; i < x.length; i++) {
-                            x[i].className = x[i].className.replace(" active", "");
-                        }
-                        //... and adds the "active" class on the current step:
-                        x[n].className += " active";
-                    }
-                </script>
-    </body>
+        </body>
 
 </html>

@@ -125,11 +125,21 @@
     margin-top: 100px;
     margin-bottom: 100px;
 }
-.combo{
-    margin-bottom: 30px;
-}
 .combo-img img{
     display: block;
     margin-left:auto;
     margin-right:auto
+}
+.combo{
+    margin-bottom: 30px;
+    box-shadow: 2px 4px 5px rgb(0, 0, 0.3);
+    transform: translateX(400%);
+    transition: transform 0.4s ease;
+}
+
+.combo:nth-of-type(even){
+    transform: translateX(-400%);
+}
+.combo.show{
+    transform: translateY(0);
 }

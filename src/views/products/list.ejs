@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Products</title>
+    <%- include('../layouts/head') %>
+    <!-- Thư viện và CSS Import ở dưới -->
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/css/products.css">
+    <link rel="stylesheet" href="/css/productsResponsive.css">
+<body>
+<%- include('../layouts/header') %>
+
+<div class="main-content" >
+    <div class="breadcrumb d-flex justify-content-center align-items-center" style="background-image: url(/images/breadcrumb_bg_img.jpg)">
+        <h1 class="breadcrumb-text">PRODUCTS</h1>
+    </div>
+</div>
+
+<div class="main-wrap">
+    <div class="row">
+        <div class="main-right col-lg-12 col-md-12 col-sm-12">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="post-info text-center">
+                        <div class="fall-item fall-effect">
+                            <img src="/images/BIOTRA4.1.jpg" alt="" width="100%"/>
+                        </div>
+                        <div class="line-img"></div>
+                        <a href="" class="product-name">SHAMPOO & CONDITIONER</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="post-info text-center">
+                        <div class="fall-item fall-effect">
+                            <img src="/images/hairtreatments.jpg" alt="" width="100%"/>
+                        </div>
+                        <div class="line-img"></div>
+                        <a href="" class="product-name">HAIR TREATMENTS</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="post-info text-center">
+                        <div class="fall-item fall-effect">
+                            <img src="/images/naturals.jpg" alt="" width="100%"/>
+                        </div>
+                        <div class="line-img"></div>
+                        <a href="" class="product-name">NATURE HAIRCARE</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="post-info text-center">
+                        <div class="fall-item fall-effect">
+                            <img src="/images/styling.jpg" alt="" width="100%"/>
+                        </div>
+                        <div class="line-img"></div>
+                        <a href="" class="product-name">STYLING PRODUCTS</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="post-info text-center">
+                        <div class="fall-item fall-effect">
+                            <img src="/images/hairdryer.jpg" alt="" width="100%"/>
+                        </div>
+                        <div class="line-img"></div>
+                        <a href="" class="product-name">HAIR DRYERS</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="post-info text-center">
+                        <div class="fall-item fall-effect">
+                            <img src="/images/flatiron.jpg" alt="" width="100%"/>
+                        </div>
+                        <div class="line-img"></div>
+                        <a href="" class="product-name">FLAT IRONS & HAIR STRAIGHTENERS</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="post-info text-center">
+                        <div class="fall-item fall-effect">
+                            <img src="/images/curlingiron.jpg" alt="" width="100%"/>
+                        </div>
+                        <div class="line-img"></div>
+                        <a href="" class="product-name">CURLING IRONS & WANDS</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="post-info text-center">
+                        <div class="fall-item fall-effect">
+                            <img src="/images/haircut.jpg" alt="" width="100%"/>
+                        </div>
+                        <div class="line-img"></div>
+                        <a href="" class="product-name">HAIR CUTTING TOOLS</a>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+<%- include('../layouts/footer') %>
+
+<script>
+    $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:true,
+        autoplay:true,
+        autoplayTimeout:4000,
+        autoplayHoverPause:true,
+        navText : ['<div class="carousel-nav-text"><i class="fal fa-chevron-left"></i></div>','<div class="carousel-nav-text"><i class="fal fa-chevron-right"></i></div>'],
+        responsive:{
+            0:{
+                items:1
+            }
+        }
+    })
+</script>
+</body>
+</html>

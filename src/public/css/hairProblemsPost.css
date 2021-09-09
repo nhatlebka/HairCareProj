@@ -1,0 +1,222 @@
+.breadcrumb {
+    padding: 30px;
+    flex-direction: column;
+    position: relative;
+    text-align: center;
+}
+
+.breadcrumb::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    background-image: linear-gradient(transparent, #fff);
+}
+
+.breadcrumb-text {
+    position: relative;
+    z-index: 1;
+    font-weight: 300;
+}
+
+.breadcrumb-text a {
+    color: #000;
+    text-decoration: none;
+}
+
+.breadcrumb-text a:hover {
+    color: #d39e3c;
+}
+
+.main-post {
+    padding: 0;
+    border: 1px solid #ccc;
+}
+
+.post-date,
+.post-heading,
+.post-type,
+.post-count-comment,
+.post-comment {
+    margin-top: 30px;
+    text-align: center;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.post-heading {
+    padding: 0 50px;
+}
+
+.post-comment {
+    color: #d39e3c;
+}
+
+.post-type i {
+    margin-right: 10px;
+}
+
+.post-type a {
+    color: #000;
+    text-decoration: none;
+}
+
+.post-type a:hover {
+    color: #d39e3c;
+}
+
+.post-line {
+    width: 80%;
+    margin: 0 auto;
+    border-bottom: 1px solid #ccc;
+}
+
+.post-content {
+    margin-top: 30px;
+    line-height: 170%;
+    padding: 0 50px 50px;
+    text-align: justify;
+}
+
+.post-title,
+.post-category {
+    margin: 20px 0;
+}
+
+.post-list {
+    list-style: none;
+    padding-left: 30px;
+}
+
+.post-item::before {
+    content: '•   ';
+    color: #d39e3c;
+    font-size: 30px;
+    position: relative;
+    top: 4px;
+}
+
+.post-item {
+    margin: 12px 0;
+}
+
+.post-text a {
+    text-decoration: none;
+    color: #000;
+    margin-left: 20px;
+    transition: all 0.5s;
+}
+
+.post-text a:hover {
+    color: #d39e3c;
+}
+
+.form-main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.group-name,
+.group-email {
+    width: calc(50% - 16px);
+}
+
+.name,
+.email {
+    width: 100%;
+    padding: 6px 10px;
+    border: none;
+    border-bottom: 2px solid #000;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.group-email {
+    margin-left: 32px;
+}
+
+#required-name,
+#required-email,
+#required-message {
+    margin-left: 10px;
+    color: red;
+    display: none;
+}
+
+.name:focus,
+.email:focus,
+.message:focus {
+    outline: none;
+}
+
+.name:focus ~ #required-name,
+.email:focus ~ #required-email,
+.message:focus ~ #required-message {
+    display: none;
+}
+
+.message {
+    border: none;
+    width: 100%;
+    margin-top: 30px;
+    border-bottom: 2px solid #000;
+    font-size: 18px;
+    font-weight: 300;
+    padding: 6px 10px;
+}
+
+.form-submit {
+    display: block;
+    padding: 14px 32px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    margin: 30px auto;
+    position: relative;
+    transition: all 0.4s;
+    outline: none;
+}
+
+.form-submit:focus {
+    outline: none;
+}
+
+.before,
+.after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: scale(0);
+    transition: all 0.4s;
+}
+
+.before {
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+    transform-origin: left bottom;
+}
+
+.after {
+    border-right: 1px solid #000;
+    border-top: 1px solid #000;
+    transform-origin: right top;
+}
+
+.form-submit:hover {
+    color: #000;
+    background-color: #fff;
+}
+
+.form-submit:hover .before,
+.form-submit:hover .after {
+    transform: scale(1);
+}
+
+.text-comment {
+    margin: 3px 0px;
+}

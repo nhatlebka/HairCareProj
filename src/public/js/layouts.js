@@ -4,6 +4,9 @@ const mobileBack = $('.mobile-back');
 const headerMobileOverPlay = $('.header-mobile-over-play');
 const mobileIconControl = $('.mobile-icon-control');
 const mobileListChild = $('.nav-mobile-list-child');
+const catIconControl = $('.cat-icon-control');
+const catListChild = $('.nav-cat-list-child');
+const ListChild = $('.nav-list-child');
 const headerNavScroll = $('.header-nav-scroll');
 const headerMainScroll = $('.header-main-scroll');
 
@@ -77,4 +80,23 @@ window.addEventListener('scroll', () => {
             transform: 'translateY(-100%)',
         });
     }
+});
+
+catListChild.slideUp();
+
+catIconControl.each(function (key) {
+    if ($(this).html() === '<i class="fas fa-caret-left"></i>') {
+        $(this).html('<i class="fas fa-sort-down"></i>');
+    } else {
+        $(this).html('<i class="fas fa-caret-left"></i>');
+    }
+    $(this).click(function () {
+        console.log($(this).html);
+        if ($(this).html() === '<i class="fas fa-caret-left"></i>') {
+            $(this).html('<i class="fas fa-sort-down"></i>');
+        } else {
+            $(this).html('<i class="fas fa-caret-left"></i>');
+        }
+        $(catListChild[key]).slideToggle();
+    });
 });
