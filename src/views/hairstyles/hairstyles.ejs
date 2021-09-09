@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>The Hairstyle Handbook</title>
+    <%- include('../layouts/head') %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/hairstyles.css">
+
+<body>
+<%- include('../layouts/header') %>
+
+<div class="w3-content" style="max-width:1600px">
+
+    <!-- Image header -->
+    <header class="w3-display-container w3-wide" id="home">
+        <img class="w3-image" src="photos/headerimage.jpg" width="1600" height="900">
+        <div class="w3-display-left w3-padding-large">
+            <h1 class="w3-jumbo w3-text-white w3-hide-small"><b>HAIRSTYLES</b></h1>
+            <h1 class="w3-text-white">Gallery</h1>
+            <h6><button class="w3-button w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off"
+                        onclick="document.getElementById('subscribe').style.display='block'">SUBSCRIBE</button></h6>
+        </div>
+    </header>
+
+    <!-- Grid -->
+    <div class="w3-row w3-padding w3-border">
+
+        <!-- FEATURED POST -->
+        <div class="w3-col l8 s12">
+            <div class="w3-container w3-white w3-margin w3-padding-large">
+                <div class="w3-center">
+                    <h3>EASY BACK TO SCHOOL HAIRSTYLES 2021</h3>
+                    <h5>Trends, <span class="w3-opacity">Sep 10, 2021</span></h5>
+                </div>
+
+                <div class="w3-justify">
+                    <img src="photos/s10.jpg" style="width:100%" class="w3-padding-16">
+                    <p><strong>More Hats!</strong> I am crazy about hats these days. Some text about this blog entry. Fashion fashion and mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor
+                        magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sedtellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+                    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                    <p class="w3-left"><button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><b><i class="fa fa-thumbs-up"></i> Like</b></button></p>
+                    <p class="w3-clear"></p>
+                </div>
+                <hr>
+
+                <!-- LATEST POSTS 1 -->
+                <div class="w3-row-padding w3-padding-16 w3-center">
+                    <div class="menu-headline">
+                        <h1 style="font-size: 50px; color: #1D262D; margin-bottom: 20px"> Our Latest Posts </h1>
+                    </div>
+
+                    <div class="w3-col l4 s12 w3-padding-16">
+                        <img src="photos/s8.jpg" width="200" height="320">
+                        <a href="#"><h3>Should You Eat Avocado Everyday? </h3></a>
+                        <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+                    </div>
+                    <div class="w3-col l4 s12 w3-padding-16">
+                        <img src="photos/s2.jpg" width="200" height="320">
+                        <a href="#"><h3> 50+ Gorgeous Braided Hairstyles That Will Turn Heads </h3></a>
+                        <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+                    </div>
+                    <div class="w3-col l4 s12 w3-padding-16">
+                        <img src="photos/s3.jpg" width="200" height="320">
+                        <a href="#"><h3> Wavy Fringe + Fade Haircut </h3></a>
+                        <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+                        <p>What else?</p>
+                    </div>
+                </div>
+
+                <!-- LATEST POSTS 2 -->
+                <div class="w3-row-padding w3-padding-16 w3-center">
+                    <div class="w3-col l4 s12 w3-padding-16">
+                        <img src="photos/s4.jpg" width="200" height="320" style="overflow-y: hidden">
+                        <a href="#"><h3>71 Perfect Half Up Half Down Hairstyles That Won't Stress Your Hair </h3></a>
+                        <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+                    </div>
+                    <div class="w3-col l4 s12 w3-padding-16">
+                        <img src="photos/s5.jpg" width="200" height="320">
+                        <a href="#"><h3> 50 Medium Haircuts for Women That’ll Be Huge in 2021 </h3></a>
+                        <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+                    </div>
+                    <div class="w3-col l4 s12 w3-padding-16">
+                        <img src="photos/s9.jpg" width="200" height="320">
+                        <a href="#"><h3> The Powers of Broccoli </h3></a>
+                        <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+                        <p>What else?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END FEATURED POST -->
+
+
+        <!-- About/Information menu -->
+        <div class="w3-col l4">
+            <!-- About Card -->
+            <div class="w3-white w3-margin">
+                <img src="photos/h3.jpg" alt="Jane" style="width: 100%; height:50%">
+                <div class="w3-container w3-black">
+                    <h4>About the Hairstyles Gallery</h4>
+                    <p>Looking to try something new? Consider this your destination for all things hair inspo.
+                        We put together amazing hairstyles for all ages, face shapes, lengths and colours! And don't forget to check out
+                        our "Trends" Category for the latest hairstyles and haircare tips! </p>
+                </div>
+            </div>
+            <hr>
+
+            <!-- Posts -->
+            <div class="w3-white w3-margin">
+                <div class="w3-container w3-padding w3-black">
+                    <h4>Popular Categories</h4>
+                </div>
+                <ul class="w3-ul w3-hoverable w3-white">
+                    <li class="w3-padding-16">
+                        <img src="photos/h1.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+                        <span class="w3-large">Autumn 2021 Trends</span>
+                        <br>
+                        <span>Sed mattis nunc</span>
+                    </li>
+                    <li class="w3-padding-16">
+                        <img src="photos/h2.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+                        <span class="w3-large">Black Hairstyles</span>
+                        <br>
+                        <span>Praes tinci sed</span>
+                    </li>
+                    <li class="w3-padding-16">
+                        <img src="photos/h4.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+                        <span class="w3-large">Easy Hairstyles</span>
+                        <br>
+                        <span>Ultricies congue</span>
+                    </li>
+                    <li class="w3-padding-16">
+                        <img src="photos/h5.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+                        <span class="w3-large">Braids</span>
+                        <br>
+                        <span>Lorem ipsum dipsum</span>
+                    </li>
+                </ul>
+            </div>
+            <hr>
+
+            <!-- Inspiration -->
+            <div class="w3-white w3-margin">
+                <div class="w3-container w3-padding w3-black">
+                    <h4>Inspiration</h4>
+                </div>
+                <div class="w3-row-padding w3-white">
+                    <div class="w3-col s6">
+                        <p><img src="/w3images/jeans.jpg" alt="Jeans" style="width:100%"></p>
+                        <p><img src="/w3images/team1.jpg" alt="Jeans" style="width:100%"></p>
+                    </div>
+                    <div class="w3-col s6">
+                        <p><img src="/w3images/avatar_hat.jpg" alt="Men in Hats" style="width:100%" class="w3-grayscale"></p>
+                        <p><img src="/w3images/team4.jpg" alt="Jeans" style="width:100%"></p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <!-- Subscribe -->
+            <div class="w3-white w3-margin">
+                <div class="w3-container w3-padding w3-black">
+                    <h4>Subscribe</h4>
+                </div>
+                <div class="w3-container w3-white">
+                    <p>Enter your name and e-mail below and get notified on the latest blog posts.</p>
+                    <p><input class="w3-input w3-border" type="text" placeholder="Your Name" style="width:100%"></p>
+                    <p><input class="w3-input w3-border" type="text" placeholder="Your Email" style="width:100%"></p>
+                    <p><button type="button" onclick="document.getElementById('subscribe').style.display='block'" class="w3-button w3-block w3-red">Subscribe</button></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- END GRID -->
+    </div>
+
+    <!-- END CONTENT -->
+</div>
+
+<!-- Subscribe Modal -->
+<div id="subscribe" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content" style="padding:32px">
+        <div class="w3-container w3-white">
+            <i onclick="document.getElementById('subscribe').style.display='none'" class="fa fa-remove w3-transparent w3-button w3-xlarge w3-right"></i>
+            <h2 class="w3-wide">SUBSCRIBE</h2>
+            <p>Join my mailing list to receive updates on the latest blog posts and other things.</p>
+            <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail"></p>
+            <button type="button" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom" onclick="document.getElementById('subscribe').style.display='none'">Subscribe</button>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<%- include('../layouts/footer') %>
+
+<script>
+    document.getElementById("myBtn").click();
+    function myFunction(id) {
+        var x = document.getElementById(id);
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+        } else {
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+
+    function likeFunction(x) {
+        x.style.fontWeight = "bold";
+        x.innerHTML = "✓ Liked";
+    }
+</script>
+
+</body>
+</html>
