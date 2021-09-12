@@ -103,6 +103,11 @@
                 .needs-validation h2 {
                     text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
                 }
+
+                .nav-link.active {
+                    background: #343A40 !important;
+                    color: white !important;
+                }
             </style>
     </head>
 
@@ -113,10 +118,10 @@
                 <form class="needs-validation" novalidate>
                     <div class="row mb-3">
                         <label for="customer-phone" class="col-xl-5 col-lg-6 col-md-7 col-sm-12">
-                            <h2>Search your appointments:</h2>
+                            <h2>Check your appointments:</h2>
                         </label>
                         <div class="input-group col-xl-7 col-lg-6 col-md-7 col-sm-12">
-                            <input type="text" id="customer-phone" name="customer_phone" class="form-control shadow-sm"
+                            <input type="text" id="customer-phone" name="customer_phone" class="form-control shadow"
                                 placeholder="Insert your phone number" required>
                             <div class="invalid-tooltip">Please enter your phone to search.</div>
                             <button class="btn btn-success input-group-append form-control col-3 text-center shadow"
@@ -125,93 +130,51 @@
                         </div>
                     </div>
                 </form>
-                <ul class="nav nav-tabs nav-justified">
+                <ul class="nav nav-pills">
                     <li class="nav-item font-weight-bold">
-                        <a class="nav-link active" data-toggle="tab" href="#list-all" style="color: black;">All
-                            appointment</a>
+                        <a class="nav-link active" data-toggle="tab" href="#list-upcoming"
+                            style="color: #343A40;padding: 20px;border: 1px solid rgba(52, 58, 64, 0.5)">Upcoming
+                            appointments</a>
                     </li>
                     <li class="nav-item font-weight-bold">
-                        <a class="nav-link" data-toggle="tab" href="#list-today" style="color: black;">Today
-                            appointment</a>
-                    </li>
-                    <li class="nav-item font-weight-bold">
-                        <a class="nav-link" data-toggle="tab" href="#list-pending" style="color: black;">Pending
-                            appointment</a>
-                    </li>
-                    <li class="nav-item font-weight-bold">
-                        <a class="nav-link" data-toggle="tab" href="#list-complete" style="color: black;">Complete
+                        <a class="nav-link" data-toggle="tab" href="#list-previous"
+                            style="color: #343A40;padding: 20px;border: 1px solid rgba(52, 58, 64, 0.5)">Previous
                             appointment</a>
                     </li>
                 </ul>
 
-                <div class="tab-content" style="overflow: auto;border: 1px solid #dee2e6;border-top: none;">
-                    <div id="list-all" class="tab-pane active"><br>
-                        <table class="table table-striped table-hover shadow">
+                <div class="tab-content" style="overflow: auto;">
+                    <div id="list-upcoming" class="tab-pane active">
+                        <table class="table table-hover table-dark">
                             <thead>
                                 <tr>
-                                    <th>Date</th>
-                                    <th>Time</th>
+                                    <th>Date & Time</th>
                                     <th>Full name</th>
                                     <th>Phone number</th>
                                     <th>Service</th>
                                     <th>Staff</th>
+                                    <th>Status</th>
                                     <th>More</th>
                                 </tr>
                             </thead>
-                            <tbody id="list-all-appointment">
-
+                            <tbody id="list-upcoming-appointment">
                             </tbody>
                         </table>
                     </div>
-                    <div id="list-today" class="tab-pane fade"><br>
-                        <table class="table table-striped table-hover shadow">
+                    <div id="list-previous" class="tab-pane fade">
+                        <table class="table table-hover table-dark">
                             <thead>
                                 <tr>
-                                    <th>Date</th>
-                                    <th>Time</th>
+                                    <th>Date & Time</th>
                                     <th>Full name</th>
                                     <th>Phone number</th>
                                     <th>Service</th>
                                     <th>Staff</th>
+                                    <th>Rating</th>
                                     <th>More</th>
                                 </tr>
                             </thead>
-                            <tbody id="list-today-appointment">
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="list-pending" class="tab-pane fade"><br>
-                        <table class="table table-striped table-hover shadow">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Time</th>
-                                    <th>Full name</th>
-                                    <th>Phone number</th>
-                                    <th>Service</th>
-                                    <th>Staff</th>
-                                    <th>More</th>
-                                </tr>
-                            </thead>
-                            <tbody id="list-pending-appointment">
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="list-complete" class="tab-pane fade"><br>
-                        <table class="table table-striped table-hover shadow">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Time</th>
-                                    <th>Full name</th>
-                                    <th>Phone number</th>
-                                    <th>Service</th>
-                                    <th>Staff</th>
-                                    <th>More</th>
-                                </tr>
-                            </thead>
-                            <tbody id="list-complete-appointment">
+                            <tbody id="list-previous-appointment">
 
                             </tbody>
                         </table>
@@ -310,6 +273,10 @@
                                         onclick="update()">Update</button>
                                     <button id="delete-btn" type="button" class="col-2 btn btn-danger"
                                         data-toggle="modal" data-target="#confirmDelete">Delete</button>
+                                    <button id="cancel-btn" type="button" class="col-2 btn btn-danger"
+                                        data-toggle="modal" data-target="#confirmCancel">Cancel</button>
+                                    <p id="cancelling" class="text-danger"><b>Your appointment is pending
+                                            cancellation!</b></p>
                                 </div>
                             </form>
                             <div class="row mt-3 justify-content-center">
@@ -359,7 +326,7 @@
                             <h5 class="modal-title" id="confirmDeleteLabel">Confirm to delete!</h5>
                         </div>
                         <div class="modal-body">
-                            Are you sure you want to cancel your appointment?
+                            Are you sure you want to delete your appointment?
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-danger" onclick="deleteAppointment()">YES</button>
@@ -368,260 +335,26 @@
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="confirmCancel" data-keyboard="false" tabindex="-1"
+                aria-labelledby="confirmCancelLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="confirmCancelLabel">Confirm to cancel!</h5>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to cancel your appointment?
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-danger" onclick="cancelAppointment()">YES</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <%- include('../layouts/footer') %>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
-                    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
-                    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+                <script src="/js/review.js"></script>
                 <script type="text/javascript">
-                    $('form').submit(function (e) {
-                        e.preventDefault();
-                    });
-                    function submitRating() {
-                        $('.rated').show()
-                        $('.star-text').hide()
-                        for (i = 0; i < document.getElementsByName('rating').length; i++) {
-                            if (document.getElementsByName('rating')[i].checked == true) {
-                                var ratingValue = document.getElementsByName('rating')[i].value;
-                                break;
-                            }
-                        }
-                        $.ajax({
-                            type: "PUT",
-                            url: "/booking/update",
-                            data: {
-                                _id: $('#_id').val(),
-                                comment: $("#txtArea").val(),
-                                rating: ratingValue,
-                            },
-                            success: function (rs) {
-                                console.log(rs);
-                            }
-                        });
-                    };
-                    function deleteAppointment() {
-                        $.ajax({
-                            type: "DELETE",
-                            url: "/booking/delete",
-                            data: {
-                                _id: $("#_id").val()
-                            },
-                            success: function (rs) {
-                                alert(rs)
-                                window.location = '/booking/review'
-                            }
-                        });
-                    }
-                    function findByPhone() {
-                        $.ajax({
-                            url: '/booking/find-by-phone',
-                            method: "GET",
-                            data: {
-                                customer_phone: $('#customer-phone').val()
-                            },
-                            success: function (rs) {
-                                $('#list-all-appointment').html("");
-                                $('#list-today-appointment').html("");
-                                $('#list-pending-appointment').html("")
-                                $('#list-complete-appointment').html("")
-                                for (var key in rs) {
-                                    var rsdate = new Date(rs[key].datetime)
-                                    var today = new Date()
-
-                                    if ((rsdate < today) && (rsdate.toDateString() != today.toDateString())) {
-                                        var item = `
-                                            <tr class="table-danger shadow">
-                                                <td>${moment(`${rs[key].datetime}`).format("ddd DD/MM/YYYY")}</td>
-                                                <td>${moment(`${rs[key].datetime}`).format("HH:mm")}</td>
-                                                <td>${rs[key].customer_fullname}</td>
-                                                <td>${rs[key].customer_phone}</td>
-                                                <td>${rs[key].Service.service_name}</td>
-                                                <td>${rs[key].Staff.staff_fullname}</td>
-                                                <td><button type="button" class="btn btn-light" data-toggle="modal" data-target="#reviewModal" value="${rs[key]._id}" onclick="viewDetail(this.value)"><i class="fas fa-ellipsis-h"></i></button></td>
-                                            </tr>
-                                    `;
-                                        $('#list-all-appointment').append(item);
-                                        $('#list-complete-appointment').append(item)
-                                    }
-                                    if (rsdate.toDateString() == today.toDateString()) {
-                                        var item = `
-                                            <tr class="table-warning shadow">
-                                                <td>${moment(`${rs[key].datetime}`).format("ddd DD/MM/YYYY")}</td>
-                                                <td>${moment(`${rs[key].datetime}`).format("HH:mm")}</td>
-                                                <td>${rs[key].customer_fullname}</td>
-                                                <td>${rs[key].customer_phone}</td>
-                                                <td>${rs[key].Service.service_name}</td>
-                                                <td>${rs[key].Staff.staff_fullname}</td>
-                                                <td><button type="button" class="btn btn-light" data-toggle="modal" data-target="#reviewModal" value="${rs[key]._id}" onclick="viewDetail(this.value)"><i class="fas fa-ellipsis-h"></i></button></td>
-                                            </tr>
-                                    `;
-                                        $('#list-all-appointment').append(item);
-                                        $('#list-today-appointment').append(item);
-                                    }
-                                    if ((rsdate > today) && (rsdate.toDateString() != today.toDateString())) {
-                                        var item = `
-                                            <tr class="table-success shadow">
-                                                <td>${moment(`${rs[key].datetime}`).format("ddd DD/MM/YYYY")}</td>
-                                                <td>${moment(`${rs[key].datetime}`).format("HH:mm")}</td>
-                                                <td>${rs[key].customer_fullname}</td>
-                                                <td>${rs[key].customer_phone}</td>
-                                                <td>${rs[key].Service.service_name}</td>
-                                                <td>${rs[key].Staff.staff_fullname}</td>
-                                                <td><button type="button" class="btn btn-light" data-toggle="modal" data-target="#reviewModal" value="${rs[key]._id}" onclick="viewDetail(this.value)"><i class="fas fa-ellipsis-h"></i></button></td>
-                                            </tr>
-                                    `;
-                                        $('#list-all-appointment').append(item);
-                                        $('#list-pending-appointment').append(item)
-                                    }
-                                }
-                            }
-                        });
-                    };
-                    function viewDetail(value) {
-                        $.ajax({
-                            type: "GET",
-                            url: "/booking/find-by-id",
-                            data: {
-                                _id: value
-                            },
-                            success: function (rs) {
-                                $('#customer_fullname').html("")
-                                $('#customer_phone').html("")
-                                $('#customer_email').html("")
-                                $('#customer_address').html("")
-                                $('#service_id').html("")
-                                $('#staff_id').html("")
-                                $('#datetimeView').html("")
-                                $('#datetime').html("")
-                                document.getElementById('customer_fullname').value = rs[0].customer_fullname
-                                document.getElementById('customer_phone').value = rs[0].customer_phone
-                                document.getElementById('customer_email').value = rs[0].customer_email
-                                document.getElementById('customer_address').value = rs[0].customer_address
-                                document.getElementById('service_id').innerHTML = `<option value="" selected>${rs[0].Service.service_name}</option>`
-                                document.getElementById('staff_id').innerHTML = `<option value="" selected>${rs[0].Staff.staff_fullname}</option>`
-                                document.getElementById('datetimeView').innerHTML = `<b>${moment(`${rs[0].datetime}`).format('ddd DD/MM/YYYY - HH:mm')}</b>`;
-                                document.getElementById('datetime').value = rs[0].datetime
-                                document.getElementById('_id').value = rs[0]._id
-                                viewOnly(rs[0].datetime, rs[0].rating);
-                            }
-                        });
-                    }
-                    function viewOnly(datetime, rating) {
-                        console.log(rating);
-                        $('input, select').css({
-                            "border": "none"
-                        })
-                        $('#bookingForm').prop('disabled', true)
-                        $('#datetime-view').show()
-                        $('#date-time').hide()
-                        var dating = new Date(datetime)
-                        var now = new Date()
-                        if (dating <= now) {
-                            $('#ratingForm').show()
-                            $('#edit-btn').hide()
-                            $('#update-btn').hide()
-                            $('#delete-btn').hide()
-                        } else {
-                            $('#ratingForm').hide()
-                            $('#edit-btn').show()
-                            $('#delete-btn').show()
-                            $('#update-btn').hide()
-                        }
-                        if (rating > 0) {
-                            $('.star-text').hide()
-                            $('#ratingForm fieldset').prop('disabled', true)
-                            var check = `#rate-${rating}`;
-                            $('.rated').show()
-                            $(`${check}`).prop('checked', true)
-                        } else {
-                            $('#ratingForm fieldset').prop('disabled', false)
-                            $('.rated').hide()
-                            $('.star-text').show()
-                            $('input[name="rating"]').prop('checked', false)
-                        }
-                    }
-                    function editable() {
-                        $('#bookingForm').prop('disabled', false)
-                        $('input, select').css({
-                            "border": "1px solid #ced4da"
-                        })
-                        $('#datetime-view').hide()
-                        $('#date-time').show()
-                        $('#update-btn').show()
-                        $('#delete-btn').hide()
-                        $('#edit-btn').hide()
-                        $('#service_id').html(`<option disabled hidden selected value="">Choose service</option>`)
-                        $('#staff_id').html(`<option disabled hidden selected value="">Choose staff</option>`)
-                        getService()
-                        getStaff()
-                    }
-                    function getService() {
-                        $.ajax({
-                            url: '/booking/get-service',
-                            method: 'GET',
-                            success: function (rs) {
-                                for (var key in rs) {
-                                    var option = `
-                <option value="${rs[key]._id}">${rs[key].service_name}</option>
-                `;
-                                    $('#service_id').append(option);
-                                }
-                            },
-                        });
-                    }
-                    function getStaff() {
-                        $.ajax({
-                            url: '/booking/get-staff',
-                            method: 'GET',
-                            success: function (rs) {
-                                for (var key in rs) {
-                                    var option = `
-                <option value="${rs[key]._id}">${rs[key].staff_fullname}</option>
-                `;
-                                    $('#staff_id').append(option);
-                                }
-                            },
-                        });
-                    }
-                    function update() {
-                        var data = {
-                            customer_fullname: $('#customer_fullname').val(),
-                            customer_phone: $('#customer_phone').val(),
-                            customer_email: $('#customer_email').val(),
-                            customer_address: $('#customer_address').val(),
-                            service_id: $('#service_id').val(),
-                            staff_id: $('#staff_id').val(),
-                            datetime: $('#datetime').val(),
-                            _id: $('#_id').val(),
-                        };
-                        $.ajax({
-                            type: "PUT",
-                            url: "/booking/update",
-                            data: data,
-                            success: function (rs) {
-                                alert(rs);
-                                window.location = '/booking/review'
-                            }
-                        });
-                    }
-                    // Disable form submissions if there are invalid fields
-                    (function () {
-                        'use strict';
-                        window.addEventListener('load', function () {
-                            // Get the forms we want to add validation styles to
-                            var forms = document.getElementsByClassName('needs-validation');
-                            // Loop over them and prevent submission
-                            var validation = Array.prototype.filter.call(forms, function (form) {
-                                form.addEventListener('submit', function (event) {
-                                    if (form.checkValidity() === false) {
-                                        event.preventDefault();
-                                        event.stopPropagation();
-                                    }
-                                    form.classList.add('was-validated');
-                                }, false);
-                            });
-                        }, false);
-                    })();
                 </script>
     </body>
 

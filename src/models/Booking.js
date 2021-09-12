@@ -12,7 +12,8 @@ const Booking = new Schema(
 		staff_id: { type: Schema.Types.ObjectId, ref: 'Staff' },
 		datetime: Date,
 		comment: String,
-		rating: Number,
+		rating: { type: Number, default: 0 },
+		status: { type: Number, default: 1 },
 	},
 	{
 		timestamps: true,

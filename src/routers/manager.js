@@ -3,7 +3,7 @@ const router = express.Router();
 const Booking = require('../models/Booking');
 const Service = require('../models/Service');
 const Staff = require('../models/Staff');
-
+const mongoose = require('mongoose');
 
 router.get('/get-service', function (req, res, next) {
 	Service.find({})
@@ -11,9 +11,122 @@ router.get('/get-service', function (req, res, next) {
 		.catch(next);
 });
 router.get('/get-staff', function (req, res, next) {
-    Staff.find({})
+	Staff.find({})
 		.then((staffs) => res.json(staffs))
 		.catch(next);
+});
+router.get('/list-all-booking', function (req, res, next) {
+	Booking.aggregate([
+		{
+			$lookup: {
+				from: 'services',
+				localField: 'service_id',
+				foreignField: '_id',
+				as: 'Service',
+			},
+		},
+		{ $unwind: '$Service' },
+		{
+			$lookup: {
+				from: 'staffs',
+				localField: 'staff_id',
+				foreignField: '_id',
+				as: 'Staff',
+			},
+		},
+		{ $unwind: '$Staff' },
+		{
+			$sort: { status: 1, datetime: 1 },
+		},
+	])
+		// .sort({
+		// 	datetime: 'asc',
+		// })
+		.then((booking) => res.json(booking))
+		.catch(next);
+});
+router.get('/find-by-phone', function (req, res, next) {
+	Booking.aggregate([
+		{ $match: { customer_phone: req.query.customer_phone } },
+		{
+			$lookup: {
+				from: 'services',
+				localField: 'service_id',
+				foreignField: '_id',
+				as: 'Service',
+			},
+		},
+		{ $unwind: '$Service' },
+		{
+			$lookup: {
+				from: 'staffs',
+				localField: 'staff_id',
+				foreignField: '_id',
+				as: 'Staff',
+			},
+		},
+		{ $unwind: '$Staff' },
+		{
+			$sort: { datetime: 1 },
+		},
+	])
+		// .sort({
+		// 	datetime: 'asc',
+		// })
+		.then((booking) => res.json(booking))
+		.catch(next);
+});
+router.get('/find-by-id', function (req, res, next) {
+	Booking.aggregate([
+		{ $match: { _id: mongoose.Types.ObjectId(req.query._id) } },
+		{
+			$lookup: {
+				from: 'services',
+				localField: 'service_id',
+				foreignField: '_id',
+				as: 'Service',
+			},
+		},
+		{ $unwind: '$Service' },
+		{
+			$lookup: {
+				from: 'staffs',
+				localField: 'staff_id',
+				foreignField: '_id',
+				as: 'Staff',
+			},
+		},
+		{ $unwind: '$Staff' },
+	])
+		// .sort({
+		// 	datetime: 'asc',
+		// })
+		.then((booking) => res.json(booking))
+		.catch(next);
+});
+router.put('/approve', function (req, res, next) {
+	// res.json(req.body)
+	Booking.updateOne({ _id: req.body._id }, req.body)
+		.then(() => res.send('This appointment has been Approve!'))
+		.catch((error) => {});
+});
+router.put('/cancel', function (req, res, next) {
+	// res.json(req.body)
+	Booking.updateOne({ _id: req.body._id }, req.body)
+		.then(() => res.send('This appointment has been cancelled!'))
+		.catch((error) => {});
+});
+router.put('/update', function (req, res, next) {
+	// res.json(req.body)
+	Booking.updateOne({ _id: req.body._id }, req.body)
+		.then(() => res.send('This appointment has been updated!'))
+		.catch((error) => {});
+});
+router.delete('/delete', function (req, res, next) {
+	// res.json(req.body)
+	Booking.deleteOne({ _id: req.body._id })
+		.then(() => res.send('Your appointment has been deleted!'))
+		.catch((error) => {});
 });
 router.post('/staff', function (req, res, next) {
 	// res.json(req.body)
@@ -21,7 +134,7 @@ router.post('/staff', function (req, res, next) {
 	const staff = new Staff(formData);
 	staff
 		.save()
-		.then(() => res.json(staff))
+		.then(() => res.send("OK"))
 		.catch((error) => {});
 });
 router.post('/service', function (req, res, next) {
@@ -30,7 +143,7 @@ router.post('/service', function (req, res, next) {
 	const service = new Service(formData);
 	service
 		.save()
-		.then(() => res.json(service))
+		.then(() => res.send('OK'))
 		.catch((error) => {});
 });
 router.post('/booking', function (req, res, next) {
@@ -39,18 +152,20 @@ router.post('/booking', function (req, res, next) {
 	const booking = new Booking(formData);
 	booking
 		.save()
-		.then(() => res.json(booking))
+		.then(() => res.send('OK'))
 		.catch((error) => {});
 });
 router.get('/demo', (req, res) => {
-    res.render('manager/demo');
+	res.render('manager/demo');
 });
-router.get('/:slug', (req, res, next) => {
-    res.render('manager/manager');
+router.get('/booking', (req, res) => {
+	res.render('manager/booking');
 });
-
+// router.get('/:slug', (req, res, next) => {
+// 	res.render('manager/manager');
+// });
 router.get('/', (req, res) => {
-    res.render('manager/manager');
+	res.render('manager/manager');
 });
 
 module.exports = router;

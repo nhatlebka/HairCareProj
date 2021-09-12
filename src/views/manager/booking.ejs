@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <%- include('../layouts/manageHead') %>
+
+            <style>
+                .rating-container {
+                    position: relative;
+                    background: #111;
+                    border: 1px solid #444;
+                    border-radius: 5px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                }
+
+                .rating-container .rated {
+                    display: none;
+                }
+
+                .rating-container .text {
+                    font-size: 24px;
+                    color: #666;
+                    font-weight: 500;
+                    line-height: 50px;
+                }
+
+                .rating-container .star-widget input {
+                    display: none;
+                }
+
+                .star-widget label {
+                    font-size: 30px;
+                    color: #444;
+                    padding: 10px;
+                    float: right;
+                    transition: all 0.2s ease;
+                }
+
+                input:not(:checked)~label:hover,
+                input:not(:checked)~label:hover~label {
+                    color: #fd4;
+                }
+
+                input:checked~label {
+                    color: #fd4;
+                }
+
+                input#rate-5:checked~label {
+                    color: #fe7;
+                    text-shadow: 0 0 20px #952;
+                }
+
+                .star-text .textarea {
+                    height: 100px;
+                    width: 100%;
+                    overflow: hidden;
+                }
+
+                .star-text .textarea textarea {
+                    height: 100%;
+                    width: 100%;
+                    outline: none;
+                    color: #eee;
+                    border: 1px solid #333;
+                    background: #222;
+                    padding: 10px;
+                    font-size: 17px;
+                    resize: none;
+                }
+
+                .textarea textarea:focus {
+                    border-color: #444;
+                }
+
+                .star-text .btn {
+                    height: 45px;
+                    width: 100%;
+                    margin: 15px 0;
+                }
+
+                .star-text .btn button {
+                    height: 100%;
+                    width: 100%;
+                    border: 1px solid #444;
+                    outline: none;
+                    background: #222;
+                    color: #999;
+                    font-size: 17px;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+
+                .star-text .btn button:hover {
+                    background: #1b1b1b;
+                }
+
+                .needs-validation h2 {
+                    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+                }
+
+                .modal-content {
+                    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+                }
+
+                .nav-link {
+                    border: 1px solid rgba(52, 58, 64, 0.5);
+                    color: #343A40;
+                }
+
+                .nav-link:hover {
+                    box-shadow: 0 0 5px #343A40;
+                    color: #343A40;
+                }
+
+                .nav-link.active {
+                    background: #343A40 !important;
+                    color: white !important;
+                }
+            </style>
+    </head>
+
+    <body>
+        <%- include('../layouts/manageSidebar') %>
+
+            <!-- !PAGE CONTENT! -->
+            <div class="w3-main" style="margin-left:300px;">
+                <!-- Top container -->
+                <div class="w3-bar w3-top w3-light-grey w3-large w3-hide-large" style="z-index:4">
+                    <button class="w3-bar-item w3-button w3-hide-large w3-hover-none" onclick="w3_open();"><i
+                            class="fa fa-bars"></i>  Menu</button>
+                    <span class="w3-bar-item w3-right"><strong>Manager Page</strong></span>
+                </div>
+
+                <div class="container-fluid" style="padding-top:22px">
+                    <form class="needs-validation" novalidate>
+                        <div class="row">
+                            <div class="col-12">
+                                <h2>Search customer appointments:</h2>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="input-group col-xl-6 col-lg-8 col-md-8 col-sm-10 col-10">
+                                <input type="text" id="customer-phone" name="customer_phone" class="form-control shadow"
+                                    placeholder="Insert phone number" required>
+                                <div class="invalid-tooltip">Please enter phone to search.</div>
+                                <div class="input-group-append">
+                                    <button class="btn btn-success shadow" type="submit"
+                                        onclick="findByPhone()">Search</button>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary shadow col-xl-1 col-lg-1 col-md-1 col-sm-2 col-2"
+                                type="submit" data-toggle="modal" data-target="#reviewModal"
+                                onclick="addAppointment()">Add</button>
+                        </div>
+                    </form>
+                    <ul class="nav nav-pills nav-justified">
+                        <li class="nav-item font-weight-bold">
+                            <a class="nav-link active" data-toggle="tab" href="#list-recent">
+                                <h4>Recent &
+                                    Pending</h4>
+                            </a>
+                        </li>
+                        <li class="nav-item font-weight-bold">
+                            <a class="nav-link" data-toggle="tab" href="#list-upcoming">
+                                <h4>Upcoming
+                                    appointment</h4>
+                            </a>
+                        </li>
+                        <li class="nav-item font-weight-bold">
+                            <a class="nav-link" data-toggle="tab" href="#list-completed">
+                                <h4>Completed
+                                    appointment</h4>
+                            </a>
+                        </li>
+                        <li class="nav-item font-weight-bold">
+                            <a class="nav-link" data-toggle="tab" href="#list-canceled">
+                                <h4>Cencelled
+                                    appointment</h4>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" style="overflow: auto;">
+                        <div id="list-recent" class="tab-pane active">
+                            <table class="table table-hover table-dark">
+                                <thead>
+                                    <tr>
+                                        <th>Date & Time</th>
+                                        <th>Full name</th>
+                                        <th>Phone number</th>
+                                        <th>Service</th>
+                                        <th>Staff</th>
+                                        <th>Status</th>
+                                        <th>More</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="list-recent-appointment">
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="list-upcoming" class="tab-pane fade">
+                            <table class="table table-hover table-dark">
+                                <thead>
+                                    <tr>
+                                        <th>Date & Time</th>
+                                        <th>Full name</th>
+                                        <th>Phone number</th>
+                                        <th>Service</th>
+                                        <th>Staff</th>
+                                        <th>Status</th>
+                                        <th>More</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="list-upcoming-appointment">
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="list-completed" class="tab-pane fade">
+                            <table class="table table-hover table-dark">
+                                <thead>
+                                    <tr>
+                                        <th>Date & Time</th>
+                                        <th>Full name</th>
+                                        <th>Phone number</th>
+                                        <th>Service</th>
+                                        <th>Staff</th>
+                                        <th>Status</th>
+                                        <th>More</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="list-completed-appointment">
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="list-canceled" class="tab-pane fade">
+                            <table class="table table-hover table-dark">
+                                <thead>
+                                    <tr>
+                                        <th>Date & Time</th>
+                                        <th>Full name</th>
+                                        <th>Phone number</th>
+                                        <th>Service</th>
+                                        <th>Staff</th>
+                                        <th>Status</th>
+                                        <th>More</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="list-canceled-appointment">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- The Modal -->
+                <div class="modal fade" id="reviewModal">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <form class="needs-validation" novalidate>
+                                    <fieldset id="bookingForm" disabled class="border p-3">
+                                        <legend class="w-auto text-center">Appointment detail</legend>
+                                        <div class="row">
+                                            <label for="customer_fullname" class="col-md-4 col-form-label">Customer
+                                                name:</label>
+                                            <input type="text" id="customer_fullname"
+                                                class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                name="customer_fullname" style="border: none;" value="" required>
+                                            <div class="invalid-feedback text-right">Please enter name.</div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <label for="customer_phone" class="col-md-4 col-form-label">Phone
+                                                number:</label>
+                                            <input type="text" id="customer_phone"
+                                                class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                name="customer_phone" style="border: none;" value="" required>
+                                            <div class="invalid-feedback text-right">Please enter phone.</div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <label for="customer_email" class="col-md-4 col-form-label">Email:</label>
+                                            <input type="text" id="customer_email"
+                                                class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                name="customer_email" style="border: none;" value="" required>
+                                            <div class="invalid-feedback text-right">Please enter email.</div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <label for="customer_address"
+                                                class="col-md-4 col-form-label">Address:</label>
+                                            <input type="text" id="customer_address"
+                                                class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                name="customer_address" style="border: none;" value="" required>
+                                            <div class="invalid-feedback text-right">Please enter address.
+                                            </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-md-12 col-sm-12">
+                                                <fieldset class="border p-3">
+                                                    <legend class="w-auto"></legend>
+                                                    <div class="row">
+                                                        <label for="service_id"
+                                                            class="col-md-4 col-form-label">Service:</label>
+                                                        <select id="service_id"
+                                                            class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                            name="service_id" style="border: none;" required>
+                                                        </select>
+                                                        <div class="invalid-feedback text-right">Please choose
+                                                            service.
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-3">
+                                                        <label for="staff_id"
+                                                            class="col-md-4 col-form-label">Staff:</label>
+                                                        <select id="staff_id"
+                                                            class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                            name="staff_id" style="border: none;" required>
+                                                        </select>
+                                                        <div class="invalid-feedback text-right">Please choos staff.
+                                                        </div>
+                                                    </div>
+                                                    <div id="datetime-view" class="row mt-3">
+                                                        <p class="col-md-4">Date & Time:</p>
+                                                        <p class="col-md-8" id="datetimeView"></p>
+                                                    </div>
+                                                    <div id="date-time" class="row mt-3">
+                                                        <label for="datetime" class="col-md-4 col-form-label">Date &
+                                                            Time</label>
+                                                        <input id="datetime" type="datetime-local"
+                                                            class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                            name="datetime" required>
+                                                        <div class="invalid-feedback text-right">Please select date
+                                                            & time.
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-3" style="display: none;">
+                                                        <label for="_id" class="col-md-4 col-form-label">_id:</label>
+                                                        <input id="_id" type="text"
+                                                            class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                            name="_id" value="" required>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <div class="row mt-3 justify-content-center">
+                                        <p id="cancelling" class="text-danger"><b>This appointment is pending
+                                                cancellation!</b></p>
+                                        <p id="cancelled" class="text-danger"><b>This appointment has been
+                                                cancelled!</b></p>
+                                        <p id="pending-msg" class="text-success"><b>This appointment is pending
+                                                to Approve!</b></p>
+                                    </div>
+                                    <div class="row justify-content-around">
+                                        <button id="edit-btn" type="button" class="col-2 btn btn-primary"
+                                            onclick="editable()">Edit</button>
+                                        <button id="update-btn" type="submit" class="col-2 btn btn-success"
+                                            onclick="update()">Update</button>
+                                        <button id="create-btn" type="submit" class="col-2 btn btn-success"
+                                            onclick="createAppointment()">Create</button>
+                                        <button id="approve-btn" type="button" class="col-2 btn btn-success"
+                                            data-toggle="modal" data-target="#confirmApprove">Approve</button>
+                                        <button id="delete-btn" type="button" class="col-2 btn btn-danger"
+                                            data-toggle="modal" data-target="#confirmDelete">Delete</button>
+                                        <button id="cancel-btn" type="button" class="col-2 btn btn-danger"
+                                            data-toggle="modal" data-target="#confirmCancel">Cancel</button>
+                                        <button id="cancelled-btn" type="button" class="col-2 btn btn-danger"
+                                            data-toggle="modal" data-target="#confirmCancel">Approve</button>
+                                    </div>
+                                </form>
+                                <div class="row mt-3 justify-content-center">
+                                    <div id="ratingForm" class="col-md-12 col-sm-12">
+                                        <fieldset disabled class="border p-3">
+                                            <legend class="w-auto text-center">Rating appointment</legend>
+                                            <div class="rating-container">
+                                                <div class="rated">
+                                                    <div class="text">Thanks for rating us!</div>
+                                                </div>
+                                                <form class="star-widget">
+                                                    <input type="radio" name="rating" id="rate-5" value="5">
+                                                    <label for="rate-5" class="far fa-star"></label>
+                                                    <input type="radio" name="rating" id="rate-4" value="4">
+                                                    <label for="rate-4" class="far fa-star"></label>
+                                                    <input type="radio" name="rating" id="rate-3" value="3">
+                                                    <label for="rate-3" class="far fa-star"></label>
+                                                    <input type="radio" name="rating" id="rate-2" value="2">
+                                                    <label for="rate-2" class="far fa-star"></label>
+                                                    <input type="radio" name="rating" id="rate-1" value="1">
+                                                    <label for="rate-1" class="far fa-star"></label>
+                                                    <div class="star-text">
+                                                        <div class="textarea">
+                                                            <textarea cols="30" id="txtArea"
+                                                                placeholder="Describe your experience.."></textarea>
+                                                        </div>
+                                                        <div class="btn">
+                                                            <button id="rate-btn" type="submit"
+                                                                onclick="submitRating()">Submit</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="confirmDelete" data-keyboard="false" tabindex="-1"
+                    aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="confirmDeleteLabel">Confirm to delete!</h5>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to cancel this appointment?
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-danger" onclick="deleteAppointment()">YES</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="confirmCancel" data-keyboard="false" tabindex="-1"
+                    aria-labelledby="confirmCancelLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="confirmCancelLabel">Confirm to cancel!</h5>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to cancel this appointment?
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-danger" onclick="cancelAppointment()">YES</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="confirmApprove" data-keyboard="false" tabindex="-1"
+                    aria-labelledby="confirmApproveLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="confirmApproveLabel">Approval!</h5>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to approve this appointment?
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-success" onclick="approve()">YES</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <hr>
+
+
+            <!-- Footer -->
+            <%- include('../layouts/manageFooter') %>
+                <script src="/js/bkmanager.js"></script>
+                <script type="text/javascript">
+                </script>
+    </body>
+
+</html>
