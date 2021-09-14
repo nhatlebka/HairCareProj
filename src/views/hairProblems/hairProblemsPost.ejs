@@ -16,7 +16,100 @@
             </div>
         </div>
 
-        <div class="main-wrap mt-5">
+
+        <div class="main-wrap">
+            <div class="row">
+                <div class="main-left col-lg-3 col-md-3 col-sm-12">
+                    <div class="recent-articles">
+                        <div class="main-left-heading">Recent Articles</div>
+                        <ul class="recent-articles-list">
+
+                        </ul>
+                    </div>
+
+                    <div class="category">
+                        <div class="main-left-heading">Categories</div>
+                        <ul class="categoty-list">
+                            <li class="category-item">
+                                <i class="fas fa-circle"></i>
+                                <a href="/hair-problems?type=Hair growth">Hair growth</a>
+                            </li>
+                            <li class="category-item">
+                                <i class="fas fa-circle"></i>
+                                <a href="/hair-problems?type=Frizzy hair">Frizzy hair</a>
+                            </li>
+                            <li class="category-item">
+                                <i class="fas fa-circle"></i>
+                                <a href="/hair-problems?type=Hair loss">Hair loss</a>
+                            </li>
+                            <li class="category-item">
+                                <i class="fas fa-circle"></i>
+                                <a href="/hair-problems?type=Split ends">Split ends</a>
+                            </li>
+                            <li class="category-item">
+                                <i class="fas fa-circle"></i>
+                                <a href="/hair-problems?type=Dandruff">Dandruff</a>
+                            </li>
+                            <li class="category-item">
+                                <i class="fas fa-circle"></i>
+                                <a href="/hair-problems?type=Dull, lifeless hair">Dull, lifeless hair</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="main-right col-lg-9 col-md-9 col-sm-12 mt-3">
+                    <div class="img-top">
+                        <img src="<%= post.image %>" alt="" width="100%">
+                    </div>
+                    <p class="post-date"><%= moment(post.date).format('ll') %></p>
+                    <h1 class="post-heading"><%= post.title %> </h1>
+                    <p class="post-type"><i class="fas fa-tags"></i><a href=""> <%= post.type[0] %> </a></p>
+                    <div class="post-line"></div>
+                    <div class="post-content">
+                        <div class="post-main" data-id="<%= post._id %>">
+    
+                        </div>
+    
+                        <p class="post-text">Share this on:  <a href="/"> <i class="fab fa-twitter"></i></a>
+                            <a href="/"><i class="fab fa-facebook-f"></i></a>
+                            <a href="/"><i class="fab fa-google"></i></a>
+                            <a href="/"> <i class="fab fa-tumblr"></i></a></p>
+    
+                        
+                        <div class="list-comments mb-5">
+                           
+                            
+                        </div >
+                        <div class="post-line"></div>
+                        <h3 class="post-comment">LEAVE A COMMENT</h3>
+                    <form action="" class="form-comment">
+                        <div class="form-main">
+                            <div class="form-group group-name">
+                                <input type="text" class="name" name="name" id="name" placeholder="Name">
+                                <small id="required-name" class="form-text">Please enter the required field</small>
+                            </div>
+                            <div class="form-group group-email">
+                                <input type="email" class="email" name="email" placeholder="Email">
+                                <small id="required-email" class="form-text">Please enter the required field</small>
+                            </div>
+                            <textarea name="message" class="message" cols="30" rows="5" placeholder="Message" required></textarea>
+                            <small id="required-message" class="form-text w-100" >Please enter the required field</small>
+                            <button type="submit" class="form-submit">
+                                Post comment
+                                <div class="before"></div>
+                                <div class="after"></div>
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- <div class="main-wrap mt-5">
             <div class="container main-post">
                 <div class="img-top">
                     <img src="<%= post.image %>" alt="" width="100%">
@@ -65,7 +158,7 @@
                 </div>
             </div>
         </div>
-       
+        -->
 
         <%- include('../layouts/footer') %>
        <script>
@@ -77,6 +170,34 @@
            var emailInput = $('.email')
            var messageInput = $('.message') 
            var listComments = $('.list-comments');
+           var recentArticles = $('.recent-articles-list');
+
+            //Render recent articles
+            $.ajax({
+                    url: '/hair-problems/post-list-sortbydate',
+                    method: 'GET',
+                    success: function (rs) {
+                        let count = 0
+                        for (let i = 0; i < 4; i++) {
+                            if (rs[i]) {
+                                recentArticles.append(`
+                                <li class="recent-articles-item">
+                                    <div class="recent-articles-item-img">
+                                        <a href="/hair-problems/${rs[i].slug}">
+                                            <img src="${rs[i].image}" class="d-block" width="100%" />
+                                        </a>
+                                    </div>
+                                    <div class="recent-articles-item-info">
+                                        <a href="/hair-problems/${rs[i].slug}">${rs[i].title}</a>
+                                        <p>${moment(rs[i].date).format('ll')}</p>
+                                    </div>
+                                </li>
+                            `)
+                            }
+                        }
+                    }
+
+                })
 
            $.ajax({
                url: '/hair-problems/list-comments',
