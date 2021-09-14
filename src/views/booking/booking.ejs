@@ -167,12 +167,20 @@
                 }
 
                 /* .form-check-inline:nth-child(odd) {
-                    margin-bottom: 25px;
+                    margin: 0 0 25px 0;
+                    padding: 0 !important;
                 }
 
                 .form-check-inline:nth-child(even) {
-                    margin-top: 25px;
+                    margin: 25px 0 0 0;
+                    padding: 0 !important;
                 } */
+
+                .form-check-inline {
+                    margin: 0 !important;
+                    padding: 0 !important;
+                }
+
                 .breadcrumb {
                     padding: 30px;
                     flex-direction: column;
@@ -219,7 +227,7 @@
                     <p class="breadcrumb-text"><a href="/">Home</a>&nbsp; / &nbsp;Booking</p>
                 </div>
             </div>
-            <div class="container">
+            <div class="container" style="margin-top: -30px;">
                 <div class="row">
                     <div class="col-md-12" id="customerForm">
                         <!-- <div class="row justify-content-center">
@@ -237,7 +245,7 @@
                                 <!-- One "tab" for each step in the form: -->
                                 <!-- step 1 -->
                                 <div class="tab">
-                                    <fieldset class="border p-3" style="min-height: 500px;overflow: auto;">
+                                    <fieldset class="border p-3" style="min-height: 550px;overflow: auto;">
                                         <legend class="w-auto text-center">Contact info</legend>
                                         <div class="row">
                                             <div class="col-md-12 col-sm-12">
@@ -272,7 +280,7 @@
                                 </div>
                                 <!-- step 2 -->
                                 <div class="tab">
-                                    <fieldset class="border p-3" style="min-height: 500px;overflow: auto;">
+                                    <fieldset class="border p-3" style="min-height: 550px;overflow: auto;">
                                         <legend class="w-auto text-center">Taking sevices</legend>
                                         <div class="row">
                                             <div class="form-group col-md-12 col-sm-12">
@@ -285,8 +293,8 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-12 col-sm-12">
-                                                <fieldset class="border p-3">
+                                            <div class="col-md-12 col-sm-12" style="overflow: hidden;">
+                                                <fieldset class="border p-3" style="max-height: 270px;overflow: auto;">
                                                     <legend class="w-auto">Introduce Service</legend>
                                                     <p id="service_introduce"></p>
                                                 </fieldset>
@@ -296,9 +304,9 @@
                                 </div>
                                 <!-- step 3 -->
                                 <div class="tab">
-                                    <fieldset class="border p-3" style="min-height: 500px;overflow: auto;">
+                                    <fieldset class="border p-3" style="min-height: 550px;overflow: auto;">
                                         <legend class="w-auto text-center">Choose Staff</legend>
-                                        <fieldset class="border p-3">
+                                        <fieldset class="border p-3" style="margin-top: -20px;">
                                             <legend class="w-auto">Select one Staff by click to avatar</legend>
                                             <div class="row justify-content-center" id="staff-id">
 
@@ -317,8 +325,8 @@
                                             </div>
                                         </div> -->
                                         <div class="row">
-                                            <div class="col-md-12 col-sm-12">
-                                                <fieldset class="border p-3">
+                                            <div class="col-md-12 col-sm-12" style="overflow: hidden;">
+                                                <fieldset class="border p-3" style="max-height: 270px;overflow: auto;">
                                                     <legend class="w-auto">Introduce Staff</legend>
                                                     <p class="text-center" id="staff_fullname"></p>
                                                     <p class="text-center" id="staff_stars"></p>
@@ -330,7 +338,7 @@
                                 </div>
                                 <!-- step 4 -->
                                 <div class="tab">
-                                    <fieldset class="border p-3" style="min-height: 500px;overflow: auto;">
+                                    <fieldset class="border p-3" style="min-height: 550px;overflow: auto;">
                                         <legend class="w-auto text-center">Date & Time</legend>
                                         <div class="form-row mt-3">
                                             <label for="dateField" class="col-md-4 col-form-label">Date:</label>
@@ -345,7 +353,7 @@
                                 </div>
                                 <!-- step 5 -->
                                 <div class="tab">
-                                    <fieldset class="border p-3 text-center" style="min-height: 500px;overflow: auto;">
+                                    <fieldset class="border p-3 text-center" style="min-height: 550px;overflow: auto;">
                                         <legend class="w-auto">Final step</legend>
                                         <br>
                                         <h1 class="text-success"><b>OK!</b></h1>
@@ -372,7 +380,7 @@
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12 ">
                                 <form id="bookingForm">
-                                    <fieldset disabled class="border p-3" style="min-height: 500px;">
+                                    <fieldset disabled class="border p-3" style="min-height: 550px;">
                                         <legend class="w-auto text-center">Your appointment info</legend>
                                         <div class="row">
                                             <label for="customer_fullname" class="col-md-4 col-form-label">Your
