@@ -77,7 +77,13 @@ router.get('/find-by-id', function (req, res, next) {
 router.put('/update', function (req, res, next) {
 	// res.json(req.body)
 	Booking.updateOne({ _id: req.body._id }, req.body)
-		.then((res) => res.json(res))
+		.then(() => res.json(res))
+		.catch((error) => {});
+});
+router.put('/cancel', function (req, res, next) {
+	// res.json(req.body)
+	Booking.updateOne({ _id: req.body._id }, req.body)
+		.then(() => res.send('Your appointment is pending cancellation!'))
 		.catch((error) => {});
 });
 router.delete('/delete', function (req, res, next) {
@@ -97,6 +103,9 @@ router.post('/', function (req, res, next) {
 });
 router.get('/review', (req, res) => {
 	res.render('booking/review');
+});
+router.get('/demo', (req, res) => {
+	res.render('booking/demo');
 });
 router.get('/', (req, res) => {
 	res.render('booking/booking');

@@ -7,6 +7,7 @@ const Staff = new Schema(
 		staff_fullname: String,
 		staff_stars: Number,
 		staff_introduce: String,
+		staff_avatar: String,
 	},
 	{
 		timestamps: true,
