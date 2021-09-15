@@ -5,7 +5,7 @@
     box-sizing: inherit;
 }
 
-html {
+html, body {
     font-family: "Open Sans", sans-serif;
     box-sizing: border-box;
     scroll-behavior: smooth;

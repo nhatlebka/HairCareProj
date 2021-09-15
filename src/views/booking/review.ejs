@@ -108,12 +108,52 @@
                     background: #343A40 !important;
                     color: white !important;
                 }
+
+                .breadcrumb {
+                    padding: 30px;
+                    flex-direction: column;
+                    position: relative;
+                    text-align: center;
+                }
+
+                .breadcrumb::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    bottom: 0;
+                    background-image: linear-gradient(transparent, #fff);
+                }
+
+                .breadcrumb-text {
+                    position: relative;
+                    z-index: 1;
+                    font-weight: 300;
+                }
+
+                .breadcrumb-text a {
+                    color: #000;
+                    text-decoration: none;
+                }
+
+                .breadcrumb-text a:hover {
+                    color: #d39e3c;
+                }
             </style>
     </head>
 
     <body>
         <%- include('../layouts/header') %>
 
+            <div class="main-content">
+                <div class="breadcrumb d-flex justify-content-center align-items-center"
+                    style="background-image: url(/images/breadcrumb_bg_img.jpg)">
+                    <h1 class="breadcrumb-text"> Review Your Appointment </h1>
+                    <p class="breadcrumb-text"><a href="/">Home</a>&nbsp; / &nbsp;Review</p>
+                </div>
+            </div>
             <div class="container mt-5">
                 <form class="needs-validation" novalidate>
                     <div class="row mb-3">

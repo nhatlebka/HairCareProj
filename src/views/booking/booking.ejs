@@ -5,81 +5,46 @@
         <title>Booking Appointment</title>
         <%- include('../layouts/head') %>
             <!-- Thư viện và CSS Import ở dưới -->
-            <link rel="stylesheet"
-                href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
             <style>
-                * {
-                    padding: 0;
-                    margin: 0;
-                    box-sizing: border-box;
-                }
-
-                #customerForm {
-                    /* background-color: #ffffff;
-                    margin: 100px auto; */
-                    font-family: "Open Sans";
-                    /* padding: 40px;
-                    width: 70%;
-                    min-width: 300px; */
-                    min-height: 500px;
-                    z-index: 0;
-                }
-
-                #customerForm h1 {
+                .breadcrumb {
+                    padding: 30px;
+                    flex-direction: column;
+                    position: relative;
                     text-align: center;
                 }
 
-                #customerForm input {
-                    padding: 10px;
+                .breadcrumb::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
                     width: 100%;
-                    font-size: 17px;
-                    font-family: "Open Sans";
-                    border: 1px solid #aaaaaa;
+                    height: 100%;
+                    bottom: 0;
+                    background-image: linear-gradient(transparent, #fff);
                 }
 
-                /* Mark input boxes that gets an error on validation: */
-                #customerForm select.invalid,
-                #customerForm input.invalid {
-                    background-color: #ffdddd;
+                .breadcrumb-text {
+                    position: relative;
+                    z-index: 1;
+                    font-weight: 300;
                 }
 
-                /* Hide all steps by default: */
-                #customerForm .tab {
-                    display: none;
+                .breadcrumb-text a {
+                    color: #000;
+                    text-decoration: none;
                 }
 
-
-                /* Make circles that indicate the steps of the form: */
-                /* .step { */
-                /* height: 15px;
-                    width: 15px;
-                    margin: 0 2px; */
-                /* background-color: #bbbbbb; */
-                /* border: none; */
-                /* border-radius: 50%; */
-                /* display: inline-block; */
-                /* opacity: 0.5; */
-                /* } */
-
-                /* .step.active { */
-                /* opacity: 1; */
-                /* } */
-
-                /* Mark the steps that are finished and valid: */
-                .step.finish {
-                    /* background-color: #04AA6D; */
-                    color: green;
+                .breadcrumb-text a:hover {
+                    color: #d39e3c;
                 }
 
                 #progress {
                     counter-reset: step;
-                    /* display: flex;
-                    justify-content: space-between; */
                 }
 
                 #progress li {
                     list-style-type: none;
-                    /* float: left; */
                     width: 25%;
                     position: relative;
                     text-align: center;
@@ -142,6 +107,32 @@
                     background-color: green;
                 }
 
+                .form-check-label {
+                    position: relative;
+                }
+
+                .form-check-input.is-invalid~.form-check-label::before {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    width: 50px;
+                    height: 50px;
+                    background: rgba(255, 0, 0, 0.5);
+                    border-radius: 50%;
+                }
+
+                .form-check-label:hover::before {
+                    display: none !important;
+                }
+
+                .form-check-input:checked~.form-check-label::before {
+                    display: none !important;
+                }
+
                 .form-check-label img {
                     width: 50px;
                     height: 50px;
@@ -150,12 +141,10 @@
                     transition: 300ms all;
                 }
 
-                .form-check-label img:hover {
+                .form-check-label:hover img {
                     opacity: 1;
                     border-radius: 50%;
-                    /* border: 5px solid #fffb00; */
                     box-shadow: 0px 0px 10px #000;
-                    /* transition: 250ms all; */
                 }
 
                 .form-check-input:checked~.form-check-label img {
@@ -181,37 +170,12 @@
                     padding: 0 !important;
                 }
 
-                .breadcrumb {
-                    padding: 30px;
-                    flex-direction: column;
-                    position: relative;
-                    text-align: center;
+                fieldset.tab {
+                    display: none;
                 }
 
-                .breadcrumb::before {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    bottom: 0;
-                    background-image: linear-gradient(transparent, #fff);
-                }
-
-                .breadcrumb-text {
-                    position: relative;
-                    z-index: 1;
-                    font-weight: 300;
-                }
-
-                .breadcrumb-text a {
-                    color: #000;
-                    text-decoration: none;
-                }
-
-                .breadcrumb-text a:hover {
-                    color: #d39e3c;
+                .is-invalid~.invalid-feedback {
+                    display: block !important;
                 }
             </style>
     </head>
@@ -228,242 +192,214 @@
                 </div>
             </div>
             <div class="container" style="margin-top: -30px;">
+                <ul class="row justify-content-around" id="progress">
+                    <li class="step">Step 1</li>
+                    <li class="step">Step 2</li>
+                    <li class="step">Step 3</li>
+                    <li class="step">Finish</li>
+                </ul>
                 <div class="row">
-                    <div class="col-md-12" id="customerForm">
-                        <!-- <div class="row justify-content-center">
-                            <h1>Booking Your Appointment:</h1>
-                        </div> -->
-                        <!-- Circles which indicates the steps of the form: -->
-                        <ul class="row" id="progress">
-                            <li class="step">Step 1</li>
-                            <li class="step">Step 2</li>
-                            <li class="step">Step 3</li>
-                            <li class="step">Finish</li>
-                        </ul>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-12 col-sm-12 ">
-                                <!-- One "tab" for each step in the form: -->
-                                <!-- step 1 -->
-                                <div class="tab">
-                                    <fieldset class="border p-3" style="min-height: 550px;overflow: auto;">
-                                        <legend class="w-auto text-center">Contact info</legend>
-                                        <div class="row">
-                                            <div class="col-md-12 col-sm-12">
-                                                <label for="customer-fullname">Full Name:</label>
-                                                <input type="text" class="form-control" id="customer-fullname"
-                                                    name="customer-fullname" onchange="autofill()" required>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12 col-sm-12">
-                                                <label for="customer-phone">Phone number:</label>
-                                                <input type="tel" class="form-control" name="customer-phone"
-                                                    id="customer-phone" onchange="autofill()" required>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12 col-sm-12">
-                                                <label for="customer-email">Email:</label>
-                                                <input type="email" class="form-control" id="customer-email"
-                                                    name="customer-email" placeholder="@" onchange="autofill()"
-                                                    required>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12 col-sm-12">
-                                                <label for="customer-address">Address:</label>
-                                                <input type="text" class="form-control" id="customer-address"
-                                                    name="customer-address" onchange="autofill()" required>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                </div>
-                                <!-- step 2 -->
-                                <div class="tab">
-                                    <fieldset class="border p-3" style="min-height: 550px;overflow: auto;">
-                                        <legend class="w-auto text-center">Taking sevices</legend>
-                                        <div class="row">
-                                            <div class="form-group col-md-12 col-sm-12">
-                                                <label for="service-id">Sevices</label>
-                                                <select id="service-id" name="service-id" class="form-control"
-                                                    onchange="serviceIntro()" required>
-                                                    <option value="" disabled hidden selected>Services...
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12 col-sm-12" style="overflow: hidden;">
-                                                <fieldset class="border p-3" style="max-height: 270px;overflow: auto;">
-                                                    <legend class="w-auto">Introduce Service</legend>
-                                                    <p id="service_introduce"></p>
-                                                </fieldset>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                </div>
-                                <!-- step 3 -->
-                                <div class="tab">
-                                    <fieldset class="border p-3" style="min-height: 550px;overflow: auto;">
-                                        <legend class="w-auto text-center">Choose Staff</legend>
-                                        <fieldset class="border p-3" style="margin-top: -20px;">
-                                            <legend class="w-auto">Select one Staff by click to avatar</legend>
-                                            <div class="row justify-content-center" id="staff-id">
-
-                                            </div>
-                                            <div class="invalid-feedback text-center" style="font-size: 100%;"><b>Please
-                                                    select one staff for you!</b></div>
-                                        </fieldset>
-                                        <!-- <div class="row">
-                                            <div class="form-group col-md-12 col-sm-12">
-                                                <label for="staff-id">Staff</label>
-                                                <select id="staff-id" name="staff-id" class="form-control"
-                                                    onchange="staffIntro()" required>
-                                                    <option value="" disabled hidden selected>Staffs...
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div> -->
-                                        <div class="row">
-                                            <div class="col-md-12 col-sm-12" style="overflow: hidden;">
-                                                <fieldset class="border p-3" style="max-height: 270px;overflow: auto;">
-                                                    <legend class="w-auto">Introduce Staff</legend>
-                                                    <p class="text-center" id="staff_fullname"></p>
-                                                    <p class="text-center" id="staff_stars"></p>
-                                                    <p class="text-center" id="staff_introduce"></p>
-                                                </fieldset>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                </div>
-                                <!-- step 4 -->
-                                <div class="tab">
-                                    <fieldset class="border p-3" style="min-height: 550px;overflow: auto;">
-                                        <legend class="w-auto text-center">Date & Time</legend>
-                                        <div class="form-row mt-3">
-                                            <label for="dateField" class="col-md-4 col-form-label">Date:</label>
-                                            <input id="dateField" type="date" class="col-md-8 form-control">
-                                        </div>
-                                        <div class="form-row mt-3">
-                                            <label for="timeField" class="col-md-4 col-form-label">Time:</label>
-                                            <input id="timeField" type="time" class="col-md-8 form-control"
-                                                onchange="setDateTime();showSubmitBtn()">
-                                        </div>
-                                    </fieldset>
-                                </div>
-                                <!-- step 5 -->
-                                <div class="tab">
-                                    <fieldset class="border p-3 text-center" style="min-height: 550px;overflow: auto;">
-                                        <legend class="w-auto">Final step</legend>
-                                        <br>
-                                        <h1 class="text-success"><b>OK!</b></h1>
-                                        <br>
-                                        <h3>Please confirm your entered information</h3>
-                                        <br>
-                                        <h1>&</h1>
-                                        <br>
-                                        <h1 class="text-warning"><b>SUBMIT</b></h1>
-                                    </fieldset>
-                                </div>
-                                <div class="row m-3" style="position: relative;">
-                                    <a type="button" id="prevBtn"
-                                        class="col-md-6 col-sm-6 col-6 btn btn-info text-white" onclick="nextPrev(-1)"
-                                        style="    position: absolute;
-                                        top: -55px;
-                                        left: 0px;">Previous</a>
-                                    <a type="button" id="nextBtn"
-                                        class="col-md-6 col-sm-6 col-6 btn btn-success text-white" onclick="nextPrev(1)"
-                                        style="position: absolute;
-                                        right: 0;
-                                        top: -55px;">Next</a>
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                        <!-- step 1 -->
+                        <fieldset class="tab border p-3" style="min-height: 525px;overflow: auto;">
+                            <legend class="w-auto text-center">Contact info</legend>
+                            <div class="row">
+                                <div class="col-12 form-group">
+                                    <label for="customer-fullname">Full Name:</label>
+                                    <input type="text" class="form-control" id="customer-fullname"
+                                        name="customer-fullname" onchange="autofill()" required>
+                                    <div class="invalid-feedback">Enter your name.</div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-12 col-sm-12 ">
-                                <form id="bookingForm">
-                                    <fieldset disabled class="border p-3" style="min-height: 550px;">
-                                        <legend class="w-auto text-center">Your appointment info</legend>
-                                        <div class="row">
-                                            <label for="customer_fullname" class="col-md-4 col-form-label">Your
-                                                name:</label>
-                                            <input type="text" id="customer_fullname"
-                                                class="col-md-8 form-control font-weight-bold bg-transparent"
-                                                name="customer_fullname" style="border: none;" value="" required>
-                                        </div>
-                                        <div class="row">
-                                            <label for="customer_phone" class="col-md-4 col-form-label">Phone
-                                                number:</label>
-                                            <input type="text" id="customer_phone"
-                                                class="col-md-8 form-control font-weight-bold bg-transparent"
-                                                name="customer_phone" style="border: none;" value="" required>
-                                        </div>
-                                        <div class="row">
-                                            <label for="customer_email" class="col-md-4 col-form-label">Email:</label>
-                                            <input type="text" id="customer_email"
-                                                class="col-md-8 form-control font-weight-bold bg-transparent"
-                                                name="customer_email" style="border: none;" value="" required>
-                                        </div>
-                                        <div class="row">
-                                            <label for="customer_address"
-                                                class="col-md-4 col-form-label">Address:</label>
-                                            <input type="text" id="customer_address"
-                                                class="col-md-8 form-control font-weight-bold bg-transparent"
-                                                name="customer_address" style="border: none;" value="" required>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12 col-sm-12">
-                                                <fieldset disabled class="border p-3" aria-required="true">
-                                                    <legend class="w-auto"></legend>
-                                                    <div class="row">
-                                                        <label for="service_id"
-                                                            class="col-md-4 col-form-label">Service:</label>
-                                                        <select id="service_id"
-                                                            class="col-md-8 form-control font-weight-bold bg-transparent"
-                                                            name="service_id" style="border: none;" required>
-                                                        </select>
-                                                    </div>
-                                                    <div class="row">
-                                                        <label for="staff_id"
-                                                            class="col-md-4 col-form-label">Staff:</label>
-                                                        <select id="staff_id"
-                                                            class="col-md-8 form-control font-weight-bold bg-transparent"
-                                                            name="staff_id" style="border: none;" required>
-                                                        </select>
-                                                    </div>
-                                                    <div class="row">
-                                                        <p class="col-md-4">Date:</p>
-                                                        <p class="col-md-8" id="dateView"></p>
-                                                    </div>
-                                                    <div class="row">
-                                                        <p class="col-md-4">Time:</p>
-                                                        <p class="col-md-8" id="timeView"></p>
-                                                    </div>
-                                                    <div class="row" style="display: none;">
-                                                        <label for="datetime" class="col-md-4 col-form-label">Date &
-                                                            Time</label>
-                                                        <input id="datetime" type="text"
-                                                            class="col-md-8 form-control font-weight-bold bg-transparent"
-                                                            name="datetime" style="border: none;" required>
-                                                    </div>
-                                                </fieldset>
-                                            </div>
-                                        </div>
+                            <div class="row">
+                                <div class="col-12 form-group">
+                                    <label for="customer-phone">Phone number:</label>
+                                    <input type="tel" class="form-control" name="customer-phone" id="customer-phone"
+                                        onchange="autofill()" required>
+                                    <div class="invalid-feedback">Enter your phone.</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 form-group">
+                                    <label for="customer-email">Email:</label>
+                                    <input type="email" class="form-control" id="customer-email" name="customer-email"
+                                        placeholder="@" onchange="autofill()" required>
+                                    <div class="invalid-feedback">Enter your email.</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 form-group">
+                                    <label for="customer-address">Address:</label>
+                                    <input type="text" class="form-control" id="customer-address"
+                                        name="customer-address" onchange="autofill()" required>
+                                    <div class="invalid-feedback">Enter your address.</div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <!-- step 2 -->
+                        <fieldset class="tab border p-3" style="min-height: 525px;overflow: auto;">
+                            <legend class="w-auto text-center">Taking sevices</legend>
+                            <div class="row">
+                                <div class="form-group col-12">
+                                    <label for="service-id">Sevices:</label>
+                                    <select id="service-id" name="service-id" class="form-control"
+                                        onchange="serviceIntro()" required>
+                                        <option value="" disabled hidden selected>Services...
+                                        </option>
+                                    </select>
+                                    <div class="invalid-feedback">Select one serrvice.</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12" style="overflow: hidden;">
+                                    <fieldset class="border p-3" style="max-height: 270px;overflow: auto;">
+                                        <legend class="w-auto">Introduce Service</legend>
+                                        <p id="service_introduce"></p>
                                     </fieldset>
-                                    <div class="row m-3" style="position: relative;">
-                                        <button type="submit" id="submitBtn"
-                                            class="col-md-12 col-sm-12 col-12 btn btn-warning font-weight-bold"
-                                            onclick="bookingForm()" style="display: none;position: absolute;
-                                            top: -55px;
-                                            left: 0px;">Submit</button>
-                                    </div>
-                                </form>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <!-- step 3 -->
+                        <fieldset class="tab border p-3" style="min-height: 525px;overflow: auto;">
+                            <legend class="w-auto text-center">Choose Staff</legend>
+                            <fieldset class="border p-3" style="margin-top: -20px;">
+                                <legend class="w-auto">Select one Staff by click to avatar</legend>
+                                <div class="row justify-content-center" id="staff-id">
+
+                                </div>
+                                <div class="invalid-feedback text-center"><b>Select one staff for you!</b></div>
+                            </fieldset>
+                            <div class="row">
+                                <div class="col-12" style="overflow: hidden;">
+                                    <fieldset class="border p-3" style="max-height: 265px;overflow: auto;">
+                                        <legend class="w-auto">Introduce Staff</legend>
+                                        <p class="text-center" id="staff_fullname"></p>
+                                        <p class="text-center" id="staff_stars"></p>
+                                        <p class="text-center" id="staff_introduce"></p>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <!-- step 4 -->
+                        <fieldset class="tab border p-3" style="min-height: 525px;overflow: auto;">
+                            <legend class="w-auto text-center">Date & Time</legend>
+                            <div class="form-row mt-3">
+                                <label for="dateField" class="col-4 col-form-label">Date:</label>
+                                <input id="dateField" type="date" class="col-8 form-control" onchange="setDateTime()"
+                                    required>
+                                <div class="invalid-feedback text-right">Select date.</div>
+                            </div>
+                            <div class="form-row mt-3">
+                                <label for="timeField" class="col-4 col-form-label">Time:</label>
+                                <input id="timeField" type="time" class="col-8 form-control" onchange="setDateTime()"
+                                    required>
+                                <div class="invalid-feedback text-right">Select time.</div>
+                            </div>
+                        </fieldset>
+                        <!-- step 5 -->
+                        <fieldset class="tab border p-3 text-center" style="min-height: 525px;overflow: auto;">
+                            <legend class="w-auto">Final step</legend>
+                            <br>
+                            <h1 class="text-success"><b>OK!</b></h1>
+                            <br>
+                            <h3>Please confirm your entered information</h3>
+                            <br>
+                            <h1>&</h1>
+                            <br>
+                            <h1 class="text-warning"><b>SUBMIT</b></h1>
+                        </fieldset>
+                        <!-- next prev btn -->
+                        <div class="row justify-content-around mb-5">
+                            <div class="col-5">
+                                <a type="button" class="col-12 btn btn-info text-white" id="prevBtn"
+                                    onclick="nextPrev(-1)">Previous</a>
+                            </div>
+                            <div class="col-5">
+                                <a type="button" class="col-12 btn btn-success text-white" id="nextBtn"
+                                    onclick="nextPrev(1)">Next</a>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                        <form id="bookingForm">
+                            <fieldset disabled class="border p-3" style="min-height: 525px;">
+                                <legend class="w-auto text-center">Your appointment info</legend>
+                                <div class="row mb-2">
+                                    <label for="customer_fullname" class="col-md-4 col-form-label">Your
+                                        name:</label>
+                                    <input type="text" id="customer_fullname"
+                                        class="col-md-8 form-control font-weight-bold bg-transparent"
+                                        name="customer_fullname" style="border: none;" value="" required>
+                                </div>
+                                <div class="row mb-2">
+                                    <label for="customer_phone" class="col-md-4 col-form-label">Phone
+                                        number:</label>
+                                    <input type="text" id="customer_phone"
+                                        class="col-md-8 form-control font-weight-bold bg-transparent"
+                                        name="customer_phone" style="border: none;" value="" required>
+                                </div>
+                                <div class="row mb-2">
+                                    <label for="customer_email" class="col-md-4 col-form-label">Email:</label>
+                                    <input type="text" id="customer_email"
+                                        class="col-md-8 form-control font-weight-bold bg-transparent"
+                                        name="customer_email" style="border: none;" value="" required>
+                                </div>
+                                <div class="row mb-4">
+                                    <label for="customer_address" class="col-md-4 col-form-label">Address:</label>
+                                    <input type="text" id="customer_address"
+                                        class="col-md-8 form-control font-weight-bold bg-transparent"
+                                        name="customer_address" style="border: none;" value="" required>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12">
+                                        <fieldset disabled class="border p-3" aria-required="true">
+                                            <legend class="w-auto"></legend>
+                                            <div class="row mb-2">
+                                                <label for="service_id" class="col-md-4 col-form-label">Service:</label>
+                                                <select id="service_id"
+                                                    class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                    name="service_id" style="border: none;" required>
+                                                </select>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <label for="staff_id" class="col-md-4 col-form-label">Staff:</label>
+                                                <select id="staff_id"
+                                                    class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                    name="staff_id" style="border: none;" required>
+                                                </select>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <p class="col-md-4">Date:</p>
+                                                <p class="col-md-8" id="dateView"></p>
+                                            </div>
+                                            <div class="row">
+                                                <p class="col-md-4">Time:</p>
+                                                <p class="col-md-8" id="timeView"></p>
+                                            </div>
+                                            <div class="row" style="display: none;">
+                                                <label for="datetime" class="col-md-4 col-form-label">Date &
+                                                    Time</label>
+                                                <input id="datetime" type="text"
+                                                    class="col-md-8 form-control font-weight-bold bg-transparent"
+                                                    name="datetime" style="border: none;" required>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div class="row justify-content-center mb-5">
+                                <div class="col-5">
+                                    <button type="submit" id="submitBtn" class="col-12 btn btn-warning font-weight-bold"
+                                        onclick="bookingForm()">Submit</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
 
             <%- include('../layouts/footer') %>
-                <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
                 <script src="/js/booking.js"></script>
                 <script type="text/javascript">
                 </script>

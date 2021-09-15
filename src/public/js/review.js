@@ -63,7 +63,7 @@ function findByPhone() {
 			for (var key in rs) {
 				var rsdate = new Date(rs[key].datetime);
 				var today = new Date();
-				
+
 				switch (rs[key].status) {
 					case -2:
 						break;
@@ -233,55 +233,63 @@ function viewOnly(datetime, status, rating) {
 	$('#date-time').hide();
 	var bookdate = new Date(datetime);
 	var now = new Date();
-	if (bookdate <= now) {
-		$('#ratingForm').show();
-		$('#edit-btn').hide();
-		$('#update-btn').hide();
-		$('#delete-btn').hide();
-		$('#cancel-btn').hide();
-		$('#cancelling').hide();
-	} else {
-		switch (status) {
-			case -1:
-				$('#cancelling').show();
-				$('#ratingForm').hide();
-				$('#edit-btn').hide();
-				$('#delete-btn').hide();
-				$('#cancel-btn').hide();
-				$('#update-btn').hide();
-				break;
-			case 1:
-				$('#cancelling').hide();
-				$('#ratingForm').hide();
-				$('#edit-btn').show();
-				$('#delete-btn').show();
-				$('#cancel-btn').hide();
-				$('#update-btn').hide();
-				break;
-			case 2:
-				$('#cancelling').hide();
-				$('#ratingForm').hide();
-				$('#edit-btn').hide();
-				$('#delete-btn').hide();
-				$('#cancel-btn').show();
-				$('#update-btn').hide();
-				break;
 
-			default:
-				break;
-		}
-	}
-	if (rating > 0) {
-		$('.star-text').hide();
-		$('#ratingForm fieldset').prop('disabled', true);
-		var check = `#rate-${rating}`;
-		$('.rated').show();
-		$(`${check}`).prop('checked', true);
-	} else {
-		$('#ratingForm fieldset').prop('disabled', false);
-		$('.rated').hide();
-		$('.star-text').show();
-		$('input[name="rating"]').prop('checked', false);
+	switch (status) {
+		case -1:
+			$('#cancelling').show();
+			$('#ratingForm').hide();
+			$('#edit-btn').hide();
+			$('#delete-btn').hide();
+			$('#cancel-btn').hide();
+			$('#update-btn').hide();
+			break;
+		case 1:
+			$('#cancelling').hide();
+			$('#ratingForm').hide();
+			$('#edit-btn').show();
+			$('#delete-btn').show();
+			$('#cancel-btn').hide();
+			$('#update-btn').hide();
+			break;
+		case 2:
+			if (bookdate <= now) {
+				if (rating <= 0) {
+					$('#ratingForm').show();
+					$('#cancelling').hide();
+					$('#edit-btn').hide();
+					$('#delete-btn').hide();
+					$('#cancel-btn').hide();
+					$('#update-btn').hide();
+					$('#ratingForm fieldset').prop('disabled', false);
+					$('.rated').hide();
+					$('.star-text').show();
+					$('input[name="rating"]').prop('checked', false);
+				}
+				if (rating > 0) {
+					$('#ratingForm').show();
+					$('#cancelling').hide();
+					$('#edit-btn').hide();
+					$('#delete-btn').hide();
+					$('#cancel-btn').hide();
+					$('#update-btn').hide();
+					$('.star-text').hide();
+					$('#ratingForm fieldset').prop('disabled', true);
+					var check = `#rate-${rating}`;
+					$('.rated').show();
+					$(`${check}`).prop('checked', true);
+				}
+			} else if (bookdate > now) {
+				$('#cancel-btn').show();
+				$('#ratingForm').hide();
+				$('#cancelling').hide();
+				$('#edit-btn').hide();
+				$('#delete-btn').hide();
+				$('#update-btn').hide();
+			}
+			break;
+
+		default:
+			break;
 	}
 }
 function editable() {

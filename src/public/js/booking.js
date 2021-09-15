@@ -1,3 +1,95 @@
+var currentTab = 0;
+showTab(currentTab);
+function showTab(n) {
+	var tab = $('fieldset.tab');
+	tab[n].style.display = 'block';
+	if (n == 0) {
+		$('#prevBtn').hide();
+	} else {
+		$('#prevBtn').show();
+	}
+	if (n >= tab.length - 1) {
+		$('#submitBtn').show();
+		$('#nextBtn').hide();
+		$('a#nextBtn').attr('href', '#bookingForm');
+	} else {
+		$('#submitBtn').hide();
+		$('#nextBtn').show();
+		$('a#nextBtn').removeAttr('href');
+	}
+	stepIndicator(n);
+}
+
+function nextPrev(n) {
+	var tab = $('fieldset.tab');
+	if (n == 1 && !validateForm()) {
+		$('#staff-id~.invalid-feedback').show();
+		return false;
+	} else {
+		$('#staff-id~.invalid-feedback').hide();
+		$('input').removeClass('is-invalid');
+		$('select').removeClass('is-invalid');
+		tab[currentTab].style.display = 'none';
+		currentTab = currentTab + n;
+		showTab(currentTab);
+	}
+}
+
+function stepIndicator(n) {
+	var i,
+		step = $('li.step');
+	for (i = 0; i < step.length; i++) {
+		step[i].className = step[i].className.replace(' active', '');
+	}
+	if (n < 4) {
+		step[n].className += ' active';
+		$('li.step.active').removeClass('finish');
+	} else return;
+}
+
+function validateForm() {
+	var tab,
+		x = 0,
+		y = 0,
+		i = 0,
+		z = 0,
+		valid = true;
+	tab = document.getElementsByClassName('tab');
+	y = tab[currentTab].getElementsByTagName('input');
+	z = tab[currentTab].getElementsByTagName('select');
+	x = tab[currentTab].getElementsByClassName('form-check-input');
+	if (y.length > 0) {
+		for (i = 0; i < y.length; i++) {
+			if (y[i].value == '') {
+				y[i].className += ' is-invalid';
+				valid = false;
+			}
+		}
+	}
+	if (z.length > 0) {
+		for (i = 0; i < z.length; i++) {
+			if (z[i].value == '') {
+				z[i].className += ' is-invalid';
+				valid = false;
+			}
+		}
+	}
+	if (x.length > 0) {
+		valid = false;
+		for (i = 0; i < x.length; i++) {
+			if (x[i].checked == true) {
+				valid = true;
+			} else {
+				x[i].className += ' is-invalid';
+			}
+		}
+	}
+	if (valid) {
+		document.getElementsByClassName('step')[currentTab].className += ' finish';
+	}
+	return valid;
+}
+
 $('form').submit(function (e) {
 	e.preventDefault();
 });
@@ -32,94 +124,6 @@ function autofill() {
 		document.getElementById('customer-address').value;
 }
 
-var currentTab = 0;
-showTab(currentTab);
-function showSubmitBtn() {
-	document.getElementById('submitBtn').style.display = 'inline-block';
-}
-function showTab(n) {
-	var x = document.getElementsByClassName('tab');
-	x[n].style.display = 'block';
-	if (n == 0) {
-		document.getElementById('prevBtn').style.display = 'none';
-	} else {
-		document.getElementById('prevBtn').style.display = 'inline-block';
-	}
-	if (n == x.length - 1) {
-		document.getElementById('nextBtn').innerHTML = 'Next';
-		$('a#nextBtn').attr('href', '#bookingForm');
-	} else {
-		document.getElementById('nextBtn').innerHTML = 'Next';
-	}
-	fixStepIndicator(n);
-}
-function fixStepIndicator(n) {
-	var i,
-		x = document.getElementsByClassName('step');
-	for (i = 0; i < x.length; i++) {
-		x[i].className = x[i].className.replace(' active', '');
-	}
-	if (n < 4) {
-		x[n].className += ' active';
-	} else return;
-}
-
-function nextPrev(n) {
-	var x = document.getElementsByClassName('tab');
-	if (n == 1 && !validateForm()) return false;
-	x[currentTab].style.display = 'none';
-	currentTab = currentTab + n;
-	// if (currentTab >= x.length) {
-	//     document.getElementById('bookingForm').submit();
-	//     return false;
-	// }
-	showTab(currentTab);
-}
-
-function validateForm() {
-	var tab,
-		x,
-		y,
-		i,
-		z,
-		valid = true;
-	tab = document.getElementsByClassName('tab');
-	y = tab[currentTab].getElementsByTagName('input');
-	z = tab[currentTab].getElementsByTagName('select');
-	x = tab[currentTab].getElementsByClassName('form-check-input');
-	if (y.length > 0) {
-		for (i = 0; i < y.length; i++) {
-			if (y[i].value == '') {
-				y[i].className += ' invalid';
-				valid = false;
-			}
-		}
-	}
-	if (z.length > 0) {
-		for (i = 0; i < z.length; i++) {
-			if (z[i].value == '') {
-				z[i].className += ' invalid';
-				valid = false;
-			}
-		}
-	}
-	if (x.length > 0) {
-		valid = false;
-		for (i = 0; i < x.length; i++) {
-			if (x[i].checked == true) {
-				// x[i].className += ' invalid';
-				valid = true;
-			} else {
-				$('.invalid-feedback').show();
-			}
-		}
-	}
-	if (valid) {
-		document.getElementsByClassName('step')[currentTab].className += ' finish';
-	}
-	return valid;
-}
-
 function getService() {
 	$.ajax({
 		url: '/booking/get-service',
@@ -141,7 +145,7 @@ function getStaff() {
 		success: function (rs) {
 			for (var key in rs) {
 				var option = `
-                <div class="form-check-inline col-3 justify-content-center">
+                <div class="form-check form-check-inline col-3 justify-content-center">
                     <input id="${rs[key]._id}" type="radio" hidden value="${rs[key]._id}" class="form-check-input"
                         name="select-staff" onchange="staffIntro(this.value)" required>
                     <label for="${rs[key]._id}" class="form-check-label">
@@ -149,7 +153,7 @@ function getStaff() {
                     </label>
                 </div>
                 `;
-				$('#staff-id').append(option);
+				$('#staff-id').prepend(option);
 			}
 		},
 	});
@@ -219,4 +223,5 @@ function setDateTime() {
 	).format('dddd DD/MM/YYYY')}</b>`;
 	document.getElementById('timeView').innerHTML = `<b>${mytime}</b>`;
 	document.getElementById('datetime').value = mystring;
+	console.log(document.getElementById('datetime').value);
 }
