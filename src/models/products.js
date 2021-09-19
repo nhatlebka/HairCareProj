@@ -10,6 +10,7 @@ const product = new Schema(
         image: Array,
         highlight: String,
         shipping: String,
+        slug: String,
     },
     {
         timestamps: true,

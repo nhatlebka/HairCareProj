@@ -14,7 +14,7 @@ products.get('/get-product', function (req, res, next) {
 
 products.get('/shampoo&conditioner/:slug', (req, res, next) => {
     product
-        .findOne({slug: req.params.slug})
+        .findOne({slug : req.params.slug})
         .then(product => {
             res.render('products/prod1', {
                 product: product,
