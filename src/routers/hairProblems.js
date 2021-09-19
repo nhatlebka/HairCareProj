@@ -5,6 +5,7 @@ const postContents = require('../models/postContents');
 const moment = require('moment');
 const postComments = require('../models/postComments');
 
+// Count documents
 async function getCountComments(posts) {
     const newPosts = [];
     for (let i = 0; i < posts.length; i++) {
@@ -16,6 +17,7 @@ async function getCountComments(posts) {
     return newPosts;
 }
 
+// GET post content
 hairProblems.get('/post-content', (req, res, next) => {
     postContents
         .find({postId: req.query.id})
@@ -23,6 +25,7 @@ hairProblems.get('/post-content', (req, res, next) => {
         .catch(next);
 });
 
+//POST save post comments
 hairProblems.post('/post-comment', async (req, res, next) => {
     try {
         let newComment = new postComments({
@@ -41,6 +44,7 @@ hairProblems.post('/post-comment', async (req, res, next) => {
     }
 });
 
+//POST save new post
 hairProblems.post('/posts', async (req, res, next) => {
     //res.send(req.body);
     try {
@@ -58,6 +62,7 @@ hairProblems.post('/posts', async (req, res, next) => {
     }
 });
 
+//GET post list sort by date
 hairProblems.get('/post-list-sortbydate', (req, res, next) => {
     posts
         .find({})
@@ -66,6 +71,7 @@ hairProblems.get('/post-list-sortbydate', (req, res, next) => {
         .catch(next);
 });
 
+//GET post list by page
 hairProblems.get('/post-list', (req, res, next) => {
     var type = req.query.type || '';
     var page = req.query.page || 1;
@@ -102,6 +108,14 @@ hairProblems.get('/post-list', (req, res, next) => {
     }
 });
 
+//GET related stories
+hairProblems.get('/related-post', (req, res, next) => {
+    const type = req.query.type;
+    posts.find({type: {$all: [type]}}).limit(5)
+})
+
+
+//GET count comments
 hairProblems.get('/count-comments', (req, res, next) => {
     const postId = req.query.postId;
     postComments
@@ -110,6 +124,7 @@ hairProblems.get('/count-comments', (req, res, next) => {
         .catch(next);
 });
 
+//GET list comments
 hairProblems.get('/list-comments', (req, res, next) => {
     postComments
         .find({postId: req.query.postId})
@@ -117,6 +132,7 @@ hairProblems.get('/list-comments', (req, res, next) => {
         .catch(next);
 });
 
+//GET post
 hairProblems.get('/:slug', (req, res, next) => {
     posts
         .findOne({slug: req.params.slug})
@@ -129,6 +145,7 @@ hairProblems.get('/:slug', (req, res, next) => {
         .catch(next);
 });
 
+//GET hair problems
 hairProblems.get('/', (req, res, next) => {
     var type = req.query.type || '';
     console.log(type);
