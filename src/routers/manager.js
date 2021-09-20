@@ -134,7 +134,7 @@ router.post('/staff', function (req, res, next) {
 	const staff = new Staff(formData);
 	staff
 		.save()
-		.then(() => res.send("OK"))
+		.then(() => res.send('OK'))
 		.catch((error) => {});
 });
 router.post('/service', function (req, res, next) {
@@ -155,17 +155,23 @@ router.post('/booking', function (req, res, next) {
 		.then(() => res.send('OK'))
 		.catch((error) => {});
 });
-router.get('/demo', (req, res) => {
+router.get('/demo', isLoggedIn, (req, res) => {
 	res.render('manager/demo');
 });
-router.get('/booking', (req, res) => {
+router.get('/booking', isLoggedIn, (req, res) => {
 	res.render('manager/booking');
 });
 // router.get('/:slug', (req, res, next) => {
 // 	res.render('manager/manager');
 // });
-router.get('/', (req, res) => {
-	res.render('manager/manager');
+router.get('/', isLoggedIn, (req, res) => {
+	res.render('manager/manager', { user: req.user });
 });
-
+// route middleware để kiểm tra một user đã đăng nhập hay chưa?
+function isLoggedIn(req, res, next) {
+	// Nếu một user đã xác thực, cho đi tiếp
+	if (req.isAuthenticated()) return next();
+	// Nếu chưa, đưa về trang chủ
+	res.redirect('/login');
+}
 module.exports = router;
