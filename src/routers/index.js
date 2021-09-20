@@ -7,8 +7,8 @@ const products = require('./products');
 const hairStyles = require('./hairStyles');
 
 function routers(app) {
-	app.use('/hair-styles',hairStyles);
-	app.use('/products',products);
+	app.use('/hair-styles', hairStyles);
+	app.use('/products', products);
 	app.use('/services', hairService);
 	app.use('/hair-problems', hairProblems);
 	app.use('/booking', bookingRouter);
