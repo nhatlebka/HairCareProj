@@ -3,18 +3,19 @@ const mongoose = require('mongoose');
 
 //Connect to DB
 function connect() {
-    mongoose
-        .connect(
-            'mongodb+srv://lenn:1234@cluster0.dbox4.mongodb.net/hair_care?retryWrites=true&w=majority',
-            // 'mongodb://localhost:27017/test',
+	mongoose
+		.connect(
+			process.env.cfg_db_server,
+			// 'mongodb+srv://lenn:1234@cluster0.dbox4.mongodb.net/hair_care?retryWrites=true&w=majority',
+			// 'mongodb://localhost:27017/test',
 
-            {
-                useNewUrlParser: true,
-                useUnifiedTopology: true,
-            }
-        )
-        .then(() => console.log('Database connected!'))
-        .catch(err => console.log(err));
+			{
+				useNewUrlParser: true,
+				useUnifiedTopology: true,
+			}
+		)
+		.then(() => console.log('Database connected!'))
+		.catch((err) => console.log(err));
 }
 
-module.exports = {connect};
+module.exports = { connect };
