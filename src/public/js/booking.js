@@ -22,7 +22,7 @@ function showTab(n) {
 
 function nextPrev(n) {
 	var tab = $('fieldset.tab');
-	if (n == 1 && !validateForm()) {
+	if (n == 1 && !validateInput()) {
 		$('#staff-id~.invalid-feedback').show();
 		return false;
 	} else {
@@ -47,7 +47,7 @@ function stepIndicator(n) {
 	} else return;
 }
 
-function validateForm() {
+function validateInput() {
 	var tab,
 		x = 0,
 		y = 0,
@@ -58,7 +58,15 @@ function validateForm() {
 	y = tab[currentTab].getElementsByTagName('input');
 	z = tab[currentTab].getElementsByTagName('select');
 	x = tab[currentTab].getElementsByClassName('form-check-input');
+	var selTime = new Date($('#datetime').val());
+	var curTime = new Date();
 	if (y.length > 0) {
+		if (selTime < curTime) {
+			valid = false;
+			for (i = 0; i < y.length; i++) {
+				y[i].className += ' is-invalid';
+			}
+		}
 		for (i = 0; i < y.length; i++) {
 			if (y[i].value == '') {
 				y[i].className += ' is-invalid';
@@ -225,3 +233,16 @@ function setDateTime() {
 	document.getElementById('datetime').value = mystring;
 	console.log(document.getElementById('datetime').value);
 }
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+var yyyy = today.getFullYear();
+if (dd < 10) {
+	dd = '0' + dd;
+}
+if (mm < 10) {
+	mm = '0' + mm;
+}
+
+today = yyyy + '-' + mm + '-' + dd;
+document.getElementById('dateField').setAttribute('min', today);

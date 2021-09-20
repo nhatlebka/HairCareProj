@@ -4,24 +4,34 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
+<<<<<<< HEAD
 		"start": "nodemon index.js",
+=======
+		"start": "nodemon --inspect index.js",
+>>>>>>> 36db109ed3bec51c91d1936226613193ed7135c0
 		"__comment": "replace before commit 'node index.js -> nodemon --inspect index.js'",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"bcrypt-nodejs": "0.0.3",
 		"body-parser": "^1.19.0",
 		"bootstrap": "^5.1.0",
 		"cloudinary": "^1.26.3",
+		"connect-flash": "^0.1.1",
+		"cookie-parser": "^1.4.5",
 		"ejs": "^3.1.6",
 		"express": "^4.17.1",
+		"express-session": "^1.17.2",
 		"jquery": "^3.6.0",
 		"method-override": "^3.0.0",
 		"moment": "^2.29.1",
 		"mongoose": "^6.0.2",
 		"mongoose-slug-generator": "^1.0.4",
-		"multer": "^1.4.3"
+		"multer": "^1.4.3",
+		"passport": "^0.4.1",
+		"passport-local": "^1.0.0"
 	},
 	"devDependencies": {
 		"morgan": "^1.10.0",

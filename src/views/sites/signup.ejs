@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Manager Authentication</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <link rel="icon" href="https://res.cloudinary.com/lenn/image/upload/v1630582852/hairCare/logo-icon_d7ieaa.png"
+            type="image/x-icon" />
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous" />
+        <link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css" />
+        <style>
+            body {
+                padding-top: 80px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="col-sm-6 col-sm-offset-3">
+                <h1><span class="fa fa-sign-in"></span> Signup</h1>
+                <!-- hiển thị mọi tin nhắn được trả lại từ server cho việc đăng ký -->
+                <% if (message.length> 0) { %>
+                    <div class="alert alert-danger">
+                        <%= message %>
+                    </div>
+                    <% } %>
+                        <!-- LOGIN FORM -->
+                        <form action="/signup" method="post">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" class="form-control" name="email">
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control" name="password">
+                            </div>
+                            <button type="submit" class="btn btn-warning btn-lg">Signup</button>
+                        </form>
+                        <hr>
+                        <p>Already have an account? <a href="/login">Login</a></p>
+                        <p>Or go <a href="/">home</a>.</p>
+            </div>
+        </div>
+    </body>
+
+</html>
