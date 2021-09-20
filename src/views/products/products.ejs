@@ -23,36 +23,48 @@
         <div class="main-left col-lg-3 col-md-3 col-sm-12">
             <div class="category">
                 <div class="main-left-heading">Categories</div>
-                <ul class="nav-cat-list">
-                    <li class="nav-item-cat">
-                        <a href="">Hair Care</a>
-                        <div class="nav-item-cat-icon cat-icon-control">
-                            <i class="fas fa-caret-left"></i>
-                        </div>
-                        <ul class="nav-cat-list-child">
-                            <li class="nav-cat-item-child"><a href="">Shampoo & Conditioner</a></li>
-                            <li class="nav-cat-item-child"><a href="">Hair Treatments</a></li>
-                            <li class="nav-cat-item-child"><a href="">Nature Haircare</a></li>
-                            <li class="nav-cat-item-child"><a href="">Styling Products</a></li>
-                        </ul>
+                <ul class="category-list">
+                    <li class="category-item">
+                        <i class="fas fa-circle"></i>
+                        <a href="/products?category=Shampoo">Shampoo</a>
                     </li>
-                </ul>
 
-                <ul class="nav-cat-list">
-                    <li class="nav-item-cat category-item">
-                        <a href="">Tools & Brushes</a>
-                        <div class="nav-item-cat-icon cat-icon-control">
-                            <i class="fas fa-caret-left"></i>
-                        </div>
-                        <ul class="nav-cat-list-child">
-                            <li class="nav-cat-item-child"><a href="">Hair Dryers</a></li>
-                            <li class="nav-cat-item-child"><a href="">Flat Irons & Hair Straighteners</a></li>
-                            <li class="nav-cat-item-child"><a href="">Curling Irons & Wands</a></li>
-                            <li class="nav-cat-item-child"><a href="">Hair Cutting Tools</a></li>
-                        </ul>
+                    <li class="category-item">
+                        <i class="fas fa-circle"></i>
+                        <a href="/products?category=Natrure Haircare" >Natrure Haircare</a>
                     </li>
-                </ul>
 
+                    <li class="category-item">
+                        <i class="fas fa-circle"></i>
+                        <a href="/products?category=Hair Treatments" >Hair Treatments</a>
+                    </li>
+
+                    <li class="category-item">
+                        <i class="fas fa-circle"></i>
+                        <a href="/products?category=Styling Products" >Styling Products</a>
+                    </li>
+
+                    <li class="category-item">
+                        <i class="fas fa-circle"></i>
+                        <a href="/products?category=Hair Dryers" >Hair Dryers</a>
+                    </li>
+
+                    <li class="category-item">
+                        <i class="fas fa-circle"></i>
+                        <a href="/products?category=Flat Irons" >Flat Irons</a>
+                    </li>
+
+                    <li class="category-item">
+                        <i class="fas fa-circle"></i>
+                        <a href="/products?category=Curling Irons" >Curling Irons</a>
+                    </li>
+
+                    <li class="category-item">
+                        <i class="fas fa-circle"></i>
+                        <a href="/products?category=Cutting Tools" >Cutting Tools</a>
+                    </li>
+
+                </ul>
             </div>
 
             <div class="best-choice">
@@ -61,32 +73,32 @@
                 <div class="owl-carousel owl-theme best-choice-list">
 
                     <div class="best-choice-item">
-                        <a href="/products/shampoo&conditioner/biotera" class="best-choice-img"><img src="/images/BIOTRA4.1.jpg" alt=""></a>
-                        <a href="/products/shampoo&conditioner/biotera" class="owl-carousel-link">Ultra Color Care Shampoo</a>
+                        <a href="/products/biotera" class="best-choice-img"><img src="/images/BIOTRA4.1.jpg" alt=""></a>
+                        <a href="/products/biotera" class="owl-carousel-link">Ultra Color Care Shampoo</a>
                         <div class="line-img"></div>
                         <div class="price">$11.5</div>
 
                     </div>
 
                     <div class="best-choice-item">
-                        <a href="/products/shampoo&conditioner/biotera" class="best-choice-img"><img src="/images/BIOTRA4.1.jpg" alt=""></a>
-                        <a href="/products/shampoo&conditioner/biotera" class="owl-carousel-link">Ultra Color Care Shampoo</a>
+                        <a href="/products/biotera" class="best-choice-img"><img src="/images/BIOTRA4.1.jpg" alt=""></a>
+                        <a href="/products/biotera" class="owl-carousel-link">Ultra Color Care Shampoo</a>
                         <div class="line-img"></div>
                         <div class="price">$11.5</div>
 
                     </div>
 
                     <div class="best-choice-item">
-                        <a href="/products/shampoo&conditioner/biotera" class="best-choice-img"><img src="/images/BIOTRA4.1.jpg" alt=""></a>
-                        <a href="/products/shampoo&conditioner/biotera" class="owl-carousel-link">Ultra Color Care Shampoo</a>
+                        <a href="/products/biotera" class="best-choice-img"><img src="/images/BIOTRA4.1.jpg" alt=""></a>
+                        <a href="/products/biotera" class="owl-carousel-link">Ultra Color Care Shampoo</a>
                         <div class="line-img"></div>
                         <div class="price">$11.5</div>
 
                     </div>
 
                     <div class="best-choice-item">
-                        <a href="/products/shampoo&conditioner/biotera" class="best-choice-img"><img src="/images/BIOTRA4.1.jpg" alt=""></a>
-                        <a href="/products/shampoo&conditioner/biotera" class="owl-carousel-link">Ultra Color Care Shampoo</a>
+                        <a href="/products/biotera" class="best-choice-img"><img src="/images/BIOTRA4.1.jpg" alt=""></a>
+                        <a href="/products/biotera" class="owl-carousel-link">Ultra Color Care Shampoo</a>
                         <div class="line-img"></div>
                         <div class="price">$11.5</div>
 
@@ -110,8 +122,27 @@
                 </div>
             </div>
             <div class="row" id = "productlist">
-
-
+                <%for (let i = 0; i<product.length;i++) {%>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="post-info text-center">
+                        <div class="fall-item fall-effect">
+                            <img src="<%=product[i].image[0]%>" alt="" width="100%"/>
+                            <div class="mask">
+                                <p><%=product[i].description%></p>
+                                <div class="post-read-more">
+                                    <a href="/products/<%=product[i].slug%>">Read More&nbsp;<i class="fas fa-angle-double-right read-more-icon"></i>
+                                        <div class="post-read-more-before"></div>
+                                        <div class="post-read-more-after"></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/products/<%=product[i].slug%>" class="product-name"><%=product[i].name%></a>
+                        <div class="line-img"></div>
+                        <div class="price">$ <%=product[i].price%></div>
+                    </div>
+                </div>;
+                <%}%>
             </div>
         </div>
     </div>
@@ -135,38 +166,6 @@
             }
         }
     });
-    function loadProduct() {
-        $.ajax({
-            url: '/products/get-product',
-            method: 'GET',
-            success: function (rs) {
-                $('#productlist').html("");
-                for (let i = 0; i<rs.length;i++) {
-                    var option = `<div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="post-info text-center">
-                        <div class="fall-item fall-effect">
-                            <img src="${rs[i].image[0]}" alt="" width="100%"/>
-                            <div class="mask">
-                                <p>${rs[i].description}</p>
-                                <div class="post-read-more">
-                                    <a href="/products/shampoo&conditioner/${rs[i].slug}">Read More&nbsp;<i class="fas fa-angle-double-right read-more-icon"></i>
-                                        <div class="post-read-more-before"></div>
-                                        <div class="post-read-more-after"></div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="/products/shampoo&conditioner/${rs[i].slug}" class="product-name">${rs[i].name}</a>
-                        <div class="line-img"></div>
-                        <div class="price">$ ${rs[i].price}</div>
-                    </div>
-                </div>`;
-                    $('#productlist').append(option);
-                }
-            },
-        });
-    }
-    loadProduct()
 </script>
 </body>
 </html>

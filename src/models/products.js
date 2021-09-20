@@ -11,6 +11,7 @@ const product = new Schema(
         highlight: String,
         shipping: String,
         slug: String,
+        category: String,
     },
     {
         timestamps: true,

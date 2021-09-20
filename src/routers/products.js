@@ -10,9 +10,7 @@ products.get('/get-product', function (req, res, next) {
         .catch(next);
 });
 
-
-
-products.get('/shampoo&conditioner/:slug', (req, res, next) => {
+products.get('/:slug', (req, res, next) => {
     product
         .findOne({slug : req.params.slug})
         .then(product => {
@@ -23,12 +21,20 @@ products.get('/shampoo&conditioner/:slug', (req, res, next) => {
         .catch(next);
 });
 
-products.get('/shampoo&conditioner', (req, res) => {
-    res.render('products/products');
-});
-
-products.get('/', (req, res) => {
+products.get('/', (req, res, next) => {
+    if(req.query.category){
+    product.find({
+        category:req.query.category,
+    })
+        .then(product => {
+            res.render('products/products', {
+                product: product,
+            });
+        })
+        .catch(next);
+} else
+{
     res.render('products/list');
-});
-
+}
+})
 module.exports = products;
