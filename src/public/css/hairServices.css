@@ -42,9 +42,10 @@
     margin-bottom: 100px;
 }
 .post{
-    background-color: #f7f7f7;
+    background-color: #f1eeee;
     /* border: 1px solid gray; */
     box-shadow: 0 1.063rem 2.188rem rgb(0 0 0 / 3%);
+    height: 700px;
 }
 .post-title{
     padding-top: 30px;
@@ -54,6 +55,7 @@
 }
 .post-img img{
     border-radius: 50%;
+   
 }
 .post-img img:hover{
     transform: scale(1.1);
@@ -125,21 +127,32 @@
     margin-top: 100px;
     margin-bottom: 100px;
 }
+.combo-title{
+    padding-top: 10px;
+}
+.combo-title h3{
+    font-weight: 500;
+}
+.combo-img{
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
 .combo-img img{
     display: block;
     margin-left:auto;
     margin-right:auto
 }
 .combo{
+    padding-left:50px;
     margin-bottom: 30px;
-    box-shadow: 2px 4px 5px rgb(0, 0, 0.3);
-    transform: translateX(400%);
-    transition: transform 0.4s ease;
+    box-shadow: 0 0 10px rgb(0, 0, 0.3);
+    /* transform: translateX(400%);
+    transition: transform 0.4s ease; */
 }
 
-.combo:nth-of-type(even){
+/* .combo:nth-of-type(even){
     transform: translateX(-400%);
-}
-.combo.show{
+} */
+/* .combo.show{
     transform: translateY(0);
-}
+} */
