@@ -50,6 +50,11 @@
     border-bottom: none;
 }
 
+.pre{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+}
+
 .category-item i {
     font-size: 10px;
     color: #d39e3c;
