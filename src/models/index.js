@@ -5,8 +5,8 @@ const mongoose = require('mongoose');
 function connect() {
 	mongoose
 		.connect(
-			process.env.cfg_db_server,
-			// 'mongodb+srv://lenn:1234@cluster0.dbox4.mongodb.net/hair_care?retryWrites=true&w=majority',
+			// process.env.cfg_db_server,
+			'mongodb+srv://lenn:1234@cluster0.dbox4.mongodb.net/hair_care?retryWrites=true&w=majority',
 			// 'mongodb://localhost:27017/test',
 
 			{
