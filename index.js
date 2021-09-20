@@ -20,8 +20,8 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash());
 //dev
-const morgan = require('morgan');
-app.use(morgan('dev')); // log tất cả request ra console log
+// const morgan = require('morgan');
+// app.use(morgan('dev')); // log tất cả request ra console log
 //Ghi đè phương thức (override method)
 app.use(methodOverride('_method'));
 
