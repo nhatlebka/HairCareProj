@@ -1,0 +1,58 @@
+[
+    {
+        "id":"1",
+        "title":"WOMENS CUTS",
+        "price": 50,
+        "introduce":"Cắt tóc nữ",
+        "des":"Hair is shaped and texturized to deliver the desired look and enhance face shape and highlight features. Includes shampoo, scalp massage, cut and blowdry style.",
+        "image":"/images/service1.jpg" 
+    },
+    {
+        "id":"2",
+        "title":"SPECIALTY HAIRCUTTING",
+        "price":"$65+",
+        "introduce":"Cutting",
+        "des":"Advanced haircutting techniques designed especially for curly hair, precision dry cutting, and avant-garde methods all fall under the umbrella of specialty haircutting. These services require additional training and mastery by stylists and demand a premium price.",
+        "image":"/images/service1.jpg" 
+    },
+    {
+        "id":"3",
+        "title":"EXPRESS HAIR",
+        "price":"£40",
+        "introduce":"Signature Blow Dry",
+        "des":"Salon hair color has undergone a renaissance in the last five years. Gone are the days when women simply came in for gray coverage or a few highlights.",
+        "image":"/images/service1.jpg" 
+    },
+    {
+        "id":"4",
+        "title":"FULL FOIL",
+        "price":"£40",
+        "introduce":"Foil",
+        "des":"Creates dimensional color using foils on the front, crown, and back of the hair. Includes gloss and blowdry style.",
+        "image":"/images/service1.jpg" 
+    },
+    {
+        "id":"5",
+        "title":"DOUBLE PROCESS COLOR",
+        "price":"£40",
+        "introduce":"Foil",
+        "des":"Bleach is used to lighten the hair, followed by a gloss/toner. This service is often needed before applying fashion colors or to achieve a platinum blonde result. Includes blowdry style.",
+        "image":"/images/service1.jpg" 
+    },
+    {
+        "id":"6",
+        "title":"BOND REPAIR TREATMENT",
+        "price":"$25",
+        "introduce":"Foil",
+        "des":"A bond repair treatment is incorporated as an add-on to a color service for damaged or compromised hair. A bond multiplier is added to the color formula, and then a bond perfector is applied following color service.",
+        "image":"/images/service1.jpg" 
+    },
+    {
+        "id":"7",
+        "title":"CHEMICAL WAVING",
+        "price":"$120",
+        "introduce":"Foil",
+        "des":"A safe way to achieve long-lasting curls or waves and reduce styling time. A gentle formula is applied to hair that has been wrapped to achieve a customized curl pattern.",
+        "image":"/images/service1.jpg" 
+    }
+]
