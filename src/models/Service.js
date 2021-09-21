@@ -8,7 +8,9 @@ const Service = new Schema(
 		service_introduce: String,
 		service_image: String,
 		service_desc: String,
-		service_price: Number
+		service_price: Number,
+		slug: String,
+		service_title: String,
 	},
 	{
 		timestamps: true,

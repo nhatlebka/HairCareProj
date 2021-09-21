@@ -14,7 +14,9 @@
 <div class="main-content" >
     <div class="breadcrumb d-flex justify-content-center align-items-center" style="background-image: url(/images/breadcrumb_bg_img.jpg)">
         <h1 class="breadcrumb-text">Products</h1>
-        <p class="breadcrumb-text">Shampoo & Conditioner</p>
+        <p class="breadcrumb-text">
+            <%=product[0].category%>
+        </p>
     </div>
 </div>
 
@@ -73,35 +75,31 @@
                 <div class="owl-carousel owl-theme best-choice-list">
 
                     <div class="best-choice-item">
-                        <a href="/products/biotera" class="best-choice-img"><img src="/images/BIOTRA4.1.jpg" alt=""></a>
-                        <a href="/products/biotera" class="owl-carousel-link">Ultra Color Care Shampoo</a>
+                        <a href="/products/<%=product[0].slug%>" class="best-choice-img"><img src="<%=product[0].image[0]%>" alt=""></a>
+                        <a href="/products/<%=product[0].slug%>" class="owl-carousel-link"><%=product[0].name%></a>
                         <div class="line-img"></div>
-                        <div class="price">$11.5</div>
-
+                        <div class="price">$<%=product[0].price%></div>
                     </div>
 
                     <div class="best-choice-item">
-                        <a href="/products/biotera" class="best-choice-img"><img src="/images/BIOTRA4.1.jpg" alt=""></a>
-                        <a href="/products/biotera" class="owl-carousel-link">Ultra Color Care Shampoo</a>
+                        <a href="/products/<%=product[1].slug%>" class="best-choice-img"><img src="<%=product[1].image[0]%>" alt=""></a>
+                        <a href="/products/<%=product[1].slug%>" class="owl-carousel-link"><%=product[1].name%></a>
                         <div class="line-img"></div>
-                        <div class="price">$11.5</div>
-
+                        <div class="price">$<%=product[1].price%></div>
                     </div>
 
                     <div class="best-choice-item">
-                        <a href="/products/biotera" class="best-choice-img"><img src="/images/BIOTRA4.1.jpg" alt=""></a>
-                        <a href="/products/biotera" class="owl-carousel-link">Ultra Color Care Shampoo</a>
+                        <a href="/products/<%=product[3].slug%>" class="best-choice-img"><img src="<%=product[3].image[0]%>" alt=""></a>
+                        <a href="/products/<%=product[3].slug%>" class="owl-carousel-link"><%=product[3].name%></a>
                         <div class="line-img"></div>
-                        <div class="price">$11.5</div>
-
+                        <div class="price">$<%=product[3].price%></div>
                     </div>
 
                     <div class="best-choice-item">
-                        <a href="/products/biotera" class="best-choice-img"><img src="/images/BIOTRA4.1.jpg" alt=""></a>
-                        <a href="/products/biotera" class="owl-carousel-link">Ultra Color Care Shampoo</a>
+                        <a href="/products/<%=product[5].slug%>" class="best-choice-img"><img src="<%=product[5].image[0]%>" alt=""></a>
+                        <a href="/products/<%=product[5].slug%>" class="owl-carousel-link"><%=product[5].name%></a>
                         <div class="line-img"></div>
-                        <div class="price">$11.5</div>
-
+                        <div class="price">$<%=product[5].price%></div>
                     </div>
 
                 </div>

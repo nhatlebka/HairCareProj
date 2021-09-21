@@ -109,9 +109,27 @@ hairProblems.get('/post-list', (req, res, next) => {
 });
 
 //GET related stories
-hairProblems.get('/related-post', (req, res, next) => {
+hairProblems.get('/related-post', async (req, res, next) => {
     const type = req.query.type;
-    posts.find({type: {$all: [type]}}).limit(5)
+    let listPosts = [];
+    for (let i=0; i<type.length; i++) {
+        try {
+            const lposts = await posts.find({type: {$all: [type[i]]}}).limit(5);
+            listPosts = listPosts.concat(lposts)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    for (let i=1; i<listPosts.length; i++) {
+        for (let j=0; j<i; j++) { 
+            if (listPosts[i].title == listPosts[j].title) {
+                listPosts.splice(i, 1);
+                break;
+            }
+        }
+    }
+    
+    res.send(listPosts)
 })
 
 
@@ -148,7 +166,6 @@ hairProblems.get('/:slug', (req, res, next) => {
 //GET hair problems
 hairProblems.get('/', (req, res, next) => {
     var type = req.query.type || '';
-    console.log(type);
     res.render('hairProblems/hairProblems', {type: type});
 });
 
