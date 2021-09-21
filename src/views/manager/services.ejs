@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../layouts/manageHead') %>
+
+        <body>
+            <%- include('../layouts/manageSidebar') %>
+
+
+                <!-- !PAGE CONTENT! -->
+                <div class="w3-main" style="margin-left:300px;">
+                    <!-- Top container -->
+                    <div class="w3-bar w3-top w3-light-grey w3-large w3-hide-large" style="z-index:4">
+                        <button class="w3-bar-item w3-button w3-hide-large w3-hover-none" onclick="w3_open();"><i
+                                class="fa fa-bars"></i>  Menu</button>
+                        <span class="w3-bar-item w3-right"><strong>Manager Page</strong></span>
+                    </div>
+
+                    <!-- Header -->
+                    <header class="w3-container" style="padding-top:22px">
+                        <h3><b><i class="fa fa-dashboard"></i>Services manager</b></h3>
+                    </header>
+                    <hr>
+                    <div class="container-fluid">
+                        <table class="table table-hover table-dark">
+                            <thead>
+                                <tr>
+                                    <th>Services name</th>
+                                    <th>Count</th>
+                                    <th>Stars</th>
+                                    <th>More</th>
+                                </tr>
+                            </thead>
+                            <tbody id="list-services">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <hr>
+
+                <%- include('../layouts/manageFooter') %>
+
+                    <script type="text/javascript">
+                        function getService() {
+                            $.ajax({
+                                url: '/manager/get-service',
+                                method: 'GET',
+                                success: function (rs) {
+                                    for (var key in rs) {
+                                        var option = `
+                                            <tr>
+                                                <td>${rs[key].service_name}</td>
+                                                <td>${rs[key].service_price}</td>
+                                                <td>${rs[key].slug}</td>
+                                                <td><button type="button" class="btn btn-light" data-toggle="modal" data-target="#reviewModal" value="${rs[key]._id
+                                            }"
+														onclick="viewDetail(this.value)">
+														<i class="fas fa-ellipsis-h"></i></button></td>
+                                            </tr>
+                                        `;
+                                        $('#list-services').append(option);
+                                    }
+                                },
+                            });
+                        }
+                        getService()
+                    </script>
+        </body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <%- include('../layouts/manageHead') %>
+            <style>
+                .card.w3-hover-shadow a {
+                    position: relative;
+                }
+
+                .card.w3-hover-shadow a:hover .card-overlay {
+                    transform: scale(1);
+                }
+
+                .card-overlay {
+                    border: none;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    background-color: rgba(0, 0, 0, 0.5);
+                    transform: scale(0);
+                    /* transition: all 250ms; */
+                }
+            </style>
+    </head>
+
+    <body>
+        <%- include('../layouts/manageSidebar') %>
+
+
+            <!-- !PAGE CONTENT! -->
+            <div class="w3-main" style="margin-left:300px;">
+                <!-- Top container -->
+                <div class="w3-bar w3-top w3-light-grey w3-large w3-hide-large" style="z-index:4">
+                    <button class="w3-bar-item w3-button w3-hide-large w3-hover-none" onclick="w3_open();"><i
+                            class="fa fa-bars"></i>  Menu</button>
+                    <span class="w3-bar-item w3-right"><strong>Manager Page</strong></span>
+                </div>
+
+                <!-- Header -->
+                <header class="w3-container" style="padding-top:22px">
+                    <h3><b><i class="fa fa-dashboard"></i>Staffs manager</b></h3>
+                </header>
+                <hr>
+                <div class="container-fluid">
+                    <div class="row" id="list-staffs">
+
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <!-- The Modal -->
+            <div class="modal" id="staffModal">
+                <div class="modal-dialog">
+                    <div class="modal-content  w3-animate-zoom">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h5 class="modal-title">Staff detail</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="card text-center" id="staff-card">
+                            </div>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer justify-content-around">
+                            <button type="button" class="btn btn-primary">Edit</button>
+                            <button type="button" class="btn btn-success">Update</button>
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <%- include('../layouts/manageFooter') %>
+
+                <script type="text/javascript">
+                    function getStaff() {
+                        $.ajax({
+                            url: '/manager/get-staff',
+                            method: 'GET',
+                            success: function (rs) {
+                                for (var key in rs) {
+                                    var option = `
+                                        <div class="col-xl-2 col-lg-4 col-md-6 col-sm-12 col-12 mb-3 text-center">
+                                            <div class="card w3-hover-shadow">
+                                                <a><img src="${rs[key].staff_avatar}"
+                                                alt="" class="card-img-top">
+                                                <button class="card-overlay" data-toggle="modal" data-target="#staffModal" value="${rs[key]._id}"onclick="viewStaff(this.value)"></button>
+                                                </a>
+                                                <div class="card-body">
+                                                    <h4 class="card-title">${rs[key].staff_fullname}</h4>
+                                                    <h5><b>${rs[key].staff_stars}</b> <i class="fas fa-star"></i></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        `;
+                                    $('#list-staffs').prepend(option);
+                                }
+                            },
+                        });
+                    }
+                    getStaff()
+                    function viewStaff(value) {
+                        $.ajax({
+                            type: "GET",
+                            url: "/manager/staff-by-id",
+                            data: { _id: value },
+                            success: function (rs) {
+                                $('#staff-card').html(`
+                                <img class="card-img-top" src="${rs.staff_avatar}">
+                                <div class="card-body">
+                                    <h4 class="card-title">${rs.staff_fullname}</h4>
+                                    <h5>${rs.staff_stars} <i class="fas fa-star"></i></h5>
+                                    <p class="card-text">${rs.staff_introduce}</p>
+                                </div>`)
+
+                            }
+                        });
+                    }
+                </script>
+    </body>
+
+</html>
