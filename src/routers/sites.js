@@ -4,14 +4,6 @@ const passport = require('passport');
 require('../config/passport')(passport);
 
 router.post(
-	'/signup',
-	passport.authenticate('local-signup', {
-		successRedirect: '/login', // chuyển hướng tới trang được bảo vệ
-		failureRedirect: '/signup', // trở lại trang đăng ký nếu có lỗi
-		failureFlash: true, // allow flash messages
-	})
-);
-router.post(
 	'/login',
 	passport.authenticate('local-login', {
 		successRedirect: '/manager',
@@ -19,9 +11,6 @@ router.post(
 		failureFlash: true,
 	})
 );
-router.get('/signup', function (req, res) {
-	res.render('sites/signup.ejs', { message: req.flash('signupMessage') });
-});
 
 router.get('/login', function (req, res) {
 	res.render('sites/login.ejs', { message: req.flash('loginMessage') });

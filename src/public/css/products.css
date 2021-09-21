@@ -43,7 +43,37 @@
 }
 
 .category {
-    margin-top: 20px;
+    margin-top: 40px;
+}
+
+.category-list {
+    list-style: none;
+}
+
+.category-item {
+    padding: 11px 20px;
+    border-bottom: 1px dashed #ccc;
+}
+
+.category-item:last-child {
+    border-bottom: none;
+}
+
+.category-item i {
+    font-size: 10px;
+    color: #d39e3c;
+    margin-right: 11px;
+}
+
+.category-item a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.category-item a:hover {
+    color: #d39e3c;
 }
 
 .main-right {

@@ -16,22 +16,29 @@
         <div class="main-content">
             <div class="breadcrumb d-flex justify-content-center align-items-center"
                 style="background-image: url(/images/breadcrumb_bg_img.jpg)">
-                <h1 class="breadcrumb-text">Hair Services</h1>
-                <p class="breadcrumb-text"><a href="">Home</a>&nbsp; / &nbsp;Hair Services</p>
+                <h1 class="breadcrumb-text"><%= services.service_name %></h1>
+                <p class="breadcrumb-text"><a href="">Home</a>&nbsp; / &nbsp;Hair Services / &nbsp;<%= services.service_name %> </p>
             </div>
         </div>
 
-        <!-- Main Content-->
         
-        <!-- <div class="test-box ">
-        <div class="box"><h2>content</h2></div>
-        <div class="box"><h2>content</h2></div>
-        <div class="box"><h2>content</h2></div>
-        <div class="box"><h2>content</h2></div>
-        <div class="box"><h2>content</h2></div>
-        <div class="box"><h2>content</h2></div>
-        </div> -->
-        
+        <div class="main text-center">
+            <!-- <h1><%= services.service_name %> </h1> -->
+            <div class="img">
+                <img src="<%= services.service_image %> " alt="" width="40%">
+                <br><br>
+               <b> <span><%= services.service_price %> $ </span></b>
+            </div>
+            <div class="des">
+                <p><%= services.service_desc %> </p>
+            </div>
+            <div class="booking-button text-center">
+                <a href="/booking">Booking now&nbsp;<i class="fas fa-angle-double-right read-more-icon"></i>
+                    <div class="booking-button-before"></div>
+                    <div class="booking-button-after"></div>
+                </a>
+            </div>
+        </div>
         
         
 
