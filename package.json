@@ -4,11 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-<<<<<<< HEAD
-		"start": "nodemon index.js",
-=======
 		"start": "nodemon --inspect index.js",
->>>>>>> 36db109ed3bec51c91d1936226613193ed7135c0
 		"__comment": "replace before commit 'node index.js -> nodemon --inspect index.js'",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},

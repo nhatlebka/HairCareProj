@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Hair Services</title>
+    <%- include('../layouts/head') %>
+        <!-- Thư viện và CSS Import ở dưới -->
+        <link rel="stylesheet" href="/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="/css/layoutsResponsive.css">
+        <link rel="stylesheet" href="/css/hairServiceOptions.css">
+
+<body>
+    <%- include('../layouts/header') %>
+
+        
+
+        
+        
+        
+        
+
+        <%- include('../layouts/footer') %>
+            <script src="/js/optionServices.js"></script>
+            <script src="/js/owl.carousel.min.js"></script>
+            <script>
+                $('.owl-carousel').owlCarousel({
+                    loop: true,
+                    margin: 10,
+                    nav: true,
+                    autoplay: true,
+                    autoplayTimeout: 4000,
+                    autoplayHoverPause: true,
+                    navText: ['<div class="carousel-nav-text"><i class="fal fa-chevron-left"></i></div>', '<div class="carousel-nav-text"><i class="fal fa-chevron-right"></i></div>'],
+                    responsive: {
+                        0: {
+                            items: 1
+                        }
+                    }
+                })
+            </script>
+</body>
+
+</html>
