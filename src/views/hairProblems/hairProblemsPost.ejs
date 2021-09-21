@@ -5,6 +5,9 @@
         <%- include('../layouts/head') %>
         <!-- Thư viện và CSS Import ở dưới -->
         <link rel="stylesheet" href="/css/hairProblemsPost.css">
+        <link rel="stylesheet" href="/css/hairProblemsPostResponsive.css">
+        
+        
     <body>
         <%- include('../layouts/header') %>
 
@@ -52,20 +55,24 @@
                             </li>
                             <li class="category-item">
                                 <i class="fas fa-circle"></i>
-                                <a href="/hair-problems?type=Dull, lifeless hair">Dull, lifeless hair</a>
+                                <a href="/hair-problems?type=Dull lifeless hair">Dull lifeless hair</a>
                             </li>
                         </ul>
                     </div>
 
                 </div>
 
-                <div class="main-right col-lg-9 col-md-9 col-sm-12 mt-3">
+                <div class="main-right col-lg-9 col-md-9 col-sm-12">
                     <div class="img-top">
                         <img src="<%= post.image %>" alt="" width="100%">
                     </div>
                     <p class="post-date"><%= moment(post.date).format('ll') %></p>
                     <h1 class="post-heading"><%= post.title %> </h1>
-                    <p class="post-type"><i class="fas fa-tags"></i><a href=""> <%= post.type[0] %> </a></p>
+                    <p class="post-type"><i class="fas fa-tags"></i> 
+                    <% post.type.forEach(function(element) { %>
+                        <a href="/hair-problems?type=<%= element %>"> <%= element %>&nbsp;&nbsp;&nbsp;</a>
+                    <% }) %>
+                    </p>
                     <div class="post-line"></div>
                     <div class="post-content">
                         <div class="post-main" data-id="<%= post._id %>">
@@ -77,10 +84,75 @@
                             <a href="/"><i class="fab fa-google"></i></a>
                             <a href="/"> <i class="fab fa-tumblr"></i></a></p>
     
-                        
-                        <div class="list-comments mb-5">
+                        <h1 class="w-100 mt-4 text-center mb-4">RELATE STORIES</h1>
+                        <div class="related-stories row" data-type="<%= post.type %>">
                            
-                            
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="related-item">
+                                    <div class="post-info text-center">
+                                        <div class="post-info-img"><a href="/hair-problems/<%= post.slug %>">
+                                            <img src="<%= post.image %>" alt="" width="100%">
+                                            </a>
+                                        </div>
+                                        <a href="/hair-problems/<%= post.slug %>" class="post-heading"><%= post.title %></a>
+                                        <p class="post-des"><%= post.description %></p>
+                                        <p class="post-type"><i class="fas fa-tags"></i>
+                                            <%= post.type %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="related-item">
+                                    <div class="post-info text-center">
+                                        <div class="post-info-img"><a href="/hair-problems/<%= post.slug %>">
+                                            <img src="<%= post.image %>" alt="" width="100%">
+                                            </a>
+                                        </div>
+                                        <a href="/hair-problems/<%= post.slug %>" class="post-heading"><%= post.title %></a>
+                                        <p class="post-des"><%= post.description %></p>
+                                        <p class="post-type"><i class="fas fa-tags"></i>
+                                            <%= post.type %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="related-item">
+                                    <div class="post-info text-center">
+                                        <div class="post-info-img"><a href="/hair-problems/<%= post.slug %>">
+                                            <img src="<%= post.image %>" alt="" width="100%">
+                                            </a>
+                                        </div>
+                                        <a href="/hair-problems/<%= post.slug %>" class="post-heading"><%= post.title %></a>
+                                        <p class="post-des"><%= post.description %></p>
+                                        <p class="post-type"><i class="fas fa-tags"></i>
+                                            <%= post.type %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="related-item">
+                                    <div class="post-info text-center">
+                                        <div class="post-info-img"><a href="/hair-problems/<%= post.slug %>">
+                                            <img src="<%= post.image %>" alt="" width="100%">
+                                            </a>
+                                        </div>
+                                        <a href="/hair-problems/<%= post.slug %>" class="post-heading"><%= post.title %></a>
+                                        <p class="post-des"><%= post.description %></p>
+                                        <p class="post-type"><i class="fas fa-tags"></i>
+                                            <%= post.type %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="list-comments mb-5 mt-5">  
                         </div >
                         <div class="post-line"></div>
                         <h3 class="post-comment">LEAVE A COMMENT</h3>
@@ -164,6 +236,8 @@
        <script>
            var postMain = $('.post-main')
            var id = postMain.data('id');
+           var relatedStories = $('.related-stories');
+           var type = relatedStories.data('type').split(',');
            var formComment = $('.form-comment')
            var formSubmit = $('.form-submit')
            var nameInput = $('.name')
@@ -198,7 +272,8 @@
                     }
 
                 })
-
+            
+            //GET list comments
            $.ajax({
                url: '/hair-problems/list-comments',
                method: 'GET',
@@ -224,7 +299,46 @@
                }
            })
 
+           //GET related STORIES
+           $.ajax({
+               url: '/hair-problems/related-post',
+               method: 'GET',
+               data: {
+                   type: type,
+               },
+               success: function(rs) {
+                    relatedStories.html('');
+                    let dem = 0;
+                    for(let i = 0; i < rs.length; i++) {
+                        if ((dem<4) && (rs[i]._id != id)) {
+                            dem ++;
+                            var listType = ''
+                            rs[i].type.forEach(element => {
+                            listType += `<a href="/hair-problems?type=${element}"> ${element}&nbsp;</a>`
+                            });
+                            relatedStories.append(`
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                <div class="related-item">
+                                    <div class="post-info text-center">
+                                        <div class="post-info-img"><a href="/hair-problems/${rs[i].slug}">
+                                            <img src="${rs[i].image}" alt="" width="100%">
+                                            </a>
+                                        </div>
+                                        <a href="/hair-problems/${rs[i].slug}" class="post-heading">${rs[i].title}</a>
+                                        <p class="post-des">${rs[i].description}</p>
+                                        <p class="post-types"><i class="fas fa-tags"></i>
+                                            ${listType}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            `)
+                        }
+                    }
+               }
+           })
 
+           //GET post content
            $.ajax({
                url: '/hair-problems/post-content?id=' +id, 
                method: 'GET',

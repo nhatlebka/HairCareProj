@@ -6,3 +6,23 @@ h1,h2,h3,h4,h5,h6 {
 body {
     font-family: "Open Sans";
 }
+
+.w3-container {border: 1px solid #ccc;}
+
+.gallery img:hover {
+    opacity: 0.8;
+    box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+.w3-center a {
+    font-size: 50px;
+    text-decoration: none;
+}
+
+.w3-center a:hover {color: #d39e3c;}
+
+@media screen and (max-width: 600px) {
+    .w3-col l3 {
+        margin: auto;
+    }
+}
