@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Hairstyle Handbook</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/gallery.css">
+</head>
+
+<body>
+
+<!-- Header -->
+<%- include('../layouts/header') %>
+
+<!-- Navbar -->
+<div class="container" style="margin-top: 100px">
+    <div class="navbar w3-center">
+        <a href="#" class="w3-bar-item w3-button" style="margin-left: 10%">HOME</a>
+        <a href="#" class="w3-bar-item w3-button" style="margin-left: 10%">For Men</a>
+        <a href="#" class="w3-bar-item w3-button" style="margin-left: 10%">For Women</a>
+    </div>
+</div>
+
+<!-- Content Title -->
+<div class="container">
+    <div class="menu-headline">
+        <h1> WOMEN HAIRSTYLES 2021 </h1>
+    </div>
+    <div class="text" style="width: 70%; margin: auto; line-height: 1.6; text-align: center; font-size: 16px">
+        <p><i>
+                Let us guess, you are a woman bored with your current style and looking for 2021’s
+                hair trends and particularly for a fresh trendy haircut that will shake things up this year?
+                Or possibly you are a hairstylist in search of strong hairspiration for your clients’
+                makeovers in 2021 and in 2022? Anyway, you happened to be in the right place at the right time!
+            </i></p>
+    </div>
+</div>
+
+<!-- Photo Grid -->
+<div class="row">
+    <div class="column w3-padding-32">
+        <img src="photos/g2.jpg" onclick="onClick(this)">
+        <img src="photos/g23.jpg" onclick="onClick(this)">
+        <img src="photos/g3.jpg" onclick="onClick(this)">
+        <img src="photos/g4.jpg" onclick="onClick(this)">
+        <img src="photos/g5.jpg" onclick="onClick(this)">
+        <img src="photos/g29.jpg" onclick="onClick(this)">
+        <img src="photos/g33.jpg" onclick="onClick(this)">
+        <img src="photos/g6.jpg" onclick="onClick(this)">
+        <img src="photos/g7.jpg" onclick="onClick(this)">
+        <img src="photos/g28.jpg" onclick="onClick(this)">
+    </div>
+    <div class="column w3-padding-32">
+        <img src="photos/g8.jpg" onclick="onClick(this)">
+        <img src="photos/g9.jpg" onclick="onClick(this)">
+        <img src="photos/g34.png" onclick="onClick(this)">
+        <img src="photos/g30.jpg" onclick="onClick(this)">
+        <img src="photos/g10.jpg" onclick="onClick(this)">
+        <img src="photos/g11.jpg" onclick="onClick(this)">
+        <img src="photos/g12.jpg" onclick="onClick(this)">
+        <img src="photos/g38.png" onclick="onClick(this)">
+        <img src="photos/g13.jpg" onclick="onClick(this)">
+        <img src="photos/g27.jpg" onclick="onClick(this)">
+    </div>
+    <div class="column w3-padding-32">
+        <img src="photos/g14.jpg" onclick="onClick(this)">
+        <img src="photos/g15.jpg" onclick="onClick(this)">
+        <img src="photos/g1.jpg" onclick="onClick(this)">
+        <img src="photos/g35.png" onclick="onClick(this)">
+        <img src="photos/g17.jpg" onclick="onClick(this)">
+        <img src="photos/g18.jpg" onclick="onClick(this)">
+        <img src="photos/g37.png" onclick="onClick(this)">
+        <img src="photos/g19.jpg" onclick="onClick(this)">
+        <img src="photos/g20.jpg" onclick="onClick(this)">
+        <img src="photos/g31.jpg" onclick="onClick(this)">
+    </div>
+    <div class="column w3-padding-32">
+        <img src="photos/g32.jpg" onclick="onClick(this)">
+        <img src="photos/g21.jpg" onclick="onClick(this)">
+        <img src="photos/g22.jpg" onclick="onClick(this)">
+        <img src="photos/g16.jpg" onclick="onClick(this)">
+        <img src="photos/g24.jpg" onclick="onClick(this)">
+        <img src="photos/g25.jpg" onclick="onClick(this)">
+        <img src="photos/g26.jpg" onclick="onClick(this)">
+        <img src="photos/g36.jpg" onclick="onClick(this)">
+        <img src="photos/g39.png" onclick="onClick(this)">
+        <img src="photos/g40.png" onclick="onClick(this)">
+    </div>
+</div>
+
+<!-- Image Modal -->
+<div id="mymodal" class="w3-modal" onclick="this.style.display='none'">
+    <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
+    <div class="w3-modal-content w3-animate-zoom">
+        <img id="img01" style="width:100%">
+    </div>
+</div>
+
+<!-- Footer -->
+<%- include('../layouts/footer') %>
+
+<script>
+    function onClick(element) {
+        document.getElementById("img01").src = element.src;
+        document.getElementById("mymodal").style.display = "block";
+    }
+</script>
+
+</body>
+</html>

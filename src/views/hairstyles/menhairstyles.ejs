@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Hairstyle Handbook</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/gallery.css">
+</head>
+
+<body>
+
+<!-- Header -->
+<%- include('../layouts/header') %>
+
+<!-- Navbar -->
+<div class="container" style="margin-top: 100px">
+    <div class="navbar">
+        <a href="#" class="w3-bar-item w3-button" style="margin-left: 10%">HOME</a>
+        <a href="#" class="w3-bar-item w3-button" style="margin-left: 10%">For Men</a>
+        <a href="#" class="w3-bar-item w3-button" style="margin-left: 10%">For Women</a>
+    </div>
+</div>
+
+<!-- Content Title -->
+<div class="container">
+    <div class="menu-headline">
+        <h1> MEN HAIRSTYLES 2021 </h1>
+    </div>
+    <div class="text" style="width: 70%; margin: auto; line-height: 1.6; text-align: center; font-size: 16px">
+        <p><i>                 Whether you're styling a pompadour, comb over or slick back, or need a stylish
+                haircut for your receding hairline, these are the latest cool men's hairstyles to get in 2021.
+                While some of these cuts and styles are fresh from the best barbers around the world, others
+                have carried over from 2020, 2019, and years before.
+    </div>
+</div>
+
+<!-- Photo Grid -->
+<div class="row">
+    <div class="column w3-padding-32">
+        <img src="photos/m1.jpg" onclick="onClick(this)">
+        <img src="photos/m33.jpg" onclick="onClick(this)">
+        <img src="photos/m3.jpg" onclick="onClick(this)">
+        <img src="photos/m28.jpg" onclick="onClick(this)">
+        <img src="photos/m5.jpg" onclick="onClick(this)">
+        <img src="photos/m6.jpg" onclick="onClick(this)">
+        <img src="photos/m36.jpg" onclick="onClick(this)">
+        <img src="photos/m27.jpg" onclick="onClick(this)">
+        <img src="photos/m23.jpg" onclick="onClick(this)">
+    </div>
+    <div class="column w3-padding-32">
+        <img src="photos/m10.jpg" onclick="onClick(this)">
+        <img src="photos/m11.jpg" onclick="onClick(this)">
+        <img src="photos/m12.jpg" onclick="onClick(this)">
+        <img src="photos/m14.jpg" onclick="onClick(this)">
+        <img src="photos/m13.jpg" onclick="onClick(this)">
+        <img src="photos/m15.jpg" onclick="onClick(this)">
+        <img src="photos/m2.jpg" onclick="onClick(this)">
+        <img src="photos/m17.jpg" onclick="onClick(this)">
+        <img src="photos/m20.jpg" onclick="onClick(this)">
+    </div>
+    <div class="column w3-padding-32">
+        <img src="photos/m19.jpg" onclick="onClick(this)">
+        <img src="photos/m8.jpg" onclick="onClick(this)">
+        <img src="photos/m21.jpg" onclick="onClick(this)">
+        <img src="photos/m22.jpg" onclick="onClick(this)">
+        <img src="photos/m9.jpg" onclick="onClick(this)">
+        <img src="photos/m24.jpg" onclick="onClick(this)">
+        <img src="photos/m25.jpg" onclick="onClick(this)">
+        <img src="photos/m26.jpg" onclick="onClick(this)">
+        <img src="photos/m18.jpg" onclick="onClick(this)">
+    </div>
+    <div class="column w3-padding-32">
+        <img src="photos/m4.jpg" onclick="onClick(this)">
+        <img src="photos/m29.jpg" onclick="onClick(this)">
+        <img src="photos/m30.jpg" onclick="onClick(this)">
+        <img src="photos/m7.jpg" onclick="onClick(this)">
+        <img src="photos/m32.jpg" onclick="onClick(this)">
+        <img src="photos/m16.jpg" onclick="onClick(this)">
+        <img src="photos/m34.jpg" onclick="onClick(this)">
+        <img src="photos/m35.jpg" onclick="onClick(this)">
+        <img src="photos/m31.jpg" onclick="onClick(this)">
+    </div>
+</div>
+
+<!-- Image Modal -->
+<div id="mymodal" class="w3-modal" onclick="this.style.display='none'">
+    <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
+    <div class="w3-modal-content w3-animate-zoom">
+        <img id="img01" style="width:100%">
+    </div>
+</div>
+
+<!-- Footer -->
+<%- include('../layouts/footer') %>
+
+<script>
+    function onClick(element) {
+        document.getElementById("img01").src = element.src;
+        document.getElementById("mymodal").style.display = "block";
+    }
+</script>
+
+</body>
+</html>
