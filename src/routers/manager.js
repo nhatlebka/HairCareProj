@@ -15,6 +15,11 @@ router.get('/get-staff', function (req, res, next) {
 		.then((staffs) => res.json(staffs))
 		.catch(next);
 });
+router.get('/staff-by-id', function (req, res, next) {
+	Staff.findOne({ _id: req.query._id })
+		.then((staff) => res.json(staff))
+		.catch(next);
+});
 router.get('/list-all-booking', function (req, res, next) {
 	Booking.aggregate([
 		{
@@ -157,6 +162,12 @@ router.post('/booking', function (req, res, next) {
 });
 router.get('/demo', isLoggedIn, (req, res) => {
 	res.render('manager/demo');
+});
+router.get('/staffs', isLoggedIn, (req, res) => {
+	res.render('manager/staffs');
+});
+router.get('/services', isLoggedIn, (req, res) => {
+	res.render('manager/services');
 });
 router.get('/booking', isLoggedIn, (req, res) => {
 	res.render('manager/booking');
