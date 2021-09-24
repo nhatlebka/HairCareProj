@@ -1,0 +1,2423 @@
+<!DOCTYPE html>
+<!--Code By Webdevtrick ( https://webdevtrick.com )-->
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Hair Services</title>
+        <link
+            href="https://fonts.googleapis.com/css?family=Josefin+Sans:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic"
+            rel="stylesheet" />
+        <%- include('../layouts/head') %>
+            <link rel="stylesheet" href="/css/owl.carousel.min.css">
+            <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.css'>
+            <style>
+                .header-main {
+                    display: none;
+                }
+
+                .header {
+                    position: relative;
+                    z-index: 2;
+                }
+
+                .breadcrumb {
+                    padding: 0;
+                    flex-direction: column;
+                    position: relative;
+                    text-align: center;
+                }
+
+                .breadcrumb img {
+                    width: 100%;
+                }
+
+                /* .breadcrumb::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    bottom: 0;
+                    background-image: linear-gradient(transparent, #fff);
+                } */
+
+                .breadcrumb-text {
+                    position: relative;
+                    z-index: 1;
+                    font-weight: 300;
+                }
+
+                .breadcrumb-text a {
+                    color: #000;
+                    text-decoration: none;
+                }
+
+                .breadcrumb-text a:hover {
+                    color: #d39e3c;
+                }
+
+                .half {
+                    padding: 0;
+                }
+
+                .half.half-right .col-right::before {
+                    content: '';
+                    position: absolute;
+                    right: 0;
+                    left: 0;
+                    bottom: 0;
+                    top: 0;
+                    background-color: #000;
+                    transition: all 0.3s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+                    opacity: 0;
+                }
+
+                .half.half-right .col-right:hover::before {
+                    opacity: .25;
+                }
+
+                .col-left {
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+                    padding: 25px 50px;
+                }
+
+                .col-left .text-wrap {
+                    width: inherit;
+                    /* position: absolute;
+                    top: 40%; */
+                }
+
+                .col-left h1 {
+                    font-family: 'Josefin Sans';
+                    font-size: 3em;
+                }
+
+                .col-right {
+                    padding: 0;
+                    background-color: transparent;
+                    height: 100%;
+                    width: 100%;
+                    position: relative;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                }
+
+                .services-select-box {
+                    margin: 0 auto;
+                    position: relative;
+                    top: 40%;
+                    /* left: 50px;
+                    right: 50px; */
+                    z-index: 1;
+                }
+
+                .service-selection {
+                    max-width: 600px;
+                    margin: 0 auto;
+                }
+
+                .service-selection li {
+                    list-style: none;
+                    /* width: 100px; */
+                    height: 80px;
+                    padding: 10px;
+                }
+
+                .service-selection li a {
+                    padding: 0;
+                    display: inline-block;
+                    text-decoration: none;
+                    width: 100%;
+                    height: 100%;
+                    line-height: 60px;
+                    border: 1px solid;
+                    text-shadow: 0 0 1px #000;
+                    text-transform: uppercase;
+                    font-family: 'Josefin Sans';
+                    font-size: 16px;
+                    transition: all 0.3s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+                }
+
+                .service-selection li a:hover.service-btn {
+                    background-color: rgba(255, 255, 255, 0.2);
+                }
+
+                .footer {
+                    margin-bottom: 80px;
+                }
+
+                /* On low PC */
+                @media (min-width: 992px) {}
+
+                /* On tablet */
+                @media (min-width: 768px) and (max-width: 991.98px) {
+                    .half-left {
+                        height: 10%;
+                    }
+
+                    .half-right {
+                        height: 85%;
+                    }
+                }
+
+                /* On mobile */
+                @media (max-width: 767.98px) {
+                    .half-left {
+                        height: 100vh;
+                    }
+
+                    .half-right {
+                        height: 100vh;
+                    }
+
+                    .header-navbar {
+                        display: none;
+                    }
+
+                    .breadcrumb {
+                        margin-top: 92px;
+                    }
+
+                    .mobile-menu-icon {
+                        display: block;
+                    }
+
+                    .top-phone {
+                        display: none;
+                    }
+
+                    .header-padding {
+                        padding-top: 127px;
+                    }
+
+                    .header-main {
+                        display: block;
+                        background: white;
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                    }
+
+                    #fp-nav ul li {
+                        display: none;
+                    }
+
+                    .footer {
+                        margin-bottom: 0;
+                    }
+
+                    .services-select-box {
+                        position: relative;
+                        top: 5%;
+                    }
+
+                    .service-selection {
+                        display: grid;
+                        grid-template-columns: repeat(1, auto);
+                    }
+                }
+
+                h2,
+                .inner .heading-service {
+                    font-family: 'Josefin Sans';
+                    text-transform: uppercase;
+                    font-size: 30px;
+                    line-height: 1;
+                    font-weight: 700;
+                    color: #777777;
+                }
+
+                .inner p {
+                    font-family: 'Josefin Sans';
+                    font-size: 20px;
+                    font-weight: 300;
+                    font-style: normal;
+                    color: #777777;
+                    letter-spacing: 0.01em;
+                    line-height: 1.8;
+                }
+
+                .inner .label-text {
+                    font-family: "Josefin Sans", sans-serif;
+                    text-transform: uppercase;
+                    font-size: 20px;
+                    font-weight: 400;
+                    line-height: 2;
+                    letter-spacing: 0.2em;
+                    color: #777777;
+                }
+
+                .inner table td {
+                    padding: 7px 30px 7px 0;
+                }
+
+                .inner .btn.btn-fixed {
+                    font-family: 'Josefin Sans';
+                    text-transform: uppercase;
+                    height: 50px;
+                    width: 240px;
+                    border: 2px solid;
+                    transition: all 0.3s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+                }
+
+                .inner .btn.btn-fixed:hover {
+                    background: rgba(0, 0, 0, 0.2);
+                }
+
+                .inner .btn.btn-fixed span {
+                    line-height: 40px;
+                }
+            </style>
+    </head>
+
+    <body>
+
+        <%- include('../layouts/header') %>
+
+            <div id="fullpage">
+                <div class="section fp-auto-height">
+                    <div class="main-content">
+                        <div class="breadcrumb d-flex justify-content-center align-items-center">
+                            <img src="/images/slider0.jpg" alt="">
+                            <!-- <h1 class="breadcrumb-text">Hair Services</h1>
+                            <p class="breadcrumb-text"><a href="">Home</a>&nbsp; / &nbsp;Hair Services</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="container-fluid" style="height: inherit;">
+                        <div class="row" style="height: inherit;">
+                            <div class="half half-left col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                <div class="col-left">
+                                    <div class="tab-content">
+                                        <div class="text-wrap container tab-pane active">
+                                            <h1 class="text-center" style="
+                                            position: absolute;
+                                            top: 40%;
+                                            left: 35%;">Cut + Style</h1>
+                                        </div>
+                                        <div id="cut-style1" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Cut + Style</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Haircut and Design</h3>
+                                                    <div class="blog-styled">
+                                                        <p>Let our talented hair professionals create the look that’s
+                                                            right for you.</p>
+                                                        <p><a class="btn btn-fixed salon-color" href="#"><span>READ
+                                                                    MORE</span></a>
+                                                        </p>
+                                                        <p>Specialties: Asymmetrical Cuts, Long Bob (LOB), Long Layered
+                                                            Cuts, Pixies, Sling Bob, Medium Cuts.</p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$40</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Designers</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$50</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$58</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Senior Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$63+</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="#" class="btn btn-fixed salon-color"><span>Book
+                                                                Now!</span></a>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="cut-style2" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Cut + Style</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Curly Girl Haircut and Design</h3>
+                                                    <!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>Rediscover your curls with a Curly Girl Haircut &amp; Design.
+                                                            A CP Curly Girl Certified Professional will teach you how to
+                                                            care for your curls and set them free with the acclaimed
+                                                            Devachan approach and Curly Girl cut and color techniques.
+                                                            Ask for details, today!</p>
+                                                        <p><a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                    more</span></a></p>
+                                                        <p>Specialties: Curly Hair Cutting.</p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$32</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Designers</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$49</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$53</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Senior Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$96</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="cut-style3" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Cut + Style</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Men’s Haircut</h4><!-- .h3 -->
+                                                        <div class="blog-styled">
+                                                            <p>Your hair will be cut to reflect your personal style.</p>
+                                                            <p><a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                        more</span></a></p>
+                                                            <p>Specialties: Razor Cuts, Men's Haircut.</p>
+                                                        </div><!-- .blog-styled -->
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <span class="label-text">Stylists</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="label-text">$26</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <span class="label-text">Designers</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="label-text">$34</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <span class="label-text">Directors</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="label-text">$39</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <span class="label-text">Senior Directors</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="label-text">$46</span>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <div class="btn-row cf">
+                                                            <a href="#" class="btn btn-fixed salon-color"><span>Book
+                                                                    Now!</span></a>
+                                                        </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="cut-style4" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Cut + Style</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Children’s Haircut</h3><!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>Creating that perfect look for your little boy or girl. For
+                                                            children ages 10 and younger.</p>
+                                                        <p><a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                    more</span></a></p>
+                                                        <p>Specialties: Kids Haircut.</p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$26</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Designers</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$26</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$33</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Senior Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$37</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/booking" class="btn btn-fixed salon-color"><span>Book
+                                                                Now!</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="cut-style5" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Cut + Style</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Wigs for Kids Haircut and Design</h3>
+                                                    <!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>Donate your locks to Wigs For Kids. Hair must be 12″ of
+                                                            healthy, natural hair. 50% off price for all levels of
+                                                            professionals will be applied in salon at checkout. Prices
+                                                            below reflect the 50% off price.</p>
+                                                        <p><a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                    more</span></a></p>
+                                                        <p>Specialties: Wigs 4 Kids Haircut + Design.</p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$21</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Designers</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$24</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$29</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Senior Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$31.50+</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/contact-us"
+                                                            class="btn btn-fixed salon-color"><span>Call
+                                                                Now</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="cut-style6" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Cut + Style</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Special Event Hair Style</h3>
+                                                    <!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>Look stunning for an evening event, special occasion, Prom or
+                                                            Homecoming. Your hair is styled in an updo, partial updo or
+                                                            braided style. It is recommended that you arrive with your
+                                                            hair pre-washed and dried for this service. Prices may vary
+                                                            depending on the complexity of the style and length of hair.
+                                                            1 hr</p>
+                                                        <p><a class="btn btn-fixed salon-color" href="#">
+                                                                <span>read more</span>
+                                                            </a>
+                                                        </p>
+                                                        <p>Specialties: Fishtail Braid, Waterfall Braid, Dutch Braid,
+                                                            Event Cornrows.</p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$60</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Designers</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$65</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$72</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Senior Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$78+</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/booking" class="btn btn-fixed salon-color"><span>Book
+                                                                Now!</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="cut-style7" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Cut + Style</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Bridal Hair Style</h3><!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>Look stunning on your wedding day with a custom hair deesign
+                                                            — an updo, partial updo or all down. We’ll work with you to
+                                                            determine your perfect look.</p>
+                                                        <p><a class="btn btn-fixed salon-color" href="#">read more</a>
+                                                        </p>
+                                                        <p>Specialties: Bridal Hair Style.</p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$65</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Designers</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$70</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$79</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Senior Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$85+</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/contact-us"
+                                                            class="btn btn-fixed salon-color"><span>Call
+                                                                Now</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="cut-style8" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Cut + Style</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Express Blow Out</h3><!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>Your hair is shampooed and scalp massaged. Then, your hair is
+                                                            dried with a round brush technique to achieve your desired
+                                                            look.</p>
+                                                        <p><span><a class="btn btn-fixed salon-color"
+                                                                    href="#"><span>read more</span></a></span></p>
+                                                        <p>Specialties: Express Blowout, Blowout.</p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$28</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Designers</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$30</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$35</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Senior Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$41+</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/booking" class="btn btn-fixed salon-color"><span>Book
+                                                                Now!</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="cut-style9" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Cut + Style</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Blow Out</h3><!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>Your hair is shampooed and round-brush dried. Hot tools such
+                                                            as curling and flat irons are used to achieve an expertly
+                                                            styled look for an evening event or special occasion. 45
+                                                            mins – 1 hr</p>
+                                                        <p><span><a class="btn btn-fixed salon-color"
+                                                                    href="#"><span>read more</span></a></span></p>
+                                                        <p>Specialties: Express Blowout, Blowout.</p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylist</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$44</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Designer</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$46</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Director</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$50</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Senior Director</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$57</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/booking" class="btn btn-fixed salon-color"><span>Book
+                                                                Now!</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="half half-right col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                <div class="col-right"
+                                    style="height: 100%; background-image: url(https://www.penzonesalons.com/wp-content/uploads/2021/03/PeNZONE_hair_cut.jpg);">
+                                    <div class="services-select-box">
+                                        <ul class="row service-selection text-center nav nav-pills" role="tablist">
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#cut-style1" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Haircut
+                                                    and Design</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#cut-style2" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Curly
+                                                    Girl Haircut</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#cut-style3" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Men’s
+                                                    Haircut</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#cut-style4" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Children’s Haircut</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#cut-style5" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Wigs for
+                                                    Kids Haircut</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#cut-style6" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Special
+                                                    Event Hair Style</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#cut-style7" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Bridal
+                                                    Hair Style</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#cut-style8" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Express
+                                                    Blow Out</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#cut-style9" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Blow
+                                                    Out</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="container-fluid" style="height: inherit;">
+                        <div class="row" style="height: inherit;">
+                            <div class="half half-left col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                <div class="col-left">
+                                    <div class="tab-content">
+                                        <div class="text-wrap container tab-pane active">
+                                            <h1 class="text-center" style="
+                                            position: absolute;
+                                            top: 40%;
+                                            left: 35%;">Color</h1>
+                                        </div>
+                                        <div id="color1" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Color</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">All Over Highlights &amp; Haircut</h3>
+                                                    <!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>Color is selected and applied to specific strands of hair.
+                                                            Adds shine and body. Haircut &amp; design included.</p>
+                                                        <p><a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                    more</span></a></p>
+                                                        <p>Specialties: Balayage, Color Melting, Flamboyage, Ombre,
+                                                            Partial Highlights.</p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$124</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Designers</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$140</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$151</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Senior Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$165</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="booking" class="btn btn-fixed salon-color"><span>Book
+                                                                Now!</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="color2" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Color</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Grand Highlights</h3><!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>Have your highlights enhanced or toned down. Highlights are
+                                                            targeted to specific areas of hair.</p>
+                                                        <p><a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                    more</span></a></p>
+                                                        <p>Specialties: Grand Highlights.</p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$49</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Designers</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$53</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$96</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Senior Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$30</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/contact-us"
+                                                            class="btn btn-fixed salon-color"><span>Call
+                                                                Now</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="color3" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Color</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Partial Highlights</h3><!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>Have your highlights enhanced or toned down. Highlights are
+                                                            targeted to specific areas of hair.</p>
+                                                        <p><a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                    more</span></a></p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$96</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Designers</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$30</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$49</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Senior Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$53</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/contact-us"
+                                                            class="btn btn-fixed salon-color"><span>Call
+                                                                Now</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="color4" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Color</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Igora Color10 Permanent Color</h3>
+                                                    <!-- .h3 -->
+                                                    <div class=" blog-styled">
+                                                        <p>IGORA COLOR10 is the first permanent coloration system to
+                                                            combine all-over color in an accelerated service. Perfect
+                                                            for the busy individual, this time-saving service can
+                                                            enhance your color for more vibrant results or provide
+                                                            natural-looking gray coverage. Achieve a consultation, color
+                                                            application, haircut &amp; design – all within 60 minutes!
+                                                        </p>
+                                                        <p><span><a class="btn btn-fixed salon-color"
+                                                                    href="#"><span>read more</span></a></span></p>
+                                                        <p>Specialties: Partial Highlights.</p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$95</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Designers</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$112</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$128</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Senior Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$143</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/booking" class="btn btn-fixed salon-color"><span>Book
+                                                                Now!</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="color5" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Color</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Corrective Coloring</h3><!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>Our professionals will help correct a color gone wrong.</p>
+                                                        <p><span><a class="btn btn-fixed salon-color"
+                                                                    href="#"><span>read more</span></a></span></p>
+                                                        <p>Specialties: Corrective.</p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$49</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Designers</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$53</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$96</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Senior Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$30</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/contact-us"
+                                                            class="btn btn-fixed salon-color"><span>Call
+                                                                Now</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="color6" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Color</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Color Craze</h3><!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>A dramatic add-on hair color service that provides vibrant
+                                                            shades to soft pastels.</p>
+                                                        <p><span><a class="btn btn-fixed salon-color"
+                                                                    href="#"><span>read more</span></a></span></p>
+                                                        <p>Specialties: Color Craze.</p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">Partial: Starting at $35
+                                                                        Full: Starting at $68</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Designers</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Directors</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Senior Directors</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/contact-us"
+                                                            class="btn btn-fixed salon-color"><span>Call
+                                                                Now</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="color7" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Color</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Color &amp; Haircut</h3><!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>A semi-permanent coloring. Enhances natural color and adds
+                                                            body. Excellent for blending gray hair. Haircut &amp; design
+                                                            included.</p>
+                                                        <p><span><a class="btn btn-fixed salon-color"
+                                                                    href="#"><span>read more</span></a></span></p>
+                                                        <p>Specialties: Blowout, Bridal Hair Style, Curly Girl Haircut
+                                                            and Design, Haircut and Design, Kid's Haircut, Men's
+                                                            Haircut, Special Event Hair Style, Wigs 4 Kids Haircut and
+                                                            Design, Express Blowout, Blowout, Bridal Hair Style, Curly
+                                                            Hair Cutting, Asymmetrical Cuts, Long Bob (LOB), Long
+                                                            Layered Cuts, Pixies, Sling Bob, Medium Cuts, Kids Haircut,
+                                                            Razor Cuts, Men's Haircut, Fishtail Braid, Waterfall Braid,
+                                                            Dutch Braid, Event Cornrows, Wigs 4 Kids Haircut + Design.
+                                                        </p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$82</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Designers</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$98</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$111</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Senior Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$124</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/booking" class="btn btn-fixed salon-color"><span>Book
+                                                                Now!</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="color8" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Color</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Balayage or Ombre</h3><!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>French technique using hand painted highlights to achieve a
+                                                            seamless blend of color.</p>
+                                                        <p>Price determined after consultation.</p>
+                                                        <p><a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                    more</span></a></p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylist</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">Starting at $147</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Designer</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Director</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Senior Director</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/booking" class="btn btn-fixed salon-color"><span>Book
+                                                                Now!</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="half half-right col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                <div class="col-right"
+                                    style="height: 100%; background-image: url(https://www.penzonesalons.com/wp-content/uploads/2021/03/PeNZONE_hair_cut.jpg);">
+                                    <div class="services-select-box">
+                                        <ul class="row service-selection text-center nav nav-pills" role="tablist">
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#color1" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">All Over Highlights</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#color2" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Grand Highlights</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#color3" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Partial Highlights</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#color4" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Igora Color10 Permanent Color</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#color5" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Corrective Coloring</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#color6" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Color Craze</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#color7" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Color & Haircut</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#color8" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Balayage or Ombre</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="container-fluid" style="height: inherit;">
+                        <div class="row" style="height: inherit;">
+                            <div class="half half-left col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                <div class="col-left">
+                                    <div class="tab-content">
+                                        <div class="text-wrap container tab-pane active">
+                                            <h1 class="text-center" style="
+                                            position: absolute;
+                                            top: 40%;
+                                            left: 35%;">Texture</h1>
+                                        </div>
+                                        <div id="texture1" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Texture</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Curly Girl Haircut and Design</h3>
+                                                    <!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>Rediscover your curls with a Curly Girl Haircut &amp; Design.
+                                                            A CP Curly Girl Certified Professional will teach you how to
+                                                            care for your curls and set them free with the acclaimed
+                                                            Devachan approach and Curly Girl cut and color techniques.
+                                                            Ask for details, today!</p>
+                                                        <p><a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                    more</span></a></p>
+                                                        <p>Specialties: Curly Hair Cutting.</p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$49</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Designers</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$53</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$96</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Senior Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$30</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/contact-us"
+                                                            class="btn btn-fixed salon-color"><span>Call
+                                                                Now</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="texture2" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Texture</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Permanent Waving</h3><!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>Add Body Curl or Wave<br>
+                                                            (Prices start at listed amount and may vary. Haircut is
+                                                            additional.)</p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$88</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Designers</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$95</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$101</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Senior Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$110</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/booking" class="btn btn-fixed salon-color"><span>Book
+                                                                Now!</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="texture3" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Texture</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Global Keratin Hair Smoothing System</h>
+                                                        <!-- .h3 -->
+                                                        <div class="blog-styled">
+                                                            <p>The Global Keratin Hair Taming System creates
+                                                                manageable,&nbsp;frizz-free, beautiful looking hair.</p>
+                                                        </div><!-- .blog-styled -->
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <span class="label-text">Stylists</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="label-text">$263</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <span class="label-text">Designers</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="label-text">$273</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <span class="label-text">Directors</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="label-text">$299</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <span class="label-text">Senior Directors</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="label-text">$326</span>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <div class="btn-row cf">
+                                                            <a href="/contact-us"
+                                                                class="btn btn-fixed salon-color"><span>Call
+                                                                    Now</span></a>
+                                                        </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="texture4" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Texture</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Relaxer</h3><!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>Removes texture to provide straighter hair.</p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$77</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text"> Designers</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text"> $49</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text"> Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text"> $99</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text"> Senior Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text"> $81</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/contact-us"
+                                                            class="btn btn-fixed salon-color"><span>Call
+                                                                Now</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="texture5" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Texture</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Reverse Perm</h3><!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>Reconstructing naturally curly hair to a looser curl pattern.
+                                                        </p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$36</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text"> Designers</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$18</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text"> Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$73</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text"> Senior Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$21</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/contact-us"
+                                                            class="btn btn-fixed salon-color"><span>Call
+                                                                Now</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="texture6" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Texture</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Thermal Style</h3><!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>Our hair professionals delicately wash and set textured hair
+                                                            using heat and advanced styling products.</p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$50</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Designers</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$58</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$63</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Senior Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$72</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/booking" class="btn btn-fixed salon-color"><span>Book
+                                                                Now!</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="texture7" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Texture</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Natural Hair Blowout</h3><!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>Natural or very textured, curly hair is shampooed and scalp
+                                                            massaged. Then, your hair is dried with professional styling
+                                                            techniques to achieve your desired look. (Intended for
+                                                            guests without relaxed hair.)</p>
+                                                        <p><span><a class="btn btn-fixed salon-color"
+                                                                    href="#"><span>read more</span></a></span></p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$47</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Designers</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$28</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$49</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Senior Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$53</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/booking" class="btn btn-fixed salon-color"><span>Book
+                                                                Now!</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="texture8" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Texture</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Hair Wrap</h3><!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$47-62</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text"> Designers</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text"> Directors</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text"> Senior Directors</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/booking" class="btn btn-fixed salon-color"><span>Book
+                                                                Now!</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="texture9" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Texture</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Roller Set</h3><!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$57-$73</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text"> Designers</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text"> Directors</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text"> Senior Directors</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/booking" class="btn btn-fixed salon-color"><span>Book
+                                                                Now!</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="texture10" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Texture</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Natural Hair Press</h3><!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$68-84</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text"> Designers</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text"> Directors</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text"> Senior Directors</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/booking" class="btn btn-fixed salon-color"><span>Book
+                                                                Now!</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="half half-right col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                <div class="col-right"
+                                    style="height: 100%; background-image: url(https://www.penzonesalons.com/wp-content/uploads/2021/03/PeNZONE_hair_cut.jpg);">
+                                    <div class="services-select-box">
+                                        <ul class="row service-selection text-center nav nav-pills" role="tablist">
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#texture1" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Curly Girl Hair</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#texture2" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Permanent Waving</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#texture3" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Hair Smoothing System</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#texture4" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Relaxer</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#texture5" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Reverse Perm</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#texture6" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Thermal Style</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#texture7" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Natural Hair Blowout</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#texture8" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Hair Wrap</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#texture9" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Roller Set</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#texture10" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Natural Hair Press</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="container-fluid" style="height: inherit;">
+                        <div class="row" style="height: inherit;">
+                            <div class="half half-left col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                <div class="col-left">
+                                    <div class="tab-content">
+                                        <div class="text-wrap container tab-pane active">
+                                            <h1 class="text-center" style="
+                                            position: absolute;
+                                            top: 40%;
+                                            left: 35%;">Specialty</h1>
+                                        </div>
+                                        <div id="specialty1" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Specialty</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Hair Extensions</h3><!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>Hair extensions add length, texture, volume and dimensional
+                                                            color without the wait. Hairdreams uses 100% human hair and
+                                                            an innovative bonding method which provides a natural, long
+                                                            lasting look. Price determined after $50 consultation.</p>
+                                                        <p><span><a class="btn btn-fixed salon-color"
+                                                                    href="#"><span>read more</span></a></span></p>
+                                                        <p>Specialties: Tape-In Hair Extensions, Hairdreams MicroLines
+                                                            Consultation, Hair Extensions, Hairdreams MicroLines.</p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$1</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Designers</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$1</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$1</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Senior Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$2</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/contact-us"
+                                                            class="btn btn-fixed salon-color"><span>Call
+                                                                Now</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="specialty2" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Specialty</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Color Repair Treatments</h3><!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>Our innovative color treatments repair bonds in your hair
+                                                            making it stronger, healther and more vibrant than ever.
+                                                            Perfect for color-treated or compromised hair.</p>
+                                                        <p>Specialties: Color Repair Treatments.</p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Stylists</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">Starting at $25</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Designers</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">Starting at $25</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">Starting at $25</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Senior Directors</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">Starting at $25</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/booking" class="btn btn-fixed salon-color"><span>Book
+                                                                Now!</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="specialty3" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Specialty</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Hair Consultations</h3><!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>1. Hair consultations are recommended to assess your hair and
+                                                            review recommendations based on your hair type, condition
+                                                            and home care regimen.<br>
+                                                            2. Unless otherwise stated, hair consultation fees are $25
+                                                            and may be used as credit toward any hair service with the
+                                                            professional who provided the hair consultation.
+                                                            Unfortunately, we are unable to refund consultation fees.
+                                                        </p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">$25</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text"> unless stated
+                                                                        otherwise.</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/contact-us"
+                                                            class="btn btn-fixed salon-color"><span>Call
+                                                                Now</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="specialty4" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Specialty</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Shampoo Enhancements</h3><!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p><span>Ask your artist which treatment is best for your hair
+                                                                during your next appointment.&nbsp;</span><span>No need
+                                                                to book ahead!</span></p>
+                                                        <p>Specialties: Shampoo Enhancements.</p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Davines Circle Chronicles
+                                                                        Mask</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$15</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Zenagen Evolve
+                                                                        Treatment</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$20</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">L'ANZA Ultimate
+                                                                        Treatment</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$30</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">L'ANZA Emergency
+                                                                        Treatment</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$45</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/contact-us"
+                                                            class="btn btn-fixed salon-color"><span>Call
+                                                                Now</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="specialty5" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Specialty</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">Hairdreams MicroLines</h3><!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>This is the first step to achieve the hair of your dreams.
+                                                            Book this service to discuss your hair goals, learn about
+                                                            MicroLine options + maintenance. This consultation fee is
+                                                            $50 and may be used as a credit toward your MicroLine
+                                                            service with the artist who provided the consultation.
+                                                            Unfortunately we are unable to refund consultation fees.</p>
+                                                        <p><span><a class="btn btn-fixed salon-color"
+                                                                    href="#"><span>read more</span></a></span></p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">Consultation Only</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$50 | 30 Mins</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/booking" class="btn btn-fixed salon-color"><span>Book
+                                                                Now!</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="specialty6" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Specialty</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">K18 REPAIR MASK ADD ON</h3><!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>Reverse damage from bleach, color services + heat with the
+                                                            K18 Add On. First, a Repair Hair Mist is applied before your
+                                                            service to strengthen the hair. Then, a Repair Hair Mask is
+                                                            applied during your shampoo to repair + reverse damage.</p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">K18 Add On</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$26</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/booking" class="btn btn-fixed salon-color"><span>Book
+                                                                Now!</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="specialty7" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Specialty</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">K18 REPAIR MASK ADD ON + TAKE HOME MASK
+                                                    </h3>
+                                                    <!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p>Reverse damage from bleach, color services + heat. First, a
+                                                            Repair Hair Mist is applied before your service to
+                                                            strengthen the hair. Then, a Repair Hair Mask is applied
+                                                            during your shampoo. BONUS! You’ll take home a 5ml Repair
+                                                            Hair Mask.</p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">K18 Repair Mask Add-On +
+                                                                        Take Home Mask</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$35</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/booking" class="btn btn-fixed salon-color"><span>Book
+                                                                Now!</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="specialty8" class="container tab-pane fade"><br>
+                                            <fieldset class="border p-5" style="height: 800px;">
+                                                <legend class="w-auto text-center">
+                                                    <h2><b>Specialty</b></h2>
+                                                </legend>
+                                                <div class="inner">
+                                                    <h3 class="heading-service">FIBRE CLINIX HAIR REPAIR ADD ON</h3>
+                                                    <!-- .h3 -->
+                                                    <div class="blog-styled">
+                                                        <p><span>FIBRE CLINIX harnesses cutting-edge science with
+                                                                customization. After consultation, hair will be cleansed
+                                                                with </span><span class="xxxspelle">Tribond</span><span>
+                                                                Shampoo, a customized treatment will be applied
+                                                                combining the </span><span
+                                                                class="xxxspelle">Tribond</span><span> Treatment +
+                                                                Booster, then hair will be rinsed after 5-10 min.</span>
+                                                        </p>
+                                                    </div><!-- .blog-styled -->
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="label-text">FIBRE CLINIX HAIR REPAIR
+                                                                        ADD ON</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label-text">$26</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/booking" class="btn btn-fixed salon-color"><span>Book
+                                                                Now!</span></a>
+                                                    </div><!-- .btn-row -->
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="half half-right col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                <div class="col-right"
+                                    style="height: 100%; background-image: url(https://www.penzonesalons.com/wp-content/uploads/2021/03/PeNZONE_hair_cut.jpg);">
+                                    <div class="services-select-box">
+                                        <ul class="row service-selection text-center nav nav-pills" role="tablist">
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#specialty1" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Hair Extensions</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#specialty2" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Color Repair Treatments</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#specialty3" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Hair Consultations</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#specialty4" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Shampoo Enhancements</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#specialty5" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">Hairdreams MicroLines</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#specialty6" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">K18 REPAIR MASK ADD ON</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#specialty7" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">AKE HOME MASK</a></li>
+                                            <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
+                                                    href="#specialty8" class="service-btn text-white nav-link"
+                                                    data-toggle="pill">FIBRE CLINIX</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section fp-auto-height">
+                    <%- include('../layouts/footer') %>
+                        </section>
+                </div>
+                <script src="/js/owl.carousel.min.js"></script>
+                <script src='https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.js'></script>
+                <script>
+                    $('.header-top').hide()
+                    $('.header-main-scroll').hide()
+                    $('.header-nav-scroll').hide()
+
+                    $('#fullpage').fullpage({
+                        responsiveWidth: 800,
+                        navigation: true,
+                        navigationPosition: 'left',
+                        navigationTooltips: ['services', 'Cut+Style', 'Color', 'Texture', 'Specialty', 'footer'],
+                        anchors: ['services', 'Cut+Style', 'Color', 'Texture', 'Specialty', 'footer'],
+                        afterLoad: function (origin, destination, direction) {
+                            $('#fp-nav ul').children('li').first().hide();
+                            $('#fp-nav ul').children('li').last().hide();
+                            if (destination == 1 || destination == 6) {
+                                $('#fp-nav').hide();
+                            } else {
+                                $('#fp-nav').show();
+                            }
+                        },
+                    });
+                </script>
+
+    </body>
+
+</html>
