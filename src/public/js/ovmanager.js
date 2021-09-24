@@ -456,24 +456,28 @@ function getAllBookingList() {
 				}
 				$('#todayCount').html(todayCount);
 				$('#completedCount').html(
-					`Compeleted appointment <b>${completedCount}/${bookingCount} (${
-						(completedCount / bookingCount).toFixed(4) * 100
-					}%)</b>`
+					`Compeleted appointment <b>${completedCount}/${bookingCount} (${(
+						(completedCount / bookingCount) *
+						100
+					).toFixed(2)}%)</b>`
 				);
 				$('#upcomingCount').html(
-					`Upcoming appointment <b>${upcomingCount}/${bookingCount} (${
-						(upcomingCount / bookingCount).toFixed(4) * 100
-					}%)</b>`
+					`Upcoming appointment <b>${upcomingCount}/${bookingCount} (${(
+						(upcomingCount / bookingCount) *
+						100
+					).toFixed(2)}%)</b>`
 				);
 				$('#pendingCount').html(
-					`Pending appointment <b>${pendingCount}/${bookingCount} (${
-						(pendingCount / bookingCount).toFixed(4) * 100
-					}%)</b>`
+					`Pending appointment <b>${pendingCount}/${bookingCount} (${(
+						(pendingCount / bookingCount) *
+						100
+					).toFixed(2)}%)</b>`
 				);
 				$('#cancelledCount').html(
-					`Cancelled appointment <b>${cancelledCount}/${bookingCount} (${
-						(cancelledCount / bookingCount).toFixed(4) * 100
-					}%)</b>`
+					`Cancelled appointment <b>${cancelledCount}/${bookingCount} (${(
+						(cancelledCount / bookingCount) *
+						100
+					).toFixed(2)}%)</b>`
 				);
 			}
 
