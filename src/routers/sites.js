@@ -12,6 +12,10 @@ router.post(
 	})
 );
 
+router.get('/about', (req, res) => {
+	res.render('sites/about')
+})
+
 router.get('/login', function (req, res) {
 	res.render('sites/login.ejs', { message: req.flash('loginMessage') });
 });
