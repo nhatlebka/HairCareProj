@@ -2,6 +2,34 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 require('../config/passport')(passport);
+const posts = require('../models/posts');
+const postComments = require('../models/postComments');
+
+// Count documents
+async function getCountComments(posts) {
+    const newPosts = [];
+    for (let i = 0; i < posts.length; i++) {
+        const totalCount = await postComments.countDocuments({
+            postId: posts[i]._id,
+        });
+        newPosts.push({...posts[i]._doc, totalCount});
+    }
+    return newPosts;
+}
+
+//GET post list and comments
+router.get('/post-list', (req, res, next) => {
+            posts
+                .find({})
+				.sort({date: -1})
+                .limit(3)
+            	.then(posts => {
+                	getCountComments(posts).then(listPosts =>
+                    	res.send(listPosts)
+                	);
+            	})
+            .catch(next);
+});
 
 router.post(
 	'/login',

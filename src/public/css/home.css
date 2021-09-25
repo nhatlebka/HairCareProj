@@ -521,6 +521,7 @@
 .services-time {
     font-size: 18px;
     font-weight: 300;
+    max-width: 80%;
 }
 /* End sevices */
 
@@ -649,7 +650,7 @@
 }
 
 .hair-problems-post .post-heading {
-    font-size: 30px;
+    font-size: 24px;
 }
 
 .hair-problems-content .post-heading:hover,
@@ -664,6 +665,8 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     text-overflow: ellipsis;
+    font-weight: 300;
+    font-size: 14px;
 }
 
 .hair-problems-post .post-btn,
