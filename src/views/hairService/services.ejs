@@ -147,80 +147,12 @@
                     background-color: rgba(255, 255, 255, 0.2);
                 }
 
+                .service-selection .service-btn.active {
+                    background-color: rgba(0, 0, 0, 0.5);
+                }
+
                 .footer {
                     margin-bottom: 80px;
-                }
-
-                /* On low PC */
-                @media (min-width: 992px) {}
-
-                /* On tablet */
-                @media (min-width: 768px) and (max-width: 991.98px) {
-                    .half-left {
-                        height: 10%;
-                    }
-
-                    .half-right {
-                        height: 85%;
-                    }
-                }
-
-                /* On mobile */
-                @media (max-width: 767.98px) {
-                    .half-left {
-                        height: 100vh;
-                    }
-
-                    .half-right {
-                        height: 100vh;
-                    }
-
-                    .header-navbar {
-                        display: none;
-                    }
-
-                    .breadcrumb {
-                        margin-top: 92px;
-                    }
-
-                    .mobile-menu-icon {
-                        display: block;
-                    }
-
-                    .top-phone {
-                        display: none;
-                    }
-
-                    .header-padding {
-                        padding-top: 127px;
-                    }
-
-                    .header-main {
-                        display: block;
-                        background: white;
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        right: 0;
-                    }
-
-                    #fp-nav ul li {
-                        display: none;
-                    }
-
-                    .footer {
-                        margin-bottom: 0;
-                    }
-
-                    .services-select-box {
-                        position: relative;
-                        top: 5%;
-                    }
-
-                    .service-selection {
-                        display: grid;
-                        grid-template-columns: repeat(1, auto);
-                    }
                 }
 
                 h2,
@@ -273,6 +205,79 @@
                 .inner .btn.btn-fixed span {
                     line-height: 40px;
                 }
+
+                /* On low PC */
+                @media (min-width: 992px) {}
+
+                /* On tablet */
+                @media (min-width: 768px) and (max-width: 991.98px) {
+                    .half-left {
+                        height: 100vh;
+                    }
+
+                    .half-right {
+                        height: 100vh;
+                    }
+                }
+
+                /* On mobile */
+                @media (max-width: 767.98px) {
+                    .half-left {
+                        height: 100vh;
+                    }
+
+                    .half-right {
+                        height: 100vh;
+                    }
+
+                    .header-navbar {
+                        display: none;
+                    }
+
+                    .breadcrumb {
+                        margin-top: 92px;
+                    }
+
+                    .mobile-menu-icon {
+                        display: block;
+                    }
+
+                    .top-phone {
+                        display: none;
+                    }
+
+                    .header-padding {
+                        padding-top: 127px;
+                    }
+
+                    .header-main {
+                        display: block;
+                        background: white;
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                    }
+
+                    #fp-nav ul li {
+                        display: none;
+                    }
+
+                    .footer {
+                        margin-bottom: 0;
+                    }
+
+                    .services-select-box {
+                        position: relative;
+                        top: 7%;
+                        padding: 100px;
+                    }
+
+                    .service-selection {
+                        display: grid;
+                        grid-template-columns: repeat(1, auto);
+                    }
+                }
             </style>
     </head>
 
@@ -291,8 +296,8 @@
                     </div>
                 </div>
                 <div class="section">
-                    <div class="container-fluid" style="height: inherit;">
-                        <div class="row" style="height: inherit;">
+                    <div class="container-fluid" style="height: 100%;">
+                        <div class="row" style="height: 100%;">
                             <div class="half half-left col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                 <div class="col-left">
                                     <div class="tab-content">
@@ -838,7 +843,7 @@
                             </div>
                             <div class="half half-right col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                 <div class="col-right"
-                                    style="height: 100%; background-image: url(https://www.penzonesalons.com/wp-content/uploads/2021/03/PeNZONE_hair_cut.jpg);">
+                                    style="height: 100%; background-image: url(/images/section_hair_cut.jpg);">
                                     <div class="services-select-box">
                                         <ul class="row service-selection text-center nav nav-pills" role="tablist">
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
@@ -884,8 +889,8 @@
                     </div>
                 </div>
                 <div class="section">
-                    <div class="container-fluid" style="height: inherit;">
-                        <div class="row" style="height: inherit;">
+                    <div class="container-fluid" style="height: 100%;">
+                        <div class="row" style="height: 100%;">
                             <div class="half half-left col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                 <div class="col-left">
                                     <div class="tab-content">
@@ -1362,7 +1367,7 @@
                             </div>
                             <div class="half half-right col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                 <div class="col-right"
-                                    style="height: 100%; background-image: url(https://www.penzonesalons.com/wp-content/uploads/2021/03/PeNZONE_hair_cut.jpg);">
+                                    style="height: 100%; background-image: url(/images/section_hair_color.jpg);">
                                     <div class="services-select-box">
                                         <ul class="row service-selection text-center nav nav-pills" role="tablist">
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
@@ -1397,8 +1402,8 @@
                     </div>
                 </div>
                 <div class="section">
-                    <div class="container-fluid" style="height: inherit;">
-                        <div class="row" style="height: inherit;">
+                    <div class="container-fluid" style="height: 100%;">
+                        <div class="row" style="height: 100%;">
                             <div class="half half-left col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                 <div class="col-left">
                                     <div class="tab-content">
@@ -1936,7 +1941,7 @@
                             </div>
                             <div class="half half-right col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                 <div class="col-right"
-                                    style="height: 100%; background-image: url(https://www.penzonesalons.com/wp-content/uploads/2021/03/PeNZONE_hair_cut.jpg);">
+                                    style="height: 100%; background-image: url(/images/section_hair_texture.jpg);">
                                     <div class="services-select-box">
                                         <ul class="row service-selection text-center nav nav-pills" role="tablist">
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
@@ -1977,8 +1982,8 @@
                     </div>
                 </div>
                 <div class="section">
-                    <div class="container-fluid" style="height: inherit;">
-                        <div class="row" style="height: inherit;">
+                    <div class="container-fluid" style="height: 100%;">
+                        <div class="row" style="height: 100%;">
                             <div class="half half-left col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                 <div class="col-left">
                                     <div class="tab-content">
@@ -2355,7 +2360,7 @@
                             </div>
                             <div class="half half-right col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                 <div class="col-right"
-                                    style="height: 100%; background-image: url(https://www.penzonesalons.com/wp-content/uploads/2021/03/PeNZONE_hair_cut.jpg);">
+                                    style="height: 100%; background-image: url(/images/section_hair_specialty-.jpg);">
                                     <div class="services-select-box">
                                         <ul class="row service-selection text-center nav nav-pills" role="tablist">
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
@@ -2401,7 +2406,7 @@
                     $('.header-nav-scroll').hide()
 
                     $('#fullpage').fullpage({
-                        responsiveWidth: 800,
+                        responsiveWidth: 992,
                         navigation: true,
                         navigationPosition: 'left',
                         navigationTooltips: ['services', 'Cut+Style', 'Color', 'Texture', 'Specialty', 'footer'],
