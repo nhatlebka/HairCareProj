@@ -78,6 +78,10 @@
                     opacity: .25;
                 }
 
+                .half-left .col-left fieldset {
+                    border-color: #d1a95e !important;
+                }
+
                 .col-left {
                     width: 100%;
                     height: 100%;
@@ -128,26 +132,39 @@
                     padding: 10px;
                 }
 
-                .service-selection li a {
+                .service-selection li a.service-btn {
+                    border-radius: 0;
+                    position: relative;
                     padding: 0;
                     display: inline-block;
                     text-decoration: none;
                     width: 100%;
                     height: 100%;
                     line-height: 60px;
-                    border: 1px solid;
-                    text-shadow: 0 0 1px #000;
+                    border: 1px solid #d1a95e;
+                    text-shadow: 0 0 5px #000;
                     text-transform: uppercase;
                     font-family: 'Josefin Sans';
                     font-size: 16px;
-                    transition: all 0.3s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+                    transition: all 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53);
                 }
 
-                .service-selection li a:hover.service-btn {
+                .service-selection li a.service-btn:hover {
+                    transform: all 0.5s;
+                    border: 0;
                     background-color: rgba(255, 255, 255, 0.2);
                 }
 
-                .service-selection .service-btn.active {
+                /* .service-selection  {
+                } */
+
+                .service-selection li a.service-btn:hover .btn-before,
+                .service-selection li a.service-btn:hover .btn-after {
+                    transform: scale(1);
+                }
+
+                .service-selection li a.service-btn.active {
+                    border: 1px solid #d1a95e;
                     background-color: rgba(0, 0, 0, 0.5);
                 }
 
@@ -190,20 +207,55 @@
                 }
 
                 .inner .btn.btn-fixed {
+                    position: relative;
                     font-family: 'Josefin Sans';
                     text-transform: uppercase;
+                    border-radius: 0;
                     height: 50px;
                     width: 240px;
-                    border: 2px solid;
-                    transition: all 0.3s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+                    border: none;
+                    outline: none;
+                    background-color: #d1a95e;
+                    color: #fff;
+                    transition: all 0.3s;
                 }
 
                 .inner .btn.btn-fixed:hover {
-                    background: rgba(0, 0, 0, 0.2);
+                    /* border: 2px solid #d1a95e; */
+                    background: #fff;
+                    color: #000;
                 }
 
                 .inner .btn.btn-fixed span {
                     line-height: 40px;
+                }
+
+                .inner .btn.btn-fixed:hover .btn-before,
+                .inner .btn.btn-fixed:hover .btn-after {
+                    transform: scale(1);
+                }
+
+                .btn-before,
+                .btn-after {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 100%;
+                    transition: all 0.5s;
+                    transform: scale(0);
+                }
+
+                .btn-before {
+                    transform-origin: left bottom;
+                    border-bottom: 1px solid #d1a95e;
+                    border-left: 1px solid #d1a95e;
+                }
+
+                .btn-after {
+                    transform-origin: right top;
+                    border-right: 1px solid #d1a95e;
+                    border-top: 1px solid #d1a95e;
                 }
 
                 /* On low PC */
@@ -317,9 +369,11 @@
                                                     <div class="blog-styled">
                                                         <p>Let our talented hair professionals create the look that’s
                                                             right for you.</p>
-                                                        <p><a class="btn btn-fixed salon-color" href="#"><span>READ
-                                                                    MORE</span></a>
-                                                        </p>
+                                                        <a class="btn btn-fixed salon-color" href="#"><span>READ
+                                                                MORE</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                         <p>Specialties: Asymmetrical Cuts, Long Bob (LOB), Long Layered
                                                             Cuts, Pixies, Sling Bob, Medium Cuts.</p>
                                                     </div><!-- .blog-styled -->
@@ -361,7 +415,10 @@
                                                     </table>
                                                     <div class="btn-row cf">
                                                         <a href="#" class="btn btn-fixed salon-color"><span>Book
-                                                                Now!</span></a>
+                                                                Now!</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </fieldset>
@@ -380,8 +437,11 @@
                                                             care for your curls and set them free with the acclaimed
                                                             Devachan approach and Curly Girl cut and color techniques.
                                                             Ask for details, today!</p>
-                                                        <p><a class="btn btn-fixed salon-color" href="#"><span>read
-                                                                    more</span></a></p>
+                                                        <a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                more</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                         <p>Specialties: Curly Hair Cutting.</p>
                                                     </div><!-- .blog-styled -->
                                                     <table>
@@ -420,6 +480,14 @@
                                                             </tr>
                                                         </tbody>
                                                     </table>
+                                                    <div class="btn-row cf">
+                                                        <a href="/contact-us"
+                                                            class="btn btn-fixed salon-color"><span>Call
+                                                                Now</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
+                                                    </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
                                         </div>
@@ -432,8 +500,11 @@
                                                     <h3 class="heading-service">Men’s Haircut</h4><!-- .h3 -->
                                                         <div class="blog-styled">
                                                             <p>Your hair will be cut to reflect your personal style.</p>
-                                                            <p><a class="btn btn-fixed salon-color" href="#"><span>read
-                                                                        more</span></a></p>
+                                                            <a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                    more</span>
+                                                                <div class="btn-before"></div>
+                                                                <div class="btn-after"></div>
+                                                            </a>
                                                             <p>Specialties: Razor Cuts, Men's Haircut.</p>
                                                         </div><!-- .blog-styled -->
                                                         <table>
@@ -474,7 +545,10 @@
                                                         </table>
                                                         <div class="btn-row cf">
                                                             <a href="#" class="btn btn-fixed salon-color"><span>Book
-                                                                    Now!</span></a>
+                                                                    Now!</span>
+                                                                <div class="btn-before"></div>
+                                                                <div class="btn-after"></div>
+                                                            </a>
                                                         </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -489,8 +563,13 @@
                                                     <div class="blog-styled">
                                                         <p>Creating that perfect look for your little boy or girl. For
                                                             children ages 10 and younger.</p>
-                                                        <p><a class="btn btn-fixed salon-color" href="#"><span>read
-                                                                    more</span></a></p>
+                                                        <a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                more</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
+                                                        <div class="btn-before"></div>
+                                                        <div class="btn-after"></div>
                                                         <p>Specialties: Kids Haircut.</p>
                                                     </div><!-- .blog-styled -->
                                                     <table>
@@ -531,7 +610,10 @@
                                                     </table>
                                                     <div class="btn-row cf">
                                                         <a href="/booking" class="btn btn-fixed salon-color"><span>Book
-                                                                Now!</span></a>
+                                                                Now!</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -549,8 +631,11 @@
                                                             healthy, natural hair. 50% off price for all levels of
                                                             professionals will be applied in salon at checkout. Prices
                                                             below reflect the 50% off price.</p>
-                                                        <p><a class="btn btn-fixed salon-color" href="#"><span>read
-                                                                    more</span></a></p>
+                                                        <a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                more</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                         <p>Specialties: Wigs 4 Kids Haircut + Design.</p>
                                                     </div><!-- .blog-styled -->
                                                     <table>
@@ -592,7 +677,10 @@
                                                     <div class="btn-row cf">
                                                         <a href="/contact-us"
                                                             class="btn btn-fixed salon-color"><span>Call
-                                                                Now</span></a>
+                                                                Now</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -612,10 +700,11 @@
                                                             hair pre-washed and dried for this service. Prices may vary
                                                             depending on the complexity of the style and length of hair.
                                                             1 hr</p>
-                                                        <p><a class="btn btn-fixed salon-color" href="#">
-                                                                <span>read more</span>
-                                                            </a>
-                                                        </p>
+                                                        <a class="btn btn-fixed salon-color" href="#">
+                                                            <span>read more</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                         <p>Specialties: Fishtail Braid, Waterfall Braid, Dutch Braid,
                                                             Event Cornrows.</p>
                                                     </div><!-- .blog-styled -->
@@ -657,7 +746,10 @@
                                                     </table>
                                                     <div class="btn-row cf">
                                                         <a href="/booking" class="btn btn-fixed salon-color"><span>Book
-                                                                Now!</span></a>
+                                                                Now!</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -673,8 +765,11 @@
                                                         <p>Look stunning on your wedding day with a custom hair deesign
                                                             — an updo, partial updo or all down. We’ll work with you to
                                                             determine your perfect look.</p>
-                                                        <p><a class="btn btn-fixed salon-color" href="#">read more</a>
-                                                        </p>
+                                                        <a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                more</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                         <p>Specialties: Bridal Hair Style.</p>
                                                     </div><!-- .blog-styled -->
                                                     <table>
@@ -716,7 +811,10 @@
                                                     <div class="btn-row cf">
                                                         <a href="/contact-us"
                                                             class="btn btn-fixed salon-color"><span>Call
-                                                                Now</span></a>
+                                                                Now</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -732,8 +830,11 @@
                                                         <p>Your hair is shampooed and scalp massaged. Then, your hair is
                                                             dried with a round brush technique to achieve your desired
                                                             look.</p>
-                                                        <p><span><a class="btn btn-fixed salon-color"
-                                                                    href="#"><span>read more</span></a></span></p>
+                                                        <a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                more</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                         <p>Specialties: Express Blowout, Blowout.</p>
                                                     </div><!-- .blog-styled -->
                                                     <table>
@@ -774,7 +875,10 @@
                                                     </table>
                                                     <div class="btn-row cf">
                                                         <a href="/booking" class="btn btn-fixed salon-color"><span>Book
-                                                                Now!</span></a>
+                                                                Now!</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -791,8 +895,11 @@
                                                             as curling and flat irons are used to achieve an expertly
                                                             styled look for an evening event or special occasion. 45
                                                             mins – 1 hr</p>
-                                                        <p><span><a class="btn btn-fixed salon-color"
-                                                                    href="#"><span>read more</span></a></span></p>
+                                                        <a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                more</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                         <p>Specialties: Express Blowout, Blowout.</p>
                                                     </div><!-- .blog-styled -->
                                                     <table>
@@ -833,7 +940,10 @@
                                                     </table>
                                                     <div class="btn-row cf">
                                                         <a href="/booking" class="btn btn-fixed salon-color"><span>Book
-                                                                Now!</span></a>
+                                                                Now!</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -849,38 +959,56 @@
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#cut-style1" class="service-btn text-white nav-link"
                                                     data-toggle="pill">Haircut
-                                                    and Design</a></li>
+                                                    and Design<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#cut-style2" class="service-btn text-white nav-link"
                                                     data-toggle="pill">Curly
-                                                    Girl Haircut</a></li>
+                                                    Girl Haircut<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#cut-style3" class="service-btn text-white nav-link"
                                                     data-toggle="pill">Men’s
-                                                    Haircut</a></li>
+                                                    Haircut<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#cut-style4" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">Children’s Haircut</a></li>
+                                                    data-toggle="pill">Children’s Haircut<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#cut-style5" class="service-btn text-white nav-link"
                                                     data-toggle="pill">Wigs for
-                                                    Kids Haircut</a></li>
+                                                    Kids Haircut<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#cut-style6" class="service-btn text-white nav-link"
                                                     data-toggle="pill">Special
-                                                    Event Hair Style</a></li>
+                                                    Event Hair Style<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#cut-style7" class="service-btn text-white nav-link"
                                                     data-toggle="pill">Bridal
-                                                    Hair Style</a></li>
+                                                    Hair Style<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#cut-style8" class="service-btn text-white nav-link"
                                                     data-toggle="pill">Express
-                                                    Blow Out</a></li>
+                                                    Blow Out<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#cut-style9" class="service-btn text-white nav-link"
                                                     data-toggle="pill">Blow
-                                                    Out</a></li>
+                                                    Out<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -911,8 +1039,11 @@
                                                     <div class="blog-styled">
                                                         <p>Color is selected and applied to specific strands of hair.
                                                             Adds shine and body. Haircut &amp; design included.</p>
-                                                        <p><a class="btn btn-fixed salon-color" href="#"><span>read
-                                                                    more</span></a></p>
+                                                        <a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                more</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                         <p>Specialties: Balayage, Color Melting, Flamboyage, Ombre,
                                                             Partial Highlights.</p>
                                                     </div><!-- .blog-styled -->
@@ -954,7 +1085,10 @@
                                                     </table>
                                                     <div class="btn-row cf">
                                                         <a href="booking" class="btn btn-fixed salon-color"><span>Book
-                                                                Now!</span></a>
+                                                                Now!</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -969,8 +1103,11 @@
                                                     <div class="blog-styled">
                                                         <p>Have your highlights enhanced or toned down. Highlights are
                                                             targeted to specific areas of hair.</p>
-                                                        <p><a class="btn btn-fixed salon-color" href="#"><span>read
-                                                                    more</span></a></p>
+                                                        <a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                more</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                         <p>Specialties: Grand Highlights.</p>
                                                     </div><!-- .blog-styled -->
                                                     <table>
@@ -1014,7 +1151,10 @@
                                                     <div class="btn-row cf">
                                                         <a href="/contact-us"
                                                             class="btn btn-fixed salon-color"><span>Call
-                                                                Now</span></a>
+                                                                Now</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -1029,8 +1169,11 @@
                                                     <div class="blog-styled">
                                                         <p>Have your highlights enhanced or toned down. Highlights are
                                                             targeted to specific areas of hair.</p>
-                                                        <p><a class="btn btn-fixed salon-color" href="#"><span>read
-                                                                    more</span></a></p>
+                                                        <a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                more</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .blog-styled -->
                                                     <table>
                                                         <tbody>
@@ -1073,7 +1216,10 @@
                                                     <div class="btn-row cf">
                                                         <a href="/contact-us"
                                                             class="btn btn-fixed salon-color"><span>Call
-                                                                Now</span></a>
+                                                                Now</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -1094,8 +1240,11 @@
                                                             natural-looking gray coverage. Achieve a consultation, color
                                                             application, haircut &amp; design – all within 60 minutes!
                                                         </p>
-                                                        <p><span><a class="btn btn-fixed salon-color"
-                                                                    href="#"><span>read more</span></a></span></p>
+                                                        <a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                more</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                         <p>Specialties: Partial Highlights.</p>
                                                     </div><!-- .blog-styled -->
                                                     <table>
@@ -1136,7 +1285,10 @@
                                                     </table>
                                                     <div class="btn-row cf">
                                                         <a href="/booking" class="btn btn-fixed salon-color"><span>Book
-                                                                Now!</span></a>
+                                                                Now!</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -1150,8 +1302,11 @@
                                                     <h3 class="heading-service">Corrective Coloring</h3><!-- .h3 -->
                                                     <div class="blog-styled">
                                                         <p>Our professionals will help correct a color gone wrong.</p>
-                                                        <p><span><a class="btn btn-fixed salon-color"
-                                                                    href="#"><span>read more</span></a></span></p>
+                                                        <a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                more</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                         <p>Specialties: Corrective.</p>
                                                     </div><!-- .blog-styled -->
                                                     <table>
@@ -1193,7 +1348,10 @@
                                                     <div class="btn-row cf">
                                                         <a href="/contact-us"
                                                             class="btn btn-fixed salon-color"><span>Call
-                                                                Now</span></a>
+                                                                Now</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -1208,8 +1366,12 @@
                                                     <div class="blog-styled">
                                                         <p>A dramatic add-on hair color service that provides vibrant
                                                             shades to soft pastels.</p>
-                                                        <p><span><a class="btn btn-fixed salon-color"
-                                                                    href="#"><span>read more</span></a></span></p>
+                                                        <a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                more</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
+
                                                         <p>Specialties: Color Craze.</p>
                                                     </div><!-- .blog-styled -->
                                                     <table>
@@ -1243,7 +1405,10 @@
                                                     <div class="btn-row cf">
                                                         <a href="/contact-us"
                                                             class="btn btn-fixed salon-color"><span>Call
-                                                                Now</span></a>
+                                                                Now</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -1259,8 +1424,11 @@
                                                         <p>A semi-permanent coloring. Enhances natural color and adds
                                                             body. Excellent for blending gray hair. Haircut &amp; design
                                                             included.</p>
-                                                        <p><span><a class="btn btn-fixed salon-color"
-                                                                    href="#"><span>read more</span></a></span></p>
+                                                        <a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                more</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                         <p>Specialties: Blowout, Bridal Hair Style, Curly Girl Haircut
                                                             and Design, Haircut and Design, Kid's Haircut, Men's
                                                             Haircut, Special Event Hair Style, Wigs 4 Kids Haircut and
@@ -1309,7 +1477,10 @@
                                                     </table>
                                                     <div class="btn-row cf">
                                                         <a href="/booking" class="btn btn-fixed salon-color"><span>Book
-                                                                Now!</span></a>
+                                                                Now!</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -1325,8 +1496,11 @@
                                                         <p>French technique using hand painted highlights to achieve a
                                                             seamless blend of color.</p>
                                                         <p>Price determined after consultation.</p>
-                                                        <p><a class="btn btn-fixed salon-color" href="#"><span>read
-                                                                    more</span></a></p>
+                                                        <a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                more</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .blog-styled -->
                                                     <table>
                                                         <tbody>
@@ -1357,7 +1531,10 @@
                                                     </table>
                                                     <div class="btn-row cf">
                                                         <a href="/booking" class="btn btn-fixed salon-color"><span>Book
-                                                                Now!</span></a>
+                                                                Now!</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -1372,28 +1549,45 @@
                                         <ul class="row service-selection text-center nav nav-pills" role="tablist">
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#color1" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">All Over Highlights</a></li>
+                                                    data-toggle="pill">All Over Highlights<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#color2" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">Grand Highlights</a></li>
+                                                    data-toggle="pill">Grand Highlights<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#color3" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">Partial Highlights</a></li>
+                                                    data-toggle="pill">Partial Highlights<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#color4" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">Igora Color10 Permanent Color</a></li>
+                                                    data-toggle="pill">Igora Color10 Permanent Color<div
+                                                        class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#color5" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">Corrective Coloring</a></li>
+                                                    data-toggle="pill">Corrective Coloring<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#color6" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">Color Craze</a></li>
+                                                    data-toggle="pill">Color Craze<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#color7" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">Color & Haircut</a></li>
+                                                    data-toggle="pill">Color & Haircut<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#color8" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">Balayage or Ombre</a></li>
+                                                    data-toggle="pill">Balayage or Ombre<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -1427,8 +1621,11 @@
                                                             care for your curls and set them free with the acclaimed
                                                             Devachan approach and Curly Girl cut and color techniques.
                                                             Ask for details, today!</p>
-                                                        <p><a class="btn btn-fixed salon-color" href="#"><span>read
-                                                                    more</span></a></p>
+                                                        <a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                more</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                         <p>Specialties: Curly Hair Cutting.</p>
                                                     </div><!-- .blog-styled -->
                                                     <table>
@@ -1470,7 +1667,10 @@
                                                     <div class="btn-row cf">
                                                         <a href="/contact-us"
                                                             class="btn btn-fixed salon-color"><span>Call
-                                                                Now</span></a>
+                                                                Now</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -1525,7 +1725,10 @@
                                                     </table>
                                                     <div class="btn-row cf">
                                                         <a href="/booking" class="btn btn-fixed salon-color"><span>Book
-                                                                Now!</span></a>
+                                                                Now!</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -1581,7 +1784,10 @@
                                                         <div class="btn-row cf">
                                                             <a href="/contact-us"
                                                                 class="btn btn-fixed salon-color"><span>Call
-                                                                    Now</span></a>
+                                                                    Now</span>
+                                                                <div class="btn-before"></div>
+                                                                <div class="btn-after"></div>
+                                                            </a>
                                                         </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -1635,7 +1841,10 @@
                                                     <div class="btn-row cf">
                                                         <a href="/contact-us"
                                                             class="btn btn-fixed salon-color"><span>Call
-                                                                Now</span></a>
+                                                                Now</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -1690,7 +1899,10 @@
                                                     <div class="btn-row cf">
                                                         <a href="/contact-us"
                                                             class="btn btn-fixed salon-color"><span>Call
-                                                                Now</span></a>
+                                                                Now</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -1744,7 +1956,10 @@
                                                     </table>
                                                     <div class="btn-row cf">
                                                         <a href="/booking" class="btn btn-fixed salon-color"><span>Book
-                                                                Now!</span></a>
+                                                                Now!</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -1761,8 +1976,11 @@
                                                             massaged. Then, your hair is dried with professional styling
                                                             techniques to achieve your desired look. (Intended for
                                                             guests without relaxed hair.)</p>
-                                                        <p><span><a class="btn btn-fixed salon-color"
-                                                                    href="#"><span>read more</span></a></span></p>
+                                                        <a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                more</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .blog-styled -->
                                                     <table>
                                                         <tbody>
@@ -1802,7 +2020,10 @@
                                                     </table>
                                                     <div class="btn-row cf">
                                                         <a href="/booking" class="btn btn-fixed salon-color"><span>Book
-                                                                Now!</span></a>
+                                                                Now!</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -1845,7 +2066,10 @@
                                                     </table>
                                                     <div class="btn-row cf">
                                                         <a href="/booking" class="btn btn-fixed salon-color"><span>Book
-                                                                Now!</span></a>
+                                                                Now!</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -1888,7 +2112,10 @@
                                                     </table>
                                                     <div class="btn-row cf">
                                                         <a href="/booking" class="btn btn-fixed salon-color"><span>Book
-                                                                Now!</span></a>
+                                                                Now!</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -1931,7 +2158,10 @@
                                                     </table>
                                                     <div class="btn-row cf">
                                                         <a href="/booking" class="btn btn-fixed salon-color"><span>Book
-                                                                Now!</span></a>
+                                                                Now!</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -1946,34 +2176,56 @@
                                         <ul class="row service-selection text-center nav nav-pills" role="tablist">
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#texture1" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">Curly Girl Hair</a></li>
+                                                    data-toggle="pill">Curly Girl Hair<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#texture2" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">Permanent Waving</a></li>
+                                                    data-toggle="pill">Permanent Waving<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#texture3" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">Hair Smoothing System</a></li>
+                                                    data-toggle="pill">Hair Smoothing System<div class="btn-before">
+                                                    </div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#texture4" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">Relaxer</a></li>
+                                                    data-toggle="pill">Relaxer<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#texture5" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">Reverse Perm</a></li>
+                                                    data-toggle="pill">Reverse Perm<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#texture6" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">Thermal Style</a></li>
+                                                    data-toggle="pill">Thermal Style<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#texture7" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">Natural Hair Blowout</a></li>
+                                                    data-toggle="pill">Natural Hair Blowout<div class="btn-before">
+                                                    </div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#texture8" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">Hair Wrap</a></li>
+                                                    data-toggle="pill">Hair Wrap<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#texture9" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">Roller Set</a></li>
+                                                    data-toggle="pill">Roller Set<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#texture10" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">Natural Hair Press</a></li>
+                                                    data-toggle="pill">Natural Hair Press<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -2005,8 +2257,11 @@
                                                             color without the wait. Hairdreams uses 100% human hair and
                                                             an innovative bonding method which provides a natural, long
                                                             lasting look. Price determined after $50 consultation.</p>
-                                                        <p><span><a class="btn btn-fixed salon-color"
-                                                                    href="#"><span>read more</span></a></span></p>
+                                                        <a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                more</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                         <p>Specialties: Tape-In Hair Extensions, Hairdreams MicroLines
                                                             Consultation, Hair Extensions, Hairdreams MicroLines.</p>
                                                     </div><!-- .blog-styled -->
@@ -2049,7 +2304,10 @@
                                                     <div class="btn-row cf">
                                                         <a href="/contact-us"
                                                             class="btn btn-fixed salon-color"><span>Call
-                                                                Now</span></a>
+                                                                Now</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -2105,7 +2363,10 @@
                                                     </table>
                                                     <div class="btn-row cf">
                                                         <a href="/booking" class="btn btn-fixed salon-color"><span>Book
-                                                                Now!</span></a>
+                                                                Now!</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -2145,7 +2406,10 @@
                                                     <div class="btn-row cf">
                                                         <a href="/contact-us"
                                                             class="btn btn-fixed salon-color"><span>Call
-                                                                Now</span></a>
+                                                                Now</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -2206,7 +2470,10 @@
                                                     <div class="btn-row cf">
                                                         <a href="/contact-us"
                                                             class="btn btn-fixed salon-color"><span>Call
-                                                                Now</span></a>
+                                                                Now</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -2225,8 +2492,11 @@
                                                             $50 and may be used as a credit toward your MicroLine
                                                             service with the artist who provided the consultation.
                                                             Unfortunately we are unable to refund consultation fees.</p>
-                                                        <p><span><a class="btn btn-fixed salon-color"
-                                                                    href="#"><span>read more</span></a></span></p>
+                                                        <a class="btn btn-fixed salon-color" href="#"><span>read
+                                                                more</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .blog-styled -->
                                                     <table>
                                                         <tbody>
@@ -2242,7 +2512,10 @@
                                                     </table>
                                                     <div class="btn-row cf">
                                                         <a href="/booking" class="btn btn-fixed salon-color"><span>Book
-                                                                Now!</span></a>
+                                                                Now!</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -2276,7 +2549,10 @@
                                                     </table>
                                                     <div class="btn-row cf">
                                                         <a href="/booking" class="btn btn-fixed salon-color"><span>Book
-                                                                Now!</span></a>
+                                                                Now!</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -2312,7 +2588,10 @@
                                                     </table>
                                                     <div class="btn-row cf">
                                                         <a href="/booking" class="btn btn-fixed salon-color"><span>Book
-                                                                Now!</span></a>
+                                                                Now!</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -2350,7 +2629,10 @@
                                                     </table>
                                                     <div class="btn-row cf">
                                                         <a href="/booking" class="btn btn-fixed salon-color"><span>Book
-                                                                Now!</span></a>
+                                                                Now!</span>
+                                                            <div class="btn-before"></div>
+                                                            <div class="btn-after"></div>
+                                                        </a>
                                                     </div><!-- .btn-row -->
                                                 </div>
                                             </fieldset>
@@ -2365,28 +2647,48 @@
                                         <ul class="row service-selection text-center nav nav-pills" role="tablist">
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#specialty1" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">Hair Extensions</a></li>
+                                                    data-toggle="pill">Hair Extensions<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#specialty2" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">Color Repair Treatments</a></li>
+                                                    data-toggle="pill">Color Repair Treatments<div class="btn-before">
+                                                    </div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#specialty3" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">Hair Consultations</a></li>
+                                                    data-toggle="pill">Hair Consultations<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#specialty4" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">Shampoo Enhancements</a></li>
+                                                    data-toggle="pill">Shampoo Enhancements<div class="btn-before">
+                                                    </div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#specialty5" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">Hairdreams MicroLines</a></li>
+                                                    data-toggle="pill">Hairdreams MicroLines<div class="btn-before">
+                                                    </div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#specialty6" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">K18 REPAIR MASK ADD ON</a></li>
+                                                    data-toggle="pill">K18 REPAIR MASK ADD ON<div class="btn-before">
+                                                    </div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#specialty7" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">AKE HOME MASK</a></li>
+                                                    data-toggle="pill">AKE HOME MASK<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                             <li class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 nav-item"><a
                                                     href="#specialty8" class="service-btn text-white nav-link"
-                                                    data-toggle="pill">FIBRE CLINIX</a></li>
+                                                    data-toggle="pill">FIBRE CLINIX<div class="btn-before"></div>
+                                                    <div class="btn-after"></div>
+                                                </a></li>
                                         </ul>
                                     </div>
                                 </div>
