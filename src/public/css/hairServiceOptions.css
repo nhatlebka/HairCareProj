@@ -36,8 +36,8 @@ body {
   height: 600px;
   width: 100%;
   position: relative;
-  background-image: url("/images/service_hairdesign.jpg");
   background-size: cover;
+
 }
 .body-title {
   color: #fff;
@@ -73,6 +73,11 @@ body {
   margin-top: 20px;
   font-weight: 400;
   font-size: 25px;
+}
+.h3 {
+  margin-top: 20px;
+  font-weight: 700;
+  font-size: 18px;
 }
 .p {
   margin-top: 20px;
