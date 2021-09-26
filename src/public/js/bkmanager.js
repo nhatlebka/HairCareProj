@@ -87,7 +87,7 @@ function getAllBookingList() {
 												<i class="fas fa-ellipsis-h"></i></button></td>
 											</tr>
 										`;
-								$('#list-completed-appointment').append(item);
+								$('#list-completed-appointment').prepend(item);
 							} else if (rs[key].rating > 0) {
 								var item = `
 											<tr>
@@ -104,7 +104,7 @@ function getAllBookingList() {
 												<i class="fas fa-ellipsis-h"></i></button></td>
 											</tr>
 										`;
-								$('#list-completed-appointment').append(item);
+								$('#list-completed-appointment').prepend(item);
 							}
 						} else if (rsdate > today) {
 							if (rsdate.toDateString() == today.toDateString()) {
@@ -245,7 +245,7 @@ function findByPhone() {
 													<i class="fas fa-ellipsis-h"></i></button></td>
 												</tr>
 											`;
-									$('#list-completed-appointment').append(item);
+									$('#list-completed-appointment').prepend(item);
 								} else if (rs[key].rating > 0) {
 									var item = `
 												<tr>
@@ -262,7 +262,7 @@ function findByPhone() {
 													<i class="fas fa-ellipsis-h"></i></button></td>
 												</tr>
 											`;
-									$('#list-completed-appointment').append(item);
+									$('#list-completed-appointment').prepend(item);
 								}
 							} else if (rsdate > today) {
 								if (rsdate.toDateString() == today.toDateString()) {
