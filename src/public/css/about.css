@@ -316,3 +316,70 @@
     font-weight: 300;
     font-family: Josefin Sans;
 }
+
+.employee {
+    padding: 60px 0;
+}
+
+.employee-item {
+    margin-top: 30px;
+    width: 20%;
+    padding: 10px;
+}
+
+.employee-img {
+    margin: 0 auto;
+    width: 70%;
+    border: 6px solid #000000;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.employee-img img {
+    width: 100%;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.employee-img img:hover {
+    transform: scale(0.9);
+}
+
+.employee-item h5 {
+    text-align: center;
+    margin-top: 20px;
+    font-family: Josefin Sans;
+}
+
+.employee-item p {
+    text-align: center;
+    margin-top: 0;
+    font-size: 18px;
+    font-weight: 300;
+    font-family: Josefin Sans;
+}
+
+.list-info {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.info-item {
+    margin: 0 5px;
+    width: 32px;
+    height: 32px;
+    background-color: #000;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.info-item:hover {
+    background-color: #d3ad69;
+}

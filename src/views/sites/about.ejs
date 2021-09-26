@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-    <title>Hair Post</title>
+    <title>About Us</title>
     <%- include('../layouts/head') %>
         <!-- Thư viện và CSS Import ở dưới -->
         <link rel="stylesheet" href="/css/about.css">
-        <!-- <link rel="stylesheet" href="/css/abouttResponsive.css"> -->
+        <link rel="stylesheet" href="/css/aboutResponsive.css">
 
 
 <body>
@@ -23,7 +23,7 @@
         <div class="main">
             <div class="about-content">
                 <div class="container">
-                    <div class="row">
+                    <div class="row" style="flex-wrap: wrap;">
                         <div class="col-lg-6 col-md-12 col-sm-12">
                             <div class="about-left">
                                 <img src="https://res.cloudinary.com/lenn/image/upload/v1632452024/hairCare/img11_vccelt.jpg"
@@ -65,41 +65,54 @@
 
             <div class="services">
                 <div class="container">
-                    <h1>What we offer at Triss Salon</h1>
+                    <h1>What we offer at Hair Care</h1>
                     <h5>Trichologists and Hair Care Specialists</h5>
                     <div class="row mt-5">
-                        <div class="col-lg-4 col-md-6 col-sm-12col-xs-12">
+                        <div class="col-lg-3 col-md-6 col-sm-12col-xs-12">
                             <div class="services-item">
-                                <h2 class="services-title">Womens Cuts</h2>
+                                <h2 class="services-title">Cut + Style</h2>
                                 <img src="https://res.cloudinary.com/lenn/image/upload/v1632455704/hairCare/img15_rvdfsw.jpg"
                                     alt="" class="services-img">
                                 <p class="services-text">Our experienced team of stylists is highly skilled and can
                                     create a wide array of haircuts and styles.Have a specific look in mind? No problem, our stylists can create it for you. </p>
-                                <a href="" class="services-button">View more
+                                <a href="/services#Cut+Style" class="services-button">View more
                                     <div class="btn-before"></div>
                                     <div class="btn-after"></div>
                                 </a>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
                             <div class="services-item">
-                                <h2 class="services-title">Professional Shampoo</h2>
+                                <h2 class="services-title">Color</h2>
                                 <img src="https://res.cloudinary.com/lenn/image/upload/v1632455704/hairCare/img16_zn50cl.jpg"
                                     alt="" class="services-img">
                                 <p class="services-text">Our stylists will shampoo and cut and your hair and allow you to style it. This service does not include blow drying and curling or straightening your new style. This service applies to women’s haircuts only.</p>
-                                <a href="" class="services-button">View more
+                                <a href="/services#Color" class="services-button">View more
                                     <div class="btn-before"></div>
                                     <div class="btn-after"></div>
                                 </a>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
                             <div class="services-item">
-                                <h2 class="services-title">Trengthening Treatment</h2>
+                                <h2 class="services-title">Texture</h2>
                                 <img src="https://res.cloudinary.com/lenn/image/upload/v1632455704/hairCare/img17_dnfyok.jpg"
                                     alt="" class="services-img">
                                 <p class="services-text">Protein treatment for extremely damaged and distressed hair. Includes blowdry style when not booked as an add-on service.</p>
-                                <a href="" class="services-button">View more
+                                <a href="/services#Texture" class="services-button">View more
+                                    <div class="btn-before"></div>
+                                    <div class="btn-after"></div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="services-item">
+                                <h2 class="services-title">Specialty</h2>
+                                <img src="https://res.cloudinary.com/lenn/image/upload/v1632455704/hairCare/img17_dnfyok.jpg"
+                                    alt="" class="services-img">
+                                <p class="services-text">Protein treatment for extremely damaged and distressed hair. Includes blowdry style when not booked as an add-on service.</p>
+                                <a href="/services#Specialty" class="services-button">View more
                                     <div class="btn-before"></div>
                                     <div class="btn-after"></div>
                                 </a>
@@ -149,7 +162,7 @@
             <div class="total-count">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
                             <div class="total-count-item">
                                 <div class="count-icon">
                                     <div class="count-icon-child">
@@ -157,11 +170,11 @@
                                     <i  class="far fa-gem"></i>
                                 </div>
                                 <p class="count-number"><span class="counter-value" data-count="960">0</span>+</p>
-                                <p class="count-title">People’s Haircut</p>
+                                <p class="count-title">Cut + Style</p>
                             </div>
                         </div>
 
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
                             <div class="total-count-item">
                                 <div class="count-icon">
                                     <div class="count-icon-child">
@@ -169,11 +182,11 @@
                                     <i class="fas fa-coffee"></i>
                                 </div>
                                 <p class="count-number"><span class="counter-value" data-count="750">0</span>+</p>
-                                <p class="count-title">Conditioning</p>
+                                <p class="count-title">Color</p>
                             </div>
                         </div>
 
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
                             <div class="total-count-item">
                                 <div class="count-icon">
                                     <div class="count-icon-child">
@@ -181,11 +194,11 @@
                                     <i class="fas fa-adjust"></i>
                                 </div>
                                 <p class="count-number"><span class="counter-value" data-count="520">0</span>+</p>
-                                <p class="count-title">Dandruff Rinse</p>
+                                <p class="count-title">Texture</p>
                             </div>
                         </div>
 
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
                             <div class="total-count-item">
                                 <div class="count-icon">
                                     <div class="count-icon-child">
@@ -193,12 +206,85 @@
                                     <i class="fas fa-calculator"></i>
                                 </div>
                                 <p class="count-number"><span class="counter-value" data-count="840">0</span>+</p>
-                                <p class="count-title">Hair & Scalp</p>
+                                <p class="count-title">Specialty</p>
+                            </div>
+                        </div>                    
+                    </div>
+                </div>
+            </div>
+
+            <div class="employee">
+                <div class="container">
+                    <div class="row">
+                        <div class="employee-item">
+                            <div class="employee-img">
+                                <img src="https://res.cloudinary.com/lenn/image/upload/v1632581239/hairCare/sc600x600_mjegao.jpg" alt="">
+                            </div>
+                            <h5>Dang Minh Hai</h5>
+                            <p>Hair Care Therapist</p>
+                            <div class="list-info">
+                                <div class="info-item"><i class="fab fa-twitter"></i></div>
+                                <div class="info-item"><i class="fab fa-facebook-f"></i></div>
+                                <div class="info-item"><i class="fab fa-instagram"></i></div>
+                                <div class="info-item"><i class="fab fa-youtube"></i></div>
                             </div>
                         </div>
 
-                       
+                        <div class="employee-item">
+                            <div class="employee-img">
+                                <img src="https://res.cloudinary.com/lenn/image/upload/v1632581239/hairCare/rsz_1rsz_menhair1_nkcgwi.jpg" alt="">
+                            </div>
+                            <h5>Nguyen Nhat Le</h5>
+                            <p>Hair Care Therapist</p>
+                            <div class="list-info">
+                                <div class="info-item"><i class="fab fa-twitter"></i></div>
+                                <div class="info-item"><i class="fab fa-facebook-f"></i></div>
+                                <div class="info-item"><i class="fab fa-instagram"></i></div>
+                                <div class="info-item"><i class="fab fa-youtube"></i></div>
+                            </div>
+                        </div>
 
+                        <div class="employee-item">
+                            <div class="employee-img">
+                                <img src="https://res.cloudinary.com/lenn/image/upload/c_crop,h_575,w_575/v1632581239/hairCare/75f8d2a8bd8fcd3294ddde805a653f5f_ecj8pw.webp" alt="">
+                            </div>
+                            <h5>Nguyen Mai Ngan</h5>
+                            <p>Hair Care Manager</p>
+                            <div class="list-info">
+                                <div class="info-item"><i class="fab fa-twitter"></i></div>
+                                <div class="info-item"><i class="fab fa-facebook-f"></i></div>
+                                <div class="info-item"><i class="fab fa-instagram"></i></div>
+                                <div class="info-item"><i class="fab fa-youtube"></i></div>
+                            </div>
+                        </div>
+
+                        <div class="employee-item">
+                            <div class="employee-img">
+                                <img src="https://res.cloudinary.com/lenn/image/upload/v1632581240/hairCare/AC_ECOM_SITE_2020_REFRESH_1_INDEX_M2_THUMBS-V2-1_hqvzeg.jpg" alt="">
+                            </div>
+                            <h5>Nguyen Van Hung</h5>
+                            <p>Hair Care Therapist</p>
+                            <div class="list-info">
+                                <div class="info-item"><i class="fab fa-twitter"></i></div>
+                                <div class="info-item"><i class="fab fa-facebook-f"></i></div>
+                                <div class="info-item"><i class="fab fa-instagram"></i></div>
+                                <div class="info-item"><i class="fab fa-youtube"></i></div>
+                            </div>
+                        </div>
+
+                        <div class="employee-item">
+                            <div class="employee-img">
+                                <img src="https://res.cloudinary.com/lenn/image/upload/c_crop,h_1028,w_1028/v1632581239/hairCare/what_makes_a_man_more_manly_main0_fk8vdu.jpg" alt="">
+                            </div>
+                            <h5>Vy Tuan Duong   </h5>
+                            <p>Hair Care Therapist</p>
+                            <div class="list-info">
+                                <div class="info-item"><i class="fab fa-twitter"></i></div>
+                                <div class="info-item"><i class="fab fa-facebook-f"></i></div>
+                                <div class="info-item"><i class="fab fa-instagram"></i></div>
+                                <div class="info-item"><i class="fab fa-youtube"></i></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
