@@ -6,6 +6,11 @@ const Service = new Schema(
 	{
 		service_name: String,
 		service_introduce: String,
+		service_image: String,
+		service_desc: String,
+		service_price: Number,
+		service_title: String,
+		slug: String,
 	},
 	{
 		timestamps: true,
