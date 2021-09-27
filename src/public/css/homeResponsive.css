@@ -399,23 +399,24 @@
     }
 
     .booking-title {
-        margin-top: 16px;
+        margin-top: 10px;
         font-size: 34px;
         margin-bottom: 0;
     }
 
     .booking-order {
         margin-top: 0;
-        font-size: 24px;
+        font-size: 22px;
+        line-height: 120%;
     }
     .booking-des {
-        font-size: 12px;
+        font-size: 10px;
         line-height: 120%;
     }
 
     .booking-content .booking-btn {
         padding: 6px 0;
-        width: 110px;
-        font-size: 14px;
+        width: 90px;
+        font-size: 12px;
     }
 }
